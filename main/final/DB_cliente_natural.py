@@ -1,7 +1,7 @@
 
 from DB import DB
 
-class Business_Management(DB):
+class DB_cliente_natural(DB):
 
     def get_id (self):
         

@@ -2,7 +2,7 @@ from flask import Flask, render_template, json, request
 import psycopg2
 from psycopg2 import Error
 
-from Business_Management import Business_Management
+from DB_cliente_natural import DB_cliente_natural
 from DB import DB
 import logging
 
@@ -11,27 +11,57 @@ app = Flask(__name__)
 app.debug = True
 
 
-# postgres configurations
 
+
+
+
+####################################################################
+
+
+@app.route('/')                                     #metodo request de default es GET
+def main():
+    return render_template('inicio.html')
+
+
+@app.route('/registro', methods= ['GET', 'POST'] )
+def registro():
+    
+    if request.method == 'GET':
+        return render_template("registro_natural.html")
+    
+    else:
+        return "pagina registro %s" % request.method    #escribe en pantalla 
+
+
+@app.route('/perfil/<cl_nombre>')
+def perfil(cl_nombre):
+    return render_template("perfil_natural.html", cl_nombre = cl_nombre)    
+
+
+@app.route('/producto/<int:pr_id>')        #url generico
+def datos_producto(pr_id):
+    return "datos produto %s" %pr_id     #escribe en pantalla 
+
+
+
+
+#########################################
 
 
 @app.route('/showSignin')
 def showSignin():
     return render_template('signin.html')
 
-@app.route('/')
-def main():
-    return render_template('index.html')
-
 @app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')
 
 
+
 @app.route('/signUp',methods=['POST','GET'])
 def signUp():
     try:
-        db = Business_Management()
+        db = DB_cliente_natural()
         _name = request.form['inputName']
         _email = request.form['inputEmail']
         _password = request.form['inputPassword']

@@ -2,7 +2,7 @@ import pyrebase
 import random
 import json
 
-from Application.DataBase.Business_Management import Business_Management
+from Application.DataBase.DB_cliente_natural import DB_cliente_natural
 from Application.DataBase.Client_Management import Client_Management
 from Application.DataBase.DB import DB
 from Application.Logical.Directory.Client_Directory import Client_Directory
@@ -23,7 +23,7 @@ user1 = db.add(user1,userlist)
 
 
 
-db1 = Business_Management()
+db1 = DB_cliente_natural()
 userlist = db1.gets()
 user1=Business("Ferreteria Inc","478953po","hfldsda@hotmail.com","04165958297","C628585696",["Comida","medicina"])
 user1 = db1.add(user1,userlist)
@@ -116,7 +116,7 @@ txt.insert(INSERT,"Client\n")
 for user in userlist.Registries:
      txt.insert(INSERT,("Id: " + str(user.GetID()) +  ", Name: "    +user.GetName()+ ", Email: " +user.GetEmail()+ ", Phone: " +str(user.GetPhone()) + "  \n"))
 
-db = Business_Management()
+db = DB_cliente_natural()
 userlist = db.gets()
 txt.insert(INSERT, "\nBusiness\n")
 for user in userlist.Registries:

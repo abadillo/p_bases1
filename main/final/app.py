@@ -94,18 +94,11 @@ def carrito():
     else:   return "ah bueno"
 
 
-
-
-
-
-
-###########################
-
 @app.route('/inicio_sesion',methods=['POST','GET'])
 def inicio_sesion():
 
     if request.method == 'GET':
-        return render_template("iniciosesion.html")
+        return render_template("inicio_sesion.html")
     
     else:
 
@@ -124,6 +117,13 @@ def inicio_sesion():
 
         except Exception as e:
             return json.dumps({'ERROR XS':str(e)})
+
+
+
+
+
+###########################
+
 
    
 

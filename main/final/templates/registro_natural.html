@@ -1,7 +1,79 @@
-<!doctype html>
+<html>
+    <head>
+        <title>UCABAMART Registro </title>
+        <link rel="stylesheet" type="text/css" href="C:\Users\Frank\Desktop\VSCode-win32-ia32-1.51.1\Proyecto\p_bases1\main\final\static\css\registro_natural.css">
+        
+    </head> 
+    <body>
+        <div id="fondo1">
+           
+            <input type="image" id="logo" src="UCABMART7.png" >
 
-<link rel="stylesheet"type="text/css" href="{{  url_for('static', filename='css/registro_natural.css') }}">
+            <div class="linea"> </div>
 
-<title>REGISTRO UCABMART</title>
+            <div id="fondo2">
+            
+            <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                
+                <div id="fondo3">
 
-<h1>Registro</h1>
+                    <h1 id="registro"> Registro </h1>
+
+                    <a id="texto"><input type="radio" > Persona Natural</a>
+                    <a id="texto"><input type="radio" > Persona Juridica </a>
+
+                    <div id="margen">
+
+                     <a id="cedula-texto"> Cédula </a>
+                     <input id="cedula-caja" type="text" >
+
+                     
+                     <a id="Telefono-texto">Teléfono 1(Obligatorio)</a>
+                     <input id="Telefono-caja" type="text">
+
+                     <div id="espacio"></div>   
+
+                        <a id="Nombre-texto">Nombres</a>
+                        <input id="Nombre-caja" type="text">   
+
+                        <a id="Apellidos-texto">Apellidos</a>
+                        <input id="Apellidos-caja" type="text"> 
+
+                    
+
+                     <div id="espacio">  </div>   
+
+                        <a id="tienda-registro"> Tienda Resgistro</a>
+
+                        <select name="select" id="Combo-box">
+                            <option value="value1">San Antonio</option>
+                            <option value="value2" selected>Miranda-Baruta</option>
+                            <option value="value3">Caracas-La Cafetal</option>
+                        </select>  
+
+                        <div id="espacio">  </div>  
+
+                        <a id="Correo-texto">Correo Electrónico</a>
+                        <input id="Correo-caja" type="text">
+
+                        <div id="espacio"> </div>   
+
+                        <a id="Contrasena-texto"> Contraseña</a>
+                        <input id="Contrasena-caja" type="text"> 
+
+                        <a id="valiContrasena-texto"> Validar Contraseña</a>
+                        <input id="valiContrasena-caja" type="text"> 
+
+                        <div id="espacio"> </div> 
+
+                        <input type="text" id="Continuar" value="Continuar">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>    
+    </body>
+</html>

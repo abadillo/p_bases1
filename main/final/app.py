@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, request, jsonify
 import psycopg2 
 from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
@@ -8,9 +8,15 @@ from DB_cliente_natural import DB_cliente_natural
 from DB import DB
 import logging
 
+import numpy 
+
 
 app = Flask(__name__)
 app.debug = True
+
+
+
+
 
 
 ####################################################################
@@ -99,24 +105,55 @@ def inicio_sesion():
 
     if request.method == 'GET':
         return render_template("inicio_sesion.html")
+
+
+
+@app.route('/update_correo',methods=['POST','GET'])
+def update_correo():
     
-    else:
-
-        try:
-
+    try:
             
-            correo = request.form['inputCorreo']
-            contraseña = request.form['inputContraseña']
+        correo = request.form['inputCorreo']
+        #contraseña = request.form['inputContraseña']
 
-            return (request.form)
+        db = DB_cliente_natural()         
+        #print(type(correo))
+        #print(correo)
+        
+        #db.cursor.execute("SELECT cl_contraseña FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
 
-            if correo and contraseña:
-                return render_template("registro_natural.html")
-            else:
-                return json.dumps({'html':'<span>Enter the required fields</span>'})
+        db.cursor.execute("SELECT cl_id FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
 
-        except Exception as e:
-            return json.dumps({'ERROR XS':str(e)})
+        #print('nose2')
+    
+        db.connection.commit()
+        
+        print (correo)
+
+        if (db.cursor.fetchone()): i = 1
+        else: i = 0
+        
+        correo = i
+
+        return jsonify('', render_template('correo_no_existe.html', i = i ))
+
+
+
+        #if correo and contraseña:
+         #   return render_template("registro_natural.html")
+        #else:
+         #   return json.dumps({'html':'<span>Enter the required fields</span>'})
+
+    except Exception as e:
+        return json.dumps({'ERROR XS':str(e)})
+   
+
+
+@app.route('/inicio_sesion2',methods=['POST','GET'])
+def inicio_sesion2():
+    return "xd"
+   
+
 
 
 

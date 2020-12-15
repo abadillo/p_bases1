@@ -1,7 +1,9 @@
 
+CREATE SEQUENCE id_secuencia INCREMENT BY 1 START WITH 1;
+
 CREATE TABLE cliente_natural(
 
-	cl_id			NUMERIC(10)  NOT NULL, 		 
+	cl_id			NUMERIC(10)  NOT NULL SET DEFAULT nextval('id_secuencia');	 
 	cl_correo		VARCHAR(50)  NOT NULL UNIQUE,
 	cl_contraseña	VARCHAR(20)	 NOT NULL,
 	cl_puntos		NUMERIC(10)	 NOT NULL 		 DEFAULT 0,	

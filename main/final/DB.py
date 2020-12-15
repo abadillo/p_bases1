@@ -18,8 +18,8 @@ class DB(metaclass=ABCMeta):
 
             
             self.cursor = self.connection.cursor()
-            print("Conexion Establecida: ")
-            print(self.connection.get_dsn_parameters(), "\n")
+            #print("Conexion Establecida: ")
+            #print(self.connection.get_dsn_parameters(), "\n")
 
 
         except (Exception, Error) as error:

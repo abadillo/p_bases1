@@ -10,7 +10,8 @@
     <link href="../static/css/inicio_sesion.css" rel="stylesheet">
   
     <script src="../static/js/jquery-1.11.2.js"></script>
-    <script src="../static/js/inicio_sesion.js"></script>
+    <script src="../static/js/update_correo.js"></script>
+
        
   </head>
  
@@ -33,9 +34,13 @@
 
         <p class="h4 mb-4">Login</p>
         
-        <form class="form-iniciosesion", action="/inicio_sesion", method="POST" >
+        <form class="form">
 
-          <input type="email" name="inputCorreo" class="form-control mb-4" placeholder="Correo Electronico" required autofocus>
+          <input type="email" name="inputCorreo" class="form-control mb-2" placeholder="Correo Electronico" required autofocus>
+
+          <small id="correo_invalido" class="form-text text-muted mb-2">
+                 bueneo
+          </small>
           
           <input type="password" name="inputContraseña" class="form-control mb-4" placeholder="Contraseña" required>
 
@@ -43,9 +48,12 @@
 
         </form>
 
-
+      
     </div>
- 
+
+
+   
+  
        
  
     <footer class="footer">

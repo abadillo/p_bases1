@@ -94,6 +94,7 @@ def carrito():
         
         lista = ["Pantalones", "Pollo", "Caraotas"]
 
+
         return render_template("carrito.html", lista = lista)   
     
 
@@ -105,7 +106,8 @@ def inicio_sesion():
 
     if request.method == 'GET':
         return render_template("inicio_sesion.html")
-
+    else: 
+        return request.form
 
 
 @app.route('/update_correo',methods=['POST','GET'])
@@ -134,6 +136,7 @@ def update_correo():
         else: i = 0
         
         correo = i
+        
 
         return jsonify('', render_template('correo_no_existe.html', i = i ))
 

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, json, request
-import psycopg2
+import psycopg2 
+from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
+from psycopg2 import sql
 
 from DB_cliente_natural import DB_cliente_natural
 from DB import DB
@@ -9,10 +11,6 @@ import logging
 
 app = Flask(__name__)
 app.debug = True
-
-
-
-
 
 
 ####################################################################
@@ -26,11 +24,51 @@ def main():
 @app.route('/registro', methods= ['GET', 'POST'] )
 def registro():
     
-    if request.method == 'GET':
+    if request.method == 'POST':
         return render_template("registro_natural.html")
     
     else:
-        return "pagina registro %s" % request.method    #escribe en pantalla 
+        try:          
+        
+            db = DB_cliente_natural()         
+    
+            query = sql.SQL("INSERT INTO cliente_natural({fields}) VALUES ({values});").format(
+                fields=sql.SQL(',').join([
+                    sql.Identifier('cl_correo'),
+                    sql.Identifier('cl_id'),                    
+                    sql.Identifier('cl_contraseña'),
+                    sql.Identifier('cl_puntos'),
+                    sql.Identifier('cl_afiliacion'),
+                    sql.Identifier('cl_cedula'),
+                    sql.Identifier('cl_p_nombre'),
+                    sql.Identifier('cl_s_nombre'),
+                    sql.Identifier('cl_p_apellido'),
+                    sql.Identifier('cl_s_apellido'),
+                    sql.Identifier('cl_rif')
+                ]),
+                values=sql.SQL(',').join([
+                    sql.Literal('ale4x@gmail.com'),
+                    sql.Literal(2),
+                    sql.Literal('ab2132'),
+                    sql.Literal(1232),
+                    sql.Literal(10),
+                    sql.Literal(25952031),
+                    sql.Literal('Alex'),
+                    sql.Literal(None),
+                    sql.Literal('Ber'),
+                    sql.Literal('Alf'),
+                    sql.Literal(None)
+                ]))
+
+
+            db.cursor.execute(query)
+            db.connection.commit()
+
+            return "cliente creado"
+
+
+        except Exception as e:
+            return json.dumps({'error':str(e)})
 
 
 @app.route('/perfil/<cl_nombre>')
@@ -42,6 +80,18 @@ def perfil(cl_nombre):
 def datos_producto(pr_id):
     return "datos produto %s" %pr_id     #escribe en pantalla 
 
+
+@app.route('/carrito', methods= ['GET', 'POST'] )
+def carrito():
+
+    if request.method == 'GET':
+        
+        lista = ["Pantalones", "Pollo", "Caraotas"]
+
+        return render_template("carrito.html", lista = lista)   
+    
+
+    else:   return "ah bueno"
 
 
 
@@ -55,7 +105,6 @@ def showSignin():
 @app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')
-
 
 
 @app.route('/signUp',methods=['POST','GET'])

@@ -1,8 +1,6 @@
 $(
-	
 	function(){
 	window.setInterval(function(){	update_correo()  } , 1000)
-
 
 		function update_correo(){
 			$.ajax({

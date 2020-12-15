@@ -111,11 +111,11 @@ def inicio_sesion():
 
         try:
 
-            return request.form
+            
             correo = request.form['inputCorreo']
             contraseña = request.form['inputContraseña']
 
-            
+            return (request.form)
 
             if correo and contraseña:
                 return render_template("registro_natural.html")

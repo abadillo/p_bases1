@@ -95,8 +95,37 @@ def carrito():
 
 
 
-#########################################
 
+
+
+
+###########################
+
+@app.route('/inicio_sesion',methods=['POST','GET'])
+def inicio_sesion():
+
+    if request.method == 'GET':
+        return render_template("iniciosesion.html")
+    
+    else:
+
+        try:
+
+            return request.form
+            correo = request.form['inputCorreo']
+            contraseña = request.form['inputContraseña']
+
+            
+
+            if correo and contraseña:
+                return render_template("registro_natural.html")
+            else:
+                return json.dumps({'html':'<span>Enter the required fields</span>'})
+
+        except Exception as e:
+            return json.dumps({'ERROR XS':str(e)})
+
+   
 
 @app.route('/showSignin')
 def showSignin():
@@ -107,8 +136,8 @@ def showSignUp():
     return render_template('signup.html')
 
 
-@app.route('/signUp',methods=['POST','GET'])
-def signUp():
+@app.route('/signUp2',methods=['POST','GET'])
+def signU2p():
     try:
         db = DB_cliente_natural()
         _name = request.form['inputName']

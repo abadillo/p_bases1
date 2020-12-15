@@ -1,0 +1,21 @@
+<!doctype html>
+
+<link rel="stylesheet"type="text/css" href="{{  url_for('static', filename='css/carrito.css') }}">
+
+<title>UCABMART</title>
+
+<h1>CARRITO:</h1>
+
+<ul>
+
+    {% for item in lista %}
+
+        <li>
+            {{ item }}
+
+        </li>
+
+    {% endfor %}
+
+
+</ul>

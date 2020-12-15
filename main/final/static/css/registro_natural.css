@@ -1,4 +1,162 @@
-h1{
-    color: #010d2e;
-    font-style:italic; 
+#fondo1{
+    background-color: rgb(166, 207, 253);
+    width: 1500px;
+    height: 1000px;
 }
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+#logo{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    right: -590px;
+    top:10px
+
+}
+.linea{
+    position: relative;
+    top:20px;
+    background-color:black;
+    height: 4px;
+    width: 2000px;
+
+}
+#fondo2{
+    background-color: rgb(226, 43, 43);
+    width: 1500px;
+    height: 1000px;
+    position: relative;
+    top: 20px;
+}
+#fondo3{
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    height: 800px;
+    width:1216px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px grey solid;
+}
+#espacio{
+    height: 4px;
+    width: 2000px;
+}
+#registro{
+    position: relative;
+    right: -560px;
+    text-decoration: underline;
+}
+
+#texto{
+    position: relative;
+    right: -470px;
+    top:-10px;
+}
+#margen{
+    margin-left: 240px;
+}
+#cedula-caja{
+    position: relative;
+    right: -40px;
+    top:80px;
+    width: 200px;
+}
+#cedula-texto{
+    position: relative;
+    top:50px;
+    right: -90px;
+}
+#Telefono-caja{
+    position: relative;
+    right: -40px;
+    top:80px;
+    width: 200px;
+}
+#Telefono-texto{
+    position: relative;
+    top:50px;
+    right: -195px;
+
+}
+#Nombre-caja{
+    position: relative;
+    right: -27px;
+    top:150px;
+    width: 200px;
+}
+#Nombre-texto{
+    position: relative;
+    top:120px;
+    right: -90px;
+}
+#Apellidos-caja{
+    position: relative;
+    right: -118px;
+    top:150px;
+    width: 200px;
+}
+#Apellidos-texto{
+    position: relative;
+    top:120px;
+    right: -185px;
+}
+#tienda-registro{
+    position: relative;
+    right: -90px;
+    top: 175px;
+
+}
+#Combo-box{
+    width: 500px;
+    position: relative;
+    top:200px;
+    right: 21px;
+}
+#Correo-caja{
+    position: relative;
+    right: 34px;
+    top:240px;
+    width: 300px;
+}
+#Correo-texto{
+    position: relative;
+    bottom:-210px;
+    right: -92px;
+}
+#Contrasena-caja{
+    position: relative;
+    right: -18px;
+    top:300px;
+    width: 200px;
+}
+#Contrasena-texto{
+    position: relative;
+    top:270px;
+    right: -94px;
+    
+}
+
+#valiContrasena-caja{
+    position: relative;
+    right:-50px;
+    top:300px;
+    width:200px;
+}
+#valiContrasena-texto{
+    position: relative;
+    top:270px;
+    right: -175px;
+    
+}
+#Continuar{ 
+    width: 70px;
+    position: relative;
+    top:30px;
+    right:-550px;
+
+}
+
+

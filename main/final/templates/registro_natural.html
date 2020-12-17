@@ -2,12 +2,15 @@
     <head>
         <title>UCABMART</title>
         <link rel="stylesheet" type="text/css" href="../static/css/registro_natural.css">
+        <script type="text/javascript" 
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+        </script>
         
     </head> 
     <body>
         <div id="fondo1">
            
-            <input type="image" id="logo" src="UCABMART7.png" >
+            <input type="image" id="logo" src="../templates/Media/UCABMART7.png" >
 
             <div class="linea"> </div>
 
@@ -66,11 +69,43 @@
 
                         <div id="espacio"> </div> 
 
-                        <input type="text" id="Continuar" value="Continuar">
+                        <button id="Continuar">
+
+                             Continuar
+                            
+                        </button>
 
                     </div>
 
                 </div>
+
+                <div id="fondo4">
+
+
+                </div>    
+
+                <script type="text/javascript">
+                
+               
+					$("#Continuar").click(function(){
+					
+                        $("#fondo3").fadeOut("slow");       
+                                    
+                    });
+                    
+                   
+                    
+
+					$("#Continuar").click(function(){
+					
+                        $("#fondo4").fadeIn("9000");   					
+                
+                    }); 
+                
+                   
+		</script>	
+
+
 
             </div>
 

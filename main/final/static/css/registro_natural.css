@@ -32,6 +32,7 @@ body{
     top: 20px;
 }
 #fondo3{
+    display:none;
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
@@ -152,11 +153,25 @@ body{
     
 }
 #Continuar{ 
-    width: 70px;
+    width: 90px;
+    height: 30px;
     position: relative;
-    top:30px;
-    right:-550px;
-
+    top:400px;
+    right:-500px;
+    border: 2px black solid;
+    border-radius: 3px 3px 3px 3px;
 }
-
-
+#Continuar:hover{
+    box-shadow: 2px 2px 5px #999;
+}
+#fondo4{ 
+    
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    height: 800px;
+    width:1216px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px grey solid;
+   
+}

@@ -17,12 +17,12 @@ app.debug = True
 @app.route('/')                                     #metodo request de default es GET
 def main():
     return render_template('inicio.html')
-
+    
 
 @app.route('/registro', methods= ['GET', 'POST'] )
 def registro():
     
-    if request.method == 'POST':
+    if request.method == 'GET':
         return render_template("registro_natural.html")
     
     else:
@@ -115,7 +115,7 @@ def inicio_sesion():
     
         db.connection.commit()
         
-        data = db.cursor.fetchone() 
+        data = db.cursor.fetchone()
  
         if data is None:   
             return jsonify({'mensaje':'conexion no establecida'})   

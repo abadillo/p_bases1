@@ -8,7 +8,7 @@ from DB_cliente_natural import DB_cliente_natural
 from DB import DB
 import logging
 
-import numpy 
+
 
 
 app = Flask(__name__)

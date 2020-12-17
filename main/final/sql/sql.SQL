@@ -54,5 +54,19 @@ CREATE TABLE cliente_juridico(
 
 );
 
+CREATE SEQUENCE id_secuencia INCREMENT BY 1 START WITH 1;
 
+CREATE TABLE producto(
+
+	pr_id			NUMERIC(10)  NOT NULL SET DEFAULT nextval('id_secuencia');	 
+	pr_nombre		VARCHAR(50)  NOT NULL UNIQUE,
+	pr_precio    	NUMERIC(10)	 NOT NULL,
+	pr_peso 		NUMERIC(10)	 NOT NULL 		 DEFAULT 0,	
+	pr_zona	        VARCHAR(20)	 NOT NULL,
+	pr_descuento    NUMERIC(20)	 NOT NULL,
+
+	
+	CONSTRAINT pk_cliente_natural PRIMARY KEY (cl_id)
+
+);
 

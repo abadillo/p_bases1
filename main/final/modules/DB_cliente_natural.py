@@ -1,5 +1,4 @@
-
-from DB import DB
+from modules.DB import DB
 
 class DB_cliente_natural(DB):
 

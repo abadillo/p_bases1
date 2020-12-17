@@ -1,11 +1,12 @@
 from abc import abstractmethod, ABCMeta
 import psycopg2
 from psycopg2 import Error
-import logging
+
+
 
 class DB(metaclass=ABCMeta):
 
-    def __init__(self):
+    def __init__(self): 
         
         try:
             self.connection = psycopg2.connect(
@@ -20,7 +21,6 @@ class DB(metaclass=ABCMeta):
             self.cursor = self.connection.cursor()
             #print("Conexion Establecida: ")
             #print(self.connection.get_dsn_parameters(), "\n")
-
 
         except (Exception, Error) as error:
             print("Error en Conexion", error) 

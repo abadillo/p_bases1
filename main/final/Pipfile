@@ -8,6 +8,7 @@ psycopg2 = "*"
 flask = "*"
 psycopg2-binary = "*"
 loguru = "*"
+pylint = "*"
 
 [dev-packages]
 

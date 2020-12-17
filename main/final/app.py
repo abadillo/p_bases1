@@ -4,19 +4,11 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 
-from DB_cliente_natural import DB_cliente_natural
-from DB import DB
-import logging
-
-
+from modules.DB_cliente_natural import DB_cliente_natural
 
 
 app = Flask(__name__)
 app.debug = True
-
-
-
-
 
 
 ####################################################################
@@ -106,15 +98,8 @@ def inicio_sesion():
 
     if request.method == 'GET':
         return render_template("inicio_sesion.html")
+
     else: 
-        return request.form
-
-
-@app.route('/update_correo',methods=['POST','GET'])
-def update_correo():
-    
-    try:
-            
         correo = request.form['inputCorreo']
         #contraseña = request.form['inputContraseña']
 
@@ -130,15 +115,17 @@ def update_correo():
     
         db.connection.commit()
         
-        print (correo)
+        data = db.cursor.fetchone() 
+ 
+        if data is None:   
+            return jsonify({'mensaje':'conexion no establecida'})   
+             
+        else: 
+            return jsonify({'mensaje':'conexion_ establecida'}) 
 
-        if (db.cursor.fetchone()): i = 1
-        else: i = 0
         
-        correo = i
-        
-
-        return jsonify('', render_template('correo_no_existe.html', i = i ))
+        json.dumps({'html':'<span>Enter the required fields</span>'})
+            
 
 
 
@@ -146,16 +133,17 @@ def update_correo():
          #   return render_template("registro_natural.html")
         #else:
          #   return json.dumps({'html':'<span>Enter the required fields</span>'})
+       
+        
 
-    except Exception as e:
-        return json.dumps({'ERROR XS':str(e)})
+@app.route('/update_correo',methods=['POST','GET'])
+def update_correo():
+    return "hola vale" 
+            
+        
    
 
 
-@app.route('/inicio_sesion2',methods=['POST','GET'])
-def inicio_sesion2():
-    return "xd"
-   
 
 
 

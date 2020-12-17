@@ -101,7 +101,7 @@ def inicio_sesion():
 
     else: 
         correo = request.form['inputCorreo']
-        #contraseña = request.form['inputContraseña']
+        contraseña = request.form['inputContraseña']
 
         db = DB_cliente_natural()         
         #print(type(correo))
@@ -109,7 +109,7 @@ def inicio_sesion():
         
         #db.cursor.execute("SELECT cl_contraseña FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
 
-        db.cursor.execute("SELECT cl_id FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
+        db.cursor.execute("SELECT * FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
 
         #print('nose2')
     
@@ -117,17 +117,18 @@ def inicio_sesion():
         
         data = db.cursor.fetchone()
  
+        
         if data is None:   
-            return jsonify({'mensaje':'conexion no establecida'})   
+            
+            return jsonify({'mensaje':'correo o contraseña invalida'})   
              
         else: 
-            return jsonify({'mensaje':'conexion_ establecida'}) 
-
-        
-        json.dumps({'html':'<span>Enter the required fields</span>'})
-            
-
-
+           
+            if data[2] == contraseña:  
+                return jsonify({'mensaje':'conexion_ establecida'}) 
+            else:
+                return jsonify({'mensaje':'correo o contraseña invalida'}) 
+       
 
         #if correo and contraseña:
          #   return render_template("registro_natural.html")

@@ -12,12 +12,23 @@ class DB(metaclass=ABCMeta):
         try:
             self.cursor = None
 
+            '''
             self.connection = psycopg2.connect(
                 host = "labs-dbservices01.ucab.edu.ve",
                 user = "grupo4bd1",
                 password = "bases1_abgmjd",
                 port ="5432",
                 database = "grupo4db1_"
+            )
+
+            '''
+
+            self.connection = psycopg2.connect(
+                host = "localhost",
+                user = "postgres",
+                password = "112358",
+                port ="5433",
+                database = "main"
             )
 
             self.cursor = self.connection.cursor()

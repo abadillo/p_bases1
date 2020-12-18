@@ -82,7 +82,7 @@ class DB_cliente_natural(DB):
                 self.cursor.execute(query)
                 self.connection.commit()
 
-                return jsonify({'mensaje':'Cliente creado satisfactoriamente'})
+                return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})

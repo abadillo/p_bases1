@@ -29,17 +29,17 @@ def registro():
         try:
 
             data = {
-                'cl_correo'     : 'ale12@gmail.com',
-                'cl_cedula'     : 215220331,
-                'cl_rif'        : 1221221,
+                'cl_correo'     : 'alex@gmail.com',     #string    
+                'cl_cedula'     : 21522033,             #int 
+                'cl_rif'        : 122121,               #int
                 
-                'cl_contraseña' : 'buenobueno',
-                'cl_puntos'     : 0,
-                'cl_afiliacion' : 123,
-                'cl_p_nombre'   : 'fernan',
-                'cl_s_nombre'   : 'flow',          #None
-                'cl_p_apellido' : 'will',
-                'cl_s_apellido' : 'rex',           #None
+                'cl_contraseña' : 'buenobueno',         #string 
+                'cl_puntos'     : 0,                    #int
+                'cl_afiliacion' : 123,                  #int
+                'cl_p_nombre'   : 'fernan',             #string 
+                'cl_s_nombre'   : 'flow',               #string  #None
+                'cl_p_apellido' : 'will',               #string 
+                'cl_s_apellido' : 'rex',                #string  #None
             }
 
             db = DB_cliente_natural()   
@@ -118,18 +118,42 @@ def inicio_sesion():
          #   return json.dumps({'html':'<span>Enter the required fields</span>'})
        
         
+@app.route('/mostrar',methods=['POST','GET'])
+def mostrar():
+    
+    if request.method == 'GET':
+        return render_template("mostrar_clientes.html")
+    
+    else:
+       
 
-@app.route('/update_correo',methods=['POST','GET'])
-def update_correo():
-    return "hola vale" 
-            
+        db = DB_cliente_natural()         
+    
+        db.cursor.execute("SELECT cl_correo,cl_cedula::int,cl_rif::int,cl_contraseña FROM cliente_natural")
+    
+
+        db.connection.commit()
+               
         
-   
+        results = db.cursor.fetchall()
+        columns = db.cursor.description
+        
 
+        allResults = []
 
+        columns = [col.name for col in columns]
 
+        if type(results) is list:
+            for value in results:
+                allResults.append(dict(zip(columns, value)))
+                
+            resss = allResults
+        elif type(results) is tuple:
+            allResults.append(dict(zip(columns, results)))
+            resss = allResults
 
-
+        print(resss)
+        return jsonify(resss)
 
 
 

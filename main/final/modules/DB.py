@@ -31,6 +31,9 @@ class DB(metaclass=ABCMeta):
     def add (self, data):
         pass
 
+    def verifica(self,data):
+        pass
+
 
 
       

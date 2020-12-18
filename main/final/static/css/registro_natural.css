@@ -21,7 +21,7 @@ body{
     top:20px;
     background-color:black;
     height: 4px;
-    width: 2000px;
+    width: 1500px;
 
 }
 #fondo2{
@@ -32,7 +32,6 @@ body{
     top: 20px;
 }
 #fondo3{
-    
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
@@ -43,7 +42,7 @@ body{
 }
 #espacio{
     height: 4px;
-    width: 2000px;
+    width: 1500px;
 }
 #registro{
     position: relative;
@@ -56,107 +55,78 @@ body{
     right: -470px;
     top:-10px;
 }
+#margenes{
+    position: relative;
+    right: -500px;   
+}
+#margenes2{
+    position: relative;
+    right: -400px;  
+   
+}
+
+#circulo-margen{
+  margin-right: 20px;
+
+
+}
 #margen{
     margin-left: 240px;
 }
 #cedula-caja{
     position: relative;
-    right: -40px;
-    top:80px;
-    width: 200px;
-}
-#cedula-texto{
-    position: relative;
-    top:50px;
     right: -90px;
+    top:76px;
+    width: 200px;
 }
 #Telefono-caja{
     position: relative;
-    right: -40px;
-    top:80px;
+    right: -480px;
+    top:38px;
     width: 200px;
-}
-#Telefono-texto{
-    position: relative;
-    top:50px;
-    right: -195px;
-
 }
 #Nombre-caja{
     position: relative;
-    right: -27px;
-    top:150px;
-    width: 200px;
-}
-#Nombre-texto{
-    position: relative;
-    top:120px;
     right: -90px;
+    top:80px;
+    width: 200px;
 }
 #Apellidos-caja{
     position: relative;
-    right: -118px;
-    top:150px;
+    right: -480px;
+    top:40px;
     width: 200px;
-}
-#Apellidos-texto{
-    position: relative;
-    top:120px;
-    right: -185px;
 }
 #tienda-registro{
     position: relative;
     right: -90px;
-    top: 175px;
+    top: 75px;
 
 }
-#Combo-box{
-    width: 500px;
-    position: relative;
-    top:200px;
-    right: 21px;
-}
+
 #Correo-caja{
     position: relative;
-    right: 34px;
-    top:240px;
-    width: 300px;
-}
-#Correo-texto{
-    position: relative;
-    bottom:-210px;
-    right: -92px;
+    right: -90px;
+    top:90px;
+    width: 400px;
 }
 #Contrasena-caja{
     position: relative;
-    right: -18px;
-    top:300px;
+    right: -90px;
+    top:120px;
     width: 200px;
 }
-#Contrasena-texto{
-    position: relative;
-    top:270px;
-    right: -94px;
-    
-}
-
 #valiContrasena-caja{
     position: relative;
-    right:-50px;
-    top:300px;
+    right:-90px;
+    top:160px;
     width:200px;
-}
-#valiContrasena-texto{
-    position: relative;
-    top:270px;
-    right: -175px;
-    
 }
 #Continuar{ 
     width: 90px;
     height: 30px;
     position: relative;
-    top:400px;
+    top:200px;
     right:-500px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -165,7 +135,7 @@ body{
     box-shadow: 2px 2px 5px #999;
 }
 #fondo4{ 
-    display:none;
+    display:none;       
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
@@ -174,5 +144,76 @@ body{
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid;   
 }
+#Telefono-caja2{
+    width: 200px;
+    position: relative;
+    right: -350px;
+    top:39px
+}
+#Telefono-caja3{
+    width: 200px;
+    position: relative;
+    right: -700px;
+}
+#RIF{
+    width: 200px;
+    position: relative;
+    right: -350px;
+    top:50px;
+}
+#Combo-boxes{
+    position: relative;
+    right: -200px;
+    top:80px;
+    width: 300px;
+    
+}
+#Municipio{
+    position: relative;
+    right: -300px;
+    top:-55px
+}
+#Estado{
+    position: relative;
+    right: -600px;
+    top:-110px;
+}
+#Calle{
+    width: 400px;
+    position: relative;
+    right: -150px;
+    top:-50px;
+}
+#Apartamento{
+    width: 200px;
+    position: relative;
+    right: -600px;
+    top: -89px;
+}
+#registrar{ 
+    width: 90px;
+    height: 30px;
+    position: relative;
+    top:200px;
+    right:-800px;
+    border: 2px black solid;
+    border-radius: 3px 3px 3px 3px;
+}
+#registrar:hover{
+    box-shadow: 2px 2px 5px #999;
+}
+#regresar{ 
+    width: 90px;
+    height: 30px;
+    position: relative;
+    top:200px;
+    right:-800px;
+    border: 2px black solid;
+    border-radius: 3px 3px 3px 3px;
+}
+#regresar:hover{
+    box-shadow: 2px 2px 5px #999;
+}
+
 
 

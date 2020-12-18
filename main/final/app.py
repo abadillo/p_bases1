@@ -26,11 +26,29 @@ def registro():
         return render_template("registro_natural.html")
     
     else:
-        
+        try:
+
+            data = {
+                'cl_correo'     : 'ale12@gmail.com',
+                'cl_cedula'     : 215220331,
+                'cl_rif'        : 1221221,
+                
+                'cl_contraseña' : 'buenobueno',
+                'cl_puntos'     : 0,
+                'cl_afiliacion' : 123,
+                'cl_p_nombre'   : 'fernan',
+                'cl_s_nombre'   : 'flow',          #None
+                'cl_p_apellido' : 'will',
+                'cl_s_apellido' : 'rex',           #None
+            }
+
             db = DB_cliente_natural()   
-            resp = db.add(request.form)
+            resp = db.add(data)
 
             return resp
+
+        except Exception :
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
 @app.route('/perfil/<cl_nombre>')

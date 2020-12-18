@@ -22,51 +22,15 @@ def main():
 @app.route('/registro', methods= ['GET', 'POST'] )
 def registro():
     
-    if request.method == 'GET':
+    if request.method == 'POST':
         return render_template("registro_natural.html")
     
     else:
-        try:          
         
-            db = DB_cliente_natural()         
-    
-            query = sql.SQL("INSERT INTO cliente_natural({fields}) VALUES ({values});").format(
-                fields=sql.SQL(',').join([
-                    sql.Identifier('cl_correo'),
-                    sql.Identifier('cl_id'),                    
-                    sql.Identifier('cl_contraseña'),
-                    sql.Identifier('cl_puntos'),
-                    sql.Identifier('cl_afiliacion'),
-                    sql.Identifier('cl_cedula'),
-                    sql.Identifier('cl_p_nombre'),
-                    sql.Identifier('cl_s_nombre'),
-                    sql.Identifier('cl_p_apellido'),
-                    sql.Identifier('cl_s_apellido'),
-                    sql.Identifier('cl_rif')
-                ]),
-                values=sql.SQL(',').join([
-                    sql.Literal('ale4x@gmail.com'),
-                    sql.Literal(2),
-                    sql.Literal('ab2132'),
-                    sql.Literal(1232),
-                    sql.Literal(10),
-                    sql.Literal(25952031),
-                    sql.Literal('Alex'),
-                    sql.Literal(None),
-                    sql.Literal('Ber'),
-                    sql.Literal('Alf'),
-                    sql.Literal(None)
-                ]))
+            db = DB_cliente_natural()   
+            resp = db.add(request.form)
 
-
-            db.cursor.execute(query)
-            db.connection.commit()
-
-            return "cliente creado"
-
-
-        except Exception as e:
-            return json.dumps({'error':str(e)})
+            return resp
 
 
 @app.route('/perfil/<cl_nombre>')

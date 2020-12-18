@@ -1,6 +1,7 @@
 from abc import abstractmethod, ABCMeta
 import psycopg2
 from psycopg2 import Error
+from flask import Flask, render_template, json, request, jsonify
 
 
 
@@ -9,6 +10,8 @@ class DB(metaclass=ABCMeta):
     def __init__(self): 
         
         try:
+            self.cursor = None
+
             self.connection = psycopg2.connect(
                 host = "labs-dbservices01.ucab.edu.ve",
                 user = "grupo4bd1",
@@ -17,18 +20,15 @@ class DB(metaclass=ABCMeta):
                 database = "grupo4db1_"
             )
 
-            
             self.cursor = self.connection.cursor()
-            #print("Conexion Establecida: ")
-            #print(self.connection.get_dsn_parameters(), "\n")
 
-        except (Exception, Error) as error:
-            print("Error en Conexion", error) 
-            self.cursor = None
+        except (Exception):
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            
 
                 
     @abstractmethod
-    def get_id (self):
+    def add (self, data):
         pass
 
 

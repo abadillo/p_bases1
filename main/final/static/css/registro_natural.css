@@ -84,32 +84,49 @@ body{
     padding: auto;
 }
 
-#cedula-caja{    
+#inputcedula{    
     position: relative;
     right: -90px;
     top:76px;
     width: 200px;
 }
-#Telefono-caja{
+#inputtelefono{
     position: relative;
     right: -480px;
     top:38px;
     width: 200px;
 }
-#Nombre-caja{
+
+#inputpnombre{
     margin-top: 20px;
     position: relative;
     right: -90px;
     top:40px;
     width: 200px;
 }
-#Apellidos-caja{
+#inputsnombre{
+    margin-top: 20px;
+    position: relative;
+    right: -90px;
+    top:40px;
+    width: 200px;
+}
+#inputpapellido{
     margin-top:20px;
     position: relative;
     right: -480px;
     top:-78px;
     width: 200px;
 }
+
+#inputsapellido{
+    margin-top:20px;
+    position: relative;
+    right: -480px;
+    top:-78px;
+    width: 200px;
+}
+
 #tienda-registro{
     position: relative;
     right: -90px;
@@ -117,7 +134,7 @@ body{
     width: 787px;
 }
 
-#Correo-caja{
+#inputcorreo{
     position: relative;
     right: -90px;
     top:-20px;
@@ -126,26 +143,20 @@ body{
 
 
 
-#cedula-caja{    
+#inputcedula{    
     position: relative;
     right: -90px;
     top:76px;
     width: 200px;
 }
-#Telefono-caja{
-    position: relative;
-    right: -480px;
-    top:38px;
-    width: 200px;
-}
 
-#Contrasena-caja{
+#inputcont{
     position: relative;
     right: -90px;
     top:20px;
     width: 200px;
 }
-#valiContrasena-caja{
+#inputcontval{
     position: relative;
     right:-480px;
     top:-20px;
@@ -179,18 +190,18 @@ body{
     margin-top: 50px;
     padding: auto;
 }
-#Telefono-caja2{
+#inputtelefono2{
     width: 200px;
     position: relative;
     right: -100px;
     top:39px
 }
-#Telefono-caja3{
+#inputtelefono3{
     width: 200px;
     position: relative;
     right: -490px;
 }
-#RIF{
+#inputrif{
     width: 200px;
     position: relative;
     right: -100px;

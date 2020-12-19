@@ -1,241 +1,211 @@
 <html>
     <head>
         <title>UCABMART</title>
-        <link rel="stylesheet" type="text/css" href="../static/css/registro_natural.css">
+        
         <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/registro_natural.css">
         
         <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
-         
-  
+        <script src="../static/js/registro_natural.js"></script>
 
     
-
-
-    <meta charset="utf-8">
+        <meta charset="utf-8">
         
     </head> 
+    
     <body>
-        
-        <form >        
-            
-            <div id="fondo1">
            
-            <input type="image" id="logo" src="../templates/Media/UCABMART7.png" >
+        <div id="fondo1">
 
-            <div class="linea"> </div>
+            <img type="image" id="logo" src="../templates/Media/UCABMART7.png">
 
-            <div id="fondo2">
+            <div class="linea"></div>
+
+            <form>
             
-            <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
                 
-                <div id="fondo3">
+                <div id="fondo3" class="form-group">
 
-                 <div id="margen">
+
+                 <div id="margen" class="form-group">
 
                     <h1 id="registro"> Registro </h1>
 
+                
                     <div id="margenes">
 
-                        <span id="circulo-margen">
+                        <span id="circulo-margen" class="form-check">
 
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
-                            <label class="form-check-label text-muted" for="flexRadioDefault1"> Perfil Natural </label>
+                            <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1" checked>
+                            <label class="form-check-label text-muted" for="selecttipo1"> Perfil Natural </label>
 
                         </span>
                         
-                        <span id="perfil-juri">                       
+                        <span id="perfil-juri" class="form-check">                       
 
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                         <label class="form-check-label text-muted" for="flexRadioDefault2"> Perfil Juridico </label>
+                            <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" >
+                            <label class="form-check-label text-muted" for="selecttipo2"> Perfil Juridico </label>
 
                         </span> 
                       
-                        
                     </div>    
 
-                   
-
+    
                      
-                     <input id="cedula-caja" class="form-control" placeholder ="Cédula" type="tel"  minlength="6" maxlength="9" required>                    
+                    <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>                    
                     
-                     <input id="Telefono-caja" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+                    <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
 
-                     <div id="espacio"></div>   
+                    <div id="espacio"></div>   
 
                         
-                        <input id="Nombre-caja" class="form-control" type="text" placeholder ="Primer Nombre" required>   
+                    <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required autofocus>   
 
-                        <input id="Nombre-caja" class="form-control" type="text" placeholder ="Segundo Nombre" >   
+                    <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" required autofocus>   
 
-                        <input id="Apellidos-caja" class="form-control" type="text" placeholder="Primer Apellido" required> 
+                    <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" required autofocus> 
 
-                        <input id="Apellidos-caja" class="form-control" type="text" placeholder="Segundo Apellido" > 
+                    <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" required autofocus > 
 
 
-                     <div id="espacio">  </div>   
+                    <div id="espacio">  </div>   
+                       
+                    <div class="form-group" id="tienda-registro"> 
 
-                        <div class="form-group" id="tienda-registro"> 
-
-                        <select name="select" class="custom-select browser-default" required>
-                            <option value="" selected>Tienda Registro</option>
-                            <option value="value1" >Miranda-San antonio</option>                            
-                            <option value="value2" >Miranda-Baruta</option>
-                            <option value="value3">Caracas-El Cafetal</option>
+                        <select name="selecttienda" class="custom-select browser-default" required autofocus>
+                            <option value="" selected disabled>Tienda Registro</option>
+                            <option value="1" >Miranda-San antonio</option>                            
+                            <option value="2" >Miranda-Baruta</option>
+                            <option value="3">Caracas-El Cafetal</option>
                         </select>  
 
-                     </div>
-
-                        <div id="espacio">  </div>  
-
-                        <input id="Correo-caja" class="form-control" type="email" 
-                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
-                        placeholder="Correo Electrónico" required>
-
-                        <div id="espacio"> </div>   
-
-                        <input id="Contrasena-caja" class="form-control" type="password"  placeholder="Contraseña" required > 
-
-                        <input id="valiContrasena-caja" class="form-control" type="password"  placeholder="Validar Contraseña"> 
-
-                        <div id="espacio"> </div> 
-
-                        <button id="Continuar" class="btn btn-lg btn-secondary   " type="button">  Continuar    </button>
-
                     </div>
+
+                    <div id="espacio">  </div>  
+
+                    <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                    placeholder="Correo Electrónico" required autofocus>
+
+                    <div id="espacio"> </div>   
+
+                    <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" required autofocus>
+                    <input id="inputcontval" name="inputcontval"  class="form-control" type="password"  placeholder="Verifique Contraseña" required autofocus> 
+
+                    <div id="espacio"> </div> 
+
+                    <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
 
                  </div>
 
-                <div id="fondo4">
+                </div>
 
-                    <div id="margen2">
+                <div id="fondo4" class="form-group">
 
+
+                    <div id="margen2" class="form-group">
                 
-                    <h1 id="registro"> Registro </h1>
-                   
-                   <input id="Telefono-caja2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+                        <h1 id="registro"> Registro </h1>
+                    
+                        <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
 
-                   <input id="Telefono-caja3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
 
-                   <input id="RIF" class="form-control" type="text" placeholder="RIF(Opcional)" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" > 
+                        <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" autofocus> 
+                    
+                        <div id="Combo-boxes">
+                            <h4>Dirección de Habitación </h4>
+                        
+                            <div class="form-group" id="Parroquia"> 
 
-                    <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
-
-                        <h4>Dirección de Habitación </h4>
-
-                        <div class="form-group" id="Parroquia"> 
-
-                         <select name="select" class="custom-select browser-default" required>
-                             <option value="">Tienda Registro</option>
-                             <option value="value1" >Miranda-San antonio</option>                            
-                             <option value="value2" selected>Parroquia</option>
-                             <option value="value3">Caracas-El Cafetal</option>
-                         </select>  
-
-                        </div> 
-
-                        <div class="form-group" id="Municipio"> 
-
-                            <select name="select" class="custom-select browser-default" required>
-                                <option value="">Tienda Registro</option>
-                                <option value="value1" selected>Municipio</option>                            
-                                <option value="value2" >Miranda-Baruta</option>
-                                <option value="value3">Caracas-El Cafetal</option>
+                            <select name="selectparroquia" class="custom-select browser-default" required>
+                                <option value="" selected disabled>Parroquia</option>
+                                <option value="4" >Miranda-San antonio</option>                            
+                                <option value="5">Parroquia</option>
+                                <option value="6">Caracas-El Cafetal</option>
                             </select>  
-   
-                           </div> 
-                           
-                           <div class="form-group" id="Estado"> 
 
-                                <select name="select" class="custom-select browser-default" required>
-                                    <option value="">Tienda Registro</option>
-                                    <option value="value1" >Miranda-San antonio</option>                            
-                                    <option value="value2" selected>Estado</option>
-                                    <option value="value3">Caracas-El Cafetal</option>
+                            </div> 
+
+                            <div class="form-group" id="Municipio"> 
+
+                                <select name="selectmunicipio" class="custom-select browser-default" required>
+                                    <option value="" selected disabled>Municipio</option>
+                                    <option value="7">Municipio</option>                            
+                                    <option value="8">Miranda-Baruta</option>
+                                    <option value="9">Caracas-El Cafetal</option>
                                 </select>  
-   
-                           </div>
+    
+                            </div> 
+                            
+                            <div class="form-group" id="Estado"> 
 
-                           <input id="Calle" class="form-control" type="text" placeholder="Calle" required> 
- 
-                           <input id="Apartamento" class="form-control" type="text" placeholder="Nº Apt" required> 
+                                    <select name="selectmunicipio" class="custom-select browser-default" required>
+                                        <option value="" selected disabled>Estado</option>
+                                        <option value="10">Miranda-San antonio</option>                            
+                                        <option value="11">Estado</option>
+                                        <option value="12">Caracas-El Cafetal</option>
+                                    </select>  
+    
+                            </div>
+
+                            <input id="inputcalle" name="inputcalle" class="form-control" type="text" placeholder="Calle" required autofocus> 
+    
+                            <input id="inputapt" name="inputapt" class="form-control" type="tlf" placeholder="Nº Apt" required autofocus> 
 
 
-                    </div>
-                    
-                    
-
-                    <div id="margenes2" >
-
-                        <h4> Medios de Pago </h4>
-
-                        <span id="circulo-margen">
-
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked />
-                         <label class="form-check-label" for="flexRadioDefault1"> Tarjetas de Crédito </label>
-
-                        </span>    
-
-                        <span id="circulo-margen">
-
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
-                         <label class="form-check-label" for="flexRadioDefault2"> Tarjeta de Débito </label>
+                        </div>
+                   
                         
-                        </span>
-
-                        <span id="circulo-margen">
-                         
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
-                         <label class="form-check-label" for="flexRadioDefault2"> Efectivo </label>
-
-                        </span>
-
-                        <span id="circulo-margen">
-
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
-                         <label class="form-check-label" for="flexRadioDefault2"> Cheque </label>
-
-                        </span>
                         
-                    </div>
-                    
-                        <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                        <div id="margenes2" >
+
+                            <h4> Medios de Pago </h4>
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago1" id="mediopago1">
+                                <label class="form-check-label" for="mediopago1"> Tarjetas de Crédito </label>
+
+                            </span>    
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago2" id="mediopago2">
+                                <label class="form-check-label" for="mediopago2"> Tarjeta de Débito </label>
+                            
+                            </span>
+
+                            <span id="circulo-margen">
+                            
+                                <input class="form-check-input" type="radio" name="mediopago3" id="mediopago3">
+                                <label class="form-check-label" for="mediopago3"> Efectivo </label>
+
+                            </span>
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago4" id="mediopago4">
+                                <label class="form-check-label" for="mediopago4"> Cheque </label>
+
+                            </span>
+                            
+                        </div>
                         
-                        <button id ="Registrar" class="btn btn-lg btn-primary"type ="submit"> Registrar</button>
+                        
+                        <button id="Atras" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                        
+                        <button id="Registrar" class="btn btn-lg btn-primary" type ="submit"> Registrar</button>
 
                     </div>
 
                 </div>      
-
-            </div>
+     
+            </form>
 
         </div>
 
-        <script type="text/javascript">                
-               
-            $("#Continuar").click(function(){
-            
-                $("#fondo3").fadeOut("slow");       
-                $("#fondo4").fadeIn("slow");     
-                $("#fondo3").css("display", "none");            				
-        
-            });          
-        
-
-            $("#Regresar").click(function(){
-                $("#fondo3").css("display", "block");   
-                $("#fondo4").fadeOut("slow");     
-                $("#fondo3").fadeIut("slow");   
-            });  
-
-            //$("#flexRadioDefault2").click(function(){
-            //    window.location.href = "/registro_juridico";
-
-            //      });
-          
-        </script>	
-
-         
-    </form>
-   
     </body>
+
 </html>

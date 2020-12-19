@@ -27,9 +27,7 @@ def registro_natural():
     
     else:
         try:
-
-        ​
-
+            
             data = {
                 'cl_correo'     : 'alex@gmail.com',     #string    
                 'cl_cedula'     : 21522033,             #int 

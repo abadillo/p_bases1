@@ -118,13 +118,13 @@ def inicio_sesion():
          #   return json.dumps({'html':'<span>Enter the required fields</span>'})
        
         
-@app.route('/mostrar',methods=['POST','GET'])
+@app.route('/mostrar',methods=['POST','GET','DELETE'])
 def mostrar():
     
     if request.method == 'GET':
         return render_template("mostrar_clientes.html")
     
-    else:
+    if request.method == 'POST': 
        
         db = DB_cliente_natural()         
     
@@ -148,6 +148,14 @@ def mostrar():
 
         return jsonify(resss)
 
+    if request.method == 'DELETE':
+
+        id = int(request.get_data())
+        print(id)
+
+        #delete cliente natural {id} 
+
+        return request.get_data()
 
 
 ###########################

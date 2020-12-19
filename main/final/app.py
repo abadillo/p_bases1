@@ -4,7 +4,7 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 
-from modules.DB_cliente_natural import DB_cliente_natural
+from database.DB_cliente_natural import DB_cliente_natural
 
 
 app = Flask(__name__)
@@ -126,33 +126,26 @@ def mostrar():
     
     else:
        
-
         db = DB_cliente_natural()         
     
-        db.cursor.execute("SELECT cl_correo,cl_cedula::int,cl_rif::int,cl_contraseña FROM cliente_natural")
-    
+        db.cursor.execute("SELECT cl_id::int,cl_correo,cl_cedula::bigint,cl_rif::bigint,cl_contraseña FROM cliente_natural")
+        resp = db.cursor.fetchall()
+        columnas = db.cursor.description
 
-        db.connection.commit()
-               
-        
-        results = db.cursor.fetchall()
-        columns = db.cursor.description
-        
+        columnas = [col.name for col in columnas]
+        data = []     
 
-        allResults = []
-
-        columns = [col.name for col in columns]
-
-        if type(results) is list:
-            for value in results:
-                allResults.append(dict(zip(columns, value)))
+        if type(resp) is list:
+            for valor in resp:
+                data.append(dict(zip(columnas, valor)))
                 
-            resss = allResults
-        elif type(results) is tuple:
-            allResults.append(dict(zip(columns, results)))
-            resss = allResults
+            resss = data
 
-        print(resss)
+        elif type(resp) is tuple:
+            data.append(dict(zip(columnas, resp)))
+            resss = data
+ 
+
         return jsonify(resss)
 
 

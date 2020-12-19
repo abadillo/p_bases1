@@ -1,45 +1,25 @@
 $(document).ready(function() {
-   
-    var dataset;
-
-    $.ajax({
-			
-        url:   '/mostrar',
-        type: 'POST',
-            
-        }).done(function(data){
-            
-            dataset = data;
-            //console.log(dataset);
-            
-            /*
-            if (response['mensaje'] == 'correo o contraseña invalida')
-                $(error).replaceWith( '<p id="error">'+response['mensaje']+'</p>'   )
-            else
-                window.location.href =  "/"			 */		
-            
-        }).fail(function(data){
-            $('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-        });    
-
-
-
-    console.log(dataset);
 
 
     $('#tabla_datatable').DataTable({
         
-        "ajax": dataset,
-        "columns": [
-            { "data": "cl_cedula" },
-            { "data": "cl_id" },
-            { "data": "cl_correo" }   
+        ajax: {
+            url:   '/mostrar',
+            type: 'POST',
+            dataSrc: ""
+        },
+
+        columns: [
+            { data: "cl_id" ,         title: "ID"},
+            { data: "cl_correo" ,     title: "CORREO"},
+            { data: "cl_contraseña" , title: "CONTRASEÑA"},
+            { data: "cl_cedula" ,     title: "CEDULA"},
+            { data: "cl_rif" ,        title: "RIF"},
         ]
         
     });
     
-   
-   
+
     var table = $('#tabla_datatable').DataTable();
  
     $('#tabla_datatable tbody').on( 'click', 'tr', function () {

@@ -1,8 +1,7 @@
 body {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
-
 
 form{
   max-width: 330px;
@@ -15,11 +14,5 @@ form{
   box-sizing: border-box;
   font-size: 16px;
 }
-
-
-
-.red {color:#fd3b3b;}
-
-
 
 

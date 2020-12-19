@@ -2,11 +2,14 @@
     <head>
         <title>UCABMART</title>
         <link rel="stylesheet" type="text/css" href="../static/css/registro_natural.css">
-        <link rel="stylesheet"type="text/css" href="../static/css/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        
+        <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+         
+  
 
-        <script 
-        src="../static/js/jquery-1.11.2.js">   
-        </script>
+    
+
 
     <meta charset="utf-8">
         
@@ -36,14 +39,14 @@
                         <span id="circulo-margen">
 
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
-                            <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
+                            <label class="form-check-label text-muted" for="flexRadioDefault1"> Perfil Natural </label>
 
                         </span>
                         
                         <span id="perfil-juri">                       
 
                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                         <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
+                         <label class="form-check-label text-muted" for="flexRadioDefault2"> Perfil Juridico </label>
 
                         </span> 
                       
@@ -96,7 +99,7 @@
 
                         <div id="espacio"> </div> 
 
-                        <button id="Continuar" type="button">  Continuar    </button>
+                        <button id="Continuar" class="btn btn-lg btn-secondary   " type="button">  Continuar    </button>
 
                     </div>
 
@@ -106,6 +109,7 @@
 
                     <div id="margen2">
 
+                
                     <h1 id="registro"> Registro </h1>
                    
                    <input id="Telefono-caja2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
@@ -153,11 +157,13 @@
 
                            <input id="Calle" class="form-control" type="text" placeholder="Calle" required> 
  
-                           <input id="Apartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
+                           <input id="Apartamento" class="form-control" type="text" placeholder="Nº Apt" required> 
 
 
                     </div>
                     
+                    
+
                     <div id="margenes2" >
 
                         <h4> Medios de Pago </h4>
@@ -191,9 +197,10 @@
                         </span>
                         
                     </div>
-
-                   <button id ="Regresar" type ="submit" > Regresar </button>
-                   <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button>
+                    
+                        <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                        
+                        <button id ="Registrar" class="btn btn-lg btn-primary"type ="submit"> Registrar</button>
 
                     </div>
 

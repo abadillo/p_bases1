@@ -35,15 +35,14 @@ $(function(){
        
         $("#fondo3").fadeOut("slow");       
         $("#fondo4").fadeIn("slow");     
-        $("#fondo3").css("display", "none");    
-             				
+        $("#fondo3").css("display", "none");                 				
 
     });          
 
     $("#Atras").click(function(){
         $("#fondo3").css("display", "block");   
         $("#fondo4").fadeOut("slow");     
-        $("#fondo3").fadeIut("slow");   
+        $("#fondo3").fadeIn("slow");   
     });  
 
     $("#selecttipo2").click(function(){

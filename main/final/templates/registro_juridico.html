@@ -1,3 +1,4 @@
+<!DOCTYPE html>>
 <html>
     <head>
     <title>UCABMART</title>
@@ -7,6 +8,8 @@
     <script 
         src="../static/js/jquery-1.11.2.js">   
     </script>  
+
+    <meta charset="utf-8">
 
     </head>
 
@@ -24,19 +27,186 @@
                 
                 <div id="fondo3">
 
+                    <div id="margen">
+
                     <h1 id="registro"> Registro </h1>
 
-                    <div id="margenes">
+                      <div id="margenes">
 
+                        <span id="circulo-margen">
 
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                            <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
+
+                        </span>
+                        
+                        <span id="perfil-juri">                       
+
+                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                         <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
+
+                        </span> 
+                        
+                      </div>                   
+
+                     <input id="RIF" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
+
+                     <input id="Telefono-caja" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+
+                     <input id="razon" class="form-control" type="text" placeholder="Razón Social">
+                       
+                     <div id="espacio">  </div>   
+
+                     <div class="form-group" id="tienda-registro"> 
+
+                     <select name="select" class="custom-select browser-default" required>
+                         <option value="" selected>Tienda Registro</option>
+                         <option value="value1" >Miranda-San antonio</option>                            
+                         <option value="value2" >Miranda-Baruta</option>
+                         <option value="value3">Caracas-El Cafetal</option>
+                     </select>  
+
+                  </div>
+
+                  <div id="espacio">  </div>  
+
+                  <input id="Correo-caja" class="form-control" type="email" 
+                  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                  placeholder="Correo Electrónico" required>
+
+                  <div id="espacio"> </div>  
+
+                  <input id="Contrasena-caja" class="form-control" type="password"  placeholder="Contraseña" required > 
+
+                  <input id="valiContrasena-caja" class="form-control" type="password"  placeholder="Validar Contraseña"> 
+
+                  <div id="espacio"> </div> 
+
+                  <button id="Continuar" type="button">  Continuar    </button>
 
                     </div>
 
                 </div>
 
+                <div id="fondo4">
+
+                    <div id="margen2">
+
+                        <h1 id="registro"> Registro </h1>
+
+                        <input id="Telefono-caja2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+
+                        <input id="Telefono-caja3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+
+                        <input id="pagina" class="form-control" type="text" placeholder="Página Web (Opcional)">
+
+                        <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
+
+                            <h4>Dirección de Habitación </h4>
+    
+                            <div class="form-group" id="Parroquia"> 
+    
+                             <select name="select" class="custom-select browser-default" required>
+                                 <option value="">Tienda Registro</option>
+                                 <option value="value1" >Miranda-San antonio</option>                            
+                                 <option value="value2" selected>Parroquia</option>
+                                 <option value="value3">Caracas-El Cafetal</option>
+                             </select>  
+    
+                            </div> 
+    
+                            <div class="form-group" id="Municipio"> 
+    
+                                <select name="select" class="custom-select browser-default" required>
+                                    <option value="">Tienda Registro</option>
+                                    <option value="value1" selected>Municipio</option>                            
+                                    <option value="value2" >Miranda-Baruta</option>
+                                    <option value="value3">Caracas-El Cafetal</option>
+                                </select>  
+       
+                               </div> 
+                               
+                               <div class="form-group" id="Estado"> 
+    
+                                    <select name="select" class="custom-select browser-default" required>
+                                        <option value="">Tienda Registro</option>
+                                        <option value="value1" >Miranda-San antonio</option>                            
+                                        <option value="value2" selected>Estado</option>
+                                        <option value="value3">Caracas-El Cafetal</option>
+                                    </select>  
+       
+                               </div>
+    
+                               <input id="Calle" class="form-control" type="text" placeholder="Calle" required> 
+ 
+                               <input id="Apartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
+    
+                            </div>
+                            <div id="margenes2" >
+
+                                <h4> Medios de Pago </h4>
+        
+                                <span id="circulo-margen">
+        
+                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked />
+                                 <label class="form-check-label" for="flexRadioDefault1"> Tarjetas de Crédito </label>
+        
+                                </span>    
+        
+                                <span id="circulo-margen">
+        
+                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
+                                 <label class="form-check-label" for="flexRadioDefault2"> Tarjeta de Débito </label>
+                                
+                                </span>
+        
+                                <span id="circulo-margen">
+                                 
+                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
+                                 <label class="form-check-label" for="flexRadioDefault2"> Efectivo </label>
+        
+                                </span>
+        
+                                <span id="circulo-margen">
+        
+                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
+                                 <label class="form-check-label" for="flexRadioDefault2"> Cheque </label>
+        
+                                </span>
+                                
+                            </div>
+                            
+                            <button id ="regresar" type ="submit" > Regresar </button>
+                            <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button>
+
+
+                    </div>    
+
+                </div>    
+
              </div>
 
             </div>
+
+            <script type="text/javascript">                
+               
+                $("#Continuar").click(function(){
+                
+                    $("#fondo3").fadeOut("slow");       
+                    $("#fondo4").fadeIn("slow");     
+                    $("#fondo3").css("display", "none");            				
+            
+                });          
+            
+    
+                $("#Regresar").click(function(){
+                    $("#fondo3").css("display", "block");   
+                    $("#fondo4").fadeOut("slow");     
+                    $("#fondo3").fadeIut("slow");   
+                });      
+               
+              
+            </script>	
 
         </form>
     </body>

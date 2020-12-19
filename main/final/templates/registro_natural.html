@@ -7,11 +7,15 @@
         <script 
         src="../static/js/jquery-1.11.2.js">   
         </script>
+
+    <meta charset="utf-8">
         
     </head> 
     <body>
         
-        <form >        <div id="fondo1">
+        <form >        
+            
+            <div id="fondo1">
            
             <input type="image" id="logo" src="../templates/Media/UCABMART7.png" >
 
@@ -23,6 +27,8 @@
                 
                 <div id="fondo3">
 
+                 <div id="margen">
+
                     <h1 id="registro"> Registro </h1>
 
                     <div id="margenes">
@@ -33,45 +39,48 @@
                             <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
 
                         </span>
-    
-                       
+                        
+                        <span id="perfil-juri">                       
 
                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                         <label class="form-check-label" for="flexRadioDefault2"> Perfil Jurifico </label>
+                         <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
 
+                        </span> 
                       
                         
                     </div>    
 
-                    <div id="margen">
+                   
 
                      
-                     <input id="cedula-caja" class="form-control" placeholder ="cedula" type="number"  minlength="6" maxlength="9" required>                    
+                     <input id="cedula-caja" class="form-control" placeholder ="Cédula" type="tel"  minlength="6" maxlength="9" required>                    
                     
-                     <input id="Telefono-caja" class="form-control" type="tel" placeholder="Telefono 1(Obligatorio)" minlength="7" maxlength="11" required>
+                     <input id="Telefono-caja" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
 
                      <div id="espacio"></div>   
 
                         
-                        <input id="Nombre-caja" class="form-control" type="text" placeholder ="Nombres" required>   
+                        <input id="Nombre-caja" class="form-control" type="text" placeholder ="Primer Nombre" required>   
 
-                       
-                        <input id="Apellidos-caja" class="form-control" type="text" placeholder="Apellidos" required> 
+                        <input id="Nombre-caja" class="form-control" type="text" placeholder ="Segundo Nombre" >   
 
-                    
+                        <input id="Apellidos-caja" class="form-control" type="text" placeholder="Primer Apellido" required> 
+
+                        <input id="Apellidos-caja" class="form-control" type="text" placeholder="Segundo Apellido" > 
+
 
                      <div id="espacio">  </div>   
 
                         <div class="form-group" id="tienda-registro"> 
 
                         <select name="select" class="custom-select browser-default" required>
-                            <option value="">Tienda Registro</option>
-                            <option value="value1" selected>Miranda-San antonio</option>                            
-                            <option value="value2" selected>Miranda-Baruta</option>
-                            <option value="value3">Caracas-La Cafetal</option>
+                            <option value="" selected>Tienda Registro</option>
+                            <option value="value1" >Miranda-San antonio</option>                            
+                            <option value="value2" >Miranda-Baruta</option>
+                            <option value="value3">Caracas-El Cafetal</option>
                         </select>  
 
-                        </div>
+                     </div>
 
                         <div id="espacio">  </div>  
 
@@ -91,18 +100,19 @@
 
                     </div>
 
-                </div>
+                 </div>
 
                 <div id="fondo4">
 
-                    <h1 id="registro"> Registro </h1>
+                    <div id="margen2">
 
+                    <h1 id="registro"> Registro </h1>
                    
                    <input id="Telefono-caja2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
 
                    <input id="Telefono-caja3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
 
-                   <input id="RIF" class="form-control" type="text" placeholder="RIF(Opcional)" pattern="[V0-9]" maxlength="10" > 
+                   <input id="RIF" class="form-control" type="text" placeholder="RIF(Opcional)" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" > 
 
                     <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
 
@@ -114,7 +124,7 @@
                              <option value="">Tienda Registro</option>
                              <option value="value1" >Miranda-San antonio</option>                            
                              <option value="value2" selected>Parroquia</option>
-                             <option value="value3">Caracas-La Cafetal</option>
+                             <option value="value3">Caracas-El Cafetal</option>
                          </select>  
 
                         </div> 
@@ -125,7 +135,7 @@
                                 <option value="">Tienda Registro</option>
                                 <option value="value1" selected>Municipio</option>                            
                                 <option value="value2" >Miranda-Baruta</option>
-                                <option value="value3">Caracas-La Cafetal</option>
+                                <option value="value3">Caracas-El Cafetal</option>
                             </select>  
    
                            </div> 
@@ -136,7 +146,7 @@
                                     <option value="">Tienda Registro</option>
                                     <option value="value1" >Miranda-San antonio</option>                            
                                     <option value="value2" selected>Estado</option>
-                                    <option value="value3">Caracas-La Cafetal</option>
+                                    <option value="value3">Caracas-El Cafetal</option>
                                 </select>  
    
                            </div>
@@ -184,6 +194,8 @@
 
                    <button id ="Regresar" type ="submit" > Regresar </button>
                    <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button>
+
+                    </div>
 
                 </div>      
 

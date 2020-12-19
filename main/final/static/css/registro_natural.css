@@ -1,6 +1,6 @@
 #fondo1{
     background-color: rgb(166, 207, 253);
-    width: 1500px;
+    width: 1270px;
     height: 1000px;
 }
 body{
@@ -21,12 +21,12 @@ body{
     top:20px;
     background-color:black;
     height: 4px;
-    width: 1500px;
+    width: 1270px;
 
 }
 #fondo2{
     background-color: rgb(226, 43, 43);
-    width: 1500px;
+    width: 1270px;
     height: 1000px;
     position: relative;
     top: 20px;
@@ -42,38 +42,42 @@ body{
 }
 #espacio{
     height: 4px;
-    width: 1500px;
+    width: 1270px;
 }
 #registro{
     position: relative;
-    right: -560px;
+    right: -345px;
     text-decoration: underline;
 }
 
-#texto{
-    position: relative;
-    right: -470px;
-    top:-10px;
-}
+
 #margenes{
     position: relative;
-    right: -500px;   
+    right: -100px;   
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 #margenes2{
     position: relative;
-    right: -400px;  
-   
+    right: -100px;  
+}
+#perfil-juri{
+    position: relative;
+    right: -250px;
 }
 
 #circulo-margen{
-  margin-right: 20px;
-
+   margin-right: 100px;
 
 }
 #margen{
-    margin-left: 240px;
+    margin-left: 200px;
+    margin-top: 50px;
+    padding: auto;
 }
-#cedula-caja{
+
+#cedula-caja{    
     position: relative;
     right: -90px;
     top:76px;
@@ -86,47 +90,48 @@ body{
     width: 200px;
 }
 #Nombre-caja{
+    margin-top: 20px;
     position: relative;
     right: -90px;
-    top:80px;
+    top:40px;
     width: 200px;
 }
 #Apellidos-caja{
+    margin-top:20px;
     position: relative;
     right: -480px;
-    top:40px;
+    top:-78px;
     width: 200px;
 }
 #tienda-registro{
     position: relative;
     right: -90px;
-    top: 75px;
-
+    top: -20px;
 }
 
 #Correo-caja{
     position: relative;
     right: -90px;
-    top:90px;
+    top:-20px;
     width: 400px;
 }
 #Contrasena-caja{
     position: relative;
     right: -90px;
-    top:120px;
+    top:-10px;
     width: 200px;
 }
 #valiContrasena-caja{
     position: relative;
     right:-90px;
-    top:160px;
+    top:10px;
     width:200px;
 }
 #Continuar{ 
     width: 90px;
     height: 30px;
     position: relative;
-    top:200px;
+    top:40px;
     right:-500px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -144,26 +149,31 @@ body{
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid;   
 }
+#margen2{
+    margin-left: 200px;
+    margin-top: 50px;
+    padding: auto;
+}
 #Telefono-caja2{
     width: 200px;
     position: relative;
-    right: -350px;
+    right: -100px;
     top:39px
 }
 #Telefono-caja3{
     width: 200px;
     position: relative;
-    right: -700px;
+    right: -490px;
 }
 #RIF{
     width: 200px;
     position: relative;
-    right: -350px;
+    right: -100px;
     top:50px;
 }
 #Combo-boxes{
     position: relative;
-    right: -200px;
+    right: -100px;
     top:80px;
     width: 300px;
     
@@ -181,21 +191,21 @@ body{
 #Calle{
     width: 400px;
     position: relative;
-    right: -150px;
+    right: -2px;
     top:-50px;
 }
 #Apartamento{
     width: 200px;
     position: relative;
-    right: -600px;
-    top: -89px;
+    right: -500px;
+    top: -88px;
 }
 #registrar{ 
     width: 90px;
     height: 30px;
     position: relative;
-    top:200px;
-    right:-800px;
+    top:40px;
+    right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
@@ -206,8 +216,8 @@ body{
     width: 90px;
     height: 30px;
     position: relative;
-    top:200px;
-    right:-800px;
+    top:40px;
+    right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }

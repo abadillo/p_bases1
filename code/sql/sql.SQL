@@ -6,7 +6,7 @@ CREATE TABLE cliente_natural(
 	cl_id			NUMERIC(10)  NOT NULL SET DEFAULT nextval('id_secuencia');	 
 	cl_correo		VARCHAR(50)  NOT NULL UNIQUE,
 	cl_contraseña	VARCHAR(20)	 NOT NULL,
-	cl_puntos		NUMERIC(10)	 NOT NULL 		 DEFAULT 0,	
+	cl_puntos		NUMERIC(10)	 SET DEFAULT 0,	
 	cl_afiliacion	NUMERIC(10)	 NOT NULL,
 	cl_cedula		NUMERIC(10)	 NOT NULL UNIQUE,
 	cl_p_nombre		VARCHAR(20)	 NOT NULL,
@@ -20,24 +20,15 @@ CREATE TABLE cliente_natural(
 );
 
 
+NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da error
+					pero si NO ES UNIQUE entonces si puede ser ''
+					por tanto se insertaran como NULL/NONE
+
+
 ALTER TABLE cliente_natural DROP cl_rif;
 ALTER TABLE cliente_natural ADD cl_rif VARCHAR(20) UNIQUE;
 
 
-
-INSERT INTO public.cliente_natural(
-	cl_id, 
-	cl_correo, 
-	cl_contraseña, 
-	cl_puntos, 
-	cl_afiliacion, 
-	cl_cedula, 
-	cl_p_nombre, 
-	cl_s_nombre, 
-	cl_p_apellido, 
-	cl_s_apellido, 
-	cl_rif)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 
 
@@ -60,6 +51,8 @@ CREATE TABLE cliente_juridico(
 );
 
 CREATE SEQUENCE id_secuencia INCREMENT BY 1 START WITH 1;
+
+
 
 CREATE TABLE producto(
 

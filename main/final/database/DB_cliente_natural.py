@@ -29,14 +29,11 @@ class DB_cliente_natural(DB):
 
             if (resp != 0): return resp
             else:
-                
-                #return data
-                
+                                
                 query = sql.SQL("INSERT INTO cliente_natural({fields}) VALUES ({values});").format(
                     fields=sql.SQL(',').join([
-                        sql.Identifier('cl_correo'),                 
+                        sql.Identifier('cl_correo'),     
                         sql.Identifier('cl_contraseña'),
-                        sql.Identifier('cl_puntos'),
                         sql.Identifier('cl_afiliacion'),
                         sql.Identifier('cl_cedula'),
                         sql.Identifier('cl_p_nombre'),
@@ -48,7 +45,6 @@ class DB_cliente_natural(DB):
                     values=sql.SQL(',').join([
                         sql.Literal(data['cl_correo']),
                         sql.Literal(data['cl_contraseña']),
-                        sql.Literal(data['cl_puntos']),
                         sql.Literal(data['cl_afiliacion']),
                         sql.Literal(data['cl_cedula']),
                         sql.Literal(data['cl_p_nombre']),
@@ -58,13 +54,15 @@ class DB_cliente_natural(DB):
                         sql.Literal(data['cl_rif'])
                     ]))
 
-            
+                
                 self.cursor.execute(query)
                 self.connection.commit()
+               
 
                 return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
 
         except Exception:
+            print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
     def verifica_exist(self,data):
@@ -86,6 +84,8 @@ class DB_cliente_natural(DB):
             if obj is not None:    
                 return jsonify({'invalido':'cedula ya registrada'})  
 
+            if data['cl_rif'] != None: 
+                return 0
 
             self.cursor.execute("SELECT %s FROM cliente_natural WHERE cl_rif = %s ;", ('cl_id',data['cl_rif'],))
                     

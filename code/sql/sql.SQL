@@ -13,11 +13,16 @@ CREATE TABLE cliente_natural(
 	cl_s_nombre		VARCHAR(20), 
 	cl_p_apellido	VARCHAR(20)	 NOT NULL, 
 	cl_s_apellido	VARCHAR(20), 
-	cl_rif			NUMERIC(10)	 		  UNIQUE,
+	cl_rif			VARCHAR(20)	 		  UNIQUE,
 	
 	CONSTRAINT pk_cliente_natural PRIMARY KEY (cl_id)
 
 );
+
+
+ALTER TABLE cliente_natural DROP cl_rif;
+ALTER TABLE cliente_natural ADD cl_rif VARCHAR(20) UNIQUE;
+
 
 
 INSERT INTO public.cliente_natural(

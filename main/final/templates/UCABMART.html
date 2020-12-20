@@ -1,8 +1,10 @@
 <html>
  <heap>
     <title> UCABMART </title>
-    <link rel="stylesheet" type="text/css" href="../static/css/Estilos.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/Ucabmart.css">
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
     <meta charset="utf-8">
+
  </heap>
 
    <body>
@@ -14,7 +16,7 @@
          <input type="image" id="logo" src="../templates/Media/UCABMART6.png">    
          
          <input id="search-box" type="text" value="Buscar">
-         <input type="image" id="magnifying-glass" src="../templates/Media/lupas.png" >
+         <input type="image" id="lupa" src="../templates/Media/lupas.png" >
          
          <div id="boton">
 
@@ -32,24 +34,41 @@
       </div>    
 
       <div class="limpiar"></div>
- 
-      <div id="categorias">
+      
+      <div id="fondo-categorias">
 
-         <h1> Categorias </h1>        
+         <h1> Categorias </h1>
+      
+         <div class="btn-group btn-group-toggle" id="categorias" data-toggle="buttons">
 
-         <a href=""> Comida </a>
+             <label class="btn btn-secondary active">
+               <input type="radio" name="options" id="option1" autocomplete="off" checked> Comida
+             </label>
+             
+            <label class="btn btn-secondary">
+               <input type="radio" name="options" id="option2" autocomplete="off"> Cauchos
+            </label>
 
-         <a href=""> Cauchos </a>
+            <label class="btn btn-secondary">
+               <input type="radio" name="options" id="option3" autocomplete="off"> Ropa
+            </label>
 
-         <a href=""> Ropa </a>
+            <label class="btn btn-secondary">
+               <input type="radio" name="options" id="option3" autocomplete="off"> Electrónicos
+            </label>
 
-         <a href=""> Electrónicos </a>
+            <label class="btn btn-secondary">
+               <input type="radio" name="options" id="option3" autocomplete="off"> Muebles
+            </label>
 
-         <a href=""> Muebles </a>
+            <label class="btn btn-secondary">
+               <input type="radio" name="options" id="option3" autocomplete="off"> Limpieza
+            </label>  
+            
+       </div>
 
-         <a href=""> Limpieza </a>
-         
-      </div>
+      </div> 
+
 
       <div class="limpiar"></div>
 
@@ -57,7 +76,7 @@
 
          <div id="producto">
 
-            <input type="image" class="imagen1" src="Nike.jpg"> 
+            <input type="image" class="imagen1" src="../templates/Media/producto.png"> 
             <h2 class="pro1">Zapatos nike </h2> 
             <p class="pro1"> Son nike, ademas tacticos</p>
             <h3 class="pro1"> 5000 Bs </h3>
@@ -69,7 +88,7 @@
             
             <div class="linea"></div>
 
-            <input type="image" class="imagen1" src="Colgate.jpg">
+            <input type="image" class="imagen1" src="../templates/Media/producto.png">
             <h2 class="pro1">Crema de dientes </h2> 
             <p class="pro1"> Colgate </p>
             <h3 class="pro1"> 9999 Bs </h3>
@@ -81,7 +100,7 @@
 
             <div class="linea"></div>  
 
-            <input type="image" class="imagen1" src="Santa Teresa.png">
+            <input type="image" class="imagen1" src="../templates/Media/producto.png">
             <h2 class="pro1">0.75L de Ron </h2> 
             <p class="pro1"> Ron Santa Teresa </p>
             <h3 class="pro1"> 2000 Bs </h3>
@@ -93,7 +112,7 @@
 
             <div class="linea"></div>
 
-            <input type="image" class="imagen1" src="Bimbo.jpg">
+            <input type="image" class="imagen1" src="../templates/Media/producto.png">
             <h2 class="pro1">Pan de Sandiwch </h2> 
             <p class="pro1"> Pan Bimbo </p>
             <h3 class="pro1"> 3000 Bs </h3>
@@ -102,7 +121,6 @@
                <a href=""> Comprar </a>
                
             </div>
-
 
         
 
@@ -117,11 +135,11 @@
 
              <div id="orden">
 
-                  <input type="image" class="imagen" src="panales.png">
+                  <input type="image" class="imagen" src="../templates/Media/producto.png">
                   <a class="carrito-pro"> Pañales </a> 
-                  <p class="carrito-pro"> Pañales pampers </p>
+                  <p class="carrito-pro"> Pañales Pampers </p>
                   <h3 class="carrito-pro"> 5000 Bs </h3>
-                  <input type="number" id="stepper" min="0" max="100">
+                  <input type="number" id="stepper" min="0" max="100" value="1">
                   <div class="botoneliminar">
 
                   <a href=""> Eliminar </a>

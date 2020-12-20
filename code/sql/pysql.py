@@ -14,15 +14,15 @@ data = {
 
 ​selecttipo1: "on"
                         ​
-inputcedula: "26993117"            ​
+inputcedula: "26993117"            ..​
          ​
-inputcorreo: "alex.1@gmail.com"            ​
-inputpapellido: "leon"            ​
-inputpnombre: "alex"            ​
-inputrif: "G668231212"            ​
-inputsapellido: "alexander"            ​
+inputcorreo: "alex.1@gmail.com"      ..      ​
+inputpapellido: "leon"            ​..
+inputpnombre: "alex"            ​   ..
+inputrif: "G668231212"            ​ ..
+inputsapellido: "alexander"           .. ​
 inputsnombre: "badillo"      
-inputcont: "123"            ​
+inputcont: "123"            ​       
 inputcontval: "123"   
       ​
 inputtelefono: "04125788466"            ​

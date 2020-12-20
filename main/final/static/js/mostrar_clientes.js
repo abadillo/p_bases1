@@ -31,7 +31,6 @@ $(document).ready(function() {
     } );
 
  
-    
     $('#boton_eliminar').click( function () {
         
         var sel = table.row('.selected').data();

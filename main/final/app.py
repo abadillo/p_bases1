@@ -48,18 +48,24 @@ def registro_natural():
         try:
             
             data = {
-                'cl_correo'     : request.form['inputcorreo'],     #string    
-                'cl_cedula'     : int(request.form['inputcedula']),             #int 
-                'cl_rif'        : request.form['inputrif'],               #int
+                'cl_correo'     :    request.form['inputcorreo'],            #string    
+                'cl_cedula'     :int(request.form['inputcedula']),             #int 
+                'cl_rif'        :    request.form['inputrif'],               #int
                 
-                'cl_contraseña' : 'buenobueno',         #string 
-                'cl_puntos'     : 0,                    #int
-                'cl_afiliacion' : 123,                  #int
-                'cl_p_nombre'   : 'fernan',             #string 
-                'cl_s_nombre'   : 'flow',               #string  #None
-                'cl_p_apellido' : 'will',               #string 
-                'cl_s_apellido' : 'rex',                #string  #None
+                'cl_contraseña' :    request.form['inputcont'],         #string 
+                'cl_afiliacion' :    123,                                       #int
+                'cl_p_nombre'   :    request.form['inputpnombre'],             #string 
+                'cl_s_nombre'   :    request.form['inputsnombre'],               #string  #None
+                'cl_p_apellido' :    request.form['inputpapellido'],               #string 
+                'cl_s_apellido' :    request.form['inputsapellido'],                #string  #None
             }
+
+            for key in data.keys():
+                if (data[key] == '' or data[key] == ' '): data[key] = None
+
+        
+
+            
 
 
             db = DB_cliente_natural()   

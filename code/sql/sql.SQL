@@ -5,7 +5,7 @@ CREATE TABLE cliente_natural(
 
 	cl_id			NUMERIC(10)  NOT NULL SET DEFAULT nextval('id_secuencia');	 
 	cl_correo		VARCHAR(50)  NOT NULL UNIQUE,
-	cl_contraseña	VARCHAR(20)	 NOT NULL,
+	cl_contrasena	VARCHAR(20)	 NOT NULL,
 	cl_puntos		NUMERIC(10)	 SET DEFAULT 0,	
 	cl_afiliacion	NUMERIC(10)	 NOT NULL,
 	cl_cedula		NUMERIC(10)	 NOT NULL UNIQUE,
@@ -20,7 +20,7 @@ CREATE TABLE cliente_natural(
 );
 
 
-NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da error
+NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da errorFI
 					pero si NO ES UNIQUE entonces si puede ser ''
 					por tanto se insertaran como NULL/NONE
 

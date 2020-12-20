@@ -3,7 +3,7 @@ import psycopg2
 from psycopg2 import Error
 from flask import Flask, render_template, json, request, jsonify
 
-
+from configuracion import configuracion
 
 class DB(metaclass=ABCMeta):
 
@@ -12,43 +12,46 @@ class DB(metaclass=ABCMeta):
         try:
             self.cursor = None
 
+            db_info = configuracion('C:\database.ini', 'local').config
+            self.connection = psycopg2.connect(**db_info)
             
-            self.connection = psycopg2.connect(
-                host = "labs-dbservices01.ucab.edu.ve",
-                user = "grupo4bd1",
-                password = "bases1_abgmjd",
-                port ="5432",
-                database = "grupo4db1_"
-            )
-
             
-            '''
-            self.connection = psycopg2.connect(
-                host = "localhost",
-                user = "postgres",
-                password = "112358",
-                port ="5433",
-                database = "main"
-            )
-            '''
-
-
             self.cursor = self.connection.cursor()
 
         except (Exception):
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
-            
+            print(Exception)
 
+    def querydict(self,resp,columnas):
+        
+        columnas = [col.name for col in columnas]
+        data = []     
+
+        if type(resp) is list:
+            for valor in resp:
+                data.append(dict(zip(columnas, valor)))
                 
-    @abstractmethod
+            return data
+
+        elif type(resp) is tuple:
+            data.append(dict(zip(columnas, resp)))
+
+            return data
+
+
+
+    def getall (self):
+        pass
+
     def add (self, data):
         pass
 
-    def verifica(self,data):
+    def verifica_exist(self,data):
         pass
 
+    def verif_login(self,data):
+        pass
 
-
+    
       
        
    

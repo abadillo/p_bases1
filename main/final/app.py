@@ -18,7 +18,26 @@ app.debug = True
 def main():
     return render_template('inicio.html')
     
+@app.route('/inicio_sesion',methods=['POST','GET'])         #listo falta ccs
+def inicio_sesion():
 
+    if request.method == 'GET':
+        return render_template("inicio_sesion.html")
+
+    else: 
+        
+        db = DB_cliente_natural()
+
+        data = {
+            'cl_correo'     : request.form['inputCorreo'],    
+            'cl_contraseña' : request.form['inputContraseña']         
+        }
+
+        resp = db.verif_login(data)
+
+        return resp
+        
+     
 @app.route('/registro_natural', methods= ['GET', 'POST'] )
 def registro_natural():
     
@@ -29,20 +48,25 @@ def registro_natural():
         try:
             
             data = {
-                'cl_correo'     : 'alex@gmail.com',     #string    
-                'cl_cedula'     : 21522033,             #int 
-                'cl_rif'        : 122121,               #int
+                'cl_correo'     :    request.form['inputcorreo'],            #string    
+                'cl_cedula'     :int(request.form['inputcedula']),             #int 
+                'cl_rif'        :    request.form['inputrif'],               #int
                 
-                'cl_contraseña' : 'buenobueno',         #string 
-                'cl_puntos'     : 0,                    #int
-                'cl_afiliacion' : 123,                  #int
-                'cl_p_nombre'   : 'fernan',             #string 
-                'cl_s_nombre'   : 'flow',               #string  #None
-                'cl_p_apellido' : 'will',               #string 
-                'cl_s_apellido' : 'rex',                #string  #None
+                'cl_contraseña' :    request.form['inputcont'],         #string 
+                'cl_afiliacion' :    123,                                       #int
+                'cl_p_nombre'   :    request.form['inputpnombre'],             #string 
+                'cl_s_nombre'   :    request.form['inputsnombre'],               #string  #None
+                'cl_p_apellido' :    request.form['inputpapellido'],               #string 
+                'cl_s_apellido' :    request.form['inputsapellido'],                #string  #None
             }
 
-            return request.form
+            for key in data.keys():
+                if (data[key] == '' or data[key] == ' '): data[key] = None
+
+        
+
+            
+
 
             db = DB_cliente_natural()   
             resp = db.add(data)
@@ -87,6 +111,33 @@ def registro_juridico():
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
+   
+@app.route('/mostrar',methods=['POST','GET','DELETE'])     #datatable falta delete y update
+def mostrar():
+    
+    if request.method == 'GET':
+        return render_template("mostrar_clientes.html")
+    
+    if request.method == 'POST': 
+       
+        db = DB_cliente_natural()         
+    
+        resp = db.getall()
+ 
+        return jsonify(resp)
+
+    if request.method == 'DELETE':
+
+        id = int(request.get_data())
+        print(id)
+
+        #delete cliente natural {id} 
+
+        return request.get_data()
+
+
+###########################
+
 
 @app.route('/perfil/<cl_nombre>')
 def perfil(cl_nombre):
@@ -111,92 +162,7 @@ def carrito():
 
     else:   return "ah bueno"
 
-
-@app.route('/inicio_sesion',methods=['POST','GET'])
-def inicio_sesion():
-
-    if request.method == 'GET':
-        return render_template("inicio_sesion.html")
-
-    else: 
-        correo = request.form['inputCorreo']
-        contraseña = request.form['inputContraseña']
-
-        db = DB_cliente_natural()         
-        #print(type(correo))
-        #print(correo)
-        
-        #db.cursor.execute("SELECT cl_contraseña FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
-
-        db.cursor.execute("SELECT * FROM cliente_natural WHERE cl_correo = %s ;", (correo,))
-
-        #print('nose2')
-    
-        db.connection.commit()
-        
-        data = db.cursor.fetchone()
- 
-        
-        if data is None:   
-            
-            return jsonify({'mensaje':'correo o contraseña invalida'})   
-             
-        else: 
-           
-            if data[2] == contraseña:  
-                return jsonify({'mensaje':'conexion_ establecida'}) 
-            else:
-                return jsonify({'mensaje':'correo o contraseña invalida'}) 
-       
-
-        #if correo and contraseña:
-         #   return render_template("registro_natural.html")
-        #else:
-         #   return json.dumps({'html':'<span>Enter the required fields</span>'})
-       
-        
-@app.route('/mostrar',methods=['POST','GET','DELETE'])
-def mostrar():
-    
-    if request.method == 'GET':
-        return render_template("mostrar_clientes.html")
-    
-    if request.method == 'POST': 
-       
-        db = DB_cliente_natural()         
-    
-        db.cursor.execute("SELECT cl_id::int,cl_correo,cl_cedula::bigint,cl_rif::bigint,cl_contraseña FROM cliente_natural")
-        resp = db.cursor.fetchall()
-        columnas = db.cursor.description
-
-        columnas = [col.name for col in columnas]
-        data = []     
-
-        if type(resp) is list:
-            for valor in resp:
-                data.append(dict(zip(columnas, valor)))
-                
-            resss = data
-
-        elif type(resp) is tuple:
-            data.append(dict(zip(columnas, resp)))
-            resss = data
- 
-
-        return jsonify(resss)
-
-    if request.method == 'DELETE':
-
-        id = int(request.get_data())
-        print(id)
-
-        #delete cliente natural {id} 
-
-        return request.get_data()
-
-
-###########################
-
+#######################################
 
    
 

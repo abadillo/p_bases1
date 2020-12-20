@@ -1,13 +1,13 @@
-<!DOCTYPE html>>
+<!DOCTYPE html>
 <html>
     <head>
     <title>UCABMART</title>
     <link rel="stylesheet" type="text/css" href="../static/css/registro_juridico.css">
-    <link rel="stylesheet"type="text/css" href="../static/css/bootstrap-4.0.0-dist/css/bootstrap.css">
-   
-    <script 
-        src="../static/js/jquery-1.11.2.js">   
-    </script>  
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/add_ons/jquery/jquery-ui.css">    
+        <script 
+        src="../static/add_ons/jquery/jquery-1.11.2.js">   
+    </script>
 
     <meta charset="utf-8">
 
@@ -49,11 +49,11 @@
                         
                       </div>                   
 
-                     <input id="RIF" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
+                     <input id="RIF" name="RIF" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
 
-                     <input id="Telefono-caja" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+                     <input id="Telefono-caja" name="telefono1" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
 
-                     <input id="razon" class="form-control" type="text" placeholder="Razón Social">
+                     <input id="razon" name="Razon" class="form-control" type="text" placeholder="Razón Social">
                        
                      <div id="espacio">  </div>   
 
@@ -70,15 +70,15 @@
 
                   <div id="espacio">  </div>  
 
-                  <input id="Correo-caja" class="form-control" type="email" 
+                  <input id="Correo-caja" name="Correo" class="form-control" type="email" 
                   pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
                   placeholder="Correo Electrónico" required>
 
                   <div id="espacio"> </div>  
 
-                  <input id="Contrasena-caja" class="form-control" type="password"  placeholder="Contraseña" required > 
+                  <input id="Contrasena-caja" name="contraseña" class="form-control" type="password"  placeholder="Contraseña" required > 
 
-                  <input id="valiContrasena-caja" class="form-control" type="password"  placeholder="Validar Contraseña"> 
+                  <input id="valiContrasena-caja" name="valicontraseña" class="form-control" type="password"  placeholder="Validar Contraseña"> 
 
                   <div id="espacio"> </div> 
 
@@ -94,15 +94,15 @@
 
                         <h1 id="registro"> Registro </h1>
 
-                        <input id="Telefono-caja2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+                        <input id="Telefono-caja2" name="telefono2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
 
-                        <input id="Telefono-caja3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+                        <input id="Telefono-caja3" name="telefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
 
-                        <input id="pagina" class="form-control" type="text" placeholder="Página Web (Opcional)">
+                        <input id="pagina" name="pagina" class="form-control" type="text" placeholder="Página Web (Opcional)">
 
                         <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
 
-                            <h4>Dirección de Habitación </h4>
+                            <h4>Dirección Fiscal </h4>
     
                             <div class="form-group" id="Parroquia"> 
     
@@ -137,9 +137,9 @@
        
                                </div>
     
-                               <input id="Calle" class="form-control" type="text" placeholder="Calle" required> 
+                               <input id="Calle" name="Calle1" class="form-control" type="text" placeholder="Calle" required> 
  
-                               <input id="Apartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
+                               <input id="Apartamento" name="Apartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
     
                             </div>
                             <div id="margenes2" >
@@ -176,13 +176,72 @@
                                 
                             </div>
                             
-                            <button id ="regresar" type ="submit" > Regresar </button>
-                            <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button>
+                            <button id ="Regresar" type ="submit" > Regresar </button>
+                            <button id ="continuar2" type ="submit" placeholder="Continuar2" > Continuar </button>
+                        <!--    <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button> -->
 
 
                     </div>    
 
-                </div>    
+                </div>  
+                
+                <div id="fondo5">
+
+                    <div id="margen2">
+
+                        <h1 id="registro"> Registro </h1>
+
+                        <input id="pagina" name="Pagina" class="form-control" type="text" placeholder="Página Web" > 
+
+                        <input id="Capital" name="CapiDisponible" class="form-control" type="text" placeholder="Capital Disponible" > 
+        
+                        <input id="Dirección" name="DireComercial" class="form-control" type="text" placeholder="Direccion Comercial" > 
+    
+                        <div id="Combo-boxes2"> <!-- Div para agrupar los boton box-->
+
+                            <h4>Dirección Fiscal </h4>
+    
+                            <div class="form-group" id="Parroquia"> 
+    
+                             <select name="select" class="custom-select browser-default" required>
+                                 <option value="">Tienda Registro</option>
+                                 <option value="value1" >Miranda-San antonio</option>                            
+                                 <option value="value2" selected>Parroquia</option>
+                                 <option value="value3">Caracas-El Cafetal</option>
+                             </select>  
+    
+                            </div> 
+    
+                            <div class="form-group" id="Municipio"> 
+    
+                                <select name="select" class="custom-select browser-default" required>
+                                    <option value="">Tienda Registro</option>
+                                    <option value="value1" selected>Municipio</option>                            
+                                    <option value="value2" >Miranda-Baruta</option>
+                                    <option value="value3">Caracas-El Cafetal</option>
+                                </select>  
+       
+                               </div> 
+                               
+                               <div class="form-group" id="Estado"> 
+    
+                                    <select name="select" class="custom-select browser-default" required>
+                                        <option value="">Tienda Registro</option>
+                                        <option value="value1" >Miranda-San antonio</option>                            
+                                        <option value="value2" selected>Estado</option>
+                                        <option value="value3">Caracas-El Cafetal</option>
+                                    </select>  
+       
+                               </div>
+    
+                               <input id="Calle2" name="Calle2" class="form-control" type="text" placeholder="Calle" required> 
+ 
+                             
+
+                    </div>    
+
+
+                </div>                
 
              </div>
 
@@ -204,6 +263,13 @@
                     $("#fondo4").fadeOut("slow");     
                     $("#fondo3").fadeIut("slow");   
                 });      
+                
+                $("#continuar2").click(function(){
+
+                    $("#fondo4").fadeOut("slow");
+                    $("#fondo5").fadeIn("slow");
+                    $("#fondo4").css("display","none");
+                })
                
               
             </script>	

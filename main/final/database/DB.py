@@ -51,6 +51,8 @@ class DB(metaclass=ABCMeta):
     def verif_login(self,data):
         pass
 
+    def delete (self,id):
+        pass
     
       
        

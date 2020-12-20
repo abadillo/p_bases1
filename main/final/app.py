@@ -19,11 +19,45 @@ def main():
     return render_template('inicio.html')
     
 
-@app.route('/registro', methods= ['GET', 'POST'] )
-def registro():
+@app.route('/registro_natural', methods= ['GET', 'POST'] )
+def registro_natural():
     
-    if request.method == 'POST':
+    if request.method == 'GET':
         return render_template("registro_natural.html")
+    
+    else:
+        try:
+            
+            data = {
+                'cl_correo'     : 'alex@gmail.com',     #string    
+                'cl_cedula'     : 21522033,             #int 
+                'cl_rif'        : 122121,               #int
+                
+                'cl_contraseña' : 'buenobueno',         #string 
+                'cl_puntos'     : 0,                    #int
+                'cl_afiliacion' : 123,                  #int
+                'cl_p_nombre'   : 'fernan',             #string 
+                'cl_s_nombre'   : 'flow',               #string  #None
+                'cl_p_apellido' : 'will',               #string 
+                'cl_s_apellido' : 'rex',                #string  #None
+            }
+
+            return request.form
+
+            db = DB_cliente_natural()   
+            resp = db.add(data)
+
+            return resp
+
+        except Exception :
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
+@app.route('/registro_juridico', methods= ['GET', 'POST'] )
+def registro_juridico():
+    
+    if request.method == 'GET':
+        return render_template("registro_juridico.html")
     
     else:
         try:
@@ -42,6 +76,8 @@ def registro():
                 'cl_s_apellido' : 'rex',                #string  #None
             }
 
+            return request.form
+
             db = DB_cliente_natural()   
             resp = db.add(data)
 
@@ -49,6 +85,7 @@ def registro():
 
         except Exception :
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
 
 
 @app.route('/perfil/<cl_nombre>')

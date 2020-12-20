@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <title>UCABMART</title>
+        
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+
+        <link href="../static/css/registro_natural.css" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='css/registro_natural.css') }}" rel="stylesheet">
+        
+        <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+        <script src="../static/js/registro_natural.js"></script>
+
+    
+        <meta charset="utf-8">
+        
+    </head> 
+    
+    <body>
+           
+        <div id="fondo1">
+
+            <img type="image" id="logo" src="../templates/Media/UCABMART7.png">
+
+            <div class="linea"></div>
+
+            <form>
+            
+                <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                
+                <div id="fondo3" class="form-group">
+
+
+                 <div id="margen" class="form-group">
+
+                    <h1 id="registro"> Registro </h1>
+
+                
+                    <div id="margenes">
+
+                        <span id="circulo-margen" class="form-check">
+
+                            <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1" checked>
+                            <label class="form-check-label text-muted" for="selecttipo1"> Perfil Natural </label>
+
+                        </span>
+                        
+                        <span id="perfil-juri" class="form-check">                       
+
+                            <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" >
+                            <label class="form-check-label text-muted" for="selecttipo2"> Perfil Juridico </label>
+
+                        </span> 
+                      
+                    </div>    
+
+    
+                     
+                    <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>                    
+                    
+                    <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
+
+                    <div id="espacio"></div>   
+
+                        
+                    <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required autofocus>   
+
+                    <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" required autofocus>   
+
+                    <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" required autofocus> 
+
+                    <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" required autofocus > 
+
+
+                    <div id="espacio">  </div>   
+                       
+                    <div class="form-group" id="tienda-registro"> 
+
+                        <select name="selecttienda" class="custom-select browser-default" required autofocus>
+                            <option value="" selected disabled>Tienda Registro</option>
+                            <option value="1" >Miranda-San antonio</option>                            
+                            <option value="2" >Miranda-Baruta</option>
+                            <option value="3">Caracas-El Cafetal</option>
+                        </select>  
+
+                    </div>
+
+                    <div id="espacio">  </div>  
+
+                    <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                    placeholder="Correo Electrónico" required autofocus>
+
+                    <div id="espacio"> </div>   
+
+                    <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" required autofocus>
+                    <input id="inputcontval" name="inputcontval"  class="form-control" type="password"  placeholder="Verifique Contraseña" required autofocus> 
+
+                    <div id="espacio"> </div> 
+
+                    <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
+
+                 </div>
+
+                </div>
+
+                <div id="fondo4" class="form-group">
+
+
+                    <div id="margen2" class="form-group">
+                
+                        <h1 id="registro"> Registro </h1>
+                    
+                        <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
+
+                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
+
+                        <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[V|E|P|J|G0-9]"  minlength="5" maxlength="10" autofocus> 
+                    
+                        <div id="Combo-boxes">
+                            <h4>Dirección de Habitación </h4>
+                        
+                            <div class="form-group" id="Estado"> 
+
+                                <select name="selectestado" class="custom-select browser-default" required autofocus>
+                                    <option value="" selected disabled>Estado</option>
+                                    <option value="7">Aja</option>                            
+                                    <option value="8">Miranda-Baruta</option>
+                                    <option value="9">Caracas-El Cafetal</option>
+                                </select>  
+    
+                            </div> 
+                            
+                            <div class="form-group" id="Municipio"> 
+
+                                    <select name="selectmunicipio" class="custom-select browser-default" required autofocus>
+                                        <option value="" selected disabled>Municipio</option>
+                                        <option value="10">Miranda-San antonio</option>                            
+                                        <option value="11">Bueno</option>
+                                        <option value="12">Caracas-El Cafetal</option>
+                                    </select>  
+    
+                            </div>
+
+                            <div class="form-group" id="Parroquia"> 
+
+                                <select name="selectparroquia" class="custom-select browser-default" required>
+                                    <option value="" selected disabled>Parroquia</option>
+                                    <option value="4" >Miranda-San antonio</option>                            
+                                    <option value="5">Parroquia</option>
+                                    <option value="6">Caracas-El Cafetal</option>
+                                </select>  
+    
+                                </div> 
+
+                            <input id="inputcalle" name="inputcalle" class="form-control" type="text" placeholder="Calle" required autofocus> 
+    
+                            <input id="inputapt" name="inputapt" class="form-control" type="tlf" placeholder="Nº Apt" required autofocus> 
+
+
+                        </div>
+                   
+                        
+                        
+                        <div id="margenes2" >
+
+                            <h4> Medios de Pago </h4>
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago1" id="mediopago1">
+                                <label class="form-check-label" for="mediopago1"> Tarjetas de Crédito </label>
+
+                            </span>    
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago2" id="mediopago2">
+                                <label class="form-check-label" for="mediopago2"> Tarjeta de Débito </label>
+                            
+                            </span>
+
+                            <span id="circulo-margen">
+                            
+                                <input class="form-check-input" type="radio" name="mediopago3" id="mediopago3">
+                                <label class="form-check-label" for="mediopago3"> Efectivo </label>
+
+                            </span>
+
+                            <span id="circulo-margen">
+
+                                <input class="form-check-input" type="radio" name="mediopago4" id="mediopago4">
+                                <label class="form-check-label" for="mediopago4"> Cheque </label>
+
+                            </span>
+                            
+                        </div>
+                        
+                        
+                        <button id="Atras" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                        
+                        <button id="Registrar" class="btn btn-lg btn-primary" type ="submit"> Registrar</button>
+
+                    </div>
+
+                </div>      
+     
+            </form>
+
+        </div>
+
+    </body>
+
+</html>

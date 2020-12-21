@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+   
+    <meta name="viewport" content="width=device-width" />
+    <title>UCABMART</title>
+
+
+    
+
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
+
+    <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+    <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script src="../static/js/mostrar_clientes.js"></script>
+
+    
+
+    <style>
+        .customb{
+            margin-top: 8px;
+            height: 48px;
+        }
+    </style>
+    
+  
+</head>
+
+<body>
+
+
+    <div class="container">
+        <section>
+            
+            <div class="header">
+                <h3 class="text-muted text-center">CLIENTES</h3>
+            </div>
+            
+            <table id="tabla_datatable" class="display" style="width:100%">     </table>
+                        
+            <div class="btn-group btn-block">
+            
+                    <button id="boton_añadir" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
+                    <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button>
+                    <button id="boton_eliminar" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+
+            </div>
+
+            
+        </section>
+    </div>
+
+    
+	
+</body>
+
+
+</html>

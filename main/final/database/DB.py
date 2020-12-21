@@ -7,6 +7,7 @@ from configuracion import configuracion
 
 class DB(metaclass=ABCMeta):
 
+    
     def __init__(self): 
         
         try:
@@ -14,9 +15,10 @@ class DB(metaclass=ABCMeta):
 
             db_info = configuracion('C:\database.ini', 'local').config
             self.connection = psycopg2.connect(**db_info)
-            
+          
             
             self.cursor = self.connection.cursor()
+
 
         except (Exception):
             print(Exception)

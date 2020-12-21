@@ -17,6 +17,9 @@ class DB_cliente_natural(DB):
 
             self.cursor.execute("SELECT * FROM cliente_natural")
             resp = self.cursor.fetchall()
+
+            self.connection.commit()
+
             columnas = self.cursor.description
 
             data = self.querydict(resp,columnas)
@@ -31,6 +34,11 @@ class DB_cliente_natural(DB):
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
       
+
+
+
+
+
     def add (self, data):
         
         try:

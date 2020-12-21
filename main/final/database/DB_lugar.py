@@ -42,6 +42,7 @@ class DB_lugar(DB):
             
             query = 'INSERT INTO lugar ({0}) VALUES ({1})'.format(columns, values)
             
+            
             #print(self.cursor.mogrify(query, data))   imprimer el comando sql
 
             self.cursor.execute(query,data)
@@ -57,9 +58,7 @@ class DB_lugar(DB):
 
         try:
 
-            print("buenado")
-
-            self.cursor.execute("DELETE FROM lugar WHERE cl_id = %s", (id,) )
+            self.cursor.execute("DELETE FROM lugar WHERE lu_codigo = %s", (id,) )
          
             self.connection.commit()
             

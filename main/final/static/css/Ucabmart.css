@@ -16,8 +16,7 @@
 
 body{
     margin: 0;
-    padding: 0;
-    
+    padding: 0;    
 }
 
 #search-box{
@@ -45,35 +44,25 @@ body{
 }
 
 #boton{
-    border: 3px #4557bb groove;
     border-radius: 5px 5px 5px 5px;
     position: relative;
-    top: -50px;
-    right: -900px;
-    width:110px;
+    top: -10px;
+    right: -200px;
+    width:130px;
     height:40px;
 	padding: 5px 5px 5px 5px;
 	margin: 5px 10px 10px 10px;
-}
-#boton a{
-         color:black;
-		 text-decoration:none;
-		 font-size:20px;
-		 position:relative;
-         top:7px;
-         
 }
 #boton:hover{
     box-shadow: 3px 3px 5px #999;
  }
 
  #boton2{
-    border: 3px #4557bb groove;
     border-radius: 5px 5px 5px 5px;
     position: relative;
-    top: -116px;
-    right: -1050px;
-    width:130px;
+    top: -10px;
+    right: -200px;
+    width:150px;
     height:39px;
 	padding: 5px 5px 5px 5px;
 	margin: 5px 10px 10px 10px;
@@ -101,7 +90,6 @@ body{
     top:-40px;
 
 }
-
 
 .limpiar{
     clear: both;
@@ -165,7 +153,7 @@ h1{
     top:-70px;
     background-color:black;
     height: 4px;
-    width: 3000px;
+    width: 1200px;
 
 }
 #carrito{
@@ -196,14 +184,15 @@ h1{
 #unico-carrito{
        width: 50px;
        height:50px; 
-       padding: 0px 300px;
-       position: relative;
-       top:-60px;
+       position: relative ;
+       top:-20px;
+       right: -200px;
+       
 }
 #numero{
     position: relative;
-    right: -360px;
-    top:-90px;
+    right: -220px;
+    top:-20px;
     color: white;
     font-size: large;
 }

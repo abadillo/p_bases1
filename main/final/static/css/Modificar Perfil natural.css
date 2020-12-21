@@ -1,0 +1,69 @@
+#fondo1{
+    background-color: rgb(166, 207, 253);
+    width: 1270px;
+    height: 1000px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+#logo{
+    height: 100px;
+    width: 300px;
+    position: relative;
+    right: -500px;
+    top:10px
+
+}
+.linea{
+    position: relative;
+    top:20px;
+    background-color:black;
+    height: 4px;
+    width: 1270px;
+
+}
+#fondo2{
+    background-color: rgb(201, 169, 169);
+    width: 1270px;
+    height: 1000px;
+    position: relative;
+    top: 4px;
+}
+#fondo3{
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    height: 800px;
+    width:1216px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px grey solid;
+}
+#margen{
+    margin-left: 150px;
+    margin-top: 80px;
+    padding: auto;
+}
+
+#espacio{
+    height: 4px;
+    width: 1270px;
+}
+h2{    
+    text-decoration: underline;
+}
+#Editar{
+    border-radius: 3px 3px 3px 3px;
+    border: 1px black groove;
+    position: relative;
+    right: -600px;
+    top: -30px;     
+}
+#Editar:hover{
+    box-shadow: 2px 2px 5px grey;
+}
+#Margen-campos{
+    margin-top: 30px;
+
+}

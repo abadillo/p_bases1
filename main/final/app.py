@@ -52,7 +52,7 @@ def registro_natural():
                 'cl_cedula'     :int(request.form['inputcedula']),             #int 
                 'cl_rif'        :    request.form['inputrif'],               #int
                 
-                'cl_contraseña' :    request.form['inputcont'],         #string 
+                'cl_contrasena' :    request.form['inputcont'],         #string 
                 'cl_afiliacion' :    123,                                       #int
                 'cl_p_nombre'   :    request.form['inputpnombre'],             #string 
                 'cl_s_nombre'   :    request.form['inputsnombre'],               #string  #None
@@ -129,12 +129,14 @@ def mostrar():
     if request.method == 'DELETE':
 
         id = int(request.get_data())
-        print(id)
+
+        db = DB_cliente_natural()   
+
+        resp = db.delete(id)
 
         #delete cliente natural {id} 
 
-        return request.get_data()
-
+        return resp
 
 ###########################
 

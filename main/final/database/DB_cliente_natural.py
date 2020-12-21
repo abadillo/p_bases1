@@ -4,19 +4,29 @@ import psycopg2
 from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
+import decimal
+ 
+
 
 class DB_cliente_natural(DB):
 
 
-    def getall (self):
+    def getall (self):  
     
         try:
 
-            self.cursor.execute("SELECT cl_id::int,cl_correo,cl_cedula::bigint,cl_rif,cl_contraseña FROM cliente_natural")
+            self.cursor.execute("SELECT * FROM cliente_natural")
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
 
-            return self.querydict(resp,columnas)
+            data = self.querydict(resp,columnas)
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == decimal.Decimal:
+                        entidad[atributo] = int(entidad[atributo])
+
+            return data 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
@@ -29,7 +39,8 @@ class DB_cliente_natural(DB):
 
             if (resp != 0): return resp
             else:
-                                
+
+                '''                 
                 query = sql.SQL("INSERT INTO cliente_natural({fields}) VALUES ({values});").format(
                     fields=sql.SQL(',').join([
                         sql.Identifier('cl_correo'),     
@@ -54,16 +65,42 @@ class DB_cliente_natural(DB):
                         sql.Literal(data['cl_rif'])
                     ]))
 
+                '''
+
+                keys = data.keys()
+                columns = ','.join(keys)
+                values = ','.join(['%({})s'.format(k) for k in keys])
+
                 
-                self.cursor.execute(query)
+                query = 'INSERT INTO cliente_natural ({0}) VALUES ({1})'.format(columns, values)
+                
+                #print(self.cursor.mogrify(query, data))   imprimer el comando sql
+
+                self.cursor.execute(query,data)
                 self.connection.commit()
                
-
                 return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
 
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+    def delete (self,id):
+
+        try:
+
+            print("buenado")
+
+            self.cursor.execute("DELETE FROM cliente_natural WHERE cl_id = %s", (id,) )
+         
+            self.connection.commit()
+            
+
+            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
 
     def verifica_exist(self,data):
 

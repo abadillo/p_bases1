@@ -6,6 +6,8 @@ from psycopg2 import sql
 
 from database.DB_cliente_natural import DB_cliente_natural
 
+from database.DB_lugar import DB_lugar
+
 
 app = Flask(__name__)
 app.debug = True
@@ -63,11 +65,6 @@ def registro_natural():
             for key in data.keys():
                 if (data[key] == '' or data[key] == ' '): data[key] = None
 
-        
-
-            
-
-
             db = DB_cliente_natural()   
             resp = db.add(data)
 
@@ -111,7 +108,6 @@ def registro_juridico():
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
-   
 @app.route('/mostrar',methods=['POST','GET','DELETE'])     #datatable falta delete y update
 def mostrar():
     
@@ -138,6 +134,42 @@ def mostrar():
 
         return resp
 
+
+
+
+@app.route('/lugares',methods=['POST','GET','DELETE'])     #datatable falta update
+def lugares():
+    
+    if request.method == 'POST':
+
+        db = DB_lugar()  
+        resp = db.getall()
+        return jsonify(resp)
+
+    if request.method == 'GET':
+
+        return render_template("registro_tienda.html")
+
+
+
+    if request.method == 'DELETE':
+        
+        db = DB_lugar()   
+
+        data = {
+                'lu_nombre'     :   'EL LIMON',        
+                'lu_tipo'       :   'CALLE',             #int 
+                'fk_lugar'      :    14,               #int        
+        }
+
+        resp = db.add(data)
+
+        return resp
+
+
+
+
+        
 ###########################
 
 

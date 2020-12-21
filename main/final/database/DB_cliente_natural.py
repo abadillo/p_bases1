@@ -40,33 +40,6 @@ class DB_cliente_natural(DB):
             if (resp != 0): return resp
             else:
 
-                '''                 
-                query = sql.SQL("INSERT INTO cliente_natural({fields}) VALUES ({values});").format(
-                    fields=sql.SQL(',').join([
-                        sql.Identifier('cl_correo'),     
-                        sql.Identifier('cl_contraseña'),
-                        sql.Identifier('cl_afiliacion'),
-                        sql.Identifier('cl_cedula'),
-                        sql.Identifier('cl_p_nombre'),
-                        sql.Identifier('cl_s_nombre'),
-                        sql.Identifier('cl_p_apellido'),
-                        sql.Identifier('cl_s_apellido'),
-                        sql.Identifier('cl_rif')
-                    ]),
-                    values=sql.SQL(',').join([
-                        sql.Literal(data['cl_correo']),
-                        sql.Literal(data['cl_contraseña']),
-                        sql.Literal(data['cl_afiliacion']),
-                        sql.Literal(data['cl_cedula']),
-                        sql.Literal(data['cl_p_nombre']),
-                        sql.Literal(data['cl_s_nombre']),
-                        sql.Literal(data['cl_p_apellido']),
-                        sql.Literal(data['cl_s_apellido']),
-                        sql.Literal(data['cl_rif'])
-                    ]))
-
-                '''
-
                 keys = data.keys()
                 columns = ','.join(keys)
                 values = ','.join(['%({})s'.format(k) for k in keys])

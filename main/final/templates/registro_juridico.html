@@ -5,9 +5,10 @@
     <link rel="stylesheet" type="text/css" href="../static/css/registro_juridico.css">
     <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../static/add_ons/jquery/jquery-ui.css">    
-        <script 
-        src="../static/add_ons/jquery/jquery-1.11.2.js">   
-    </script>
+   <!-- <link href="{{ url_for('static', filename='css/registro_juridico.css') }}" rel="stylesheet">  -->
+       
+    <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+    <script src="../static/js/registro_juridico.js"> </script>
 
     <meta charset="utf-8">
 
@@ -15,9 +16,10 @@
 
     <body>
 
-        <form >        <div id="fondo1">
-           
-            <input type="image" id="logo" src="../templates/Media/UCABMART7.png" >
+        <form id="envio">       
+            
+            <div id="fondo1"> 
+            <a href="../templates/UCABMART.html"> <input type="image" id="logo" src="../templates/Media/UCABMART7.png" > </a>
 
             <div class="linea"> </div>
 
@@ -35,25 +37,25 @@
 
                         <span id="circulo-margen">
 
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
                             <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
 
                         </span>
                         
                         <span id="perfil-juri">                       
 
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked/>
+                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                          <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
 
                         </span> 
                         
                       </div>                   
 
-                     <input id="RIF" name="RIF" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
+                     <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
 
-                     <input id="Telefono-caja" name="telefono1" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+                     <input id="inputtelefono" name="inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
 
-                     <input id="razon" name="Razon" class="form-control" type="text" placeholder="Razón Social">
+                     <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social">
                        
                      <div id="espacio">  </div>   
 
@@ -70,19 +72,19 @@
 
                   <div id="espacio">  </div>  
 
-                  <input id="Correo-caja" name="Correo" class="form-control" type="email" 
+                  <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
                   pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
                   placeholder="Correo Electrónico" required>
 
                   <div id="espacio"> </div>  
 
-                  <input id="Contrasena-caja" name="contraseña" class="form-control" type="password"  placeholder="Contraseña" required > 
+                  <input id="inputcontraseña" name="inputcontraseña" class="form-control" type="password"  placeholder="Contraseña" required > 
 
-                  <input id="valiContrasena-caja" name="valicontraseña" class="form-control" type="password"  placeholder="Validar Contraseña"> 
+                  <input id="inputvalicontraseña" name="inputvalicontraseña" class="form-control" type="password"  placeholder="Validar Contraseña"> 
 
                   <div id="espacio"> </div> 
 
-                  <button id="Continuar" type="button">  Continuar    </button>
+                  <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
 
                     </div>
 
@@ -94,12 +96,13 @@
 
                         <h1 id="registro"> Registro </h1>
 
-                        <input id="Telefono-caja2" name="telefono2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+                        <input id="inputtelefono2" name="inputtelefono2 class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
 
-                        <input id="Telefono-caja3" name="telefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
 
-                        <input id="pagina" name="pagina" class="form-control" type="text" placeholder="Página Web (Opcional)">
-
+                        <input id="inputpagina" name="inputpagina" class="form-control" type="text"  
+                        placeholder="Paginas web (Opcional)" >
+      
                         <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
 
                             <h4>Dirección Fiscal </h4>
@@ -137,9 +140,9 @@
        
                                </div>
     
-                               <input id="Calle" name="Calle1" class="form-control" type="text" placeholder="Calle" required> 
+                               <input id="inputcalle" name="inputcalle" class="form-control" type="text" placeholder="Calle" required> 
  
-                               <input id="Apartamento" name="Apartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
+                               <input id="inputapartamento" name="inputapartamento class="form-control" type="text" placeholder="Nº Apartamento" required> 
     
                             </div>
                             <div id="margenes2" >
@@ -176,9 +179,9 @@
                                 
                             </div>
                             
-                            <button id ="Regresar" type ="submit" > Regresar </button>
-                            <button id ="continuar2" type ="submit" placeholder="Continuar2" > Continuar </button>
-                        <!--    <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button> -->
+                            <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>                        
+                            <button id="continuar2" class="btn btn-lg btn-primary" type ="button"> Continuar</button>
+                              <!--    <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button> -->
 
 
                     </div>    
@@ -191,11 +194,11 @@
 
                         <h1 id="registro"> Registro </h1>
 
-                        <input id="pagina" name="Pagina" class="form-control" type="text" placeholder="Página Web" > 
+                        <input id="inputpagina2" name="inputpagina2" class="form-control" type="text" placeholder="Página Web (Opcional)" > 
 
-                        <input id="Capital" name="CapiDisponible" class="form-control" type="text" placeholder="Capital Disponible" > 
+                        <input id="inputCapital" name="inputCapital" class="form-control" type="text" placeholder="Capital Disponible" > 
         
-                        <input id="Dirección" name="DireComercial" class="form-control" type="text" placeholder="Direccion Comercial" > 
+                        <input id="inputDirección" name="inputDirección" class="form-control" type="text" placeholder="Direccion Comercial" > 
     
                         <div id="Combo-boxes2"> <!-- Div para agrupar los boton box-->
 
@@ -235,7 +238,9 @@
                                </div>
     
                                <input id="Calle2" name="Calle2" class="form-control" type="text" placeholder="Calle" required> 
- 
+                                
+                                <button id="Regresar2" class="btn btn-lg btn-secondary" type="button">  Regresar</button>                        
+                                <button id="registrar" class="btn btn-lg btn-primary"> Resgitrar </button>
                              
 
                     </div>    
@@ -246,34 +251,7 @@
              </div>
 
             </div>
-
-            <script type="text/javascript">                
-               
-                $("#Continuar").click(function(){
-                
-                    $("#fondo3").fadeOut("slow");       
-                    $("#fondo4").fadeIn("slow");     
-                    $("#fondo3").css("display", "none");            				
-            
-                });          
-            
-    
-                $("#Regresar").click(function(){
-                    $("#fondo3").css("display", "block");   
-                    $("#fondo4").fadeOut("slow");     
-                    $("#fondo3").fadeIut("slow");   
-                });      
-                
-                $("#continuar2").click(function(){
-
-                    $("#fondo4").fadeOut("slow");
-                    $("#fondo5").fadeIn("slow");
-                    $("#fondo4").css("display","none");
-                })
-               
-              
-            </script>	
-
+        
         </form>
     </body>
 

@@ -1,6 +1,6 @@
-from flask import Flask, render_template, json, request, jsonify
-import psycopg2 
-from psycopg2.sql import SQL, Composable, Identifier, Literal
+from flask import Flask, render_template, json, request, jsonify #para ejecutar servidor
+import psycopg2                                                  # 1)entrar al final con "cd"
+from psycopg2.sql import SQL, Composable, Identifier, Literal    # 2)comando "python app.py"
 from psycopg2 import Error
 from psycopg2 import sql
 
@@ -84,17 +84,14 @@ def registro_juridico():
         try:
 
             data = {
-                'cl_correo'     : 'alex@gmail.com',     #string    
-                'cl_cedula'     : 21522033,             #int 
-                'cl_rif'        : 122121,               #int
-                
-                'cl_contraseña' : 'buenobueno',         #string 
-                'cl_puntos'     : 0,                    #int
-                'cl_afiliacion' : 123,                  #int
-                'cl_p_nombre'   : 'fernan',             #string 
-                'cl_s_nombre'   : 'flow',               #string  #None
-                'cl_p_apellido' : 'will',               #string 
-                'cl_s_apellido' : 'rex',                #string  #None
+                 'cl_rif'          :    request.form['inputrif'],       #string                
+                 'cl_telefono'     :int(request.form['inputtelefono']),  #int    
+                 'cl_correo'       :    request.form['inputcorreo'],    #string 
+              
+                'cl_contrasena'    :    request.form['inputcontraseña'],#string 
+                'cl_calle'         :    request.form['inputcalle'],     #string  #None
+                'cl_apartamento'   :    request.form['inputapartamento'],#string 
+                'cl_s_apellido'     : 'rex',                         #string  #None
             }
 
             return request.form
@@ -208,6 +205,10 @@ def showSignin():
 def showSignUp():
     return render_template('signup.html')
 
+@app.route("/modificar_natural", methods=['POST', 'GET'])    
+def modificar_natural():
+    return render_template('Modificar Perfil natural.html')
+
 
 @app.route('/signUp2',methods=['POST','GET'])
 def signU2p():
@@ -247,9 +248,9 @@ def signU2p():
 
     except Exception as e:
         return json.dumps({'error':str(e)})
- 
-
-
+        
 
 if (__name__ == '__main__'):    
     app.run(port=5005)
+
+

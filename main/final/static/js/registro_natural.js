@@ -27,11 +27,10 @@ $(function(){
 
 
 
+
 $(function(){
     
-    $("#Continuar").click(function(){
-     
-    
+    $("#Continuar").click(function(){    
        
         $("#fondo3").fadeOut("slow");       
         $("#fondo4").fadeIn("slow");     
@@ -39,7 +38,7 @@ $(function(){
 
     });          
 
-    $("#Atras").click(function(){
+    $("#Regresar").click(function(){
         $("#fondo3").css("display", "block");   
         $("#fondo4").fadeOut("slow");     
         $("#fondo3").fadeIn("slow");   

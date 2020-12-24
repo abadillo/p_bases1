@@ -1,8 +1,7 @@
 
 #logo{
     width:300px ;
-    height:70px ;
-  
+    height:70px ;  
     float: left;
 }
 
@@ -92,7 +91,9 @@ body{
 }
 
 .limpiar{
-    clear: both;
+    background-color: black;
+    width: 1300px;
+    height: 5px;
 
 }
 h1{
@@ -102,15 +103,14 @@ h1{
 #cuadro{
     width: 1300px;
     height: 2000px;
-    background-color:  rgb(231, 61, 160)  ;
-    padding-top: 7px ;
-    padding-left: 10px;
+    background-color: lightcyan  ;
+    
    
 }
 #producto{
     width: 1300px;
     height: 1800px;
-    background-color: rgba(100, 152, 231, 0.644) ;
+    background-color:lightgray ;
     padding-top: 10px ;
     margin-top: 10px;
 

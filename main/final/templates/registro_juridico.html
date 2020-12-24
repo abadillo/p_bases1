@@ -19,102 +19,110 @@
         <form id="envio">       
             
             <div id="fondo1"> 
-            <a href="../templates/UCABMART.html"> <input type="image" id="logo" src="../templates/Media/UCABMART7.png" > </a>
+              <a href="../templates/UCABMART.html"> <input type="image" id="logo" src="../templates/Media/UCABMART7.png" > </a>
 
-            <div class="linea"> </div>
+             <div class="linea"> </div>
 
-            <div id="fondo2">
-            
-             <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                <div id="fondo2">           
+
+                    <div id="espacio">
+
+                    </div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
                 
-                <div id="fondo3">
+                    <div id="fondo3"> <!--Primer fondo blanco de la pagina-->
 
-                    <div id="margen">
+                        <div id="margen"> <!--Margen para toda la pagina-->
+ 
+                          <h1 id="registro"> Registro </h1>
 
-                    <h1 id="registro"> Registro </h1>
+                            <div id="margenes"> <!--Margen solo para los botones radio-->
 
-                      <div id="margenes">
+                                <span id="circulo-margen">
 
-                        <span id="circulo-margen">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
+                                    <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
 
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
-                            <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
-
-                        </span>
+                                </span>
                         
-                        <span id="perfil-juri">                       
+                                <span id="perfil-juri">                       
 
-                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                         <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
+                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                     <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
 
-                        </span> 
+                                </span> 
                         
-                      </div>                   
+                            </div> <!--Termina margen de botones radio-->                   
 
-                     <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G0-9]" minlength="5" maxlength="10" required > 
+                            <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G|0-9]" size="10" required > 
 
-                     <input id="inputtelefono" name="inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+                            <input id="inputtelefono" name="inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
 
-                     <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social">
+                            <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social">
                        
-                     <div id="espacio">  </div>   
+                            <div id="espacio">  
 
-                     <div class="form-group" id="tienda-registro"> 
+                            </div>   <!-- Separacion entre fondos-->
 
-                     <select name="select" class="custom-select browser-default" required>
-                         <option value="" selected>Tienda Registro</option>
-                         <option value="value1" >Miranda-San antonio</option>                            
-                         <option value="value2" >Miranda-Baruta</option>
-                         <option value="value3">Caracas-El Cafetal</option>
-                     </select>  
+                                <div class="form-group" id="tienda-registro"> 
 
-                  </div>
+                                    <select name="select" class="custom-select browser-default" required>
+                                        <option value="" selected>Tienda Registro</option>
+                                        <option value="value1" >Miranda-San antonio</option>                            
+                                        <option value="value2" >Miranda-Baruta</option>
+                                        <option value="value3">Caracas-El Cafetal</option>
+                                    </select>  
 
-                  <div id="espacio">  </div>  
+                                </div>
 
-                  <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
-                  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
-                  placeholder="Correo Electrónico" required>
+                             <div id="espacio">  
 
-                  <div id="espacio"> </div>  
+                             </div>  
 
-                  <input id="inputcontraseña" name="inputcontraseña" class="form-control" type="password"  placeholder="Contraseña" required > 
+                             <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                             pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                             placeholder="Correo Electrónico" required>
 
-                  <input id="inputvalicontraseña" name="inputvalicontraseña" class="form-control" type="password"  placeholder="Validar Contraseña"> 
+                             <div id="espacio">
+                            
+                             </div>  
 
-                  <div id="espacio"> </div> 
+                             <input id="inputcontraseña" name="inputcontraseña" class="form-control" type="password"  placeholder="Contraseña" required > 
 
-                  <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
+                             <input id="inputvalicontraseña" name="inputvalicontraseña" class="form-control" type="password"  placeholder="Validar Contraseña"> 
 
-                    </div>
+                             <div id="espacio"> </div> 
 
-                </div>
+                             <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
 
-                <div id="fondo4">
+                            </div> <!--Termina margen para toda la pagina-->
 
-                    <div id="margen2">
+                    </div> <!--Termina primer fondo blanco de la pagina-->
 
-                        <h1 id="registro"> Registro </h1>
+                    <div id="fondo4"> <!--Segundo fondo blanco-->
 
-                        <input id="inputtelefono2" name="inputtelefono2 class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+                        <div id="margen2"> 
 
-                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+                              <h1 id="registro"> Registro </h1>
 
-                        <input id="inputpagina" name="inputpagina" class="form-control" type="text"  
-                        placeholder="Paginas web (Opcional)" >
+                             <input id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
+
+                                <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+
+                                <input id="inputpagina" name="inputpagina" class="form-control" type="text"  
+                                placeholder="Paginas web (Opcional)" >
       
-                        <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
+                                <div id="Combo-boxes"> <!-- Div para agrupar los boton box-->
 
-                            <h4>Dirección Fiscal </h4>
+                                 <h4>Dirección Fiscal </h4>
     
-                            <div class="form-group" id="Parroquia"> 
+                                <div class="form-group" id="Parroquia"> 
     
-                             <select name="select" class="custom-select browser-default" required>
-                                 <option value="">Tienda Registro</option>
-                                 <option value="value1" >Miranda-San antonio</option>                            
-                                 <option value="value2" selected>Parroquia</option>
-                                 <option value="value3">Caracas-El Cafetal</option>
-                             </select>  
+                                 <select name="select" class="custom-select browser-default" required>
+                                     <option value="">Tienda Registro</option>
+                                     <option value="value1" >Miranda-San antonio</option>                            
+                                     <option value="value2" selected disabled>Parroquia</option>
+                                     <option value="value3">Caracas-El Cafetal</option>
+                                 </select>  
     
                             </div> 
     
@@ -122,7 +130,7 @@
     
                                 <select name="select" class="custom-select browser-default" required>
                                     <option value="">Tienda Registro</option>
-                                    <option value="value1" selected>Municipio</option>                            
+                                    <option value="value1" selected disabled>Municipio</option>                            
                                     <option value="value2" >Miranda-Baruta</option>
                                     <option value="value3">Caracas-El Cafetal</option>
                                 </select>  
@@ -134,7 +142,7 @@
                                     <select name="select" class="custom-select browser-default" required>
                                         <option value="">Tienda Registro</option>
                                         <option value="value1" >Miranda-San antonio</option>                            
-                                        <option value="value2" selected>Estado</option>
+                                        <option value="value2" selected disabled>Estado</option>
                                         <option value="value3">Caracas-El Cafetal</option>
                                     </select>  
        
@@ -142,7 +150,7 @@
     
                                <input id="inputcalle" name="inputcalle" class="form-control" type="text" placeholder="Calle" required> 
  
-                               <input id="inputapartamento" name="inputapartamento class="form-control" type="text" placeholder="Nº Apartamento" required> 
+                               <input id="inputapartamento" name="inputapartamento" class="form-control" type="text" placeholder="Nº Apartamento" required> 
     
                             </div>
                             <div id="margenes2" >
@@ -181,78 +189,113 @@
                             
                             <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>                        
                             <button id="continuar2" class="btn btn-lg btn-primary" type ="button"> Continuar</button>
-                              <!--    <button id ="registrar" type ="submit" placeholder="Registrar" > Registrar </button> -->
+                           
+                        </div>
+                     
 
-
-                    </div>    
-
-                </div>  
+                    </div>  
                 
-                <div id="fondo5">
+                    <div id="fondo5">
 
-                    <div id="margen2">
+                      <div id="margen2">
 
                         <h1 id="registro"> Registro </h1>
 
-                        <input id="inputpagina2" name="inputpagina2" class="form-control" type="text" placeholder="Página Web (Opcional)" > 
-
                         <input id="inputCapital" name="inputCapital" class="form-control" type="text" placeholder="Capital Disponible" > 
         
-                        <input id="inputDirección" name="inputDirección" class="form-control" type="text" placeholder="Direccion Comercial" > 
+                        <input id="inputDireccion" name="inputDireccion" class="form-control" type="text" placeholder="Direccion Comercial" > 
     
                         <div id="Combo-boxes2"> <!-- Div para agrupar los boton box-->
 
-                            <h4>Dirección Fiscal </h4>
+                            <h4 id="Direccion-fisica">Dirección Fisica </h4>
     
-                            <div class="form-group" id="Parroquia"> 
+                            <div class="form-group" id="Parroquia2"> 
     
                              <select name="select" class="custom-select browser-default" required>
                                  <option value="">Tienda Registro</option>
                                  <option value="value1" >Miranda-San antonio</option>                            
-                                 <option value="value2" selected>Parroquia</option>
+                                 <option value="value2" selected disabled>Parroquia</option>
                                  <option value="value3">Caracas-El Cafetal</option>
                              </select>  
     
                             </div> 
     
-                            <div class="form-group" id="Municipio"> 
+                            <div class="form-group" id="Municipio2"> 
     
                                 <select name="select" class="custom-select browser-default" required>
                                     <option value="">Tienda Registro</option>
-                                    <option value="value1" selected>Municipio</option>                            
+                                    <option value="value1" selected disabled>Municipio</option>                            
                                     <option value="value2" >Miranda-Baruta</option>
                                     <option value="value3">Caracas-El Cafetal</option>
                                 </select>  
        
-                               </div> 
+                                 </div> 
+                                
                                
-                               <div class="form-group" id="Estado"> 
+                               <div class="form-group" id="Estado2"> 
     
                                     <select name="select" class="custom-select browser-default" required>
                                         <option value="">Tienda Registro</option>
                                         <option value="value1" >Miranda-San antonio</option>                            
-                                        <option value="value2" selected>Estado</option>
+                                        <option value="value2" selected disabled>Estado</option>
                                         <option value="value3">Caracas-El Cafetal</option>
                                     </select>  
        
                                </div>
-    
-                               <input id="Calle2" name="Calle2" class="form-control" type="text" placeholder="Calle" required> 
+                        </div>
+                               <input id="Calle2" name="Calle2" class="form-control" type="text" placeholder="Calle" required>
+
+                               <button id="boton-uno" class="btn btn-lg btn-primary botones"> Uno </button>
+                               <button id="boton-dos" class="btn btn-lg btn-secondary botones"> Dos </button>
                                 
+                                <div id="Datos-extra1" >
+                                    
+                                    <input type="text" name="Primer-nom" id="Primer-nom"  class="form-control tam" placeholder="Primer Nombre" required>
+                                    <input type="text" name="Segundo-nom" id="Segundo-nom"  class="form-control tam" placeholder="Segundo Nombre" >
+                                        
+                                    <div id="espacio"> </div> 
+
+                                    <input type="text" name="Primer-ap" id="Primer-ap"  class="form-control tam" placeholder="Primer Apellido" required>
+                                    <input type="text" name="Segundo-ap" id="Segundo-ap"  class="form-control tam" placeholder="Segundo Apellido" >
+                                      
+                                    <div id="espacio"> </div> 
+
+                                    <input type="tel" id="Cedula-uno" name="Cedula-uno" class="form-control tam" placeholder="Cedula" required>
+                                    <input type="tel" id="Telefono-uno" name="Telefono-uno" class="form-control tam" placeholder="Teléfono" size="11" required>
+
+                                </div>
+
+                                <div id="Datos-extra2" >
+                                    
+                                    <input type="text" name="Primer-nom2" id="Primer-nom"  class="form-control tam" placeholder="Primer Nombre" required>
+                                    <input type="text" name="Segundo-nom2" id="Segundo-nom"  class="form-control tam" placeholder="Segundo Nombre" >
+                                      
+                                    <div id="espacio"> </div>
+
+                                    <input type="text" name="Primer-ap2" id="Primer-ap"  class="form-control tam" placeholder="Primer Apellido" required>
+                                    <input type="text" name="Segundo-ap2" id="Segundo-ap"  class="form-control tam" placeholder="Segundo Apellido" >
+                                    
+                                    <div id="espacio"> </div>
+
+                                    <input type="tel" id="Cedula-uno2" name="Cedula-uno" class="form-control tam" placeholder="Cedula" required>
+                                    <input type="tel" id="Telefono2" name="Telefono" class="form-control tam" placeholder="Teléfono" size="11" required>
+
+                                </div>           
+
                                 <button id="Regresar2" class="btn btn-lg btn-secondary" type="button">  Regresar</button>                        
-                                <button id="registrar" class="btn btn-lg btn-primary"> Resgitrar </button>
-                             
+                               <!-- <button id="Continuar3" class="btn btn-lg btn-primary" type="submit"> Resgitrar </button>-->                           
+                                <button id="registrar" class="btn btn-lg btn-primary" type="submit"> Resgitrar </button>                           
+                               
 
                     </div>    
 
 
-                </div>                
+                    </div>    
+                        </div>            
 
-             </div>
+                </div>
 
-            </div>
-        
-        </form>
-    </body>
-
+            </div>                    
+        </form>                        
+    </body>           
 </html>

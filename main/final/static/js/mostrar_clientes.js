@@ -35,7 +35,6 @@ $(document).ready(function() {
             $(this).addClass('selected');
         }
     } );
-
  
     $('#boton_eliminar').click( function () {
         

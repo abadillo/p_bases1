@@ -1,12 +1,12 @@
 $(function () {
     
 
-$('envio').submit(function(e){
+$('form').submit(function(e){
 
    
     $.ajax({
         url: '/registro_juridico',  
-        data: $('envio').serialize(),        
+        data: $('form').serialize(),        
         type: 'POST',
         
     }).done(function(response){
@@ -32,8 +32,8 @@ $(function(){
 
     });          
 
-
     $("#Regresar").click(function(){
+
         $("#fondo3").css("display", "block");   
         $("#fondo4").fadeOut("slow");     
         $("#fondo3").fadeIn("slow");   
@@ -47,10 +47,29 @@ $(function(){
     });  
 
     $("#Regresar2").click(function(){
+
         $("#fondo4").css("display", "block");   
         $("#fondo5").fadeOut("slow");     
         $("#fondo4").fadeIn("slow");   
     });      
+
+    $("#boton-dos").click(function(){
+
+        $("#Datos-extra1").fadeOut("slow");
+        $("#Datos-extra2").fadeIn("slow");
+        $("#Datos-extra1").css("display","none");  
+        document.getElementById("boton-dos").style.backgroundColor= "skyblue";
+    });
+
+    $("#boton-uno").click(function(){
+
+        $("#Datos-extra2").fadeOut("speed");
+        $("#Datos-extra1").css("display","block");      
+        $("#Datos-extra1").fadeIn("slow");   
+       document.getElementById("boton-uno").style.backgroundColor= "skyblue";
+           
+    });
+
     
 
 });

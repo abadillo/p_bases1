@@ -253,16 +253,23 @@ def carrito():
    
 
 
-@app.route("/modificar_natural", methods=['POST', 'GET'])    
+@app.route("/modificar_natural", methods=['POST', 'GET','PUT'])    
 def modificar_natural():
    
-    if render_methods == 'GET':                 #request_methods
-     return render_template('Modificar Perfil natural.html')       #ponle modificar_natural , con espacios asi te puede dar error
+    if request.method == 'GET':                 #request_methods
+        return render_template('modificar_natural.html')     
 
-    if render_methods == 'POST':
+    if request.method == 'PUT':
+        db = DB_cliente_natural()
+         
+        datos_usuario = db.get(7)
+    
+        for atributo in datos_usuario[0]:
+            if (datos_usuario[0][atributo] == None): datos_usuario[0][atributo] = ''
+        
+        return jsonify(datos_usuario)
 
-        db= DB()            #no puedes instanciar la clase padre
-
+       
 
 if (__name__ == '__main__'):    
     app.run(port=5005)

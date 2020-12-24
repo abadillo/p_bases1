@@ -13,14 +13,34 @@ from database.DB_lugar import DB_lugar
 class DB_cliente_natural(DB):
 
 
+    def get (self,id):
+
+        try:
+
+            self.cursor.execute("SELECT * FROM cliente_natural WHERE cl_id = %s", (id,) )
+            resp = self.cursor.fetchone()
+
+            columnas = self.cursor.description
+           
+            data = self.querydict(resp,columnas)
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == decimal.Decimal:
+                        entidad[atributo] = int(entidad[atributo])
+
+            return data 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
     def getall (self):  
     
         try:
 
             self.cursor.execute("SELECT * FROM cliente_natural")
             resp = self.cursor.fetchall()
-
-            self.connection.commit()
 
             columnas = self.cursor.description
 

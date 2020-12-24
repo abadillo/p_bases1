@@ -5,6 +5,8 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
+from database.DB_lugar import DB_lugar
+
  
 
 
@@ -35,10 +37,6 @@ class DB_cliente_natural(DB):
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
       
 
-
-
-
-
     def add (self, data):
         
         try:
@@ -47,7 +45,7 @@ class DB_cliente_natural(DB):
 
             if (resp != 0): return resp
             else:
-
+               
                 keys = data.keys()
                 columns = ','.join(keys)
                 values = ','.join(['%({})s'.format(k) for k in keys])
@@ -69,8 +67,6 @@ class DB_cliente_natural(DB):
     def delete (self,id):
 
         try:
-
-            print("buenado")
 
             self.cursor.execute("DELETE FROM cliente_natural WHERE cl_id = %s", (id,) )
          

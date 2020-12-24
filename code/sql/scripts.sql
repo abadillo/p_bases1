@@ -1,7 +1,7 @@
 CREATE TABLE lugar(
 	lu_codigo		SERIAL,
-	lu_nombre		VARCHAR(20)	NOT NULL,
-	lu_tipo			VARCHAR(50)	NOT NULL,
+	lu_nombre		VARCHAR(50)	NOT NULL,
+	lu_tipo			VARCHAR(20)	NOT NULL,
 	fk_lugar		INTEGER,
 	
 	CONSTRAINT pk_lu_codigo PRIMARY KEY (lu_codigo),
@@ -89,8 +89,8 @@ CREATE TABLE proveedor(
 	po_correo			VARCHAR(50)		NOT NULL,
 	po_correo_alt		VARCHAR(50),
 	
-	fk_lugar_fisica		SERIAL  		NOT NULL,
-	fk_lugar_fiscal		SERIAL  		NOT NULL,
+	fk_lugar_fisica		INTEGER  		NOT NULL,
+	fk_lugar_fiscal		INTEGER  		NOT NULL,
 	
     CONSTRAINT pk_po_id PRIMARY KEY (po_id),
 	CONSTRAINT fk_lugar_fisica FOREIGN KEY (fk_lugar_fisica) REFERENCES lugar (lu_codigo),
@@ -101,8 +101,8 @@ CREATE TABLE persona_contacto(
 	peco_cedula		SERIAL,
 	peco_nombre		VARCHAR(20)	NOT NULL,
 	peco_apellido	VARCHAR(20)	NOT NULL,
-	fk_juridico		SERIAL,
-	fk_proveedor	SERIAL,
+	fk_juridico		INTEGER,
+	fk_proveedor	INTEGER,
 
 	CONSTRAINT pk_peco_cedula PRIMARY KEY (peco_cedula),
 	CONSTRAINT fk_juridico FOREIGN KEY (fk_juridico) REFERENCES cliente_juridico(cl_id),
@@ -114,11 +114,11 @@ CREATE TABLE telefono(
 	te_codigo			SERIAL,
 	te_tipo				VARCHAR(20)	NOT NULL,
 	te_numero			NUMERIC(10)	NOT NULL,
-	fk_cliente_natural	SERIAL,
-	fk_cliente_juridico	SERIAL,
-	fk_empleado			SERIAL,
-	fk_proveedor		SERIAL,
-	fk_persona_contacto	SERIAL,
+	fk_cliente_natural	INTEGER,
+	fk_cliente_juridico	INTEGER,
+	fk_empleado			INTEGER,
+	fk_proveedor		INTEGER,
+	fk_persona_contacto	INTEGER,
 
 
 	CONSTRAINT pk_te_codigo PRIMARY KEY (te_codigo),

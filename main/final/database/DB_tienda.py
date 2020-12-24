@@ -8,14 +8,14 @@ import decimal
  
 
 
-class DB_lugar(DB):
+class DB_tienda(DB):
 
 
     def getall (self):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM lugar")
+            self.cursor.execute("SELECT * FROM tienda")
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
 
@@ -40,25 +40,26 @@ class DB_lugar(DB):
             values = ','.join(['%({})s'.format(k) for k in keys])
 
             
-            query = 'INSERT INTO lugar ({0}) VALUES ({1}) RETURNING lu_codigo'.format(columns, values)
+            query = 'INSERT INTO tienda ({0}) VALUES ({1})'.format(columns, values)
             
-            #print(self.cursor.mogrify(query, data))   imprimer el comando sql
+            #print(self.cursor.mogrify(query, data))  
 
             self.cursor.execute(query,data)
             self.connection.commit()
 
-            id_creado = self.cursor.fetchone()[0]
+                     
+            return jsonify({'mensaje':'Tienda creado satisfactoriamente'}) 
 
-            return id_creado
 
         except Exception:
-            return None
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+      
 
     def delete (self,id):
 
         try:
 
-            self.cursor.execute("DELETE FROM lugar WHERE lu_codigo = %s", (id,) )
+            self.cursor.execute("DELETE FROM tienda WHERE lu_codigo = %s", (id,) )
          
             self.connection.commit()
             

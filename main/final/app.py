@@ -7,6 +7,9 @@ from psycopg2 import sql
 from database.DB_cliente_natural import DB_cliente_natural
 
 from database.DB_lugar import DB_lugar
+from database.DB_telefono import DB_telefono
+from database.DB_tienda import DB_tienda
+
 
 
 app = Flask(__name__)
@@ -49,6 +52,19 @@ def registro_natural():
     else:
         try:
             
+            
+
+            db = DB_lugar()   
+
+            direccion = {
+                'lu_nombre'     :   request.form['inputdir'],        
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :   request.form['selectparroquia'],         
+            }
+
+            id_direccion = db.add(direccion)
+
+
             data = {
                 'cl_correo'     :    request.form['inputcorreo'],            #string    
                 'cl_cedula'     :int(request.form['inputcedula']),             #int 
@@ -57,16 +73,33 @@ def registro_natural():
                 'cl_contrasena' :    request.form['inputcont'],         #string 
                 'cl_afiliacion' :    123,                                       #int
                 'cl_p_nombre'   :    request.form['inputpnombre'],             #string 
-                'cl_s_nombre'   :    request.form['inputsnombre'],               #string  #None
+                'cl_s_nombre'   :    request.form['inputsnombre'],               #string 
                 'cl_p_apellido' :    request.form['inputpapellido'],               #string 
-                'cl_s_apellido' :    request.form['inputsapellido'],                #string  #None
+                'cl_s_apellido' :    request.form['inputsapellido'],                #string  
+                'fk_lugar'      :    None,    
+                'fk_tienda'     :    int(request.form['selecttienda']),
             }
+
+            data['fk_lugar'] = id_direccion
+
 
             for key in data.keys():
                 if (data[key] == '' or data[key] == ' '): data[key] = None
 
             db = DB_cliente_natural()   
             resp = db.add(data)
+
+
+            db = DB_telefono()   
+
+            telefono = {
+                'te_tipo'            :   request.form['tipotlf'],        
+                'te_numero'          :   int(request.form['inputtelefono']),             
+                'fk_cliente_natural' :   None,         
+            }
+
+            db.add(telefono) 
+
 
             return resp
 
@@ -132,41 +165,63 @@ def mostrar():
         return resp
 
 
-
-
-@app.route('/lugares',methods=['POST','GET','DELETE'])     #datatable falta update
+@app.route('/lugares',methods=['POST','GET','PUT'])     #datatable falta update
 def lugares():
     
-    if request.method == 'POST':
+    if request.method == 'GET':
 
         db = DB_lugar()  
         resp = db.getall()
         return jsonify(resp)
 
-    if request.method == 'GET':
+   
+    '''
 
-        return render_template("registro_tienda.html")
-
-
-
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         
         db = DB_lugar()   
 
         data = {
-                'lu_nombre'     :   'EL LIMON',        
-                'lu_tipo'       :   'CALLE',             #int 
-                'fk_lugar'      :    14,               #int        
-        }
+                'lu_nombre'     :   request.form['inputdir'],        
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :    request.form['selectparroquia'],         
+        }        
 
         resp = db.add(data)
 
         return resp
 
-
-
-
+    '''
         
+
+@app.route('/tiendas',methods=['POST','GET','PUT'])     #datatable falta update
+def tiendas():
+    
+    if request.method == 'GET':
+
+        db = DB_tienda()  
+        resp = db.getall()
+        return jsonify(resp)
+
+
+    if request.method == 'POST':
+        return render_template("registro_tienda.html")
+
+
+    if request.method == 'PUT':
+
+        data = {
+            'ti_nombre'     :  'SAN JUAN',                   
+            'fk_lugar'      :   4,         
+        }  
+
+
+        db = DB_tienda()  
+        resp = db.add(data)
+        return resp
+
+   
+    
 ###########################
 
 

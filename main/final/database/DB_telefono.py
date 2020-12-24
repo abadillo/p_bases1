@@ -8,14 +8,14 @@ import decimal
  
 
 
-class DB_lugar(DB):
+class DB_telefono(DB):
 
 
     def getall (self):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM lugar")
+            self.cursor.execute("SELECT * FROM telefono")
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
 
@@ -40,16 +40,14 @@ class DB_lugar(DB):
             values = ','.join(['%({})s'.format(k) for k in keys])
 
             
-            query = 'INSERT INTO lugar ({0}) VALUES ({1}) RETURNING lu_codigo'.format(columns, values)
+            query = 'INSERT INTO telefono ({0}) VALUES ({1})'.format(columns, values)
             
-            #print(self.cursor.mogrify(query, data))   imprimer el comando sql
+            print(self.cursor.mogrify(query, data))  
 
             self.cursor.execute(query,data)
             self.connection.commit()
 
-            id_creado = self.cursor.fetchone()[0]
-
-            return id_creado
+            return jsonify({'mensaje':'Telefono creado satisfactoriamente'}) 
 
         except Exception:
             return None
@@ -58,7 +56,7 @@ class DB_lugar(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM lugar WHERE lu_codigo = %s", (id,) )
+            self.cursor.execute("DELETE FROM telefono WHERE lu_codigo = %s", (id,) )
          
             self.connection.commit()
             

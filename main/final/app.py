@@ -252,58 +252,17 @@ def carrito():
 
    
 
-@app.route('/showSignin')
-def showSignin():
-    return render_template('signin.html')
-
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('signup.html')
 
 @app.route("/modificar_natural", methods=['POST', 'GET'])    
 def modificar_natural():
-    return render_template('Modificar Perfil natural.html')
+   
+    if render_methods == 'GET':                 #request_methods
+     return render_template('Modificar Perfil natural.html')       #ponle modificar_natural , con espacios asi te puede dar error
 
+    if render_methods == 'POST':
 
-@app.route('/signUp2',methods=['POST','GET'])
-def signU2p():
-    try:
-        db = DB_cliente_natural()
-        _name = request.form['inputName']
-        _email = request.form['inputEmail']
-        _password = request.form['inputPassword']
-        #if db.cursor :  return json.dumps({'message':'Conexion Establecida !'})
+        db= DB()            #no puedes instanciar la clase padre
 
-        # validate the received values
-        if _name and _email and _password:
-            
-            # All Good, let's call MySQL
-            #ok = ok
-            #conn = mysql.connect()
-            #cursor = conn.cursor()
-            #cursor.callproc('sp_createUser',(_name,_email,_password))
-            #data = cursor.fetchall()
-
-            print(_name)
-
-            if db.cursor : 
-                db.cursor.execute("INSERT INTO cliente_natural (cl_nombre) VALUES ('%s');" %(_email) )
-                db.connection.commit()
-                return json.dumps({'message':'conexion establecida'})
-            
-            
-            """if len(data) is 0:
-                #conn.commit()
-                return json.dumps({'message':'User created successfully !'})
-            else:
-                return json.dumps({'error':str(data[0])})"""
-
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
-
-    except Exception as e:
-        return json.dumps({'error':str(e)})
-        
 
 if (__name__ == '__main__'):    
     app.run(port=5005)

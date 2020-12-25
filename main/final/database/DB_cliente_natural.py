@@ -73,8 +73,7 @@ class DB_cliente_natural(DB):
                 
                 query = 'INSERT INTO cliente_natural ({0}) VALUES ({1})'.format(columns, values)
                 
-                #print(self.cursor.mogrify(query, data))   imprimer el comando sql
-
+                print(self.cursor.mogrify(query, data)) 
                 self.cursor.execute(query,data)
                 self.connection.commit()
                

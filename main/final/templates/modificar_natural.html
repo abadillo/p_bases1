@@ -44,64 +44,68 @@
 
                             <div id="Margen-campos">
 
-                            <h4 id="Cedula"> Cedula </h4>
 
-                           <!-- <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" disabled value="basedatos_cedula">         
-                           -->
-
-                            <output type="text"> </output>
-
-                            <h4 id="Telefono"> Telefonos </h4>
-
-                            <h4 id="cedula"> cedula </h4>
+                            <h4 id="IDENTIFICADOR"></h4>
                             
 
-                            <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>                    
+                            <input id="id_user" name= "id_user" class="form-control" value={{cl_id}}>
+
+                            
+
+                            <h4 id="cedula"> Cedula </h4>
+                            
+
+                            <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>    
+                                        
+                            
+                            <h4 id="Telefono"> Telefonos </h4>
                     
                             <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
+
+                            <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
+
+                            <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
         
-        
-        
-                        
-        
-                                
+
+                            <h4> Nombres </h4>                           
+                                                        
                             <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required autofocus>   
         
                             <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" required autofocus>   
-        
+
+
+                            <h4>Apellidos</h4>
+
                             <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" required autofocus> 
         
                             <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" required autofocus > 
         
-        
+
                              
-                               
-                            <div class="form-group" id="tienda-registro"> 
-        
-                                <select id="selecttienda" name="selecttienda" class="custom-select browser-default" required autofocus>
-                                    <option value="" selected disabled>TIENDA REGISTRO</option>
-                                    <option value="0">opcion</option>
-                                </select>  
-        
-                            </div> 
-        
-                            
+                            <h4> Tienda Registro</h4>
+           
+                            <input id="tiendaregistro" name="tiendaregistro" class="form-control"> 
+
+
+                            <h4> Correo </h4>                            
         
                             <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
                             pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
                             placeholder="Correo Electrónico" required autofocus>
         
-                          
+                            <h4> Contraseña </h4>  
         
-                            <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" required autofocus>
+                            <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" required autofocus>
+                            
                             
 
-                            <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
+                            
 
-                            <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
+                            <h4> Rif </h4>  
     
                             <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[V|E|P|J|G]+[0-9]"  minlength="10" maxlength="10" autofocus> 
                         
+
                             <div id="Combo-boxes">
                                 
                                 <h4>Dirección de Habitación </h4>
@@ -136,19 +140,8 @@
                     
                                 <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" required autofocus> 
 
-                                <input id="tiendaregistro" name="tiendaregistro" class="form-control" type="text" required autofocus> 
-
-                            <h4> Apellidos </h4>
-
-                            <h4> Correo</h4>
-
-                            <h4> Contraseña </h4>
-
-                            <img id="" src="seguridad">
-
-                            <h4> RIF </h4>
-
-                            <h4> Dirección de Envío </h4>
+                                
+                           
 
                             </div>
 

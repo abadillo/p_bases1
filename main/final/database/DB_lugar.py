@@ -42,12 +42,14 @@ class DB_lugar(DB):
             
             query = 'INSERT INTO lugar ({0}) VALUES ({1}) RETURNING lu_codigo'.format(columns, values)
             
-            #print(self.cursor.mogrify(query, data))   imprimer el comando sql
-
+            
+            print(self.cursor.mogrify(query, data))   
             self.cursor.execute(query,data)
             self.connection.commit()
 
             id_creado = self.cursor.fetchone()[0]
+            
+            print(id_creado)
 
             return id_creado
 

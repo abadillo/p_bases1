@@ -27,7 +27,7 @@ body{
 #fondo2{
     background-color: rgb(201, 169, 169);
     width: 1270px;
-    height: 1000px;
+    height: 1500px;
     position: relative;
     top: 4px;
 }
@@ -35,7 +35,7 @@ body{
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
-    height: 800px;
+    height: 1300px;
     width:1216px;
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid;
@@ -53,7 +53,14 @@ body{
 h2{    
     text-decoration: underline;
 }
-#Editar{
+#Editar1{
+    border-radius: 3px 3px 3px 3px;
+    border: 1px black groove;
+    position: relative;
+    right: -600px;
+    top: -30px;     
+}
+#Editar2{
     border-radius: 3px 3px 3px 3px;
     border: 1px black groove;
     position: relative;
@@ -67,7 +74,115 @@ h2{
     margin-top: 50px;
 
 }
+#id_user{
+    width: 250px;
+
+}
+#cedula{
+    position: relative;
+    right: -500px;
+    top:-80px;
+}
 #inputcedula{
     width: 250px;
+    position: relative;
+    right: -505px;
+    top: -75px;
+}
+#inputtelefono{
+    width: 250px;
+    position: relative;
+}
+
+#inputtelefono2{
+    width: 250px;
+    position: relative;
+    top:-38px;
+    right: -255px;
+}
+#inputtelefono3{
+    width: 250px;
+    position: relative;
+    top: -76px;
+    right: -510px;
+}
+#inputpnombre{
+    width: 250px;
+}
+#inputsnombre{
+    width: 250px;
+    position: relative;
+    top: 5px;
+}
+#Apellido{
+    position: relative;
+    top: -115px;
+    right: -505px;
+}
+#inputpapellido{
+    width: 250px;
+    position: relative;
+    top: -110px;
+    right: -505px;
+}
+#inputsapellido{
+    width: 250px;
+    position: relative;
+    top: -105;
+    right: -505;
+}
+#tienda-registro{
+    position: relative;
+    top: -70px;
+}
+#tiendaregistro{
+    width: 250px;
+    position: relative;
+    top: -65px;
+}
+#correo{
+    position: relative;
+    top: -60px;
+}
+#inputcorreo{
+    width: 300px;
+    position: relative;
+    top: -50px;
+}
+#contraseña{
+    position: relative;
+    top: -20px;
+}
+#inputcont{
+    width: 250px;
+    position: relative;
+    top: -10px;
+}
+#inputrif{
+    width:250px;
+}
+#Combo-boxes{
+    position: relative;
+    top: 20px;
+}
+#Estado{
+    width: 250px;    
+}
+#Municipio{
+    width: 250px;
+    position: relative;
+    top: -53px;
+    right: -200px;
+}
+#Parroquia{
+    width: 250px;
+    position: relative;
+    top:-106px;
+    right: -400px;
+}
+#inputdir{
+    width: 250px;
+    position: relative;
+    top: -80px;
 
 }

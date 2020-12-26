@@ -59,6 +59,10 @@ $(function(){
         $("#Datos-extra2").fadeIn("slow");
         $("#Datos-extra1").css("display","none");  
         document.getElementById("boton-dos").style.backgroundColor= "skyblue";
+        $("#boton-uno").css("color","#fff");  
+        $("#boton-uno").css("background-color","#007bff");
+        $("#boton-uno").css("border-color","007bff");
+             
     });
 
     $("#boton-uno").click(function(){
@@ -66,10 +70,11 @@ $(function(){
         $("#Datos-extra2").fadeOut("speed");
         $("#Datos-extra1").css("display","block");      
         $("#Datos-extra1").fadeIn("slow");   
-       document.getElementById("boton-uno").style.backgroundColor= "skyblue";
+        document.getElementById("boton-uno").style.backgroundColor= "skyblue";
+        $("#boton-dos").css("color","#fff");  
+        $("#boton-dos").css("background-color","#6c757d");
+        $("#boton-dos").css("border-color","6c757d");     
            
-    });
-
-    
+    });    
 
 });

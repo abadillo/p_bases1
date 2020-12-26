@@ -41,9 +41,6 @@ class DB(metaclass=ABCMeta):
 
 
 
-    def get (self,id):
-        pass
-
     def getall (self):
         pass
 

@@ -1,7 +1,7 @@
 #fondo1{
     background-color: rgb(166, 207, 253);
     width: 1500px;
-    height: 1000px;
+    height: 900px;
 }
 body{
     margin: 0;
@@ -27,7 +27,7 @@ body{
 #fondo2{
     background-color: rgb(201, 169, 169);
     width: 1500px;
-    height: 1000px;
+    height: 900px;
     position: relative;
     top: 20px;
 }
@@ -118,7 +118,7 @@ body{
     width: 150px;
     height: 45px;
     position: relative;
-    top:130px;
+    top:140px;
     right:-700px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -193,7 +193,7 @@ body{
     width: 150px;
     height: 45px;
     position: relative;
-    top:40px;
+    top:60px;
     right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -220,7 +220,7 @@ body{
     width: 150px;
     height: 45px;
     position: relative;
-    top:40px;
+    top:60px;
     right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -377,7 +377,7 @@ body{
     width: 150px;
     height: 45px;
     position: relative;
-    top:165px;
+    top:-50px;
     right:-547px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -385,24 +385,12 @@ body{
 #Regresar2:hover{
     box-shadow: 2px 2px 5px #999;
 }
-#Continuar3{ 
-    width: 150px;
-    height: 45px;
-    position: relative;
-    top:165px;
-    right:-550px;
-    border: 2px black solid;
-    border-radius: 3px 3px 3px 3px;
-}
-#Continuar3:hover{
-    box-shadow: 2px 2px 5px #999;
-}
 
 #registrar{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:165px;
+    top:-50px;
     right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;

@@ -236,11 +236,13 @@ body{
     position: relative;
     top:-100px;
     right: -10px;
+    width: 555px;
 }
 #tipotlf{
     position: relative;
-    top: -80px;
-    right: -10px;
+    top: 19px;
+    right: -290px;
+    width: 100px;
 }
 #Registrar{ 
     width: 150px;

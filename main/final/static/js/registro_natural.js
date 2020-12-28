@@ -22,7 +22,8 @@ $(document).ready(function() {
         }).done(function(resp){
             
             console.log(resp);
-            estados = resp;         
+            estados = resp;          
+            
 
             var opciones = [];
 

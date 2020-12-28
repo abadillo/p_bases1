@@ -255,12 +255,16 @@ $(function(){
     });
 });
 
+$(function(){
+    $("#Editar1").click(function(){
+        alert("funciona");
 
+    })
+
+
+});
     
-    $("p").click(function(){
-        alert("The paragraph was clicked.");
-      });
-
+   
 
 
 

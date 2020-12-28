@@ -19,7 +19,7 @@ class DB_tienda(DB):
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
 
-            data = self.querydict(resp,columnas)
+            data = self.querydictdecimal(resp,columnas)
 
             for entidad in data:
                 for atributo in entidad:

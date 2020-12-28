@@ -11,6 +11,31 @@ import decimal
 class DB_lugar(DB):
 
 
+    def get2 (self,item,item2):
+
+        try:
+
+            tipo = item 
+            fk_lugar = item2
+            
+            
+            if item2 == '':
+                self.cursor.execute("SELECT * FROM lugar WHERE lu_tipo = %s", (tipo,) )
+            else:
+                self.cursor.execute("SELECT * FROM lugar WHERE lu_tipo = %s AND fk_lugar = %s", (tipo,fk_lugar,) )
+
+            resp = self.cursor.fetchall()
+            columnas = self.cursor.description
+           
+            data = self.querydictdecimal(resp,columnas)
+        
+            return data 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
+
     def getall (self):  
     
         try:
@@ -19,7 +44,7 @@ class DB_lugar(DB):
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
 
-            data = self.querydict(resp,columnas)
+            data = self.querydictdecimal(resp,columnas)
 
             for entidad in data:
                 for atributo in entidad:

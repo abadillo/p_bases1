@@ -22,7 +22,7 @@ class DB_cliente_natural(DB):
 
             columnas = self.cursor.description
            
-            data = self.querydict(resp,columnas)
+            data = self.querydictdecimal(resp,columnas)
 
             for entidad in data:
                 for atributo in entidad:
@@ -44,7 +44,7 @@ class DB_cliente_natural(DB):
 
             columnas = self.cursor.description
 
-            data = self.querydict(resp,columnas)
+            data = self.querydictdecimal(resp,columnas)
 
             for entidad in data:
                 for atributo in entidad:

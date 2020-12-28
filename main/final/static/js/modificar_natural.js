@@ -38,6 +38,8 @@ $(document).ready(function() {
             $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
     });
 
+
+    
     var lugares;
     var idv_estado;
     var idv_municipio;

@@ -170,8 +170,13 @@ def lugares():
     
     if request.method == 'GET':
 
+        
+        tipo = request.args.get('LUGAR')
+        fk_lugar = request.args.get('FK_LUGAR')
+
         db = DB_lugar()  
-        resp = db.getall()
+        resp = db.get2(tipo,fk_lugar)
+
         return jsonify(resp)
 
    
@@ -253,15 +258,15 @@ def carrito():
    
 
 
-@app.route("/modificar_natural", methods=['POST', 'GET'])    
-def modificar_natural():
+@app.route("/modificar_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
+def modificar_natural(cl_id):
    
-    if render_methods == 'GET':                 #request_methods
-     return render_template('modificar_natural.html')       #ponle modificar_natural , con espacios asi te puede dar error
+    if request.method == 'GET':                 #request_methods
+        return render_template('modificar_natural.html', cl_id = cl_id)     
 
     if request.method == 'PUT':
         db = DB_cliente_natural()
-                 
+         
         datos_usuario = db.get(cl_id) 
     
         for atributo in datos_usuario[0]:
@@ -271,6 +276,9 @@ def modificar_natural():
 
     if request.method == 'POST':
         return "xd"
+
+
+       
 
 if (__name__ == '__main__'):    
     app.run(port=5005)

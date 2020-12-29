@@ -39,15 +39,15 @@
 
                                 <span id="circulo-margen">
 
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
-                                    <label class="form-check-label" for="flexRadioDefault1"> Perfil Natural </label>
+                                    <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1" >
+                                    <label class="form-check-label" for="selecttipo1"> Perfil Natural </label>
 
                                 </span>
                         
                                 <span id="perfil-juri">                       
 
-                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                     <label class="form-check-label" for="flexRadioDefault2"> Perfil Juridico </label>
+                                     <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" checked >
+                                     <label class="form-check-label" for="selecttipo2"> Perfil Juridico </label>
 
                                 </span> 
                         
@@ -56,6 +56,18 @@
                             <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[V|E|P|J|G|0-9]" size="10" required > 
 
                             <input id="inputtelefono" name="inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required>
+
+                            <div class="form-group" id="tipotlf"> 
+                
+                                <select name="tipotlf" id="tipotlf" class="custom-select browser-default" required autofocus>
+                                    <option value="" selected disabled>TIPO</option>
+                                    <option value="CASA">CASA</option>                            
+                                    <option value="OFICINA">OFICINA</option>   
+                                    <option value="CELULAR">CELULAR</option>  
+                                     
+                                </select>  
+                
+                            </div>
 
                             <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social">
                        
@@ -70,6 +82,18 @@
                                         <option value="value1" >Miranda-San antonio</option>                            
                                         <option value="value2" >Miranda-Baruta</option>
                                         <option value="value3">Caracas-El Cafetal</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
                                     </select>  
 
                                 </div>
@@ -106,7 +130,31 @@
 
                              <input id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2(Opcional)" minlength="7" maxlength="11" > 
 
+                             <div class="form-group" id="tipotlf2"> 
+                
+                                <select name="tipotlf2" id="tipotlf2" class="custom-select browser-default" required autofocus>
+                                    <option value="" selected disabled>TIPO</option>
+                                    <option value="CASA">CASA</option>                            
+                                    <option value="OFICINA">OFICINA</option>   
+                                    <option value="CELULAR">CELULAR</option>  
+                                     
+                                </select>  
+                
+                            </div>
+
                                 <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3(Opcional)" minlength="7" maxlength="11" > 
+
+                                <div class="form-group" id="tipotlf3"> 
+                
+                                    <select name="tipotlf3" id="tipotlf3" class="custom-select browser-default" required autofocus>
+                                        <option value="" selected disabled>TIPO</option>
+                                        <option value="CASA">CASA</option>                            
+                                        <option value="OFICINA">OFICINA</option>   
+                                        <option value="CELULAR">CELULAR</option>  
+                                         
+                                    </select>  
+                    
+                                </div>
 
                                 <input id="inputpagina" name="inputpagina" class="form-control" type="text"  
                                 placeholder="Paginas web (Opcional)" >
@@ -122,6 +170,18 @@
                                      <option value="value1" >Miranda-San antonio</option>                            
                                      <option value="value2" selected disabled>Parroquia</option>
                                      <option value="value3">Caracas-El Cafetal</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
+                                     <option value="0">opcion</option>
                                  </select>  
     
                             </div> 
@@ -133,6 +193,18 @@
                                     <option value="value1" selected disabled>Municipio</option>                            
                                     <option value="value2" >Miranda-Baruta</option>
                                     <option value="value3">Caracas-El Cafetal</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
                                 </select>  
        
                                </div> 
@@ -144,6 +216,18 @@
                                         <option value="value1" >Miranda-San antonio</option>                            
                                         <option value="value2" selected disabled>Estado</option>
                                         <option value="value3">Caracas-El Cafetal</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
                                     </select>  
        
                                </div>
@@ -216,6 +300,18 @@
                                  <option value="value1" >Miranda-San antonio</option>                            
                                  <option value="value2" selected disabled>Parroquia</option>
                                  <option value="value3">Caracas-El Cafetal</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
+                                 <option value="0">opcion</option>
                              </select>  
     
                             </div> 
@@ -227,6 +323,18 @@
                                     <option value="value1" selected disabled>Municipio</option>                            
                                     <option value="value2" >Miranda-Baruta</option>
                                     <option value="value3">Caracas-El Cafetal</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
+                                    <option value="0">opcion</option>
                                 </select>  
        
                                  </div> 
@@ -239,6 +347,18 @@
                                         <option value="value1" >Miranda-San antonio</option>                            
                                         <option value="value2" selected disabled>Estado</option>
                                         <option value="value3">Caracas-El Cafetal</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
+                                        <option value="0">opcion</option>
                                     </select>  
        
                                </div>

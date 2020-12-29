@@ -109,7 +109,7 @@ $(document).ready(function() {
 
     document.getElementById("tiendaregistro").value = tienda_registro;
     
-    var resp2;
+    var response;
 
     $.ajax({
                 
@@ -122,20 +122,24 @@ $(document).ready(function() {
             
         }).done(function(resp){
             
-            resp2= resp;
+            response= resp;
 
         });
 
 
 
-    var idv_estado = resp2['idv_estado'];
-    var idv_municipio =  resp2['idv_municipio'];
-    var idv_parroquia =  resp2['idv_parroquia'];
+    var idv_estado = response['idv_estado'];
+    var idv_municipio =  response['idv_municipio'];
+    var idv_parroquia =  response['idv_parroquia'];
+    var direccion = response['direccion']
 
     console.log(datos_user[0].fk_lugar)
     console.log(idv_parroquia)
     console.log(idv_municipio)
     console.log(idv_estado)
+
+
+    document.getElementById("inputdir").value = direccion;
 
 
     

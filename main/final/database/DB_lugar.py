@@ -30,6 +30,9 @@ class DB_lugar(DB):
 
     def getdir (self,fk_lugar):
         
+        self.cursor.execute("SELECT lu_nombre FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
+        direccion = self.cursor.fetchone()
+
         self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
         idv_parroquia = self.cursor.fetchone()
         
@@ -42,7 +45,8 @@ class DB_lugar(DB):
         data = {
                 'idv_parroquia'     :   idv_parroquia[0],        
                 'idv_municipio'     :   idv_municipio[0],             
-                'idv_estado'        :   idv_estado[0],         
+                'idv_estado'        :   idv_estado[0],
+                'direccion'         :   direccion[0],
         }     
 
         return (data)

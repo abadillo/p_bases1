@@ -11,46 +11,6 @@ import decimal
 class DB_lugar(DB):
 
 
-    def getlastid (self):
-
-        try:
-
-            self.cursor.execute("SELECT lu_codigo::int FROM lugar ORDER BY  lu_codigo DESC LIMIT 1;")
-
-            resp = self.cursor.fetchone()
- 
-            id = resp[0]
-           
-            return id+1
-
-        except Exception:
-            return jsonify({'error':'Errorrr: Hubo un problema con el servidor'})
-            
-            
-
-    def getdir (self,fk_lugar):
-        
-        self.cursor.execute("SELECT lu_nombre FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
-        direccion = self.cursor.fetchone()
-
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
-        idv_parroquia = self.cursor.fetchone()
-        
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_parroquia,) )
-        idv_municipio = self.cursor.fetchone()
-        
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_municipio,) )
-        idv_estado = self.cursor.fetchone()
-
-        data = {
-                'idv_parroquia'     :   idv_parroquia[0],        
-                'idv_municipio'     :   idv_municipio[0],             
-                'idv_estado'        :   idv_estado[0],
-                'direccion'         :   direccion[0],
-        }     
-
-        return (data)
-
     def get2 (self,item,item2):
 
         try:
@@ -74,6 +34,8 @@ class DB_lugar(DB):
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
+
+
     def getall (self):  
     
         try:
@@ -83,6 +45,11 @@ class DB_lugar(DB):
             columnas = self.cursor.description
 
             data = self.querydictdecimal(resp,columnas)
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == decimal.Decimal:
+                        entidad[atributo] = int(entidad[atributo])
 
             return data 
 

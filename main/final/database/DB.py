@@ -15,7 +15,7 @@ class DB(metaclass=ABCMeta):
         try:
             self.cursor = None
 
-            db_info = configuracion('C:\database.ini', 'local').config
+            db_info = configuracion('C:\database.ini', 'ucab').config
             self.connection = psycopg2.connect(**db_info)
           
             

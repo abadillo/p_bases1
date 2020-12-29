@@ -1,119 +1,70 @@
-$(document).ready(function() {
-
-    var estados;
-    var municipios;
-    var parroquias;
-
-
-    var id_estado;
-    var id_municipio;
-    var id_parroquia;
+function lugares (lu_tipo, fk_lugar,sel_op){
 
     $.ajax({
                 
         url:   '/lugares',
         type: 'GET',
         data: {
-            'LUGAR': 'ESTADO' ,
-            'FK_LUGAR': '',
+            'LUGAR': lu_tipo ,
+            'FK_LUGAR': fk_lugar,
         },
         async: false, 
             
         }).done(function(resp){
-            
-            console.log(resp);
-            estados = resp;          
-            
+        
+            lugars = resp;          
 
             var opciones = [];
 
-            opciones.push('<option value="default" selected disabled>ESTADO</option>');
+            opciones.push('<option value="0" selected disabled>'+lu_tipo+'</option>');
 
-            for (var i=0, l=estados.length; i<l; i++){
-                opciones.push('<option value="'+estados[i].lu_codigo+'">'+estados[i].lu_nombre+'<opciones>');
+            for (var i=0, l=lugars.length; i<l; i++){
+
+                if (sel_op == lugars[i].lu_codigo)
+                    opciones.push('<option selected value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
+                else 
+                    opciones.push('<option value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
+
             }
 
-            $('#selectestado').html(opciones.join(''));
+
+            if (lu_tipo == 'ESTADO')
+                $('#selectestado').html(opciones.join(''));
+            else if (lu_tipo == 'MUNICIPIO')
+                $('#selectmunicipio').html(opciones.join(''));
+            else 
+                $('#selectparroquia ').html(opciones.join(''));
 
             
         }).fail(function(resp){
             $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
     });
 
+
+};
+
+
+
+$(document).ready(function() {
+
+    var id_estado;
+    var id_municipio;
+    var id_parroquia;
+
+    lugares('ESTADO','',0);
+    
    
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        
-        $.ajax({
-                
-            url:   '/lugares',
-            type: 'GET',
-            data: {
-                'LUGAR': 'MUNICIPIO' ,
-                'FK_LUGAR': id_estado,
-            },
-            async: false, 
-                
-            }).done(function(resp){
-                
-                console.log(resp);
-                municipios = resp;         
-    
-                var opciones = [];
-    
-                opciones.push('<option value="default" selected disabled>MUNICIPIOS</option>');
-    
-                for (var i=0, l=municipios.length; i<l; i++){
-                    opciones.push('<option value="'+municipios[i].lu_codigo+'">'+municipios[i].lu_nombre+'<opciones>');
-                }
-    
-                $('#selectmunicipio').html(opciones.join(''));
-    
-                
-            }).fail(function(resp){
-                $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-        });
-        
+        lugares('MUNICIPIO',id_estado,0);
     });
-    
+        
 
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        
-
-        $.ajax({
-                
-            url:   '/lugares',
-            type: 'GET',
-            data: {
-                'LUGAR': 'PARROQUIA' ,
-                'FK_LUGAR': id_municipio,
-            },
-            async: false, 
-                
-            }).done(function(resp){
-                
-                console.log(resp);
-                parroquias = resp;         
-    
-                var opciones = [];
-
-                opciones.push('<option value="default" selected disabled>PARROQUIA</option>');
-
-                for (var i=0, l=parroquias.length; i<l; i++){
-                    opciones.push('<option value="'+parroquias[i].lu_codigo+'">'+parroquias[i].lu_nombre+'<opciones>');
-                }
-
-                $('#selectparroquia').html(opciones.join(''));
-    
-                
-            }).fail(function(resp){
-                $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-        });
-          
-        
+        lugares('PARROQUIA',id_municipio,0);
     });
 
     
@@ -122,6 +73,8 @@ $(document).ready(function() {
         id_parroquia = $(this).find('option:selected').val();
     });
     
+
+
 
 
     var tiendas;
@@ -152,9 +105,6 @@ $(document).ready(function() {
         }).fail(function(resp){
             $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
     });
-
-
-
 
 
     $('#selecttienda').change(function() {

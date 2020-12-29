@@ -103,6 +103,10 @@ body{
     top:40px;
     width: 200px;
 }
+#selectestado{
+    overflow-y: scroll;
+
+}
 #inputpapellido{
     margin-top:20px;
     position: relative;
@@ -231,6 +235,16 @@ body{
     right: -10px;
     top:5px;
     width: 230px;
+}
+.algo{
+    height: auto;
+    max-height: 50px;
+    overflow-y: scroll;
+}
+option{
+    height: 50px;
+    overflow: auto;  
+
 }
 #inputdir{
     position: relative;

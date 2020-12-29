@@ -252,11 +252,11 @@ def carrito():
    
 
 
-@app.route("/modificar_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
-def modificar_natural(cl_id):
+@app.route("/perfil_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
+def perfil_natural(cl_id):
    
     if request.method == 'GET':                 
-        return render_template('modificar_natural.html', cl_id = cl_id)     
+        return render_template('perfil_natural.html', cl_id = cl_id)     
 
     if request.method == 'PUT':
         db = DB_cliente_natural()

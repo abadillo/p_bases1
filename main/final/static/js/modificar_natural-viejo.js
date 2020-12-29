@@ -7,7 +7,7 @@ $(document).ready(function() {
  
     $.ajax({
                 
-        url:   '/modificar_natural/'+id,
+        url:   '/perfil_natural/'+id,
         type: 'PUT',
         dataSrc: "",
         async: false,        
@@ -219,7 +219,7 @@ $(document).ready(function() {
     $('#id_user').change(function() {
         
         id = document.getElementById("id_user").value;
-        window.location.href =  "/modificar_natural/"+id;
+        window.location.href =  "/perfil_natural/"+id;
         
     });
 
@@ -233,7 +233,7 @@ $(function(){
 
         $.ajax({
             
-            url:   '/modificar_natural',
+            url:   '/perfil_natural',
             data:  $('form').serialize(),
             type: 'POST',
                 

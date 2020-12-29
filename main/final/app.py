@@ -180,24 +180,36 @@ def lugares():
         return jsonify(resp)
 
    
-    '''
+    
 
     if request.method == 'POST':
         
         db = DB_lugar()   
 
-        data = {
-                'lu_nombre'     :   request.form['inputdir'],        
-                'lu_tipo'       :   'DIRECCION',             
-                'fk_lugar'      :    request.form['selectparroquia'],         
-        }        
+        fk_dir = request.args.get('fk_dir')
 
-        resp = db.add(data)
-
-        return resp
-
-    '''
+        fk_dir = 31
         
+
+        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_dir,) )
+        idv_parroquia = db.cursor.fetchone()
+        
+
+        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_parroquia,) )
+        idv_municipio = db.cursor.fetchone()
+        
+        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_municipio,) )
+        idv_estado = db.cursor.fetchone()
+
+        data = {
+                'idv_parroquia'     :   idv_parroquia[0],        
+                'idv_municipio'     :   idv_municipio[0],             
+                'idv_estado'        :   idv_estado[0],         
+        }     
+
+        return (data)
+
+       
 
 @app.route('/tiendas',methods=['POST','GET','PUT'])     #datatable falta update
 def tiendas():

@@ -52,7 +52,6 @@ def registro_natural():
     else:
         try:
             
-        
             db = DB_lugar()   
 
             lu_codigo = db.getlastid()

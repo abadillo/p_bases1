@@ -146,12 +146,12 @@ $(document).ready(function() {
 
     lugares('ESTADO','',idv_estado);
     
-    /*
+    
     
     lugares('MUNICIPIO',idv_estado,idv_municipio);
     lugares('PARROQUIA',idv_municipio,idv_parroquia);
 
-    */
+    
 
     $('#selectestado').change(function() {
 

@@ -73,34 +73,38 @@ body{
 #margen{
     margin-left: 200px;
     margin-top: 50px;
-    padding: auto;
+   
 }
 
 #inputcedula{    
     position: relative;
     right: -90px;
-    top:76px;
+    top: 1px;
     width: 200px;
 }
 #inputtelefono{
     position: relative;
     right: -480px;
-    top:38px;
+    top:-40px;
     width: 200px;
 }
-
+#tipotlf{
+    position: relative;
+    top: -20px;
+    right: -290px;
+    width: 100px;
+}
 #inputpnombre{
-    margin-top: 20px;
     position: relative;
     right: -90px;
-    top:40px;
+    top:-40px;
     width: 200px;
 }
 #inputsnombre{
     margin-top: 20px;
     position: relative;
     right: -90px;
-    top:40px;
+    top:-40px;
     width: 200px;
 }
 #selectestado{
@@ -111,7 +115,7 @@ body{
     margin-top:20px;
     position: relative;
     right: -480px;
-    top:-78px;
+    top:-160px;
     width: 200px;
 }
 
@@ -119,28 +123,22 @@ body{
     margin-top:20px;
     position: relative;
     right: -480px;
-    top:-78px;
+    top:-160;
     width: 200px;
 }
 
 #tienda-registro{
     position: relative;
     right: -90px;
-    top: -20px;
+    top: -120px;
     width: 787px;
 }
 
 #inputcorreo{
     position: relative;
     right: -90px;
-    top:-20px;
+    top:-120px;
     width: 590px;
-}
-#inputcedula{    
-    position: relative;
-    right: -90px;
-    top:76px;
-    width: 200px;
 }
 #Mediospago{
     position: relative;
@@ -154,13 +152,13 @@ body{
 #inputcont{
     position: relative;
     right: -90px;
-    top:20px;
+    top:-100px;
     width: 200px;
 }
 #inputcontval{
     position: relative;
     right:-480px;
-    top:-20px;
+    top:-138px;
     width:200px;
 }
 
@@ -168,7 +166,7 @@ body{
     width: 150px;
     height: 45px;
     position: relative;
-    top:40px;
+    top:-30px;
     right:-530px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -195,26 +193,39 @@ body{
 #inputtelefono2{
     width: 200px;
     position: relative;
-    right: -100px;
+    right: -105px;
     top:39px
+}
+#tipotlf2{
+    position: relative;
+    top: 19px;
+    right: -102px;
+    width: 100px;
 }
 #inputtelefono3{
     width: 200px;
     position: relative;
     right: -465px;
+    top: -55px;
 }
+#tipotlf3{
+    position: relative;
+    top: -28px;
+    right: -282px;
+    width: 100px;
+}
+
 #inputrif{
     width: 200px;
     position: relative;
-    right: -100px;
-    top:30px;
+    right: -105px;
+    top:-60px;
 }
 #Combo-boxes{
     position: relative;
     right: -100px;
-    top:80px;
-    width: 300px;
-    
+    top:-50px;
+    width: 300px;    
 }
 
 #Parroquia{
@@ -236,13 +247,9 @@ body{
     top:5px;
     width: 230px;
 }
-.algo{
-    height: auto;
-    max-height: 50px;
-    overflow-y: scroll;
-}
+
 option{
-    height: 50px;
+    height: 10px;
     overflow: auto;  
 
 }
@@ -252,17 +259,16 @@ option{
     right: -10px;
     width: 555px;
 }
-#tipotlf{
+#Mediospago{
     position: relative;
-    top: 19px;
-    right: -290px;
-    width: 100px;
+    top: -90px;
+
 }
 #Registrar{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:170px;
+    top:60px;
     right:-375px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -274,7 +280,7 @@ option{
     width: 150px;
     height: 45px;
     position: relative;
-    top:170px;
+    top:60px;
     right:-365px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;

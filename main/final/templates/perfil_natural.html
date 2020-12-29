@@ -1,9 +1,159 @@
-<!doctype html>
+<html>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <head>
+        
+        <title>UCABMART</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/Modificar Perfil natural.css">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
 
-<link rel="stylesheet"type="text/css" href="{{  url_for('static', filename='css/inicio.css') }}">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
+
+        <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+        <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+       
+
+        <script src="../static/js/perfil_natural.js"></script>
+        <script src="../static/js/perfil_natural22.js"></script>
+     
+
+    <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+        <div id="fondo1">
+            <a href="/"><img id="logo" src="../static/media/UCABMART6.png" style="width:50%">
+            </a>
+            <div class="linea">
+
+                <div id="fondo2">
+
+                    <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                    
+                     <div id="fondo3" class="form-group">
+    
+                        
+                        <div id="margen" class="form-group">
+
+                            <h2> Datos de Perfil </h2>
+                            <button id="confirm">confirmar eliminacion</button>
+                            <button id="Editar1" class="btn btn-lg btn-secondary" type="button"> Modificar datos </button>
+    
+                            <button id="Editar2" class="btn btn-lg btn-primary" type="button"> Emitir Carnet </button>  
+
+                            <div id="Margen-campos">
 
 
-<title>Bienvenido a UCABMART</title>
-<h1>Hola {{cl_nombre}}</h1>
+                            <h4 id="IDENTIFICADOR"></h4>
+                            
+                            <h4> Usuario </h4>    
+                            
+                            <input id="id_user" name= "id_user" class="form-control" value={{cl_id}}  disabled>
+
+                            <h4 id="cedula"> Cedula </h4>
+                            
+
+                            <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" disabled autofocus>    
+                                        
+                            
+                            <h4 id="Telefono"> Telefonos </h4>
+                    
+                            <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" disabled autofocus>
+
+                            <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" disabled autofocus> 
+
+                            <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" disabled autofocus> 
+        
+
+                            <h4> Nombres </h4>                           
+                                                        
+                            <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" disabled autofocus>   
+        
+                            <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" disabled autofocus>   
+
+
+                            <h4 id="Apellido"> Apellidos</h4>
+
+                            <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" disabled autofocus> 
+        
+                            <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" disabled autofocus > 
+        
+
+                             
+                            <h4 id="tienda-registro"> Tienda Registro</h4>
+           
+                            <input id="tiendaregistro" name="tiendaregistro" class="form-control" disabled> 
+
+
+                            <h4 id="correo"> Correo </h4>                            
+        
+                            <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                            placeholder="Correo Electrónico" disabled autofocus>
+        
+                            <h4 id="contraseña"> Contraseña </h4>  
+        
+                            <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" disabled autofocus>
+                            
+
+                            <h4 > Rif </h4>  
+    
+                            <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[V|E|P|J|G]+[0-9]"  minlength="10" maxlength="10" disabled autofocus> 
+                        
+
+                            <div id="Combo-boxes">
+                                
+                                <h4>Dirección de Habitación </h4>
+                            
+                                <div class="form-group" id="Estado"> 
+    
+                                    <select id="selectestado" name="selectestado" class="custom-select browser-default" disabled autofocus>
+                                        <option value="" selected disabled>ESTADO</option>
+                                        <option value="0">opcion</option>
+                                    </select>  
+                    
+                                </div> 
+                            
+                                <div class="form-group" id="Municipio"> 
+                    
+                                    <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" disabled autofocus>
+                                        <option value="" selected disabled>MUNICIPIO</option>
+                                        <option value="1">opcion</option>                            
+                                      
+                                    </select>  
+                    
+                                </div>
+                    
+                                <div class="form-group" id="Parroquia"> 
+                    
+                                    <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" disabled>
+                                        <option value="default" selected disabled>PARROQUIA</option>
+                                        <option value="2">opcion</option>                            
+                                    </select>  
+                    
+                                </div> 
+                    
+                                <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" disabled autofocus> 
+
+                                
+                           
+
+                            </div>
+
+                         </div>
+
+                     </div>    
+
+                    </div> 
+            </div>
+
+        </div>    
+
+    </body>
+    
+</html>

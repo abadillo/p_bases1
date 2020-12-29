@@ -255,14 +255,14 @@ def carrito():
 @app.route("/modificar_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
 def modificar_natural(cl_id):
    
-    if request.method == 'GET':                 #request_methods
+    if request.method == 'GET':                 
         return render_template('modificar_natural.html', cl_id = cl_id)     
 
     if request.method == 'PUT':
         db = DB_cliente_natural()
          
         datos_usuario = db.get(cl_id) 
-    
+        
         for atributo in datos_usuario[0]:
             if (datos_usuario[0][atributo] == None): datos_usuario[0][atributo] = ''
         

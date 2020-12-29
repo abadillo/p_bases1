@@ -1,7 +1,8 @@
 #fondo1{
     background-color: rgb(166, 207, 253);
-    width: 1270px;
+    width: 2000px;
     height: 1000px;
+    
 }
 body{
     margin: 0;
@@ -21,12 +22,12 @@ body{
     top:20px;
     background-color:black;
     height: 4px;
-    width: 1270px;
+    width: 2000px;
 
 }
 #fondo2{
     background-color: rgb(201, 169, 169);
-    width: 1270px;
+    width: 2000px;
     height: 1000px;
     position: relative;
     top: 20px;
@@ -36,7 +37,7 @@ body{
     margin-left: 20px;
     background-color: white;
     height: 800px;
-    width:1216px;
+    width:1200px;
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid;
 }

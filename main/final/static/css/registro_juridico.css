@@ -56,10 +56,7 @@ body{
     margin-left: 10px;
     margin-right: 10px;
 }
-#margenes2{
-    position: relative;
-    right: -100px;  
-}
+
 #perfil-juri{
     position: relative;
     right: -250px;
@@ -85,34 +82,47 @@ body{
     right: -500px;
     top: -40px;
 }
+#tipotlf{
+    position: relative;
+    top: -20px;
+    right: -300px;
+    width: 100px;
+}
 #inputrazon{
     width: 200px;
     position: relative;
     right: -80px;
+    top: -50px;
 
 }
 #tienda-registro{
+    width: 826px;
     position: relative;
     right: -80px;
-    top: 30px;
+    top: -20px;
+}
+option{
+    height: 10px;
+    overflow: auto;  
+
 }
 #inputcorreo{
     width: 400px;
     position: relative;
     right: -80px;
-    top:40px;
+    top:-10px;
 }
 #inputcontraseña{
     width: 200px;
     position: relative;
     right: -80px;
-    top:60px;
+    top:10px;
 }
 #inputvalicontraseña{
     width:200px;
     position: relative;
     right:-80px;
-    top:80px;
+    top:30px;
  }
 #Continuar{ 
     width: 150px;
@@ -149,21 +159,35 @@ body{
     right: -100px;
     top:39px
 }
+#tipotlf2{
+    position: relative;
+    top: 19px;
+    right: -100px;
+    width: 100px;
+}
+
 #inputtelefono3{
     width: 200px;
     position: relative;
     right: -490px;
+    top:-55px
+}
+#tipotlf3{
+    position: relative;
+    top: -28px;
+    right: -295px;
+    width: 100px;
 }
 #inputpagina{
     width: 400px;
     position: relative;
-    top: 30px;
+    top: -50px;
     right: -100px;
 }
 #Combo-boxes{
     position: relative;
     right: -100px;
-    top:80px;
+    top:-30px;
     width: 300px;    
 }
 #Municipio{
@@ -180,25 +204,42 @@ body{
     width: 400px;
     position: relative;
     right: -2px;
-    top:-50px;
+    top:-80px;
 }
 #inputapartamento{
     width: 200px;
     position: relative;
     right: -500px;
-    top: -80px;
+    top: -118px;
+}
+#margenes2{
+    position: relative;
+    right: -100px;  
+    top: -100px;
 }
 
 #Regresar{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:60px;
+    top:-10px;
     right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
 #Regresar:hover{
+    box-shadow: 2px 2px 5px #999;
+}
+#continuar2{
+    width: 150px;
+    height: 45px;
+    position: relative;
+    top:-10px;
+    right:-550px;
+    border: 2px black solid;
+    border-radius: 3px 3px 3px 3px;
+}
+#continuar2:hover{
     box-shadow: 2px 2px 5px #999;
 }
 #fondo5{
@@ -211,24 +252,6 @@ body{
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid; 
 }
-#margen2{
-    margin-left: 200px;
-    margin-top: 50px;
-    padding: auto;
-}
-#continuar2{
-    width: 150px;
-    height: 45px;
-    position: relative;
-    top:60px;
-    right:-550px;
-    border: 2px black solid;
-    border-radius: 3px 3px 3px 3px;
-}
-#continuar2:hover{
-    box-shadow: 2px 2px 5px #999;
-}
-
 #inputpagina2{
     width: 400px;
     position: relative;

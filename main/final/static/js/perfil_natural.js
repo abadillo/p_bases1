@@ -1,3 +1,10 @@
+
+function c_error(){
+	$('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
+};
+
+
+
 function lugares (lu_tipo, fk_lugar,sel_op){
 
     $.ajax({
@@ -37,11 +44,12 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
             
         }).fail(function(resp){
-            $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
+            c_error();
     });
 
 
 };
+
 
 
 $(document).ready(function() {
@@ -209,7 +217,7 @@ $(function(){
                     window.location.href =  "/"		*/			
                 
             }).fail(function(response){
-                $('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
+                c_error();
             });
 
         e.preventDefault();

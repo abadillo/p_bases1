@@ -217,6 +217,10 @@ $(function(){
         window.location.href = "/registro_juridico";
 
           });
+        $("#selectestado").change(function(){
+            $("#selectestado").scroll();
+
+        })
 });
 
 

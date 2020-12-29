@@ -83,7 +83,7 @@ class DB_cliente_juridico(DB):
                 if obj is not None:
                     return jsonify({'invalido': 'correo ya registado'})
 
-                 self.cursor.execute("SELECT %s FROM cliente_juridico WHERE cl_pagina_web = %s ;", ('cl_id',data['cl_pagina_web'],))
+                 self.cursor.execute("SELECT %s FROM cliente_juridico WHERE cl_cedula = %s ;", ('cl_id',data['cl_cedula'],))
                     
             obj = self.cursor.fetchone()  
 

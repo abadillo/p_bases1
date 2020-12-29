@@ -52,11 +52,13 @@ def registro_natural():
     else:
         try:
             
-            
-
+        
             db = DB_lugar()   
 
+            lu_codigo = db.getlastid()
+
             direccion = {
+                'lu_codigo'     :   lu_codigo,
                 'lu_nombre'     :   request.form['inputdir'],        
                 'lu_tipo'       :   'DIRECCION',             
                 'fk_lugar'      :   request.form['selectparroquia'],         
@@ -179,35 +181,16 @@ def lugares():
 
         return jsonify(resp)
 
-   
-    
 
     if request.method == 'POST':
         
-        db = DB_lugar()   
-
-        fk_dir = request.args.get('fk_dir')
-
-        fk_dir = 31
+        fk_dir = request.form['fk_dir']
         
+        db = DB_lugar()
+        resp = db.getdir(fk_dir)
 
-        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_dir,) )
-        idv_parroquia = db.cursor.fetchone()
-        
-
-        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_parroquia,) )
-        idv_municipio = db.cursor.fetchone()
-        
-        db.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_municipio,) )
-        idv_estado = db.cursor.fetchone()
-
-        data = {
-                'idv_parroquia'     :   idv_parroquia[0],        
-                'idv_municipio'     :   idv_municipio[0],             
-                'idv_estado'        :   idv_estado[0],         
-        }     
-
-        return (data)
+        return resp
+       
 
        
 

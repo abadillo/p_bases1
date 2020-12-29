@@ -32,7 +32,7 @@
             <div class="linea">
 
                 <div id="fondo2">
-
+                    <form>
                     <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
                     
                      <div id="fondo3" class="form-group">
@@ -103,8 +103,7 @@
 
                             <h4 > Rif </h4>  
     
-                            <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[V|E|P|J|G]+[0-9]"  minlength="10" maxlength="10" disabled autofocus> 
-                        
+                            <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[A-Z]{1}[0-9]{9}" maxlength="10" disabled required > 
 
                             <div id="Combo-boxes">
                                 
@@ -150,6 +149,7 @@
                      </div>    
 
                     </div> 
+                 </form>
             </div>
 
         </div>    

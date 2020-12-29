@@ -169,13 +169,13 @@ option{
 #inputtelefono3{
     width: 200px;
     position: relative;
-    right: -490px;
+    right: -580px;
     top:-55px
 }
 #tipotlf3{
     position: relative;
     top: -28px;
-    right: -295px;
+    right: -340px;
     width: 100px;
 }
 #inputpagina{
@@ -209,7 +209,7 @@ option{
 #inputapartamento{
     width: 200px;
     position: relative;
-    right: -500px;
+    right: -485px;
     top: -118px;
 }
 #margenes2{
@@ -259,16 +259,16 @@ option{
     top:90px
 }
 #inputDireccion{
-    width: 200px;
+    width: 450px;
     position: relative;
     top: -30px;
-    right: -100px;
+    right: -85px;
 }
 #inputCapital{
     width: 200px;
     position: relative;
     top: 8px;
-    right: -580px;
+    right: -590px;
 }
 #Combo-boxes2{
     position: relative;
@@ -295,7 +295,7 @@ option{
     top:-158px;
 }
 #Calle2{ 
-    width: 400px;
+    width: 450px;
     position: relative;
     right: -90px;
     top:-100px;

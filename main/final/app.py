@@ -115,28 +115,8 @@ def registro_juridico():
         return render_template("registro_juridico.html")
     
     else:
-        try:
+        return xd 
 
-            data = {
-                 'cl_rif'          :    request.form['inputrif'],       #string                
-                 'cl_telefono'     :int(request.form['inputtelefono']),  #int    
-                 'cl_correo'       :    request.form['inputcorreo'],    #string 
-              
-                'cl_contrasena'    :    request.form['inputcontraseña'],#string 
-                'cl_calle'         :    request.form['inputcalle'],     #string  #None
-                'cl_apartamento'   :    request.form['inputapartamento'],#string 
-                'cl_s_apellido'     : 'rex',                         #string  #None
-            }
-
-            return request.form
-
-            db = DB_cliente_natural()   
-            resp = db.add(data)
-
-            return resp
-
-        except Exception :
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
 @app.route('/mostrar',methods=['POST','GET','DELETE'])     #datatable falta delete y update
@@ -219,7 +199,30 @@ def tiendas():
         resp = db.add(data)
         return resp
 
+
+
+@app.route("/perfil_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
+def perfil_natural(cl_id):
    
+    if request.method == 'GET':                 
+        return render_template('perfil_natural.html', cl_id = cl_id)     
+
+    if request.method == 'PUT':
+        db = DB_cliente_natural()
+         
+        datos_usuario = db.get(cl_id) 
+
+        for atributo in datos_usuario[0]:
+            if (datos_usuario[0][atributo] == None): datos_usuario[0][atributo] = ''
+        
+        return jsonify(datos_usuario)
+
+    if request.method == 'POST':
+        return "xd"
+
+
+       
+
     
 ###########################
 
@@ -251,28 +254,6 @@ def carrito():
 
    
 
-
-@app.route("/perfil_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
-def perfil_natural(cl_id):
-   
-    if request.method == 'GET':                 
-        return render_template('perfil_natural.html', cl_id = cl_id)     
-
-    if request.method == 'PUT':
-        db = DB_cliente_natural()
-         
-        datos_usuario = db.get(cl_id) 
-        
-        for atributo in datos_usuario[0]:
-            if (datos_usuario[0][atributo] == None): datos_usuario[0][atributo] = ''
-        
-        return jsonify(datos_usuario)
-
-    if request.method == 'POST':
-        return "xd"
-
-
-       
 
 if (__name__ == '__main__'):    
     app.run(port=5005)

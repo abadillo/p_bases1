@@ -112,13 +112,13 @@ option{
     right: -80px;
     top:-10px;
 }
-#inputcontraseña{
+#inputcont{
     width: 200px;
     position: relative;
     right: -80px;
     top:10px;
 }
-#inputvalicontraseña{
+#inputcontval{
     width:200px;
     position: relative;
     right:-80px;
@@ -200,18 +200,13 @@ option{
     right: -460px;
     top:-109px;
 }
-#inputcalle{
+#inputdir{
     width: 400px;
     position: relative;
     right: -2px;
     top:-80px;
 }
-#inputapartamento{
-    width: 200px;
-    position: relative;
-    right: -485px;
-    top: -118px;
-}
+
 #margenes2{
     position: relative;
     right: -100px;  
@@ -258,13 +253,13 @@ option{
     right: -100px;
     top:90px
 }
-#inputDireccion{
+#inputden{
     width: 450px;
     position: relative;
     top: -30px;
     right: -85px;
 }
-#inputCapital{
+#inputcapital{
     width: 200px;
     position: relative;
     top: 8px;
@@ -294,7 +289,7 @@ option{
     right: -466px;
     top:-158px;
 }
-#Calle2{ 
+#inputdir2{ 
     width: 450px;
     position: relative;
     right: -90px;

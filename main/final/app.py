@@ -170,38 +170,44 @@ def lugares():
 
         return resp
        
-@app.route('/registro_tienda',methods=['POST','GET','PUT'])
-def registro_tienda():
+@app.route('/tienda',methods=['POST','GET','PUT','DELETE'])
+def tienda():
+    
+    if request.method == 'GET'
+        return render_template("registro_tienda.html")
+
+
     if request.method == 'POST'
 
-         db =DB_lugar()   
+        db =DB_lugar()   
 
-         lu_codigo = db.getlastid()
+        lu_codigo = db.getlastid()
 
-            direccion = {
-                'lu_codigo'     :   lu_codigo,
-                'lu_nombre'     :   request.form['inputdir'],        
-                'lu_tipo'       :   'DIRECCION',             
-                'fk_lugar'      :   request.form['selectparroquia'],         
-            }
+        direccion = {
+            'lu_codigo'     :   lu_codigo,
+            'lu_nombre'     :   request.form['inputdir'],        
+            'lu_tipo'       :   'DIRECCION',             
+            'fk_lugar'      :   request.form['selectparroquia'],         
+        }
 
-         id_direccion = db.add(direccion)
+        id_direccion = db.add(direccion)
 
-         data = {
+        data = {
 
-                'ti_nombre'     :   request.form['inputtienda'],                        
-                'fk_lugar'      :   lu_codigo,
-            }
+            'ti_nombre'     :   request.form['inputtienda'],                        
+            'fk_lugar'      :   lu_codigo,
+        }
 
         db = DB_tienda()  
         resp = db.add(data)
         return resp
 
+    if request.method == 'PUT'
+        return "cliente actualizado"   #update
 
-    if request.method == 'GET'
-        return render_template("registro_tienda.html")
-
-       
+    if request.method == 'DELETE'
+        return "cliente eliminado"
+ 
 
 @app.route('/tiendas',methods=['POST','GET','PUT'])     #datatable falta update
 def tiendas():
@@ -213,22 +219,6 @@ def tiendas():
         resp = db.getall()
         return jsonify(resp)
 
-
-    if request.method == 'POST':
-        return render_template("registro_tienda.html")
-
-
-    if request.method == 'PUT':
-
-        data = {
-            'ti_nombre'     :  'SAN JUAN',                   
-            'fk_lugar'      :   4,         
-        }  
-
-
-        db = DB_tienda()  
-        resp = db.add(data)
-        return resp
 
 
 

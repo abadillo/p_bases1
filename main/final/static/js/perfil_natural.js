@@ -225,9 +225,10 @@ $(function(){
     });
 });
 
+
 $(function(){
     $("#Editar1").click(function(){
-        alert("funciona");
+        $("#id_user").removeAttr('disabled'); 
     });
 
     $("#Editar2").click(function(){

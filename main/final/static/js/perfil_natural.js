@@ -229,12 +229,25 @@ $(function(){
 $(function(){
     $("#Editar1").click(function(){
         $("#id_user").removeAttr('disabled'); 
-    });
+        $("#inputcedula").removeAttr('disabled');
+        $("#inputtelefono").removeAttr('disabled');
+        $("#inputtelefono2").removeAttr('disabled');
+        $("#inputtelefono3").removeAttr('disabled');
+        $("#inputpnombre").removeAttr('disabled');
+        $("#inputsnombre").removeAttr('disabled');
+        $("#inputpapellido").removeAttr('disabled');
+        $("#inputsapellido").removeAttr('disabled');
+      //  $("#inputtelefono3").removeAttr('disabled'); Tienda registro cambiar a combo box
+        $("#inputcorreo").removeAttr('disabled');      
+        $("#inputcont").removeAttr('disabled');
+        $("#inputrif").removeAttr('disabled');
+        $("#inputdir").removeAttr('disabled');
 
-    $("#Editar2").click(function(){
-        alert("funciona");
+        $("#Editar1").fadeOut("slow");       
+        $("#Editar3").fadeIn("slow");     
+        $("#Editar1").css("display", "none");    
+       
     });
-
 });
    
 

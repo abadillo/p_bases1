@@ -68,8 +68,10 @@ h2{
     right: -435px;
     top: -30px;     
 }
-#Editar:hover{
-    box-shadow: 2px 2px 5px grey;
+#Editar3{
+    position:relative;
+    right: -200px;
+    top: -80px;
 }
 #botones-eliminar{
     background-color: white;

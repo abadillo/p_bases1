@@ -243,7 +243,9 @@ $(function(){
         
         $("#Editar1").css("display","none"); 
         $("#Editar3").css("display","block"); 
-
+        $("#Editar3").css("position","relative");
+        $("#Editar3").css("right","-400px");
+        
         $("#Editar2").css("display","none"); 
         $("#Editar4").css("display","block"); 
        

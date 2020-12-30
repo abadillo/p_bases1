@@ -3,7 +3,7 @@
     width: 1270px;    
     height: 1000px;
     border-radius: 5px 5px 5px 5px;
-    border: 0px rgba(128, 128, 128, 0) solid;
+    border: 0px #80808000 solid;
 }
 
 body { 

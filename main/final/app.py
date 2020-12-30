@@ -176,7 +176,36 @@ def lugares():
 @app.route('/tiendas',methods=['POST','GET','PUT'])     #datatable falta update
 def tiendas():
     
-    if request.method == 'GET':
+    if request.method == 'POST'
+
+         db = DB_lugar()   
+
+            lu_codigo = db.getlastid()
+
+            direccion = {
+                'lu_codigo'     :   lu_codigo,
+                'lu_nombre'     :   request.form['inputdir'],        
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :   request.form['selectparroquia'],         
+            }
+
+         id_direccion = db.add(direccion)
+
+         data = {
+
+                'ti_nombre'     :   request.form['inputtienda'],                        
+                'fk_lugar'      :   lu_codigo,
+            }
+
+        db = DB_tienda()  
+        resp = db.add(data)
+        return resp
+
+
+    if request.method == 'GET'
+        return render_template("registro_tienda.html")
+
+ """   if request.method == 'GET':
 
         db = DB_tienda()  
         resp = db.getall()
@@ -199,7 +228,7 @@ def tiendas():
         resp = db.add(data)
         return resp
 
-
+"""
 
 @app.route("/perfil_natural/<int:cl_id>", methods=['POST', 'GET','PUT'])    
 def perfil_natural(cl_id):

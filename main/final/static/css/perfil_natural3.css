@@ -1,14 +1,17 @@
 #fondo1{
-    background-color: rgb(166, 207, 253);
+    background-color: rgba(213, 213, 213, 0.96);
     width: 1270px;
-    
     height: 1000px;
 }
-body{
-    margin: 0;
-    padding: 0;
+body {
+ 
+    padding-bottom: 40px;
+    background-color: rgb(125, 182, 220);
+    position: relative;
+    padding-left: 40px;
+    padding-right: 40px;
     
-}
+  }
 #logo{
     height: 100px;
     width: 400px;
@@ -20,13 +23,13 @@ body{
 .linea{
     position: relative;
     top:20px;
-    background-color:black;
+    background-color:rgb(255, 96, 176);
     height: 4px;
     width: 1270px;
 
 }
 #fondo2{
-    background-color: rgb(201, 169, 169);
+    background-color: rgb(115, 155, 255);
     width: 1270px;
     height: 1500px;
     position: relative;

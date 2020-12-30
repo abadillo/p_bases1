@@ -227,13 +227,9 @@ $(function(){
 
 $(function(){
     $("#Editar1").click(function(){
-      $("#id_user").css("disable","true"); 
-
-    })
-
-
+        alert("funciona");
+    });
 });
-    
    
 
 

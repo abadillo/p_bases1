@@ -1,6 +1,11 @@
-#fondo{
-    width: 1000px;
-    height: 1000px;
-    background: linear-gradient(to right, #000046, #1cb5e0);   
 
+body { 
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: linear-gradient(to left, #1107d3,#3dd2fffd);  
+    position: relative;
+    height: 2000px;
+    padding-left: 40px;
+    padding-right: 40px;
+    
 }

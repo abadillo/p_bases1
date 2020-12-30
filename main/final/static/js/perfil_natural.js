@@ -237,15 +237,8 @@ $(function(){
         $("#inputsnombre").removeAttr('disabled');
         $("#inputpapellido").removeAttr('disabled');
         $("#inputsapellido").removeAttr('disabled');
-      //  $("#inputtelefono3").removeAttr('disabled'); Tienda registro cambiar a combo box
-        $("#inputcorreo").removeAttr('disabled');      
         $("#inputcont").removeAttr('disabled');
-        $("#inputrif").removeAttr('disabled');
-        $("#inputdir").removeAttr('disabled');
-
-        $("#Editar1").fadeOut("slow");       
-        $("#Editar3").fadeIn("slow");     
-        $("#Editar1").css("display", "none");    
+        $("#inputdir").removeAttr('disabled');  
        
     });
 });

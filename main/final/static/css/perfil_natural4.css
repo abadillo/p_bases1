@@ -2,26 +2,28 @@
     background-color:rgba(245, 244, 244, 0.967);
     width: 1270px;    
     height: 1000px;
+    border-radius: 5px 5px 5px 5px;
+    border: 0px rgba(128, 128, 128, 0) solid;
 }
 
-body {
- 
+body { 
     padding-bottom: 40px;
     padding-top: 40px;
-    background: linear-gradient(#2f1bdf, #000000);  
+    background: linear-gradient(to left, #1107d3,#3dd2fffd);  
     position: relative;
     height: 2000px;
     padding-left: 40px;
     padding-right: 40px;
     
-  }
+}
+
 #logo{
     height: 100px;
     width: 400px;
     position: relative;
-    right: -420px;
-    top:10px
-
+    right: -320px;
+    top:10px;
+   
 }
 .linea{
     position: relative;
@@ -32,20 +34,23 @@ body {
 
 }
 #fondo2{
-    background-color: #f8067f;
+    background-color: #f8176d;
     width: 1270px;
-    height: 1500px;
+    height: 1300px;
     position: relative;
     top: 4px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px rgba(128, 128, 128, 0) solid;
+    
 }
 #fondo3{
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
-    height: 1300px;
+    height: 1250px;
     width:1216px;
     border-radius: 5px 5px 5px 5px;
-    border: 3px grey solid;
+    border: 3px rgba(128, 128, 128, 0) solid;
 }
 #margen{
     margin-left: 150px;

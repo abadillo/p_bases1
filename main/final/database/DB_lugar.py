@@ -95,10 +95,11 @@ class DB_lugar(DB):
         
         try:
 
+            data['lu_codigo'] = self.getlastid()
+
             keys = data.keys()
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
-
             
             query = 'INSERT INTO lugar ({0}) VALUES ({1}) RETURNING lu_codigo'.format(columns, values)
             

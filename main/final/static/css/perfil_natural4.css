@@ -1,18 +1,16 @@
 #fondo1{
-<<<<<<< HEAD:main/final/static/css/perfil_natural4.css
-    background-color: rgb(166, 207, 253);
+    background-color:rgba(245, 244, 244, 0.967);
     width: 1270px;    
-=======
-    background-color: rgba(213, 213, 213, 0.96);
-    width: 1270px;
->>>>>>> 4342bb9d20370a4ef7eb320b8407d11b538e55c3:main/final/static/css/perfil_natural3.css
     height: 1000px;
 }
+
 body {
  
     padding-bottom: 40px;
-    background-color: rgb(125, 182, 220);
+    padding-top: 40px;
+    background: linear-gradient(#2f1bdf, #000000);  
     position: relative;
+    height: 2000px;
     padding-left: 40px;
     padding-right: 40px;
     
@@ -28,13 +26,13 @@ body {
 .linea{
     position: relative;
     top:20px;
-    background-color:rgb(255, 96, 176);
+    background-color:#000000;
     height: 4px;
     width: 1270px;
 
 }
 #fondo2{
-    background-color: rgb(115, 155, 255);
+    background-color: #f8067f;
     width: 1270px;
     height: 1500px;
     position: relative;

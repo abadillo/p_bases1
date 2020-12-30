@@ -173,11 +173,11 @@ def lugares():
 @app.route('/tienda',methods=['POST','GET','PUT','DELETE'])
 def tienda():
     
-    if request.method == 'GET'
+    if request.method == 'GET':
         return render_template("registro_tienda.html")
 
 
-    if request.method == 'POST'
+    if request.method == 'POST':
 
         db =DB_lugar()   
 
@@ -202,15 +202,15 @@ def tienda():
         resp = db.add(data)
         return resp
 
-    if request.method == 'PUT'
+    if request.method == 'PUT':
         return "cliente actualizado"   #update
 
-    if request.method == 'DELETE'
+    if request.method == 'DELETE':
         return "cliente eliminado"
  
 
-@app.route('/tiendas',methods=['POST','GET','PUT'])     #datatable falta update
-def tiendas():
+@app.route('/manejo_tiendas',methods=['POST','GET','PUT'])     #datatable falta update
+def manejo_tiendas():
     
     
     if request.method == 'GET':

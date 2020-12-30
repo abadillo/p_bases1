@@ -228,6 +228,7 @@ $(function(){
 
 $(function(){
     $("#Editar1").click(function(){
+        
         $("#id_user").removeAttr('disabled'); 
         $("#inputcedula").removeAttr('disabled');
         $("#inputtelefono").removeAttr('disabled');
@@ -238,7 +239,13 @@ $(function(){
         $("#inputpapellido").removeAttr('disabled');
         $("#inputsapellido").removeAttr('disabled');
         $("#inputcont").removeAttr('disabled');
-        $("#inputdir").removeAttr('disabled');  
+        $("#inputdir").removeAttr('disabled');
+        
+        $("#Editar1").css("display","none"); 
+        $("#Editar3").css("display","block"); 
+
+        $("#Editar2").css("display","none"); 
+        $("#Editar4").css("display","block"); 
        
     });
 });

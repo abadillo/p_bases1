@@ -229,6 +229,11 @@ $(function(){
     $("#Editar1").click(function(){
         alert("funciona");
     });
+
+    $("#Editar2").click(function(){
+        alert("funciona");
+    });
+
 });
    
 

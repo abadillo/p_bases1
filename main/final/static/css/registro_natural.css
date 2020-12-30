@@ -26,7 +26,7 @@ body{
 
 }
 #fondo2{
-    background-color: rgb(201, 169, 169);
+    background: linear-gradient(#460023, #e01c46);  
     width: 2000px;
     height: 1000px;
     position: relative;

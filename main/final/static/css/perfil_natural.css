@@ -4,6 +4,14 @@
     height: 1000px;
     border-radius: 5px 5px 5px 5px;
     border: 0px #80808000 solid;
+    
+    
+    position: relative;
+    margin: 0 auto; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+ 
 }
 
 body { 
@@ -25,6 +33,7 @@ body {
     top:10px;
    
 }
+
 
 .linea{
     position: relative;

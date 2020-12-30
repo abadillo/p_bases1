@@ -54,9 +54,7 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
                     $('#selectmunicipio2').html(opciones.join(''));
                 else 
                     $('#selectparroquia2').html(opciones.join(''));
-
-
-                
+                                    
             }
             
 

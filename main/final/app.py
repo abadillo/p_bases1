@@ -53,35 +53,12 @@ def inicio_sesion():
 ##### Interfaces de registro/ver perfil #####
 
 
-@app.route('/<accion>/tienda',methods=['GET'])
-def tienda(accion):
+@app.route('/<accion>/<entidad>',methods=['GET'])
+def perfil_registro(accion,entidad):
 
-    if accion == 'perfil':
-        return render_template("perfil_tienda.html")
+    return render_template(""+accion+"_"+entidad+".html")
     
-    if accion == 'registro'
-        return render_template("registro_tienda.html")
-    
-
-@app.route('/<accion>/natural',methods=['GET'])
-def natural(accion):
-
-    if accion == 'perfil':
-        return render_template("perfil_natural.html")
-    
-    if accion == 'registro'
-        return render_template("registro_natural.html")
-    
-
-@app.route('/<accion>/juridico',methods=['GET'])
-def natural(accion):
-
-    if accion == 'perfil':
-        return render_template("perfil_juridico.html")
-    
-    if accion == 'registro'
-        return render_template("registro_juridico.html")
-    
+   
 
 
 
@@ -109,7 +86,7 @@ def mostrar(obj):
 
             return render_template
     
-        if request.method == 'POST'
+        if request.method == 'POST':
 
             db = DB_tienda()  
             resp = db.getall()

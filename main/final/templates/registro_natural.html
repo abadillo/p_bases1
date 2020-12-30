@@ -4,7 +4,7 @@
         
         <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
 
-        <link href="../static/css/registro_natural.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/registro_natural2.css" rel="stylesheet" type="text/css">
 
         
         <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
@@ -23,226 +23,228 @@
 
             <div class="linea"></div>
 
-            <form>
-                
-              <div id="fondo2">
+            <div id="fondo2">
 
-                <div class="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
-                
-                <div id="fondo3" class="form-group">
+                <form>                   
 
-
-                 <div id="margen" class="form-group">
-
-                    <h1 id="registro"> Registro </h1>
-
-                
-                    <div id="margenes">
-
-                        <span id="circulo-margen" class="form-check">
-
-                            <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1" checked>
-                            <label class="form-check-label text-muted" for="selecttipo1"> Perfil Natural </label>
-
-                        </span>
-                        
-                        <span id="perfil-juri" class="form-check">                       
-
-                            <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" >
-                            <label class="form-check-label text-muted" for="selecttipo2"> Perfil Juridico </label>
-
-                        </span> 
-                      
-                    </div>        
-                     
-                    <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>                    
+                    <div class="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
                     
-                    <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
+                    <div id="fondo3" class="form-group">
 
-                    <div class="form-group" id="tipotlf"> 
-                
-                        <select name="tipotlf" id="tipotlf" class="custom-select browser-default" required autofocus>
-                            <option value="" selected disabled>TIPO</option>
-                            <option value="CASA">CASA</option>                            
-                            <option value="OFICINA">OFICINA</option>   
-                            <option value="CELULAR">CELULAR</option>  
-                             
-                        </select>  
-        
+
+                    <div id="margen" class="form-group">
+
+                        <h1 id="registro"> Registro </h1>
+
+                    
+                        <div id="margenes">
+
+                            <span id="circulo-margen" class="form-check">
+
+                                <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1" checked>
+                                <label class="form-check-label text-muted" for="selecttipo1"> Perfil Natural </label>
+
+                            </span>
+                            
+                            <span id="perfil-juri" class="form-check">                       
+
+                                <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" >
+                                <label class="form-check-label text-muted" for="selecttipo2"> Perfil Juridico </label>
+
+                            </span> 
+                        
+                        </div>        
+                        
+                        <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" required autofocus>                    
+                        
+                        <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
+
+                        <div class="form-group" id="tipotlf"> 
+                    
+                            <select name="tipotlf" id="tipotlf" class="custom-select browser-default" required autofocus>
+                                <option value="" selected disabled>TIPO</option>
+                                <option value="CASA">CASA</option>                            
+                                <option value="OFICINA">OFICINA</option>   
+                                <option value="CELULAR">CELULAR</option>  
+                                
+                            </select>  
+            
+                        </div>
+
+
+                        <div class="espacio"></div>   
+
+                            
+                        <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required autofocus>   
+
+                        <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre"  autofocus>   
+
+                        <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" required autofocus> 
+
+                        <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido"  autofocus > 
+
+
+                        <div class="espacio">  </div>   
+                        
+                        <div class="form-group" id="tienda-registro"> 
+
+                            <select id="selecttienda" name="selecttienda" class="custom-select browser-default" required autofocus>
+                                <option value="" selected disabled>TIENDA REGISTRO</option>
+                                <option value="0">primero</option>
+                                    </select>  
+
+                        </div> 
+
+                        <div class="espacio">  </div>  
+
+                        <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                        placeholder="Correo Electrónico" required autofocus>
+
+                        <div class="espacio"> </div>   
+
+                        <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" required autofocus>
+                        <input id="inputcontval" name="inputcontval"  class="form-control" type="password"  placeholder="Verifique Contraseña" required autofocus> 
+
+                        <div class="espacio"> </div> 
+
+                        <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
+
                     </div>
 
-
-                    <div class="espacio"></div>   
-
-                        
-                    <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required autofocus>   
-
-                    <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre"  autofocus>   
-
-                    <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" required autofocus> 
-
-                    <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido"  autofocus > 
-
-
-                    <div class="espacio">  </div>   
-                       
-                    <div class="form-group" id="tienda-registro"> 
-
-                        <select id="selecttienda" name="selecttienda" class="custom-select browser-default" required autofocus>
-                            <option value="" selected disabled>TIENDA REGISTRO</option>
-                            <option value="0">primero</option>
-                                </select>  
-
-                    </div> 
-
-                    <div class="espacio">  </div>  
-
-                    <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
-                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
-                    placeholder="Correo Electrónico" required autofocus>
-
-                    <div class="espacio"> </div>   
-
-                    <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" required autofocus>
-                    <input id="inputcontval" name="inputcontval"  class="form-control" type="password"  placeholder="Verifique Contraseña" required autofocus> 
-
-                    <div class="espacio"> </div> 
-
-                    <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
-
-                 </div>
-
-                </div>
-               
-
-                <div id="fondo4" class="form-group">
-
-
-                    <div id="margen2" class="form-group">
+                    </div>
                 
-                        <h1 id="registro"> Registro </h1>
+
+                    <div id="fondo4" class="form-group">
+
+
+                        <div id="margen" class="form-group">
                     
-                        <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
-
-                        <div class="form-group" id="tipotlf2"> 
-                
-                            <select name="tipotlf2" id="tipotlf2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>TIPO</option>
-                                <option value="CASA">CASA</option>                            
-                                <option value="OFICINA">OFICINA</option>   
-                                <option value="CELULAR">CELULAR</option>   
-                            </select>  
-            
-                        </div>
-
-                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
-
-                        <div class="form-group" id="tipotlf3"> 
-                
-                            <select name="tipotlf" id="tipotlf3" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>TIPO</option>
-                                <option value="CASA">CASA</option>                            
-                                <option value="OFICINA">OFICINA</option>   
-                                <option value="CELULAR">CELULAR</option>   
-                            </select>  
-            
-                        </div>
-
-                        <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[A-Z]{1}[0-9]{9}" maxlength="10" title="Debe poner una letra:'VEPJG' y 9 numeros " /> 
-                       
-                        <div id="Combo-boxes">
-                            
-                            <h4>Dirección de Habitación </h4>
+                            <h1 id="registro"> Registro </h1>
                         
-                            <div class="form-group" id="Estado"> 
+                            <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
 
-                                <select id="selectestado" name="selectestado" class="custom-select browser-default"  required autofocus>
-                                    <option value="" selected disabled>ESTADO</option>
-                                    <option value="0">primero</option>
-                                         
-                                    
-                                </select>  
-                
-                            </div> 
-                        
-                            <div class="form-group" id="Municipio"> 
-                
-                                <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" required autofocus>
-                                    <option value="" selected disabled>MUNICIPIO</option>
-                                    <option value="1">primero</option>    
-                                                           
-                                  
+                            <div class="form-group" id="tipotlf2"> 
+                    
+                                <select name="tipotlf2" id="tipotlf2" class="custom-select browser-default" autofocus>
+                                    <option value="" selected disabled>TIPO</option>
+                                    <option value="CASA">CASA</option>                            
+                                    <option value="OFICINA">OFICINA</option>   
+                                    <option value="CELULAR">CELULAR</option>   
                                 </select>  
                 
                             </div>
-                
-                            <div class="form-group" id="Parroquia"> 
-                
-                                <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" required>
-                                    <option value="default" selected disabled>PARROQUIA</option>
-                                    <option value="2">primero</option>  
-                                                                  
+
+                            <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
+
+                            <div class="form-group" id="tipotlf3"> 
+                    
+                                <select name="tipotlf" id="tipotlf3" class="custom-select browser-default" autofocus>
+                                    <option value="" selected disabled>TIPO</option>
+                                    <option value="CASA">CASA</option>                            
+                                    <option value="OFICINA">OFICINA</option>   
+                                    <option value="CELULAR">CELULAR</option>   
                                 </select>  
                 
-                            </div> 
+                            </div>
+
+                            <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF (Opcional)" pattern="[A-Z]{1}[0-9]{9}" maxlength="10" title="Debe poner una letra:'VEPJG' y 9 numeros " /> 
+                        
+                            <div id="Combo-boxes">
+                                
+                                <h4>Dirección de Habitación </h4>
+                            
+                                <div class="form-group" id="Estado"> 
+
+                                    <select id="selectestado" name="selectestado" class="custom-select browser-default"  required autofocus>
+                                        <option value="" selected disabled>ESTADO</option>
+                                        <option value="0">primero</option>
+                                            
+                                        
+                                    </select>  
+                    
+                                </div> 
+                            
+                                <div class="form-group" id="Municipio"> 
+                    
+                                    <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" required autofocus>
+                                        <option value="" selected disabled>MUNICIPIO</option>
+                                        <option value="1">primero</option>    
+                                                            
+                                    
+                                    </select>  
+                    
+                                </div>
+                    
+                                <div class="form-group" id="Parroquia"> 
+                    
+                                    <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" required>
+                                        <option value="default" selected disabled>PARROQUIA</option>
+                                        <option value="2">primero</option>  
+                                                                    
+                                    </select>  
+                    
+                                </div> 
+                    
+                                <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" required autofocus> 
+
+
+                            </div>
+                    
+                            
+                            
+                            <div id="Mediospago" >
+
+                                <h4> Medios de Pago </h4>
+
+                                <span id="circulo-margen">
+
+                                    <input class="form-check-input" type="radio" name="mediopago1" id="mediopago1">
+                                    <label class="form-check-label" for="mediopago1"> Tarjetas de Crédito </label>
+
+                                </span>    
+
+                                <span id="circulo-margen">
+
+                                    <input class="form-check-input" type="radio" name="mediopago2" id="mediopago2">
+                                    <label class="form-check-label" for="mediopago2"> Tarjeta de Débito </label>
+                                
+                                </span>
+
+                                <span id="circulo-margen">
+                                
+                                    <input class="form-check-input" type="radio" name="mediopago3" id="mediopago3">
+                                    <label class="form-check-label" for="mediopago3"> Efectivo </label>
+
+                                </span>
+
+                                <span id="circulo-margen">
+
+                                    <input class="form-check-input" type="radio" name="mediopago4" id="mediopago4">
+                                    <label class="form-check-label" for="mediopago4"> Cheque </label>
+
+                                </span>
+                                
+                            </div>
+                            
+                            
+                            <h4 class="form-text text-danger mb-2">
+                                <p id="m_invalido"></p>
+                            </h4>
+
+                            <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                            
+                            <button id="Registrar" class="btn btn-lg btn-primary" type ="submit"> Registrar</button>
+
+                        </div>
+
+                    </div>      
+        
                 
-                            <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" required autofocus> 
+                
+                </form>
 
-
-                        </div>
-                   
-                        
-                        
-                        <div id="Mediospago" >
-
-                            <h4> Medios de Pago </h4>
-
-                            <span id="circulo-margen">
-
-                                <input class="form-check-input" type="radio" name="mediopago1" id="mediopago1">
-                                <label class="form-check-label" for="mediopago1"> Tarjetas de Crédito </label>
-
-                            </span>    
-
-                            <span id="circulo-margen">
-
-                                <input class="form-check-input" type="radio" name="mediopago2" id="mediopago2">
-                                <label class="form-check-label" for="mediopago2"> Tarjeta de Débito </label>
-                            
-                            </span>
-
-                            <span id="circulo-margen">
-                            
-                                <input class="form-check-input" type="radio" name="mediopago3" id="mediopago3">
-                                <label class="form-check-label" for="mediopago3"> Efectivo </label>
-
-                            </span>
-
-                            <span id="circulo-margen">
-
-                                <input class="form-check-input" type="radio" name="mediopago4" id="mediopago4">
-                                <label class="form-check-label" for="mediopago4"> Cheque </label>
-
-                            </span>
-                            
-                        </div>
-                        
-                        
-                        <h4 class="form-text text-danger mb-2">
-                            <p id="m_invalido"></p>
-                        </h4>
-
-                        <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
-                        
-                        <button id="Registrar" class="btn btn-lg btn-primary" type ="submit"> Registrar</button>
-
-                    </div>
-
-                </div>      
-     
-             </div> 
-
-            </form>
+            </div> 
 
         </div>
 

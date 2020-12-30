@@ -1,46 +1,70 @@
 #fondo1{
-    background-color: rgb(166, 207, 253);
-    width: 2000px;
+    background-color:rgba(245, 244, 244, 0.967);
+    width: 1270px;    
     height: 1000px;
-    
+    border-radius: 5px 5px 5px 5px;
+    border: 0px #80808000 solid;
 }
-body{
-    margin: 0;
-    padding: 0;
+body { 
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: linear-gradient(to left, #1107d3,#3dd2fffd);  
+    position: relative;
+    height: 2000px;
+    padding-left: 40px;
+    padding-right: 40px;
     
 }
 #logo{
     height: 100px;
-    width: 300px;
+    width:50%;
     position: relative;
-    right: -590px;
-    top:10px
-
+    right: -320px;
+    top:10px;
+   
 }
+
 .linea{
     position: relative;
     top:20px;
-    background-color:black;
+    background-color:#000000;
     height: 4px;
-    width: 2000px;
+    width: 1270px;
 
 }
+
+
+
 #fondo2{
-    background: linear-gradient(#460023, #e01c46);  
-    width: 2000px;
-    height: 1000px;
+    background-color: #f8176d;
+    width: 1270px;
+    height: 1300px;
     position: relative;
     top: 20px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px rgba(128, 128, 128, 0) solid;
 }
+
+
 #fondo3{
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
-    height: 800px;
-    width:1200px;
+    height: 1250px;
+    width:1216px;
     border-radius: 5px 5px 5px 5px;
-    border: 3px grey solid;
+    border: 3px rgba(128, 128, 128, 0) solid;
 }
+
+#margen{
+    margin-left: 200px;
+    margin-top: 50px;
+   
+}
+
+
+
+
 .espacio{
     height: 4px;
     width: 1270px;
@@ -71,11 +95,7 @@ body{
    margin-right: 55px;
 
 }
-#margen{
-    margin-left: 200px;
-    margin-top: 50px;
-   
-}
+
 
 #inputcedula{    
     position: relative;
@@ -185,12 +205,7 @@ body{
     border-radius: 5px 5px 5px 5px;
     border: 3px grey solid;   
 }
-#margen2{
-    margin-left: 200px;
-    margin-top: 50px;
-    padding: auto;
-        
-}
+
 #inputtelefono2{
     width: 200px;
     position: relative;

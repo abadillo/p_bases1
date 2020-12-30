@@ -179,7 +179,7 @@ $(function(){
     $("#selecttipo2").click(function(){
         window.location.href = "/registro_juridico";
 
-          });
+    });
    
 
 });

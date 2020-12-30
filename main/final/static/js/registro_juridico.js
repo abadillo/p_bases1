@@ -5,7 +5,7 @@ function c_error(mensaje){
 
 
 
-function lugares (lu_tipo, fk_lugar,sel_op){
+function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({
                 
@@ -19,7 +19,8 @@ function lugares (lu_tipo, fk_lugar,sel_op){
             
         }).done(function(resp){
         
-            lugars = resp;          
+            lugars = resp;     
+            console.log(lugars);     
 
             var opciones = [];
 
@@ -34,13 +35,30 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
             }
 
+            console.log(y);
 
-            if (lu_tipo == 'ESTADO')
-                $('#selectestado').html(opciones.join(''));
-            else if (lu_tipo == 'MUNICIPIO')
-                $('#selectmunicipio').html(opciones.join(''));
-            else 
-                $('#selectparroquia ').html(opciones.join(''));
+            if (y == 1) {
+
+                if (lu_tipo == 'ESTADO')
+                    $('#selectestado').html(opciones.join(''));
+                else if (lu_tipo == 'MUNICIPIO')
+                    $('#selectmunicipio').html(opciones.join(''));
+                else 
+                    $('#selectparroquia').html(opciones.join(''));
+
+            } else if (y == 2){
+                
+                if (lu_tipo == 'ESTADO')
+                    $('#selectestado2').html(opciones.join(''));
+                else if (lu_tipo == 'MUNICIPIO')
+                    $('#selectmunicipio2').html(opciones.join(''));
+                else 
+                    $('#selectparroquia2').html(opciones.join(''));
+
+
+                
+            }
+            
 
             
         }).fail(function(resp){
@@ -57,28 +75,55 @@ $(document).ready(function() {
     var id_municipio;
     var id_parroquia;
 
-    lugares('ESTADO','',0);
+    lugares('ESTADO','',0,1);
     
    
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,0);
+        lugares('MUNICIPIO',id_estado,0,1);
     });
-        
-
+    
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,0);
+        lugares('PARROQUIA',id_municipio,0,1);
     });
 
-    
     $('#selectparroquia').change(function() {
 
         id_parroquia = $(this).find('option:selected').val();
     });
+
+
+
+
+    var id_estado2;
+    var id_municipio2;
+    var id_parroquia2;
+
+    lugares('ESTADO','',0,2);
     
+    $('#selectestado2').change(function() {
+
+        id_estado2 = $(this).find('option:selected').val();
+        lugares('MUNICIPIO',id_estado2,0,2);
+    });
+    
+    $('#selectmunicipio2').change(function() {
+
+        id_municipio2 = $(this).find('option:selected').val();
+        lugares('PARROQUIA',id_municipio2,0,2);
+    });
+
+    $('#selectparroquia2').change(function() {
+
+        id_parroquia2 = $(this).find('option:selected').val();
+    });
+
+
+
+
 
 
 

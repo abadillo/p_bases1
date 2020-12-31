@@ -54,14 +54,14 @@ def inicio_sesion():
 
 
 
-@app.route('/registro/<entidad>', methods=['GET'])
+@app.route('/registro/<entidad>', methods=['GET'])  ##ventana registros
 def registro(entidad):
 
     return render_template("registro_"+entidad+".html")
     
 
 
-@app.route('/<entidad>/<id>',methods=['GET'])
+@app.route('/<entidad>/<id>',methods=['GET']) ## Ver perfiles
 def ver_perfil(entidad,id):
 
     return render_template("perfil_"+entidad+".html")

@@ -57,8 +57,19 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 $(document).ready(function() {
     
     var id = (window.location.pathname.split('/'))[2];
-    var datos_user;
- 
+    
+    var datos;
+    var tienda_registro;
+
+    var direccion;
+
+    var id_estado;
+    var id_municipio;
+    var id_parroquia;
+    var idv_estado;
+    var idv_municipio;
+    var idv_parroquia;
+    
     
     $.ajax({
                 
@@ -74,16 +85,13 @@ $(document).ready(function() {
             
             if (response['error'])
 				alerta(response['error']);
-
-            datos_user = response;         
-
+            else 
+                datos = response[0]; 
+           
         }).fail(function(){
             c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
 
-
-    
-    var tienda_registro;
 
     $.ajax({
                 
@@ -94,72 +102,61 @@ $(document).ready(function() {
             
         }).done(function(resp){
             
-            tiendas = resp;     
+            tiendas = resp;
+            for (var i=0, l=tiendas.length; i<l; i++){
+                if (tiendas[i].ti_codigo == datos.fk_tienda)
+                    tienda_registro = tiendas[i].ti_nombre;
+            }     
                       
         }).fail(function(resp){
             c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
 
 
-    
-
-    document.getElementById('id_user').value = datos_user[0].cl_id;
-    document.getElementById("inputcedula").value = datos_user[0].cl_cedula;
-    document.getElementById("inputcorreo").value = datos_user[0].cl_correo;
-    document.getElementById("inputtelefono").value = "nada";
-    document.getElementById("inputpnombre").value = datos_user[0].cl_p_nombre;
-    document.getElementById("inputsnombre").value = datos_user[0].cl_s_nombre;
-    document.getElementById("inputpapellido").value = datos_user[0].cl_p_apellido;
-    document.getElementById("inputsapellido").value = datos_user[0].cl_s_apellido;
-    document.getElementById("inputcont").value = datos_user[0].cl_contrasena;
-    document.getElementById("inputrif").value = datos_user[0].cl_rif;
-
-    
-
-
-        
-        
-    for (var i=0, l=tiendas.length; i<l; i++){
-        if (tiendas[i].ti_codigo == datos_user[0].fk_tienda)
-            tienda_registro = tiendas[i].ti_nombre;
-    }
-
-    document.getElementById("tiendaregistro").value = tienda_registro;
-    
-    var direccion;
-
     $.ajax({
                 
         url:   '/lugares',
         type: 'POST',
         data: {
-            'fk_dir': datos_user[0].fk_lugar ,
+            'fk_dir': datos.fk_lugar ,
         },
         async: false, 
             
         }).done(function(response){
-            
-            direccion= response;
-
+        
+            idv_estado = response['idv_estado'];
+            idv_municipio =  response['idv_municipio'];
+            idv_parroquia =  response['idv_parroquia'];
+            direccion = response['direccion']
         });
 
+   
+    
 
 
-    var idv_estado = direccion['idv_estado'];
-    var idv_municipio =  direccion['idv_municipio'];
-    var idv_parroquia =  direccion['idv_parroquia'];
-    var dir = direccion['direccion']
 
-    document.getElementById("inputdir").value = dir;
+    $("#id_user").val(datos.cl_id);
+    $("#inputcedula").val(datos.cl_cedula);
+    $("#inputcorreo").val(datos.cl_correo);
+    $("#inputtelefono").val("nada");
+    $("#inputpnombre").val(datos.cl_p_nombre);
+    $("#inputsnombre").val(datos.cl_s_nombre);
+    $("#inputpapellido").val(datos.cl_p_apellido);
+    $("#inputsapellido").val(datos.cl_s_apellido);
+    $("#inputcont").val(datos.cl_contrasena);
+    $("#inputrif").val(datos.cl_rif);
 
+    $("#tiendaregistro").val(tienda_registro);
+    
+    $("#inputdir").val(direccion);
 
-    var id_estado;
-    var id_municipio;
-    var id_parroquia;
 
     lugares('ESTADO','',idv_estado);
     lugares('MUNICIPIO',idv_estado,idv_municipio);
     lugares('PARROQUIA',idv_municipio,idv_parroquia);
+
+    
+
 
     
 
@@ -182,13 +179,6 @@ $(document).ready(function() {
         id_parroquia = $(this).find('option:selected').val();
     });
     
-    
-    $('#id_user').change(function() {
-        
-        id = document.getElementById("id_user").value;
-        window.location.href =  "/perfil_natural/"+id;
-        
-    });
 
 });
 
@@ -224,8 +214,6 @@ $(function(){
 $(function(){
     $("#Editar1").click(function(){
         
-        $("#id_user").removeAttr('disabled'); 
-        $("#inputcedula").removeAttr('disabled');
         $("#inputtelefono").removeAttr('disabled');
         $("#inputtelefono2").removeAttr('disabled');
         $("#inputtelefono3").removeAttr('disabled');

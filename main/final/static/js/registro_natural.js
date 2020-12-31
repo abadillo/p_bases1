@@ -55,7 +55,6 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 };
 
 
-
 $(document).ready(function() {
 
     var id_estado;
@@ -155,13 +154,38 @@ $(function(){
     });
 });
 
+
 $(function(){
     
     $("#Continuar").click(function(){    
        
-        $("#fondo3").fadeOut("slow");       
-        $("#fondo4").fadeIn("slow");     
-        $("#fondo3").css("display", "none");                 				
+        var form = $('form');
+        var flag = 0;
+     
+        for (var n = 0; n <= 12; n++){
+            if (!(form[0][n].checkValidity())){
+                form[0][n].reportValidity();
+                flag = 1;
+                break;
+            }
+        }
+    
+        var cont = ($("#inputcont").val());
+        var contval = ($("#inputcontval").val());
+        
+        if (cont != contval){
+            $("#inputcontval").setCustomValidity('Las contraseñas no coinciden');
+            $("#inputcontval").reportValidity();
+            $("#inputcontval").setCustomValidity('');
+            flag = 1;
+        } 
+        
+
+        if (flag == 0 ){
+            $("#fondo3").fadeOut("slow");       
+            $("#fondo4").fadeIn("slow");     
+            $("#fondo3").css("display", "none");                 				
+        }
 
     });          
 

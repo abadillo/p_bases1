@@ -113,6 +113,10 @@ $(document).ready(function() {
     document.getElementById("inputsapellido").value = datos_user[0].cl_s_apellido;
     document.getElementById("inputcont").value = datos_user[0].cl_contrasena;
     document.getElementById("inputrif").value = datos_user[0].cl_rif;
+
+    
+
+
         
         
     for (var i=0, l=tiendas.length; i<l; i++){

@@ -55,15 +55,15 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 $(document).ready(function() {
 
     
-    var id = document.getElementById("id_user").value;
+    var id = 32;
     console.log(id);
     
     var datos_user;
  
     $.ajax({
                 
-        url:   '/perfil_natural/'+id,
-        type: 'PUT',
+        url:   '/manejo_natural/'+id,
+        type: 'GET',
         dataSrc: "",
         async: false,        
     
@@ -80,7 +80,7 @@ $(document).ready(function() {
 
     $.ajax({
                 
-        url:   '/tiendas',
+        url:   '/mostrar/tienda',
         type: 'GET',
         dataSrc: "",
         async: false, 

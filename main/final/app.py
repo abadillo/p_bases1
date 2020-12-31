@@ -64,7 +64,7 @@ def perfil_registro(accion,entidad):
 
 #####  DATATABLE  #####
 
-@app.route('/mostrar/<obj>',methods=['GET'])    
+@app.route('/mostrar/<obj>',methods=['GET','POST'])    
 def mostrar(obj):
 
     if obj == 'cliente':

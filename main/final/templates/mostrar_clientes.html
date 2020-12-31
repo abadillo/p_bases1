@@ -11,7 +11,7 @@
 
     <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
     <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
-    <link rel="stylesheet"type="text/css" href="../static/css/mostrar_clientes.css">
+    <link rel="stylesheet"type="text/css" href="../static/css/mostrar.css">
 
 
 
@@ -31,30 +31,32 @@
 
 <body>
 
-
-    <div id="fondo1"class="container">
+    <div id="fondo1">
+       
         <section>
+            <a href="../templates/UCABMART.html"><img type="image" id="logo" src="../static/media/UCABMART6.png"></a>
+
             
-            <div class="header">
-                <h3 class="text-muted text-center">CLIENTES</h3>
-            </div>
-            
-            <table id="tabla_datatable" class="display" >     </table>
+            <div id="margen">
+                
+                <h3 class="text-center">CLIENTES</h3>
+                
+                <table id="tabla_datatable" class="display nowrap" >   </table>
                         
-            <div class="btn-group btn-block">
-            
-                    <button id="boton_añadir" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
-                    <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button>
-                    <button id="boton_eliminar" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+                <div class="btn-group btn-block">
+                
+                        <button id="boton_añadir" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
+                        <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button>
+                        <button id="boton_eliminar" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+
+                </div>
 
             </div>
-
-            
+                
         </section>
+
     </div>
 
-    
-	
 </body>
 
 

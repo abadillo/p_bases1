@@ -53,10 +53,18 @@ def inicio_sesion():
 ##### Interfaces de registro/ver perfil #####
 
 
-@app.route('/<accion>/<entidad>',methods=['GET'])
-def perfil_registro(accion,entidad):
 
-    return render_template(""+accion+"_"+entidad+".html")
+@app.route('/registro/<entidad>', methods=['GET'])
+def registro(entidad):
+
+    return render_template("registro_"+entidad+".html")
+    
+
+
+@app.route('/<entidad>/<id>',methods=['GET'])
+def ver_perfil(entidad,id):
+
+    return render_template("perfil_"+entidad+".html")
     
    
 
@@ -67,7 +75,7 @@ def perfil_registro(accion,entidad):
 @app.route('/mostrar/<obj>',methods=['GET','POST'])    
 def mostrar(obj):
 
-    if obj == 'cliente':
+    if obj == 'clientes':
     
         if request.method == 'GET':
             return render_template("mostrar_clientes.html")
@@ -80,7 +88,7 @@ def mostrar(obj):
             return jsonify(resp)    
 
 
-    if obj == 'tienda':
+    if obj == 'tiendas':
 
         if request.method == 'GET':
 
@@ -145,31 +153,26 @@ def manejo_tienda():
 def manejo_natural():
 
     if request.method == 'GET':
+     
+        id = request.args['id']
         
         db = DB_cliente_natural()
-         
-        datos_usuario = db.get(cl_id) 
+        data = db.get(id) 
 
-        for atributo in datos_usuario[0]:
-            if (datos_usuario[0][atributo] == None): datos_usuario[0][atributo] = ''
-        
-        return jsonify(datos_usuario)
+        return jsonify(data)
 
     if request.method == 'POST': 
        
         db = DB_lugar()   
 
-        lu_codigo = db.getlastid()
-
         direccion = {
-            'lu_codigo'     :   lu_codigo,
+            'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
             'lu_tipo'       :   'DIRECCION',             
             'fk_lugar'      :   request.form['selectparroquia'],         
         }
 
         id_direccion = db.add(direccion)
-
 
         data = {
             'cl_correo'     :    request.form['inputcorreo'],            #string    
@@ -210,7 +213,14 @@ def manejo_natural():
         return resp
  
     if request.method == 'PUT':
-        return "xd"
+        
+        id = int(request.get_data())
+        
+        db = DB_cliente_natural()
+    
+        datos_usuario = db.get(id) 
+
+        return jsonify(datos_usuario)
 
     if request.method == 'DELETE':
 
@@ -219,8 +229,6 @@ def manejo_natural():
         db = DB_cliente_natural()   
 
         resp = db.delete(id)
-
-        #delete cliente natural {id} 
 
         return resp
 

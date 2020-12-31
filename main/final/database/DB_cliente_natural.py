@@ -19,20 +19,19 @@ class DB_cliente_natural(DB):
 
             self.cursor.execute("SELECT * FROM cliente_natural WHERE cl_id = %s", (id,) )
             resp = self.cursor.fetchone()
-
+            
             columnas = self.cursor.description
            
             data = self.querydictdecimal(resp,columnas)
 
-            for entidad in data:
-                for atributo in entidad:
-                    if type(entidad[atributo]) == decimal.Decimal:
-                        entidad[atributo] = int(entidad[atributo])
+            for atributo in data[0]:
+                if (data[0][atributo] == None):
+                    data[0][atributo] = ''
 
             return data 
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
     def getall (self):  

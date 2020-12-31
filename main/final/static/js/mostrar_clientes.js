@@ -1,9 +1,23 @@
+function c_error(mensaje){
+    $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
+};
+
+function alerta(mensaje){
+    alert(mensaje);
+
+};
+
+
 $(document).ready(function() {
 
     $('#tabla_datatable').DataTable({
         
+        scrollY:        '50vh',
+        scrollCollapse: true,
+        scrollX: true,
+
         ajax: {
-            url:   '/mostrar',
+            url:   '/mostrar/clientes',
             type: 'POST',
             dataSrc: ""
         },
@@ -11,7 +25,7 @@ $(document).ready(function() {
         columns: [
             { data: "cl_id" ,         title: "ID"},
             { data: "cl_correo" ,     title: "CORREO"},
-            { data: "cl_contrasena" , title: "CONTRASEÑA"},
+            { data: "cl_contrasena" , title: "CONT"},
             { data: "cl_cedula" ,     title: "CEDULA"},
             { data: "cl_rif" ,        title: "RIF"},
             { data: "cl_p_nombre" ,   title: "P_NOMBRE"},
@@ -19,11 +33,13 @@ $(document).ready(function() {
             { data: "cl_p_apellido" , title: "P_APELLIDO"},
             { data: "cl_s_apellido" , title: "S_APELLIDO"},
             { data: "cl_afiliacion" , title: "N_AFIL"},
-            { data: "cl_puntos" ,     title: "PUNTOS"},
+            { data: "fk_lugar" , title: "DIR"},
+           
         ]
         
     });
     
+
     var table = $('#tabla_datatable').DataTable();
  
     $('#tabla_datatable tbody').on( 'click', 'tr', function () {
@@ -41,41 +57,48 @@ $(document).ready(function() {
         var sel = table.row('.selected').data();
 
         if (sel){
-
-            var sel = table.row('.selected').data();
-            console.log(sel);
-            console.log(sel['cl_id']);
-            
-            var id = sel['cl_id']
+          
+            var id = sel['cl_id'];
 
             $.ajax({
                 
-                url:   '/mostrar',
+                url:   '/manejo_natural',
                 data:  id.toString(),
                 type: 'DELETE',
                     
                 }).done(function(response){
                     
-                    console.log(response);
+                    alerta(response['mensaje']);
                     table.row('.selected').remove().draw( false );
                     
                 }).fail(function(response){
-                    $('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
+                    c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
                 });
 
         }
-			
+        else alert('Debe seleccionar algo');
             
     });
 
     $('#boton_añadir').click( function () {
-        window.location.href =  "/registro_natural"		
+        
+        window.location.href =  "/registro/natural"		
+
     } );
 
     $('#boton_modificar').click( function () {
-        //link a modificar datos
+        
+        var sel = table.row('.selected').data();
 
-    } );
+        if (sel){
+
+            var id = sel['cl_id'];
+            window.location.href =  '/natural/'+id;	
+
+        }
+
+        else alert('Debe seleccionar algo');
+    });
 
 });
 

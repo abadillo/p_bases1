@@ -1,8 +1,11 @@
-
-function c_error(){
-	$('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
+function c_error(mensaje){
+    $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
 };
 
+function alerta(mensaje){
+    alert(mensaje);
+
+};
 
 
 function lugares (lu_tipo, fk_lugar,sel_op){
@@ -31,7 +34,6 @@ function lugares (lu_tipo, fk_lugar,sel_op){
                     opciones.push('<option selected value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
                 else 
                     opciones.push('<option value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
-
             }
 
 
@@ -44,7 +46,7 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
             
         }).fail(function(resp){
-            c_error();
+            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
 
@@ -53,35 +55,40 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
 
 $(document).ready(function() {
-
     
-    var id = 32;
-    console.log(id);
-    
+    var id = (window.location.pathname.split('/'))[2];
     var datos_user;
  
+    
     $.ajax({
                 
-        url:   '/manejo_natural/'+id,
+        url:   '/manejo_natural',
         type: 'GET',
-        dataSrc: "",
-        async: false,        
+        data: {
+            'id': id,
+        },
+        async: false, 
+                   
     
-        }).done(function(resp){
+        }).done(function(response){
             
-            datos_user = resp;         
+            if (response['error'])
+				alerta(response['error']);
 
-        }).fail(function(resp){
-            $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-    });
+            datos_user = response;         
+
+        }).fail(function(){
+            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+        });
 
 
+    
     var tienda_registro;
 
     $.ajax({
                 
-        url:   '/mostrar/tienda',
-        type: 'GET',
+        url:   '/mostrar/tiendas',
+        type: 'POST',
         dataSrc: "",
         async: false, 
             
@@ -90,15 +97,13 @@ $(document).ready(function() {
             tiendas = resp;     
                       
         }).fail(function(resp){
-            $(document).html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-    });
+            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+        });
 
 
     
-    
 
-    console.log(datos_user[0])
-
+    document.getElementById('id_user').value = datos_user[0].cl_id;
     document.getElementById("inputcedula").value = datos_user[0].cl_cedula;
     document.getElementById("inputcorreo").value = datos_user[0].cl_correo;
     document.getElementById("inputtelefono").value = "nada";
@@ -117,7 +122,7 @@ $(document).ready(function() {
 
     document.getElementById("tiendaregistro").value = tienda_registro;
     
-    var response;
+    var direccion;
 
     $.ajax({
                 
@@ -128,38 +133,27 @@ $(document).ready(function() {
         },
         async: false, 
             
-        }).done(function(resp){
+        }).done(function(response){
             
-            response= resp;
+            direccion= response;
 
         });
 
 
 
-    var idv_estado = response['idv_estado'];
-    var idv_municipio =  response['idv_municipio'];
-    var idv_parroquia =  response['idv_parroquia'];
-    var direccion = response['direccion']
+    var idv_estado = direccion['idv_estado'];
+    var idv_municipio =  direccion['idv_municipio'];
+    var idv_parroquia =  direccion['idv_parroquia'];
+    var dir = direccion['direccion']
 
-    console.log(datos_user[0].fk_lugar)
-    console.log(idv_parroquia)
-    console.log(idv_municipio)
-    console.log(idv_estado)
+    document.getElementById("inputdir").value = dir;
 
 
-    document.getElementById("inputdir").value = direccion;
-
-
-    
     var id_estado;
     var id_municipio;
     var id_parroquia;
 
-
     lugares('ESTADO','',idv_estado);
-    
-    
-    
     lugares('MUNICIPIO',idv_estado,idv_municipio);
     lugares('PARROQUIA',idv_municipio,idv_parroquia);
 
@@ -185,15 +179,12 @@ $(document).ready(function() {
     });
     
     
-
     $('#id_user').change(function() {
         
         id = document.getElementById("id_user").value;
         window.location.href =  "/perfil_natural/"+id;
         
     });
-
-
 
 });
 
@@ -205,7 +196,7 @@ $(function(){
             
             url:   '/perfil_natural',
             data:  $('form').serialize(),
-            type: 'POST',
+            type: 'PUT',
                 
             }).done(function(response){
                 
@@ -253,37 +244,3 @@ $(function(){
    
 
 
-
-
-
-/*
-$(function(){
-    $('form').submit(function(e){
-
-        $.ajax({
-            
-            url:   '/lugares',
-            data:  $('form').serialize(),
-            type: 'POST',
-                
-            }).done(function(response){
-                
-                console.log(response);
-                
-                if (response['mensaje'] == 'correo o contraseña invalida')
-                    $(error).replaceWith( '<p id="error">'+response['mensaje']+'</p>'   )
-                else
-                    window.location.href =  "/"			
-                
-            }).fail(function(response){
-                $('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
-            });
-
-        e.preventDefault();
-    
-    });
-});
-
-
-
-*/

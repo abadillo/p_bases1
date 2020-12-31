@@ -3,6 +3,10 @@ function c_error(mensaje){
     $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
 };
 
+function alerta(mensaje){
+    alert(mensaje);
+
+};
 
 
 function lugares (lu_tipo, fk_lugar,sel_op){
@@ -52,8 +56,6 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
 
 
-
-
 $(document).ready(function() {
 
     var id_estado;
@@ -84,20 +86,17 @@ $(document).ready(function() {
     
 
 
-
-
     var tiendas;
     var id_tienda;
     
     $.ajax({
                 
-        url:   '/tiendas',
-        type: 'GET',
+        url:   '/mostrar/tiendas',
+        type: 'POST',
         dataSrc: "",
             
         }).done(function(resp){
             
-            console.log(resp);
             tiendas = resp;         
 
             var opciones = [];
@@ -119,13 +118,9 @@ $(document).ready(function() {
     $('#selecttienda').change(function() {
 
         id_tienda = $(this).find('option:selected').val();
-        console.log(id_tienda);
 
     });
-
-
     
-
 });
 
 
@@ -134,22 +129,22 @@ $(function(){
 
         $.ajax({
             
-            url:   '/registro_natural',
+            url:   '/manejo_natural',
             data:  $('form').serialize(),
             type: 'POST',
                 
             }).done(function(response){
-                
-                console.log(response);
-                
+                            
                 if(response['error'])
 					c_error(response['error']);
 				
 				else if (response['invalido'])
                     c_error(response['invalido']);
 				
-				else
-					window.location.href =  "/"				
+                else
+                    window.location.href =  "/mostrar/clientes";
+                    /*window.location.href =  "/"*/
+                    			
                 
             }).fail(function(response){
                 c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');

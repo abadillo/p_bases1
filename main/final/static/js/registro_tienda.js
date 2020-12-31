@@ -119,47 +119,7 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-    var tiendas;
-    var id_tienda;
-    
-    $.ajax({ 
-        url:   '/tiendas',
-        type: 'GET',
-        dataSrc: "",
-            
-        }).done(function(resp){
-            
-            console.log(resp);
-            tiendas = resp;         
-
-            var opciones = [];
-
-            opciones.push('<option value="default" selected disabled>TIENDAS</option>');
-
-            for (var i=0, l=tiendas.length; i<l; i++){
-                opciones.push('<option value="'+tiendas[i].ti_codigo+'">'+tiendas[i].ti_nombre+'<opciones>');
-            }
-
-            $('#selecttienda').html(opciones.join(''));
-
-            
-        }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
-    });
-
-
-    $('#selecttienda').change(function() {
-
-        id_tienda = $(this).find('option:selected').val();
-        console.log(id_tienda);
-
-    });    
-
+  
     
 
 });
@@ -170,7 +130,7 @@ $(function(){
 
         $.ajax({
             
-            url:   '/tienda',
+            url:   '/manejo_tienda',
             data:  $('form').serialize(),
             type: 'POST',
                 
@@ -196,4 +156,4 @@ $(function(){
     });
 });
 
-
+   

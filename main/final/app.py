@@ -80,7 +80,7 @@ def mostrar(obj):
             return jsonify(resp)    
 
 
-    if obj == 'lugar':
+    if obj == 'tienda':
 
         if request.method == 'GET':
 
@@ -90,6 +90,7 @@ def mostrar(obj):
 
             db = DB_tienda()  
             resp = db.getall()
+
             return jsonify(resp)
 
 
@@ -118,6 +119,8 @@ def manejo_tienda():
 
         id_direccion = db.add(direccion)
 
+        print(id_direccion)
+
         data = {
             'ti_nombre'     :   request.form['inputtienda'],                 
             'fk_lugar'      :   id_direccion,
@@ -128,10 +131,14 @@ def manejo_tienda():
         return resp
 
     if request.method == 'PUT':
-        return "cliente actualizado"   #update
+
+
+        return "Tienda actualizado"   #update
 
     if request.method == 'DELETE':
-        return "cliente eliminado"
+
+
+        return "Tienda eliminado"
 
 
 @app.route('/manejo_natural', methods= ['GET', 'POST','PUT','DELETE'])

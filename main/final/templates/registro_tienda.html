@@ -2,10 +2,9 @@
 <html>
     <head>
         <title>UCABMART</title>
-        
-        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
-        
-        <link href="../static/css/registro_tienda.css" rel="stylesheet" type="text/css" >
+
+        <link rel="stylesheet" type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/registro_tienda.css"  >
         
         <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
         <script src="../static/js/registro_tienda.js"></script>
@@ -16,81 +15,87 @@
     
     <body>
            
-        <form>
-          <div id="fondo">       
+       
+    <div id="fondo1">     
 
-            <a href="/"><img id="logo" src="../static/media/UCABMART6.png"  style="width:50%"></a>
+        <a href="/"><img id="logo" src="../static/media/UCABMART6.png" ></a>
 
-            <div class="linea">
+        <div class="linea"></div>        
 
-             <div id="fondo1">
+        <div id="fondo2">
+
+            <form>
 
                 <div id="espacio"></div> 
 
-                <div id="fondo2" class="form-group">
-
-                    <h2 class="posicion"> Registro de Tienda</h2>
-
-                 <div class="form-group posicion" id="Tienda"> 
-
-                     <input type="text" id="inputtienda">
-               
-                    <select id="selecttienda" name="selecttienda" class="custom-select browser-default" required autofocus>
-                        <option value="" selected disabled>TIENDA</option>
-                        <option value="0">opcion</option>
-                    </select>  
-
-                 </div> 
-
-                 <h4 class="posicion">Dirección de la Tienda </h4>
-                        
-                    <div class="form-group tamaño posicion" id="Estado"> 
-
-                        <select id="selectestado" name="selectestado" class="custom-select browser-default"  required autofocus>
-                            <option value="" selected disabled>ESTADO</option>
-                            <option value="0">primero</option>
-                                         
-                                    
-                         </select>  
-                
-                     </div> 
-                        
-                     <div class="form-group tamaño posicion" id="Municipio"> 
-                
-                        <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" required autofocus>
-                            <option value="" selected disabled>MUNICIPIO</option>
-                            <option value="1">primero</option>    
-                                                       
-                                  
-                        </select>  
-                
-                    </div>
-                
-                    <div class="form-group tamaño posicion" id="Parroquia"> 
-                
-                         <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" required>
-                            <option value="default" selected disabled>PARROQUIA</option>
-                            <option value="2">primero</option>  
-                                                                  
-                        </select>  
-                
-                    </div> 
-
-                 <input id="inputdir" name="inputdir" value="Dirección" class="form-control posicion">
+                <div id="fondo3" class="form-group">
                     
-                 <button id="Registrar" class="btn btn-lg btn-primary mt-5 posicion" type ="submit">Registrar</button>
+                    <div id="posicion"> 
+
+                        <h2> Registro de Tienda</h2>
+
+                        <div id="espacio2"></div>                     
+
+                        <h4 class="">Nombre de la Tienda </h4>
+                        
+
+                        <div class="form-group " id="Tienda"> 
+        
+                            <input type="text" id="inputtienda" name="inputtienda" class="form-control"  placeholder="Nombre de la tienda" required autofocus>                 
+
+                        </div> 
+
+                        <h4 class="">Dirección de la Tienda </h4>
+                                
+                            <div class="form-group tamaño " id="Estado"> 
+
+                                <select id="selectestado" name="selectestado" class="custom-select browser-default"  required autofocus>
+                                    
+                                    <option value="" selected disabled>ESTADO</option>               
+                                            
+                                </select>  
+                        
+                            </div> 
+                                
+                            <div class="form-group tamaño " id="Municipio"> 
+                        
+                                <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" required autofocus>
+
+                                    <option value="" selected disabled>MUNICIPIO</option>                                                      
+                                        
+                                </select>  
+                        
+                            </div>
+                        
+                            <div class="form-group tamaño " id="Parroquia"> 
+                        
+                                <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" required>
+
+                                    <option value="default" selected disabled>PARROQUIA</option>      
+
+                                </select>  
+                        
+                            </div> 
+
+                        <input id="inputdir" name="inputdir" placeholder="Dirección" class="form-control " required autofocus>
+                         
+                        <h5 class="form-text text-danger">
+                            <p id="m_invalido"></p>
+                        </h5>   
+
+                        <button id="Registrar" class="btn btn-lg btn-primary" type ="submit">Registrar</button>
+
+                    </div>   
 
                 </div>
 
-             </div> 
-            
-            </div> 
+            </form>    
 
-          </div>
+        </div>            
+
+    </div>
         
-        </form>
-    
-       
+          
 
     </body>
 

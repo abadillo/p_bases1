@@ -2,6 +2,12 @@
     background-color: rgb(166, 207, 253);
     width: 1500px;
     height: 900px;
+
+    position: relative;
+    margin: 0 auto; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 body{
     margin: 0;

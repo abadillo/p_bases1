@@ -245,7 +245,12 @@ def manejo_natural():
 
         #nota, si ambas claves son iguales solo retorna una 
 
-        resp.update(resp2)
+        if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+            
+        if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+
  
         return jsonify(resp)
         

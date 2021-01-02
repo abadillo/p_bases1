@@ -237,8 +237,14 @@ $(function(){
         $("#inputpapellido").removeAttr('disabled');
         $("#inputsapellido").removeAttr('disabled');
         $("#inputcont").removeAttr('disabled');
+        
+        $("#selectestado").removeAttr('disabled');
+        $("#selectmunicipio").removeAttr('disabled');
+        $("#selectparroquia").removeAttr('disabled');
         $("#inputdir").removeAttr('disabled');
         
+
+
         $("#Editar1").css("display","none"); 
         $("#Editar3").css("display","block"); 
        

@@ -1,7 +1,8 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: grey;
+  background: linear-gradient(to left, #1107d3,#3dd2fffd); 
+
 }
 
 form{
@@ -9,12 +10,15 @@ form{
   padding: 15px;
   margin: 0 auto;
   position: relative;
+  top:50px;
   height: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 16px;
   background-color: white;
+  border-radius: 5px 5px 5px 5px;
+  border: 2px black groove;
 }
 #logo{
   width: 300px;
@@ -24,4 +28,8 @@ form{
 }
 #Ucab{
   
+}
+.abajo{
+  position: relative;
+  top: 20px;
 }

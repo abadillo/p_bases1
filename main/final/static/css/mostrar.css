@@ -24,7 +24,10 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
+#posicion{
+    position:relative;
+    top: 40px;
+}
 #logo{
     height: 100px;
     width:50%;

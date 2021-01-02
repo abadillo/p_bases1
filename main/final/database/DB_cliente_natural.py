@@ -89,13 +89,15 @@ class DB_cliente_natural(DB):
             
             if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
             
+            for key in datamod.keys():
+                if (datamod[key] == '' or datamod[key] == ' '): datamod[key] = None
 
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
             query = 'UPDATE cliente_natural SET {0} WHERE cl_id = {1}'.format(values,id)
 
-            print(self.cursor.mogrify(query,datamod)) 
+            #print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             

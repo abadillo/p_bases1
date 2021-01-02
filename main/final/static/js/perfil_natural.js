@@ -179,6 +179,8 @@ $(document).ready(function() {
 
         id_parroquia = $(this).find('option:selected').val();
     });
+
+    $('#loading').hide();
     
 
 });
@@ -189,6 +191,8 @@ $(function(){
 
        $("#id_user").removeAttr('disabled');
 
+       $('#loading').show()
+
         $.ajax({
             
             url:   '/manejo_natural',
@@ -197,17 +201,23 @@ $(function(){
                 
             }).done(function(response){
                 
-                alerta(response[ (Object.keys(response)[0]) ] + "\n Esta ventana se reiniciara en 5 segundos");
-                setTimeout(function () {  
-                    /*console.log(response);*/
-                    window.reload();
-                }, 100);
+                $('#loading').hide()
 
+                if(response['error'])
+					alerta(response['error']);
+				
+				else if (response['invalido'])
+                    alerta(response['invalido']);
+				
+                else
+                    alerta(response['mensaje']);
                 
-                	
+                
+                window.location.href=window.location.href;
+             	
                 
             }).fail(function(response){
-                alerta(response);
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
         e.preventDefault();

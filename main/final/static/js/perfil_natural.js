@@ -86,12 +86,13 @@ $(document).ready(function() {
             if (response['error'])
 				alerta(response['error']);
             else 
-                datos = response[0]; 
+                datos = response; 
            
         }).fail(function(){
             c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
 
+    console.log(datos);
 
     $.ajax({
                 
@@ -186,23 +187,27 @@ $(document).ready(function() {
 $(function(){
     $('form').submit(function(e){
 
+       $("#id_user").removeAttr('disabled');
+
         $.ajax({
             
-            url:   '/perfil_natural',
+            url:   '/manejo_natural',
             data:  $('form').serialize(),
             type: 'PUT',
                 
             }).done(function(response){
                 
-                console.log(response);
+                alerta(response[ (Object.keys(response)[0]) ] + "\n Esta ventana se reiniciara en 5 segundos");
+                setTimeout(function () {  
+                    /*console.log(response);*/
+                    window.reload();
+                }, 100);
+
                 
-                /*if (response['mensaje'] == 'correo o contraseña invalida')
-                    $(error).replaceWith( '<p id="error">'+response['mensaje']+'</p>'   )
-                else
-                    window.location.href =  "/"		*/			
+                	
                 
             }).fail(function(response){
-                c_error();
+                alerta(response);
             });
 
         e.preventDefault();

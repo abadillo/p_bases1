@@ -5,7 +5,7 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
-from database.DB_lugar import DB_lugar
+
 
  
 
@@ -22,11 +22,13 @@ class DB_cliente_natural(DB):
             
             columnas = self.cursor.description
            
-            data = self.querydictdecimal(resp,columnas)
+            resp = self.querydictdecimal(resp,columnas)
 
-            for atributo in data[0]:
-                if (data[0][atributo] == None):
-                    data[0][atributo] = ''
+            data = resp[0]
+
+            for atributo in data:
+                if (data[atributo] == None):
+                    data[atributo] = ''
 
             return data 
 
@@ -45,42 +47,63 @@ class DB_cliente_natural(DB):
 
             data = self.querydictdecimal(resp,columnas)
 
-            for entidad in data:
-                for atributo in entidad:
-                    if type(entidad[atributo]) == decimal.Decimal:
-                        entidad[atributo] = int(entidad[atributo])
-
             return data 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
-      
-
+    
     def add (self, data):
         
         try:
 
-            resp = self.verifica_exist(data)
+            for key in data.keys():
+                if (data[key] == '' or data[key] == ' '): data[key] = None
+                     
+            keys = data.keys()
+            columns = ','.join(keys)
+            values = ','.join(['%({})s'.format(k) for k in keys])
 
-            if (resp != 0): return resp
-            else:
-               
-                keys = data.keys()
-                columns = ','.join(keys)
-                values = ','.join(['%({})s'.format(k) for k in keys])
-
-                
-                query = 'INSERT INTO cliente_natural ({0}) VALUES ({1})'.format(columns, values)
-                
-                print(self.cursor.mogrify(query, data)) 
-                self.cursor.execute(query,data)
-                self.connection.commit()
-               
-                return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
+            query = 'INSERT INTO cliente_natural ({0}) VALUES ({1})'.format(columns, values)
+            
+            #print(self.cursor.mogrify(query, data)) 
+            self.cursor.execute(query,data)
+            self.connection.commit()
+            
+            return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
 
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+    def update (self, id, data):
+
+        try:
+
+            datamod = dict(data)
+            dataol = self.get(id)
+            
+            for atributo in data:
+                if (data[atributo] == dataol[atributo]):
+                    datamod.pop(atributo)
+                    
+            
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
+            
+
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE cliente_natural SET {0} WHERE cl_id = {1}'.format(values,id)
+
+            print(self.cursor.mogrify(query,datamod)) 
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'Cliente modificado satisfactoriamente'}) 
+            
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
 
     def delete (self,id):
 

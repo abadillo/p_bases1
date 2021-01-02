@@ -50,7 +50,6 @@ class DB(metaclass=ABCMeta):
         return data_cv
 
 
-
     def get2 (self,item,item2):
         pass
 
@@ -66,7 +65,7 @@ class DB(metaclass=ABCMeta):
     def verifica_exist(self,data):
         pass
 
-    def verif_login(self,data):
+    def update (self, id, data):
         pass
 
     def delete (self,id):

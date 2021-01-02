@@ -12,6 +12,8 @@ from database.DB_tienda import DB_tienda
 
 
 
+
+
 app = Flask(__name__)
 app.debug = True
 
@@ -163,8 +165,11 @@ def manejo_natural():
 
     if request.method == 'POST': 
        
-        db = DB_lugar()   
+        db = DB_cliente_natural()
+        resp = db.verifica_exist(data)
+        if (resp != 0): return resp
 
+        
         direccion = {
             'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
@@ -172,30 +177,27 @@ def manejo_natural():
             'fk_lugar'      :   request.form['selectparroquia'],         
         }
 
-        id_direccion = db.add(direccion)
+        db2 = DB_lugar() 
+        id_direccion = db2.add(direccion)
+
+
 
         data = {
-            'cl_correo'     :    request.form['inputcorreo'],            #string    
-            'cl_cedula'     :int(request.form['inputcedula']),             #int 
-            'cl_rif'        :    request.form['inputrif'],               #int
-            
-            'cl_contrasena' :    request.form['inputcont'],         #string 
-            'cl_afiliacion' :    123,                                       #int
-            'cl_p_nombre'   :    request.form['inputpnombre'],             #string 
-            'cl_s_nombre'   :    request.form['inputsnombre'],               #string 
-            'cl_p_apellido' :    request.form['inputpapellido'],               #string 
-            'cl_s_apellido' :    request.form['inputsapellido'],                #string  
+            'cl_correo'     :    request.form['inputcorreo'], 
+            'cl_cedula'     :int(request.form['inputcedula']),   
+            'cl_rif'        :    request.form['inputrif'], 
+            'cl_contrasena' :    request.form['inputcont'],     
+            'cl_afiliacion' :    123,
+            'cl_p_nombre'   :    request.form['inputpnombre'],
+            'cl_s_nombre'   :    request.form['inputsnombre'],   
+            'cl_p_apellido' :    request.form['inputpapellido'], 
+            'cl_s_apellido' :    request.form['inputsapellido'], 
             'fk_lugar'      :    None,    
             'fk_tienda'     :    int(request.form['selecttienda']),
         }
 
         data['fk_lugar'] = id_direccion
 
-
-        for key in data.keys():
-            if (data[key] == '' or data[key] == ' '): data[key] = None
-
-        db = DB_cliente_natural()   
         resp = db.add(data)
 
 
@@ -214,14 +216,39 @@ def manejo_natural():
  
     if request.method == 'PUT':
         
-        id = int(request.get_data())
+        id = int(request.form['id_user'])
+
+        data = {
+            
+            'cl_contrasena' :    request.form['inputcont'],
+            'cl_p_nombre'   :    request.form['inputpnombre'], 
+            'cl_s_nombre'   :    request.form['inputsnombre'],  
+            'cl_p_apellido' :    request.form['inputpapellido'], 
+            'cl_s_apellido' :    request.form['inputsapellido'],
+        }
         
         db = DB_cliente_natural()
-    
-        datos_usuario = db.get(id) 
+        resp = db.update(id,data)
 
-        return jsonify(datos_usuario)
+        
+        id_direccion = (db.get(id))['fk_lugar']
 
+        direccion = {
+            'lu_nombre'     :   request.form['inputdir'],        
+        }
+
+        db = DB_lugar()
+        resp2 = db.update( id_direccion , direccion ) 
+
+
+        #resp3 =  DB_telefono().update() 
+
+        #nota, si ambas claves son iguales solo retorna una 
+
+        resp.update(resp2)
+ 
+        return jsonify(resp)
+        
     if request.method == 'DELETE':
 
         id = int(request.get_data())

@@ -7,8 +7,30 @@ from psycopg2 import sql
 import decimal
  
 
-
 class DB_lugar(DB):
+
+
+    def get (self,id):
+
+        try:
+
+            self.cursor.execute("SELECT * FROM lugar WHERE lu_codigo = %s", (id,) )
+            resp = self.cursor.fetchone()
+            
+            columnas = self.cursor.description
+            
+            resp = self.querydictdecimal(resp,columnas)
+
+            data = resp[0]
+
+            for atributo in data:
+                if (data[atributo] == None):
+                    data[atributo] = ''
+
+            return data 
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
     def getlastid (self):
 
@@ -114,6 +136,38 @@ class DB_lugar(DB):
 
         except Exception:
             return None
+
+
+    
+    def update (self, id, data):
+
+        try:
+
+            datamod = dict(data)
+            dataol = self.get(id)
+            
+            for atributo in data:
+                if (data[atributo] == dataol[atributo]):
+                    datamod.pop(atributo)
+
+         
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
+            
+
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE lugar SET {0} WHERE lu_codigo = {1}'.format(values,id)
+
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'Direccion modificada satisfactoriamente'}) 
+            
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
+
 
     def delete (self,id):
 

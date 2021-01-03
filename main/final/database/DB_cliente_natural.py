@@ -13,11 +13,13 @@ import decimal
 class DB_cliente_natural(DB):
 
 
-    def get (self,id):
+    def get (self,item):
 
         try:
 
-            self.cursor.execute("SELECT * FROM cliente_natural WHERE cl_id = %s", (id,) )
+            id = item
+            
+            self.cursor.execute("SELECT * FROM cliente WHERE cl_id = %s", (id,) )
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -40,7 +42,7 @@ class DB_cliente_natural(DB):
     
         try:
 
-            self.cursor.execute("SELECT * FROM cliente_natural")
+            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = 'NATURAL'")
             resp = self.cursor.fetchall()
 
             columnas = self.cursor.description
@@ -63,9 +65,9 @@ class DB_cliente_natural(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO cliente_natural ({0}) VALUES ({1})'.format(columns, values)
+            query = 'INSERT INTO cliente ({0}) VALUES ({1})'.format(columns, values)
             
-            #print(self.cursor.mogrify(query, data)) 
+            print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
             self.connection.commit()
             
@@ -95,9 +97,9 @@ class DB_cliente_natural(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE cliente_natural SET {0} WHERE cl_id = {1}'.format(values,id)
+            query = 'UPDATE cliente SET {0} WHERE cl_id = {1}'.format(values,id)
 
-            #print(self.cursor.mogrify(query,datamod)) 
+            print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
@@ -111,7 +113,7 @@ class DB_cliente_natural(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM cliente_natural WHERE cl_id = %s", (id,) )
+            self.cursor.execute("DELETE FROM cliente WHERE cl_id = %s", (id,) )
          
             self.connection.commit()
             
@@ -125,31 +127,36 @@ class DB_cliente_natural(DB):
     def verifica_exist(self,data):
 
         try:
+           
             
-            self.cursor.execute("SELECT %s FROM cliente_natural WHERE cl_correo = %s ;", ('cl_id',data['cl_correo'],))
+            self.cursor.execute("SELECT %s FROM cliente WHERE cl_correo = %s ;", ('cl_id',data['cl_correo'],))
                  
             obj = self.cursor.fetchone()  
 
             if obj is not None:    
-                return jsonify({'invalido':'correo ya registrado'})              
+                return jsonify({'invalido':'correo ya registrado'})  
+
+                      
 
         
-            self.cursor.execute("SELECT %s FROM cliente_natural WHERE cl_cedula = %s ;", ('cl_id',data['cl_cedula'],))
+            self.cursor.execute("SELECT %s FROM cliente WHERE cl_cedula = %s ;", ('cl_id',data['cl_cedula'],))
                     
             obj = self.cursor.fetchone()  
 
             if obj is not None:    
                 return jsonify({'invalido':'cedula ya registrada'})  
 
-            if data['cl_rif'] != None: 
-                return 0
+             
 
-            self.cursor.execute("SELECT %s FROM cliente_natural WHERE cl_rif = %s ;", ('cl_id',data['cl_rif'],))
+
+            self.cursor.execute("SELECT %s FROM cliente WHERE cl_rifn = %s ;", ('cl_id',data['cl_rifn'],))
                     
             obj = self.cursor.fetchone()  
 
             if obj is not None:    
                 return jsonify({'invalido':'el rif ya esta registrado'})  
+
+           
 
             return 0
 
@@ -161,7 +168,7 @@ class DB_cliente_natural(DB):
         
         try:
             
-            self.cursor.execute("SELECT * FROM cliente_natural  WHERE cl_correo = %s ;", (data['cl_correo'],))        
+            self.cursor.execute("SELECT * FROM cliente  WHERE cl_correo = %s ;", (data['cl_correo'],))        
 
             obj = self.cursor.fetchone()  
 

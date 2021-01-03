@@ -14,7 +14,7 @@ class DB_cliente_juridico(DB):
     
         try:
 
-            self.cursor.execute("SELECT * FROM cliente_juridico")
+            self.cursor.execute("SELECT * FROM cliente_juridico WHERE cl_tipo = 'NATURAL")
             resp = self.cursor.fetchall()
 
             self.connection.commit()

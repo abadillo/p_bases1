@@ -53,7 +53,7 @@ class DB(metaclass=ABCMeta):
     def get2 (self,item,item2):
         pass
 
-    def get (self,id):
+    def get (self,item):
         pass
 
     def getall (self):

@@ -159,6 +159,8 @@ class DB_lugar(DB):
     
             query = 'UPDATE lugar SET {0} WHERE lu_codigo = {1}'.format(values,id)
 
+            print(self.cursor.mogrify(query, data))
+
             self.cursor.execute(query,datamod)
             self.connection.commit()
             

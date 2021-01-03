@@ -220,7 +220,7 @@ $(function(){
       
         $("#id_user").removeAttr('disabled');
 
-       $('#loading').show()
+        $('#loading').show()
 
         $.ajax({
             
@@ -248,8 +248,6 @@ $(function(){
             }).fail(function(response){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
-
-       
 
         
     });

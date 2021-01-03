@@ -9,7 +9,7 @@ from database.DB_cliente_natural import DB_cliente_natural
 from database.DB_lugar import DB_lugar
 from database.DB_telefono import DB_telefono
 from database.DB_tienda import DB_tienda
-
+from database.DB_metodo_pago import DB_metodo_pago
 
 
 
@@ -63,8 +63,8 @@ def registro(entidad):
     
 
 
-@app.route('/<entidad>/<id>',methods=['GET']) ## Ver perfiles
-def ver_perfil(entidad,id):
+@app.route('/perfil/<id>',methods=['GET']) ## Ver perfiles
+def ver_perfil(id):
 
     return render_template("perfil_"+entidad+".html")
     
@@ -104,6 +104,19 @@ def mostrar(obj):
             return jsonify(resp)
 
 
+    if obj == 'metodos_pago':
+    
+        if request.method == 'GET':
+            
+            return render_template("metodos_pago.html")
+
+        if request.method == 'POST':
+            fk_cliente = request.form['fk_cliente']
+
+            db = DB_metodo_pago()         
+            resp = db.getall2(fk_cliente)
+
+            return jsonify(resp)    
 
 
 
@@ -168,7 +181,7 @@ def manejo_natural():
         data = {
             'cl_correo'     :    request.form['inputcorreo'], 
             'cl_cedula'     :int(request.form['inputcedula']),   
-            'cl_rif'        :    request.form['inputrif'], 
+            'cl_rifn'        :   request.form['inputrif'], 
             'cl_contrasena' :    request.form['inputcont'],     
             'cl_afiliacion' :    123,
             'cl_p_nombre'   :    request.form['inputpnombre'],
@@ -177,7 +190,9 @@ def manejo_natural():
             'cl_s_apellido' :    request.form['inputsapellido'], 
             'fk_lugar'      :    None,    
             'fk_tienda'     :    int(request.form['selecttienda']),
+            'cl_tipo'       :    'NATURAL',
         }
+        
 
         db = DB_cliente_natural()
         resp = db.verifica_exist(data)
@@ -208,7 +223,7 @@ def manejo_natural():
         telefono = {
             'te_tipo'            :   request.form['tipotlf'],        
             'te_numero'          :   int(request.form['inputtelefono']),             
-            'fk_cliente_natural' :   None,         
+            'fk_cliente' :   None,         
         }
 
         db.add(telefono) 
@@ -266,6 +281,128 @@ def manejo_natural():
         resp = db.delete(id)
 
         return resp
+
+
+
+@app.route('/metodo_pago', methods= ['GET', 'POST','PUT','DELETE'])
+def metodo_pago():
+
+    if request.method == 'GET':
+     
+        id = request.args['id']
+        
+        db = DB_medios_pago()
+        data = db.get(id) 
+
+        return jsonify(data)
+
+    if request.method == 'POST': 
+       
+        data = {
+            'cl_correo'     :    request.form['inputcorreo'], 
+            'cl_cedula'     :int(request.form['inputcedula']),   
+            'cl_rifn'        :   request.form['inputrif'], 
+            'cl_contrasena' :    request.form['inputcont'],     
+            'cl_afiliacion' :    123,
+            'cl_p_nombre'   :    request.form['inputpnombre'],
+            'cl_s_nombre'   :    request.form['inputsnombre'],   
+            'cl_p_apellido' :    request.form['inputpapellido'], 
+            'cl_s_apellido' :    request.form['inputsapellido'], 
+            'fk_lugar'      :    None,    
+            'fk_tienda'     :    int(request.form['selecttienda']),
+            'cl_tipo'       :    'NATURAL',
+        }
+        
+
+        db = DB_cliente_natural()
+        resp = db.verifica_exist(data)
+        if (resp != 0): return resp
+
+        
+        direccion = {
+            'lu_codigo'     :   None,
+            'lu_nombre'     :   request.form['inputdir'],        
+            'lu_tipo'       :   'DIRECCION',             
+            'fk_lugar'      :   request.form['selectparroquia'],         
+        }
+
+        db2 = DB_lugar() 
+        id_direccion = db2.add(direccion)
+
+
+
+        
+
+        data['fk_lugar'] = id_direccion
+
+        resp = db.add(data)
+
+
+        db = DB_telefono()   
+
+        telefono = {
+            'te_tipo'            :   request.form['tipotlf'],        
+            'te_numero'          :   int(request.form['inputtelefono']),             
+            'fk_cliente' :   None,         
+        }
+
+        db.add(telefono) 
+
+
+        return resp
+ 
+    if request.method == 'PUT':
+        
+        id = int(request.form['id_user'])
+
+        data = {
+            
+            'cl_contrasena' :    request.form['inputcont'],
+            'cl_p_nombre'   :    request.form['inputpnombre'], 
+            'cl_s_nombre'   :    request.form['inputsnombre'],  
+            'cl_p_apellido' :    request.form['inputpapellido'], 
+            'cl_s_apellido' :    request.form['inputsapellido'],
+        }
+        
+        db = DB_cliente_natural()
+        resp = db.update(id,data)
+
+        
+        id_direccion = (db.get(id))['fk_lugar']
+
+        direccion = {
+            'lu_nombre'     :   request.form['inputdir'],   
+            'fk_lugar'      :   int(request.form['selectparroquia']),     
+        }
+        
+        db = DB_lugar()
+        resp2 = db.update( id_direccion , direccion ) 
+
+
+        #resp3 =  DB_telefono().update() 
+
+        #nota, si ambas claves son iguales solo retorna una 
+
+        if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+            
+        if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+
+ 
+        return jsonify(resp)
+        
+    if request.method == 'DELETE':
+
+        id = int(request.get_data())
+
+        db = DB_cliente_natural()   
+
+        resp = db.delete(id)
+
+        return resp
+
+
 
 
 

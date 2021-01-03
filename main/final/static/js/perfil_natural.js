@@ -154,9 +154,7 @@ $(document).ready(function() {
 
     lugares('ESTADO','',idv_estado);
     lugares('MUNICIPIO',idv_estado,idv_municipio);
-    lugares('PARROQUIA',idv_municipio,idv_parroquia);
-
-    
+    lugares('PARROQUIA',idv_municipio,idv_parroquia);  
 
 
     
@@ -185,11 +183,42 @@ $(document).ready(function() {
 
 });
 
+$(function(){
+    $("#Modificar").click(function(){
+        
+        $("#inputtelefono").removeAttr('disabled');
+        $("#inputtelefono2").removeAttr('disabled');
+        $("#inputtelefono3").removeAttr('disabled');
+        $("#inputpnombre").removeAttr('disabled');
+        $("#inputsnombre").removeAttr('disabled');
+        $("#inputpapellido").removeAttr('disabled');
+        $("#inputsapellido").removeAttr('disabled');
+        $("#inputcont").removeAttr('disabled');
+        $("#selectestado").removeAttr('disabled');
+        $("#selectmunicipio").removeAttr('disabled');
+        $("#selectparroquia").removeAttr('disabled');
+        $("#inputdir").removeAttr('disabled');
+        
+        $("#Modificar").css("display","none"); 
+        $("#Cancelar").css("display","block"); 
+       
+
+        $("#Carnet").css("display","none"); 
+        $("#Confirmar").css("display","block"); 
+       
+    });
+});
 
 $(function(){
-    $('form').submit(function(e){
+    $("#Cancelar").click(function(){
+        window.location.href=window.location.href;
+    });
+});
 
-       $("#id_user").removeAttr('disabled');
+$(function(){
+    $("#Confirmar").click(function(){
+      
+        $("#id_user").removeAttr('disabled');
 
        $('#loading').show()
 
@@ -220,40 +249,14 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
-        e.preventDefault();
-    
-    });
-});
-
-
-$(function(){
-    $("#Editar1").click(function(){
-        
-        $("#inputtelefono").removeAttr('disabled');
-        $("#inputtelefono2").removeAttr('disabled');
-        $("#inputtelefono3").removeAttr('disabled');
-        $("#inputpnombre").removeAttr('disabled');
-        $("#inputsnombre").removeAttr('disabled');
-        $("#inputpapellido").removeAttr('disabled');
-        $("#inputsapellido").removeAttr('disabled');
-        $("#inputcont").removeAttr('disabled');
-        
-        $("#selectestado").removeAttr('disabled');
-        $("#selectmunicipio").removeAttr('disabled');
-        $("#selectparroquia").removeAttr('disabled');
-        $("#inputdir").removeAttr('disabled');
-        
-
-
-        $("#Editar1").css("display","none"); 
-        $("#Editar3").css("display","block"); 
        
 
-        $("#Editar2").css("display","none"); 
-        $("#Editar4").css("display","block"); 
-       
+        
     });
 });
+       
+        
+
    
 
 

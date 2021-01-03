@@ -256,7 +256,7 @@ $(function(){
 });
 
 $(function(){
-    $("#Editar1").click(function(){
+    $("#Modificar").click(function(){
         alert("funciona");
 
     });

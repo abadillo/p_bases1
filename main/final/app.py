@@ -237,7 +237,7 @@ def manejo_natural():
 
         direccion = {
             'lu_nombre'     :   request.form['inputdir'],   
-            'fk_lugar'      :   request.form['selectparroquia'],     
+            'fk_lugar'      :   int(request.form['selectparroquia']),     
         }
         
         db = DB_lugar()

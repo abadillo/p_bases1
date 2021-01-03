@@ -63,12 +63,12 @@ def registro(entidad):
     
 
 
-@app.route('/perfil/<id>',methods=['GET']) ## Ver perfiles
-def ver_perfil(id):
-
+@app.route('/<entidad>/<id>',methods=['GET']) ## Ver perfiles
+def ver_perfil(entidad,id):
+     
     return render_template("perfil_"+entidad+".html")
-    
-   
+
+
 
 
 
@@ -102,23 +102,7 @@ def mostrar(obj):
             resp = db.getall()
 
             return jsonify(resp)
-
-
-    if obj == 'metodos_pago':
     
-        if request.method == 'GET':
-            
-            return render_template("metodos_pago.html")
-
-        if request.method == 'POST':
-            fk_cliente = request.form['fk_cliente']
-
-            db = DB_metodo_pago()         
-            resp = db.getall2(fk_cliente)
-
-            return jsonify(resp)    
-
-
 
 ########   REST   ###########
 
@@ -285,7 +269,7 @@ def manejo_natural():
 
 
 @app.route('/metodo_pago', methods= ['GET', 'POST','PUT','DELETE'])
-def metodo_pago():
+def manejo_metodo_pago():
 
     if request.method == 'GET':
      
@@ -410,7 +394,7 @@ def metodo_pago():
 #### lugares #####
 
 
-@app.route('/lugares',methods=['POST','GET'])     #datatable falta update
+@app.route('/lugares',methods=['POST','GET'])  
 def lugares():
     
     if request.method == 'GET':
@@ -435,7 +419,20 @@ def lugares():
 
 
 
-   
+@app.route('/metodos_pago/<id>',methods=['POST','GET'])  
+def metodos_pago(id):
+    
+    if request.method == 'GET':
+
+        fk_cliente = id
+
+        db = DB_metodo_pago()         
+        resp = db.getall2(fk_cliente)
+
+        return jsonify(resp)       
+
+        
+
 
 
 if (__name__ == '__main__'):    

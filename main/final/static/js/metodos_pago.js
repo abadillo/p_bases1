@@ -1,6 +1,3 @@
-function c_error(mensaje){
-    $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
-};
 
 function alerta(mensaje){
     alert(mensaje);
@@ -10,7 +7,7 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
-    var fk_cliente = 1;
+    var id = (window.location.pathname.split('/'))[2];
 
     $('#tabla_datatable').DataTable({
         
@@ -19,12 +16,9 @@ $(document).ready(function() {
         scrollX: true,
 
         ajax: {
-            url:   '/mostrar/metodos_pago',
-            type: 'POST',
-            data: {
-                'fk_cliente': fk_cliente,
-            },
-            async: false, 
+            url:   '/metodos_pago/'+id,
+            type: 'GET',
+            dataSrc: ""
         },
 
         columns: [
@@ -54,11 +48,9 @@ $(document).ready(function() {
 
         if (sel){
           
-            var id = sel['cl_id'];
-
             $.ajax({
                 
-                url:   '/manejo_natural',
+                url:   '/metodo_pago',
                 data:  id.toString(),
                 type: 'DELETE',
                     
@@ -68,7 +60,7 @@ $(document).ready(function() {
                     table.row('.selected').remove().draw( false );
                     
                 }).fail(function(response){
-                    c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+                    alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
                 });
 
         }
@@ -78,7 +70,7 @@ $(document).ready(function() {
 
     $('#boton_añadir').click( function () {
         
-        window.location.href =  "/registro/natural"		
+        window.location.href =  "/registro/metodo_pago"		
 
     } );
 
@@ -86,14 +78,15 @@ $(document).ready(function() {
         
         var sel = table.row('.selected').data();
 
-        if (sel){
+        /*if (sel){
 
             var id = sel['cl_id'];
-            window.location.href =  '/natural/'+id;	
+            window.location.href =  '/metodo_pago/'+id;	
 
         }
 
         else alert('Debe seleccionar algo');
+        */
     });
 
 });

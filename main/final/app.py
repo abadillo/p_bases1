@@ -165,6 +165,20 @@ def manejo_natural():
 
     if request.method == 'POST': 
        
+        data = {
+            'cl_correo'     :    request.form['inputcorreo'], 
+            'cl_cedula'     :int(request.form['inputcedula']),   
+            'cl_rif'        :    request.form['inputrif'], 
+            'cl_contrasena' :    request.form['inputcont'],     
+            'cl_afiliacion' :    123,
+            'cl_p_nombre'   :    request.form['inputpnombre'],
+            'cl_s_nombre'   :    request.form['inputsnombre'],   
+            'cl_p_apellido' :    request.form['inputpapellido'], 
+            'cl_s_apellido' :    request.form['inputsapellido'], 
+            'fk_lugar'      :    None,    
+            'fk_tienda'     :    int(request.form['selecttienda']),
+        }
+
         db = DB_cliente_natural()
         resp = db.verifica_exist(data)
         if (resp != 0): return resp
@@ -182,19 +196,7 @@ def manejo_natural():
 
 
 
-        data = {
-            'cl_correo'     :    request.form['inputcorreo'], 
-            'cl_cedula'     :int(request.form['inputcedula']),   
-            'cl_rif'        :    request.form['inputrif'], 
-            'cl_contrasena' :    request.form['inputcont'],     
-            'cl_afiliacion' :    123,
-            'cl_p_nombre'   :    request.form['inputpnombre'],
-            'cl_s_nombre'   :    request.form['inputsnombre'],   
-            'cl_p_apellido' :    request.form['inputpapellido'], 
-            'cl_s_apellido' :    request.form['inputsapellido'], 
-            'fk_lugar'      :    None,    
-            'fk_tienda'     :    int(request.form['selecttienda']),
-        }
+        
 
         data['fk_lugar'] = id_direccion
 

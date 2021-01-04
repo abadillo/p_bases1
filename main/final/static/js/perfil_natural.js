@@ -46,7 +46,7 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
             
         }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
                 datos = response; 
            
         }).fail(function(){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
 
     console.log(datos);
@@ -110,7 +110,7 @@ $(document).ready(function() {
             }     
                       
         }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
 
 
@@ -178,7 +178,23 @@ $(document).ready(function() {
         id_parroquia = $(this).find('option:selected').val();
     });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('#loading').hide();
+
+    
     
 
 });

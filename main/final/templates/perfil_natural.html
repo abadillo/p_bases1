@@ -5,12 +5,26 @@
         <title>UCABMART</title>
         
         <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
         
         <link href="../static/css/perfil_natural.css" rel="stylesheet" type="text/css" >
 
+        <link href="../static/css/mostrar_embedded.css" rel="stylesheet" type="text/css" >
+
+
+
+
         <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>   
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+        <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+
         
         <script src="../static/js/perfil_natural.js"></script>
+
+        <script src="../static/js/metodos_pago.js"></script>
+
        
         <meta charset="utf-8">
 
@@ -140,7 +154,7 @@
         
                                 <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" disabled autofocus>
                             
-                            </div>
+                                </div>
 
                                 <div id="rif">    <h4 > Rif </h4>  
 
@@ -180,20 +194,55 @@
                     
                                     </div> 
                     
-                                <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" disabled autofocus> 
+                                    <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" disabled autofocus> 
 
+                            
                                 </div>    
                             
 
-                            </div>
+
+
+                                <div id="tabla3">
+                
+                                    <h3 class="text-center">metodos_pago</h3>
+                                    
+                                    <table id="tabla_datatable" class="display nowrap" >   </table>
+                                            
+                                    <div class="btn-group btn-block">
+                                    
+                                            <button id="boton_añadir" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
+                                            <!-- 
+                                            <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button> -->
+        
+        
+                                            <button id="boton_eliminar" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+                    
+                                    </div>
+                    
+                                </div>
+
+
+
+
+                                </div>
 
                             </div>
 
-                        </div>    
+                        </div>  
+                        
+
+
+                      
 
                     </div> 
                     
                 </form>
+
+
+                
+
+
+
 
                 </div>
 

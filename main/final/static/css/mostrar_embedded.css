@@ -1,0 +1,26 @@
+
+
+#posicion{
+    position:relative;
+    top: 40px;
+}
+
+
+#margen{
+    margin-left: 80px;
+    margin-top: 50px;  
+    width: 1100px ; 
+
+}
+
+.customb{
+    margin-top: 8px;
+    height: 48px;
+}
+
+#tabla_datatable{
+    
+    width: 700px;
+    margin: 0 auto;
+
+}

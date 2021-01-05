@@ -10,7 +10,7 @@ from database.DB_lugar import DB_lugar
 from database.DB_telefono import DB_telefono
 from database.DB_tienda import DB_tienda
 from database.DB_metodo_pago import DB_metodo_pago
-
+from database.DB_generic import DB_generic
 
 
 
@@ -165,7 +165,7 @@ def manejo_natural():
         data = {
             'cl_correo'     :    request.form['inputcorreo'], 
             'cl_cedula'     :int(request.form['inputcedula']),   
-            'cl_rifn'        :   request.form['inputrif'], 
+            'cl_rif'        :   request.form['inputrif'], 
             'cl_contrasena' :    request.form['inputcont'],     
             'cl_afiliacion' :    123,
             'cl_p_nombre'   :    request.form['inputpnombre'],
@@ -278,61 +278,22 @@ def manejo_metodo_pago():
         db = DB_medios_pago()
         data = db.get(id) 
 
+        data.append()
+
         return jsonify(data)
 
     if request.method == 'POST': 
        
         data = {
-            'cl_correo'     :    request.form['inputcorreo'], 
-            'cl_cedula'     :int(request.form['inputcedula']),   
-            'cl_rifn'        :   request.form['inputrif'], 
-            'cl_contrasena' :    request.form['inputcont'],     
-            'cl_afiliacion' :    123,
-            'cl_p_nombre'   :    request.form['inputpnombre'],
-            'cl_s_nombre'   :    request.form['inputsnombre'],   
-            'cl_p_apellido' :    request.form['inputpapellido'], 
-            'cl_s_apellido' :    request.form['inputsapellido'], 
-            'fk_lugar'      :    None,    
-            'fk_tienda'     :    int(request.form['selecttienda']),
-            'cl_tipo'       :    'NATURAL',
+            'mc_documento'   :  request.form['mc_documento'],
+            'fk_cliente'     :  int(request.form['fk_cliente']),
+            'fk_tipo_pago'   :  int(request.form['fk_tipo_pago']),
         }
         
 
-        db = DB_cliente_natural()
-        resp = db.verifica_exist(data)
-        if (resp != 0): return resp
-
-        
-        direccion = {
-            'lu_codigo'     :   None,
-            'lu_nombre'     :   request.form['inputdir'],        
-            'lu_tipo'       :   'DIRECCION',             
-            'fk_lugar'      :   request.form['selectparroquia'],         
-        }
-
-        db2 = DB_lugar() 
-        id_direccion = db2.add(direccion)
-
-
-
-        
-
-        data['fk_lugar'] = id_direccion
-
+        db = DB_metodo_pago()
         resp = db.add(data)
-
-
-        db = DB_telefono()   
-
-        telefono = {
-            'te_tipo'            :   request.form['tipotlf'],        
-            'te_numero'          :   int(request.form['inputtelefono']),             
-            'fk_cliente' :   None,         
-        }
-
-        db.add(telefono) 
-
-
+        
         return resp
  
     if request.method == 'PUT':
@@ -378,11 +339,14 @@ def manejo_metodo_pago():
         
     if request.method == 'DELETE':
 
-        id = int(request.get_data())
+        doc = request.form['mc_documento']
+        fk_tipo = int(request.form['fk_tipo_pago'])
+        fk_cliente = int(request.form['fk_cliente'])
 
-        db = DB_cliente_natural()   
+        
+        db = DB_metodo_pago()   
 
-        resp = db.delete(id)
+        resp = db.delete2(doc,fk_tipo,fk_cliente)
 
         return resp
 
@@ -428,8 +392,18 @@ def metodos_pago(id):
 
         db = DB_metodo_pago()         
         resp = db.getall2(fk_cliente)
+        print(resp)
 
-        return jsonify(resp)       
+        return jsonify(resp)
+
+    if request.method == 'POST':
+
+        db = DB_generic()
+        resp = db.getall2("tipo_pago")
+
+        return jsonify(resp)
+
+           
 
         
 

@@ -44,11 +44,6 @@ class DB_lugar(DB):
 
             data = self.querydictdecimal(resp,columnas)
 
-            for entidad in data:
-                for atributo in entidad:
-                    if type(entidad[atributo]) == decimal.Decimal:
-                        entidad[atributo] = int(entidad[atributo])
-
             return data 
 
         except Exception:

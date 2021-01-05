@@ -10,25 +10,27 @@ import decimal
  
 
 
-class DB_metodo_pago(DB):
+class DB_generic(DB):
 
-
-    def getall2 (self,fk_cliente):  
+    def getall2 (self,tabla):  
     
         try:
+           
+            query = 'SELECT * FROM {0}'.format(tabla)
 
-            self.cursor.execute("SELECT * FROM metodo_pago WHERE fk_cliente = %s", (fk_cliente,) )
+            #print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
+        
             resp = self.cursor.fetchall()
-
             columnas = self.cursor.description
-
+            
             data = self.querydictdecimal(resp,columnas)
 
             return data 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
-    
+      
 
     def add (self, data):
         
@@ -53,14 +55,15 @@ class DB_metodo_pago(DB):
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-
-    def delete2 (self,doc,fk_tipo,fk_cliente):
+  
 
         try:
 
-            self.cursor.execute("DELETE FROM metodo_pago WHERE mc_documento = %s AND fk_tipo_pago = %s AND fk_cliente = %s", (doc,fk_tipo,fk_cliente,) )
+            
+            self.cursor.execute("DELETE FROM metodo_pago WHERE cl_id = %s", (id,) )
          
             self.connection.commit()
+            
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 

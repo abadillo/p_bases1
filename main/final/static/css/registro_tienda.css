@@ -104,9 +104,25 @@ h2{
     position: relative;
     top: -100px;
 }
+#Correo{
+    width:490px;
+    position:relative;
+    top:-70px;
+}
+#Generarc{
+    position: relative;
+    top: -70px;
+    right: -348px;
+}
+.text-danger{
+position: relative;
+top:-70px;
+right: 0px;
+
+}
 #Registrar{
     position: relative;
-    top: -80px;
+    top: -100px;
     right: -376px;
     
 }

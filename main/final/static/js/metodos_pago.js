@@ -11,9 +11,11 @@ $(document).ready(function() {
 
     $('#tabla_datatable').DataTable({
         
-        scrollY:        '50vh',
-        scrollCollapse: true,
-        scrollX: true,
+        info: false,
+        paging: false,
+        scrollX: false,
+        bFilter: false,
+
 
         ajax: {
             url:   '/metodos_pago/'+id,
@@ -22,9 +24,8 @@ $(document).ready(function() {
         },
 
         columns: [
-            { data: "mc_documento" ,         title: "DOC"},
-            { data: "fk_tipo_pago" ,        title: "TIPO"},
-             
+            { data: "mc_documento" ,   title: "DOCUMENTO"},
+            { data: "fk_tipo_pago" ,   title: "TIPO DE PAGO"},
         ]
         
     });
@@ -41,6 +42,11 @@ $(document).ready(function() {
             $(this).addClass('selected');
         }
     } );
+
+
+    
+
+
  
     $('#boton_eliminar').click( function () {
         
@@ -51,7 +57,7 @@ $(document).ready(function() {
             $.ajax({
                 
                 url:   '/metodo_pago',
-                data:  id.toString(),
+                data:  sel,
                 type: 'DELETE',
                     
                 }).done(function(response){
@@ -68,26 +74,101 @@ $(document).ready(function() {
             
     });
 
+
     $('#boton_añadir').click( function () {
         
-        window.location.href =  "/registro/metodo_pago"		
+        $('#boton_añadir').hide();
+        $('#boton_eliminar').hide();
+
+        $('#tipo').show();
+        $('#inputdocmt').show();
+        $('#boton_añadir2').show();
 
     } );
 
-    $('#boton_modificar').click( function () {
+
+    
+
+
+    $('#tipo').hide();
+    $('#inputdocmt').hide();
+    $('#boton_añadir2').hide();
+
+
+
+    $.ajax({
+                
+        url:  '/metodos_pago/'+1,
+        type: 'POST',
+        dataSrc: "",
+        async: false, 
+            
+        }).done(function(resp){
         
-        var sel = table.row('.selected').data();
+            console.log(resp);         
 
-        /*if (sel){
+            var opciones = [];
 
-            var id = sel['cl_id'];
-            window.location.href =  '/metodo_pago/'+id;	
+            opciones.push('<option value="0" selected disabled>TIPO DE PAGO</option>');
 
-        }
-
-        else alert('Debe seleccionar algo');
-        */
+            for (var i=0, l=resp.length; i<l; i++){
+                opciones.push('<option selected value="'+resp[i].tp_codigo+'">'+resp[i].tp_descripcion+'<opciones>');
+            }
+            
+            $('#selecttipo').html(opciones.join(''));
+           
+            
+        }).fail(function(resp){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
+
+
+
+
+
+    
+
+    $('#boton_añadir2').click( function () {
+    
+        var mc_documento = $("#inputdocmt").val();
+        var fk_cliente = (window.location.pathname.split('/'))[2];
+        var fk_tipo_pago =  $("#selecttipo").find('option:selected').val();
+
+        $.ajax({
+            
+            url:   '/metodo_pago',
+            data: {
+                'mc_documento' : mc_documento ,
+                'fk_cliente'   : fk_cliente,
+                'fk_tipo_pago' : fk_tipo_pago,
+	
+            },
+            type: 'POST',
+                
+            }).done(function(response){
+                            
+                if(response['error'])
+                    alerta(response['error']);
+                
+                else if (response['invalido'])
+                    alerta(response['invalido']);
+                
+                else
+                    window.location.href = window.location.href;
+                                
+                
+            }).fail(function(response){
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            });
+            
+
+    });
+
+    
+
+
+
+
 
 });
 

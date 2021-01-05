@@ -149,7 +149,7 @@ class DB_cliente_natural(DB):
              
 
 
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_rifn = %s ;", ('cl_id',data['cl_rifn'],))
+            self.cursor.execute("SELECT %s FROM cliente WHERE cl_rif = %s ;", ('cl_id',data['cl_rif'],))
                     
             obj = self.cursor.fetchone()  
 

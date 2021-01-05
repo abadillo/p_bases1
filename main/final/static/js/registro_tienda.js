@@ -156,4 +156,15 @@ $(function(){
     });
 });
 
+$(function(){
+    $('#Generarc').click(function(){
+        var tienda=$('#inputtienda').val()
+        if (tienda =='') {
+            alert("No agrego un nombre en Tienda");
+        }
+
+
+    });
+});
+
    

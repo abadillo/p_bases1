@@ -281,4 +281,16 @@ h2{
     border: 2px black groove;
     border-radius: 3px 3px 3px 3px;
     padding: 50px;
+    padding-bottom: 40px;
+}
+.tamaño{
+    width: 320px;
+    position: relative;
+    top: 50px;
+}
+#Ndocumento{
+    position: relative;
+    right: -258px;
+    top:-4px;
+
 }

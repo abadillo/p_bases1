@@ -65,13 +65,15 @@ class DB_cliente_natural(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO cliente ({0}) VALUES ({1})'.format(columns, values)
+            query = 'INSERT INTO cliente ({0}) VALUES ({1}) RETURNING cl_id'.format(columns, values)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
             self.connection.commit()
             
-            return jsonify({'mensaje':'Cliente creado satisfactoriamente'}) 
+            id_creado = self.cursor.fetchone()[0]
+
+            return id_creado
 
         except Exception:
             print(Exception)

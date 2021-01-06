@@ -1,7 +1,9 @@
 #fondo1{
-    background-color: rgb(166, 207, 253);
-    width: 1500px;
-    height: 900px;
+    background-color:rgba(245, 244, 244, 0.967);
+    width: 1070px;    
+    height: 800px;
+    border-radius: 5px 5px 5px 5px;
+    border: 0px #80808000 solid;
 
     position: relative;
     margin: 0 auto; 
@@ -10,16 +12,22 @@
     box-sizing: border-box;
 }
 body{
-    margin: 0;
-    padding: 0;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: linear-gradient(to left, #1107d3,#3dd2fffd);  
+    position: relative;
+    height: 1100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    
     
 }
 #logo{
     height: 100px;
-    width: 100px;
+    width:50%;
     position: relative;
-    right: -590px;
-    top:10px
+    right: -270px;
+    top:10px;
 
 }
 .linea{
@@ -27,28 +35,51 @@ body{
     top:20px;
     background-color:black;
     height: 4px;
-    width: 1500px;
+    width: 1070px;
 
 }
 #fondo2{
-    background-color: rgb(201, 169, 169);
-    width: 1500px;
-    height: 900px;
+    background: linear-gradient(#f8176d, #eb7b7b); 
+    width: 1070px;
+    height: 850px;
     position: relative;
     top: 20px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px rgba(128, 128, 128, 0) solid;
 }
 #fondo3{
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
     height: 800px;
-    width:1216px;
+    width:1016px;
     border-radius: 5px 5px 5px 5px;
-    border: 3px grey solid;
+    border: 3px grey solid;   
 }
+#fondo4{ 
+    display:none;       
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    height: 800px;
+    width:1016px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px grey solid;   
+}
+#fondo5{
+    display:none;       
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    height: 800px;
+    width:1016px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px grey solid; 
+}
+
 #espacio{
     height: 4px;
-    width: 1500px;
+    width: 1060px;
 }
 #registro{
     position: relative;
@@ -65,17 +96,19 @@ body{
 
 #perfil-juri{
     position: relative;
-    right: -250px;
+    right: -400px;
+    top: -20px;
 }
 
 #circulo-margen{
    margin-right: 100px;
 
 }
-#margen{
-    margin-left: 200px;
-    margin-top: 50px;
-    padding: auto;
+#margen{    
+        margin-left: 100px;
+        margin-top: 50px;   
+    
+    
 }
 #inputrif{
     width: 200px;
@@ -105,7 +138,7 @@ body{
     width: 826px;
     position: relative;
     right: -80px;
-    top: -20px;
+    top: -10px;
 }
 option{
     height: 10px;
@@ -113,146 +146,129 @@ option{
 
 }
 #inputcorreo{
-    width: 400px;
+    width: 620px;
     position: relative;
     right: -80px;
-    top:-10px;
+    top:10px;
 }
 #inputcont{
     width: 200px;
     position: relative;
     right: -80px;
-    top:10px;
+    top:40px;
 }
 #inputcontval{
     width:200px;
     position: relative;
-    right:-80px;
-    top:30px;
+    right:-500px;
+    top:2px;
  }
 #Continuar{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:140px;
-    right:-700px;
+    top:80px;
+    right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
 #Continuar:hover{
     box-shadow: 2px 2px 5px #999;
 }
-
-#fondo4{ 
-    display:none;       
-    margin-top: 20px;
-    margin-left: 20px;
-    background-color: white;
-    height: 800px;
-    width:1216px;
-    border-radius: 5px 5px 5px 5px;
-    border: 3px grey solid;   
-}
-
-#margen2{
-    margin-left: 200px;
-    margin-top: 50px;
-    padding: auto;
-}
 #inputtelefono2{
     width: 200px;
     position: relative;
-    right: -100px;
+    right: -105px;
     top:39px
 }
 #tipotlf2{
     position: relative;
     top: 19px;
-    right: -100px;
+    right: -102px;
     width: 100px;
 }
-
 #inputtelefono3{
     width: 200px;
     position: relative;
-    right: -580px;
-    top:-55px
+    right: -460px;
+    top: -55px;
 }
 #tipotlf3{
     position: relative;
     top: -28px;
-    right: -340px;
+    right: -280px;
     width: 100px;
 }
+
 #inputpagina{
-    width: 400px;
+    width: 360px;
     position: relative;
-    top: -50px;
-    right: -100px;
+    right: -105px;
+    top:-35px;
 }
 #Combo-boxes{
     position: relative;
     right: -100px;
-    top:-30px;
+    top:-20px;
     width: 300px;    
 }
+
+#Parroquia{
+    width: 230px;
+    position: relative;
+    right: -386px;
+    top:-103px;
+}
+
 #Municipio{
     position: relative;
-    right: -229px;
-    top:-55px
+    right: -196px;
+    top:-49px;
+    width: 230px;
 }
 #Estado{
     position: relative;
-    right: -460px;
-    top:-109px;
+    right: -6px;
+    top:5px;
+    width: 230px;
 }
 #inputdir{
-    width: 400px;
     position: relative;
-    right: -2px;
     top:-80px;
+    right: -6px;
+    width: 555px;
 }
 
-#margenes2{
+h5{
     position: relative;
-    right: -100px;  
-    top: -100px;
+    right: -110px;
+    bottom: 30px;
 }
-
 #Regresar{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:-10px;
-    right:-550px;
+    top:33px;
+    right:-375px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
 #Regresar:hover{
     box-shadow: 2px 2px 5px #999;
 }
-#continuar2{
+#Continuar2{ 
     width: 150px;
     height: 45px;
     position: relative;
-    top:-10px;
-    right:-550px;
+    top:33px;
+    right:-385px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
-#continuar2:hover{
+#Continuar2:hover{
     box-shadow: 2px 2px 5px #999;
 }
-#fondo5{
-    display:none;       
-    margin-top: 20px;
-    margin-left: 20px;
-    background-color: white;
-    height: 800px;
-    width:1216px;
-    border-radius: 5px 5px 5px 5px;
-    border: 3px grey solid; 
-}
+
 #inputpagina2{
     width: 400px;
     position: relative;
@@ -260,46 +276,54 @@ option{
     top:90px
 }
 #inputden{
-    width: 450px;
+    width: 250px;
     position: relative;
     top: -30px;
-    right: -85px;
+    right: -105px;
 }
 #inputcapital{
     width: 200px;
     position: relative;
     top: 8px;
-    right: -590px;
+    right: -460px;
 }
-#Combo-boxes2{
+#Combo-boxes{
     position: relative;
     right: -100px;
-    top: 50px;
+    top:10px;
     width: 300px;    
-}#Direccion-fisica {
-    position: relative;
-    top: -50px;
 }
+
 #Parroquia2{
+    width: 230px;
     position: relative;
-    right: 10px;
-    top:-50px
+    right: -386px;
+    top:-103px;
 }
+
 #Municipio2{
     position: relative;
-    right: -229px;
-    top:-104px
+    right: -196px;
+    top:-49px;
+    width: 230px;
 }
 #Estado2{
     position: relative;
-    right: -466px;
-    top:-158px;
+    right: -6px;
+    top:5px;
+    width: 230px;
 }
-#inputdir2{ 
-    width: 450px;
+#inputdir2{
     position: relative;
-    right: -90px;
-    top:-100px;
+    top:-80px;
+    right: -6px;
+    width: 555px;
+}
+h3{
+    position: relative;
+    top: -30px;
+    right: -300px;
+
 }
 .botones{
     width: 70px;
@@ -311,7 +335,8 @@ option{
 #Datos-extra1{
     border: 1px black solid;
     border-radius: 2px 2px 2px 2px;   
-    width: 700px; 
+    padding: 5px;
+    width: 650px; 
     height: 200px;
     position: relative;
     top: -70px;
@@ -356,7 +381,8 @@ option{
     display: none;
     border: 1px black solid;
     border-radius: 2px 2px 2px 2px;   
-    width: 700px; 
+    padding: 10px;
+    width: 650px; 
     height: 200px;
     position: relative;
     top: -70px;
@@ -401,8 +427,8 @@ option{
     width: 150px;
     height: 45px;
     position: relative;
-    top:-50px;
-    right:-547px;
+    top:-20px;
+    right:-385px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
@@ -414,8 +440,8 @@ option{
     width: 150px;
     height: 45px;
     position: relative;
-    top:-50px;
-    right:-550px;
+    top:-20px;
+    right:-400px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }

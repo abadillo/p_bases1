@@ -4,7 +4,7 @@ function c_error(mensaje){
 };
 
 
-
+/*
 function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({
@@ -60,7 +60,7 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
 
             
         }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
 
@@ -152,7 +152,7 @@ $(document).ready(function() {
 
             
         }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
 
@@ -183,23 +183,23 @@ $(function(){
                 console.log(response);
                 
                 if(response['error'])
-					c_error(response['error']);
+					alerta(response['error']);
 				
 				else if (response['invalido'])
-                    c_error(response['invalido']);
+                    alerta(response['invalido']);
 				
 				else
 					window.location.href =  "/"				
                 
             }).fail(function(response){
-                c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
         e.preventDefault();
     
     });
 });
-
+ */
 
 
 $(function(){
@@ -219,7 +219,7 @@ $(function(){
         $("#fondo3").fadeIn("slow");   
     });      
     
-    $("#continuar2").click(function(){
+    $("#Continuar2").click(function(){
 
         $("#fondo4").fadeOut("slow");
         $("#fondo5").fadeIn("slow");

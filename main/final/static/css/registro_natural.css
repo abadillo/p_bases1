@@ -76,11 +76,10 @@ body {
 #margen{
     margin-left: 100px;
     margin-top: 50px;   
-
 }
 .espacio{
     height: 4px;
-    width: 1270px;
+    width: 1070px;
 }
 #registro{
     position: relative;
@@ -174,15 +173,7 @@ body {
     top:-120px;
     width: 590px;
 }
-#Mediospago{
-    position: relative;
-    top:40px;
-    right: -130px;
-}
-#Mediospago h4{
-    position: relative;
-    right: 25px;
-}
+
 #inputcont{
     position: relative;
     right: -90px;
@@ -224,13 +215,13 @@ body {
 #inputtelefono3{
     width: 200px;
     position: relative;
-    right: -465px;
+    right: -460px;
     top: -55px;
 }
 #tipotlf3{
     position: relative;
     top: -28px;
-    right: -282px;
+    right: -280px;
     width: 100px;
 }
 
@@ -238,54 +229,44 @@ body {
     width: 200px;
     position: relative;
     right: -105px;
-    top:-60px;
+    top:-45px;
 }
 #Combo-boxes{
     position: relative;
     right: -100px;
-    top:-50px;
+    top:-20px;
     width: 300px;    
 }
 
 #Parroquia{
     width: 230px;
     position: relative;
-    right: -390px;
+    right: -386px;
     top:-103px;
 }
 
 #Municipio{
     position: relative;
-    right: -200px;
+    right: -196px;
     top:-49px;
     width: 230px;
 }
 #Estado{
     position: relative;
-    right: -10px;
+    right: -6px;
     top:5px;
     width: 230px;
 }
-
-option{
-    height: 10px;
-    overflow: auto;  
-
-}
 #inputdir{
     position: relative;
-    top:-100px;
-    right: -10px;
+    top:-80px;
+    right: -6px;
     width: 555px;
 }
-#Mediospago{
-    position: relative;
-    top: -90px;
 
-}
 h5{
     position: relative;
-    right: -120px;
+    right: -110px;
     bottom: 30px;
 }
 #Registrar{ 
@@ -293,7 +274,7 @@ h5{
     height: 45px;
     position: relative;
     top:10px;
-    right:-375px;
+    right:-355px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
@@ -305,7 +286,7 @@ h5{
     height: 45px;
     position: relative;
     top:10px;
-    right:-365px;
+    right:-345px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }

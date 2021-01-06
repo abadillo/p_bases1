@@ -162,9 +162,10 @@ $(function(){
         var form = $('form');
         var flag = 0;
      
-        for (var n = 0; n <= 12; n++){
+        for (var n = 0; n <= 11; n++){
             if (!(form[0][n].checkValidity())){
                 form[0][n].reportValidity();
+                
                 flag = 1;
                 break;
             }
@@ -174,9 +175,9 @@ $(function(){
         var contval = ($("#inputcontval").val());
         
         if (cont != contval){
-            $("#inputcontval").setCustomValidity('Las contraseñas no coinciden');
-            $("#inputcontval").reportValidity();
-            $("#inputcontval").setCustomValidity('');
+            $("#inputcontval")[0].setCustomValidity("Las contraseñas no coinciden");
+            $("#inputcontval")[0].reportValidity();
+            $("#inputcontval")[0].setCustomValidity('');
             flag = 1;
         } 
         
@@ -196,7 +197,7 @@ $(function(){
     });  
 
     $("#selecttipo2").click(function(){
-        window.location.href = "/registro_juridico";
+        window.location.href = "/registro/juridico";
 
     });
    

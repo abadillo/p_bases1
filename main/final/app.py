@@ -12,7 +12,7 @@ from database.DB_telefono import DB_telefono
 from database.DB_tienda import DB_tienda
 from database.DB_metodo_pago import DB_metodo_pago
 from database.DB_generic import DB_generic
-
+from database.DB_empleado import DB_empleado
 
 
 app = Flask(__name__)
@@ -210,7 +210,6 @@ def manejo_natural():
 
         return jsonify({'mensaje': id_cliente }) 
 
- 
     if request.method == 'PUT':
         
         id = int(request.form['id_user'])
@@ -386,7 +385,6 @@ def manejo_juridico():
 
         return jsonify({'mensaje': id_cliente }) 
 
- 
     if request.method == 'PUT':
         
         id = int(request.form['id_user'])
@@ -439,36 +437,57 @@ def manejo_juridico():
         return resp
 
 
-
-
-
-@app.route('/metodo_pago', methods= ['GET', 'POST','PUT','DELETE'])
-def manejo_metodo_pago():
+@app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
+def manejo_empleado():
 
     if request.method == 'GET':
      
         id = request.args['id']
         
-        db = DB_medios_pago()
+        db = DB_empleado()
         data = db.get(id) 
-
-        data.append()
 
         return jsonify(data)
 
     if request.method == 'POST': 
        
         data = {
-            'mc_documento'   :  request.form['mc_documento'],
-            'fk_cliente'     :  int(request.form['fk_cliente']),
-            'fk_tipo_pago'   :  int(request.form['fk_tipo_pago']),
+            'em_correo'       :    request.form['inputcorreo'], 
+            'em_cedula'       : int(request.form['inputcedula']),   
+            'em_contrasena'   :    request.form['inputcont'],     
+            'em_p_nombre'     :    request.form['inputpnombre'],
+            'em_s_nombre'     :    request.form['inputsnombre'],   
+            'em_p_apellido'   :    request.form['inputpapellido'], 
+            'em_s_apellido'   :    request.form['inputsapellido'], 
+            'em_sueldo'       : int(request.form['inputsueldo']), 
+            'em_fecha_nac'    :    request.form['selectfecha'], 
+            
+            'fk_rol'          :    1,    
+            'fk_tienda'       :    int(request.form['selecttienda']),
+            'fk_empleado_sup' :    None,     
         }
         
 
-        db = DB_metodo_pago()
-        resp = db.add(data)
-        
-        return resp
+        db = DB_empleado()
+        resp = db.verifica_exist(data)
+        if (resp != 0): return resp
+
+        id_empleado = db.add(data)
+
+
+        db = DB_telefono()   
+
+        telefono = {
+            'te_tipo'            :   request.form['tipotlf'],        
+            'te_numero'          :   int(request.form['inputtelefono']),  
+            'fk_empleado'         :   id_empleado,         
+        }
+
+        db.add(telefono) 
+
+
+        return jsonify({'mensaje': id_empleado }) 
+
  
     if request.method == 'PUT':
         
@@ -483,7 +502,7 @@ def manejo_metodo_pago():
             'cl_s_apellido' :    request.form['inputsapellido'],
         }
         
-        db = DB_cliente_natural()
+        db = DB_empleado()
         resp = db.update(id,data)
 
         
@@ -513,11 +532,54 @@ def manejo_metodo_pago():
         
     if request.method == 'DELETE':
 
+        id = int(request.get_data())
+
+        db = DB_empleado()   
+
+        resp = db.delete(id)
+
+        return resp
+
+
+
+
+
+
+
+
+
+@app.route('/metodo_pago', methods= ['GET', 'POST','DELETE'])
+def manejo_metodo_pago():
+
+    if request.method == 'GET':
+     
+        id = request.args['id']
+        
+        db = DB_medios_pago()
+        data = db.get(id) 
+
+        return jsonify(data)
+
+    if request.method == 'POST': 
+       
+        data = {
+            'mc_documento'   :  request.form['mc_documento'],
+            'fk_cliente'     :  int(request.form['fk_cliente']),
+            'fk_tipo_pago'   :  int(request.form['fk_tipo_pago']),
+        }
+        
+
+        db = DB_metodo_pago()
+        resp = db.add(data)
+        
+        return resp
+ 
+    if request.method == 'DELETE':
+
         doc = request.form['mc_documento']
         fk_tipo = int(request.form['fk_tipo_pago'])
         fk_cliente = int(request.form['fk_cliente'])
 
-        
         db = DB_metodo_pago()   
 
         resp = db.delete2(doc,fk_tipo,fk_cliente)
@@ -529,7 +591,7 @@ def manejo_metodo_pago():
 
 
 
-#### lugares #####
+#### comboboxes / getall where #####
 
 
 @app.route('/lugares',methods=['POST','GET'])  

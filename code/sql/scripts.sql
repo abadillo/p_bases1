@@ -134,6 +134,7 @@ CREATE TABLE metodo_pago_compra(
 CREATE TABLE rol(
 
 	ro_codigo		   SERIAL,
+	ro_nombre		   VARCHAR(20) NOT NULL,
 
 	CONSTRAINT pk_ro_codigo PRIMARY KEY (ro_codigo)
 );

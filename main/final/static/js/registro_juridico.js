@@ -9,9 +9,6 @@ function alerta(mensaje){
 };
 
 
-
-
-
 function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({

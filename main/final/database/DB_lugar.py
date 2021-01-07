@@ -123,27 +123,32 @@ class DB_lugar(DB):
 
 
     def getdir (self,fk_lugar):
-        
-        self.cursor.execute("SELECT lu_nombre FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
-        direccion = self.cursor.fetchone()
 
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
-        idv_parroquia = self.cursor.fetchone()
+        try:
         
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_parroquia,) )
-        idv_municipio = self.cursor.fetchone()
+            self.cursor.execute("SELECT lu_nombre FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
+            direccion = self.cursor.fetchone()
+
+            self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (fk_lugar,) )
+            idv_parroquia = self.cursor.fetchone()
+            
+            self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_parroquia,) )
+            idv_municipio = self.cursor.fetchone()
+            
+            self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_municipio,) )
+            idv_estado = self.cursor.fetchone()
+
+            data = {
+                    'idv_parroquia'     :   idv_parroquia[0],        
+                    'idv_municipio'     :   idv_municipio[0],             
+                    'idv_estado'        :   idv_estado[0],
+                    'direccion'         :   direccion[0],
+            }     
+
+            return (data)
         
-        self.cursor.execute("SELECT fk_lugar FROM lugar WHERE lu_codigo = %s", (idv_municipio,) )
-        idv_estado = self.cursor.fetchone()
-
-        data = {
-                'idv_parroquia'     :   idv_parroquia[0],        
-                'idv_municipio'     :   idv_municipio[0],             
-                'idv_estado'        :   idv_estado[0],
-                'direccion'         :   direccion[0],
-        }     
-
-        return (data)
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
     def get2 (self,item,item2):
     

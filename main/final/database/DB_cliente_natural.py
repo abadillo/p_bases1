@@ -7,7 +7,6 @@ from psycopg2 import sql
 import decimal
 
 
- 
 
 
 class DB_cliente_natural(DB):

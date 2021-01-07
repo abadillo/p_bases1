@@ -26,30 +26,34 @@ $(document).ready(function(){
 
     });
 
-    var table = $('#tabla_datatable tbody').on( 'click', 'tr', function () {
-        if ($(this).hasClass('selcted') ){
+    var table = $('#tabla_datatable').DataTable();
+ 
+    $('#tabla_datatable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
         }
         else {
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
-        }        
-
-    });
-
+        }
+    } );
+ 
     $('#boton_eliminar').click( function () {
         
         var sel = table.row('.selected').data();
 
         if (sel){
           
-            var codigo = sel['ti_codigo'];
+            var codigos = sel['ti_codigo'];
 
             $.ajax({
                 
                 url:   '/manejo_tienda',
-                data:  codigo.toString(),
                 type: 'DELETE',
+                data: {
+                    'codigos': codigos,
+                },
+                
                     
                 }).done(function(response){
                     
@@ -77,8 +81,8 @@ $(document).ready(function(){
 
         if (sel){
 
-            var id = sel['cl_id'];
-            window.location.href =  '/natural/'+id;	
+            var id = sel['ti_codigo'];
+            window.location.href =  '/tienda/'+id;	
 
         }
 

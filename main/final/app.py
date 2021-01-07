@@ -159,13 +159,19 @@ def manejo_tienda():
         return resp
 
     if request.method == 'PUT':
+       
 
-
-        return "Tienda actualizado"   #update
+        return render_template()   #update
 
     if request.method == 'DELETE':
 
-        return "Tienda eliminado"
+        id = int(request.form['codigos'])
+
+        db = DB_tienda()   
+
+        resp = db.delete(id)
+
+        return resp
 
 
 

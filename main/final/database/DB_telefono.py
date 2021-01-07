@@ -51,6 +51,7 @@ class DB_telefono(DB):
 
         except Exception:
             return None
+            
 
     def delete (self,id):
 

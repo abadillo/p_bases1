@@ -3,8 +3,15 @@ function c_error(mensaje){
     $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
 };
 
+function alerta(mensaje){
+    alert(mensaje);
 
-/*
+};
+
+
+
+
+
 function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({
@@ -131,8 +138,8 @@ $(document).ready(function() {
     
     $.ajax({
                 
-        url:   '/tiendas',
-        type: 'GET',
+        url:   '/mostrar/tiendas',
+        type: 'POST',
         dataSrc: "",
             
         }).done(function(resp){
@@ -174,7 +181,7 @@ $(function(){
 
         $.ajax({
             
-            url:   '/registro_juridico',
+            url:   '/manejo_juridico',
             data:  $('form').serialize(),
             type: 'POST',
                 
@@ -188,8 +195,9 @@ $(function(){
 				else if (response['invalido'])
                     alerta(response['invalido']);
 				
-				else
-					window.location.href =  "/"				
+                /*else
+                    window.location.href =  "/mostrar/juridicos";
+					window.location.href =  "/"*/				
                 
             }).fail(function(response){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
@@ -199,18 +207,45 @@ $(function(){
     
     });
 });
- */
+ 
 
 
 $(function(){
 
-    $("#Continuar").click(function(){
+   
+    
+    $("#Continuar").click(function(){    
+       
+        var form = $('form');
+        var flag = 0;
+     
+        for (var n = 0; n <= 8; n++){
+            if (!(form[0][n].checkValidity())){
+                form[0][n].reportValidity();
                 
-        $("#fondo3").fadeOut("slow");       
-        $("#fondo4").fadeIn("slow");     
-        $("#fondo3").css("display", "none");            				
+                flag = 1;
+                break;
+            }
+        }
+    
+        var cont = ($("#inputcont").val());
+        var contval = ($("#inputcontval").val());
+        
+        if (cont != contval){
+            $("#inputcontval")[0].setCustomValidity("Las contraseñas no coinciden");
+            $("#inputcontval")[0].reportValidity();
+            $("#inputcontval")[0].setCustomValidity('');
+            flag = 1;
+        } 
+        
 
-    });          
+        if (flag == 0 ){
+            $("#fondo3").fadeOut("slow");       
+            $("#fondo4").fadeIn("slow");     
+            $("#fondo3").css("display", "none");      
+        }
+
+    });  
 
     $("#Regresar").click(function(){
 
@@ -221,9 +256,25 @@ $(function(){
     
     $("#Continuar2").click(function(){
 
-        $("#fondo4").fadeOut("slow");
-        $("#fondo5").fadeIn("slow");
-        $("#fondo4").css("display","none");
+        var form = $('form');
+        var flag = 0;
+     
+        for (var n = 9; n <= 19; n++){
+            if (!(form[0][n].checkValidity())){
+                form[0][n].reportValidity();
+                console.log(form[0][n]);
+                console.log(n);
+                flag = 1;
+                break;
+            }
+        }
+    
+    
+        if (flag == 0 ){
+            $("#fondo4").fadeOut("slow");
+            $("#fondo5").fadeIn("slow");
+            $("#fondo4").css("display","none");
+        }
     });  
 
     $("#Regresar2").click(function(){
@@ -232,6 +283,10 @@ $(function(){
         $("#fondo5").fadeOut("slow");     
         $("#fondo4").fadeIn("slow");   
     });      
+
+
+
+
 
     $("#boton-dos").click(function(){
 
@@ -255,6 +310,14 @@ $(function(){
         $("#boton-dos").css("background-color","#6c757d");
         $("#boton-dos").css("border-color","6c757d");     
            
-    });    
+    });   
+    
+    
+
+    $("#selecttipo1").click(function(){
+        window.location.href = "/registro/natural";
+
+    });
+   
 
 });

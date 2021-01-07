@@ -18,7 +18,7 @@
 
 
     <div id="fondo1"> 
-        <a href="../templates/UCABMART.html"><img type="image" id="logo" src="/"> </a>
+        <a href="../templates/UCABMART.html"><img type="image" id="logo" src="../static/media/UCABMART6.png"> </a>
 
         <div class="linea"> </div>
 
@@ -54,7 +54,7 @@
 
                         <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[A-Z]{1}[0-9]{9}" maxlength="10" required autofocus title="Debe poner una letra:'VEPJG' y 9 numeros " />
 
-                        <input id="inputtelefono" name="inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
+                        <input id="inputtelefono" name="inputtelefono" class="form-control" type="text" pattern="[0-9]*" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
 
                         <div class="form-group" id="tipotlf"> 
             
@@ -106,7 +106,7 @@
                 
                         <h1 id="registro"> Registro </h1>
                     
-                        <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="tel" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
+                        <input  id="inputtelefono2" name="inputtelefono2" class="form-control" type="text" pattern="[0-9]*" placeholder="Teléfono 2 (Opcional)" minlength="7" maxlength="11" autofocus> 
 
                         <div class="form-group" id="tipotlf2"> 
                 
@@ -119,13 +119,13 @@
             
                         </div>
 
-                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="tel" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
+                        <input id="inputtelefono3" name="inputtelefono3" class="form-control" type="text" pattern="[0-9]*" placeholder="Telefono 3 (Opcional)" minlength="7" maxlength="11" autofocus> 
 
                         <div class="form-group" id="tipotlf3"> 
                 
-                            <select name="tipotlf" id="tipotlf3" class="custom-select browser-default" autofocus>
+                            <select name="tipotlf3" id="tipotlf3" class="custom-select browser-default" autofocus>
                                 <option value="" selected disabled>TIPO</option>
-                                <option value="CASA">CASA</option>                            
+                                <option value="CASA">CASA</option>                 
                                 <option value="OFICINA">OFICINA</option>   
                                 <option value="CELULAR">CELULAR</option>   
                             </select>  
@@ -181,7 +181,7 @@
 
                         <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
                         
-                        <button id="Continuar2" class="btn btn-lg btn-primary" type ="submit"> Continuar</button>
+                        <button id="Continuar2" class="btn btn-lg btn-primary" type ="button"> Continuar</button>
 
                     </div>
 
@@ -225,14 +225,14 @@
 
                         </div> 
 
-                        <input id="inputdir2" name="inputdir2" class="form-control" type="text" placeholder="Direccion Fisica" required autofocus> 
+                        <input id="inputdir2" name="inputdir2" class="form-control" type="text" placeholder="Direccion Fisica" autofocus> 
 
                     </div>
 
                     <h3> Contactos Alternos </h3>
 
-                    <button id="boton-uno" class="btn btn-lg btn-primary botones"> Uno </button>
-                    <button id="boton-dos" class="btn btn-lg btn-secondary botones"> Dos </button>
+                    <button id="boton-uno" class="btn btn-lg btn-primary botones" type="button"> Uno </button>
+                    <button id="boton-dos" class="btn btn-lg btn-secondary botones" type="button"> Dos </button>
                             
                     <div id="Datos-extra1" >
                         
@@ -246,25 +246,25 @@
                             
                         <div id="espacio"> </div> 
 
-                        <input type="tel" id="Cedula-uno" name="Cedula-uno" class="form-control tam" placeholder="Cedula" required>
-                        <input type="tel" id="Telefono-uno" name="Telefono-uno" class="form-control tam" placeholder="Teléfono" size="11" required>
+                        <input type="text" pattern="[0-9]*" id="Cedula1" name="Cedula1" class="form-control tam" placeholder="Cedula" minlength="6" maxlength="8" required>
+                        <input type="text" pattern="[0-9]*" id="Telefono" name="Telefono" class="form-control tam" placeholder="Teléfono"  minlength="7" maxlength="11" required>
 
                     </div>
 
                     <div id="Datos-extra2" >
                         
-                        <input type="text" name="Primer-nom2" id="Primer-nom"  class="form-control tam" placeholder="Primer Nombre" required>
-                        <input type="text" name="Segundo-nom2" id="Segundo-nom"  class="form-control tam" placeholder="Segundo Nombre" >
+                        <input type="text" name="Primer-nom2" id="Primer-nom2"  class="form-control tam" placeholder="Primer Nombre" >
+                        <input type="text" name="Segundo-nom2" id="Segundo-nom2"  class="form-control tam" placeholder="Segundo Nombre" >
                             
                         <div id="espacio"> </div>
 
-                        <input type="text" name="Primer-ap2" id="Primer-ap"  class="form-control tam" placeholder="Primer Apellido" required>
-                        <input type="text" name="Segundo-ap2" id="Segundo-ap"  class="form-control tam" placeholder="Segundo Apellido" >
+                        <input type="text" name="Primer-ap2" id="Primer-ap2"  class="form-control tam" placeholder="Primer Apellido" >
+                        <input type="text" name="Segundo-ap2" id="Segundo-ap2"  class="form-control tam" placeholder="Segundo Apellido" >
                         
                         <div id="espacio"> </div>
 
-                        <input type="tel" id="Cedula-uno2" name="Cedula-uno" class="form-control tam" placeholder="Cedula" required>
-                        <input type="tel" id="Telefono2" name="Telefono" class="form-control tam" placeholder="Teléfono" size="11" required>
+                        <input type="text" pattern="[0-9]*" id="Cedula2" name="Cedula2" class="form-control tam" placeholder="Cedula" minlength="6" maxlength="8">
+                        <input type="text" pattern="[0-9]*" id="Telefono2" name="Telefono2" class="form-control tam" placeholder="Teléfono"  minlength="7" maxlength="11" >
 
                     </div>     
 

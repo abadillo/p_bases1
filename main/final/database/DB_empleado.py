@@ -8,9 +8,7 @@ import decimal
 
 
  
-
-
-class DB_cliente_natural(DB):
+class DB_empleado(DB):
 
 
     def get (self,item):
@@ -19,7 +17,7 @@ class DB_cliente_natural(DB):
 
             id = item
             
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_id = %s", (id,) )
+            self.cursor.execute("SELECT * FROM empleado WHERE em_codigo = %s", (id,) )
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -35,14 +33,14 @@ class DB_cliente_natural(DB):
             return data 
 
         except Exception:
-            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
+            return ({'error':'Error: Hubo un problema con el servidor o el empleado no existe'})
 
 
     def getall (self):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = 'NATURAL'")
+            self.cursor.execute("SELECT * FROM empleado")
             resp = self.cursor.fetchall()
 
             columnas = self.cursor.description
@@ -65,7 +63,7 @@ class DB_cliente_natural(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO cliente ({0}) VALUES ({1}) RETURNING cl_id'.format(columns, values)
+            query = 'INSERT INTO empleado ({0}) VALUES ({1}) RETURNING em_codigo'.format(columns, values)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
@@ -99,13 +97,13 @@ class DB_cliente_natural(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE cliente SET {0} WHERE cl_id = {1}'.format(values,id)
+            query = 'UPDATE empleado SET {0} WHERE em_codigo = {1}'.format(values,id)
 
             print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
-            return ({'mensaje':'Cliente modificado satisfactoriamente'}) 
+            return ({'mensaje':'empleado modificado satisfactoriamente'}) 
             
 
         except Exception:
@@ -115,7 +113,7 @@ class DB_cliente_natural(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM cliente WHERE cl_id = %s", (id,) )
+            self.cursor.execute("DELETE FROM empleado WHERE em_codigo = %s", (id,) )
          
             self.connection.commit()
             
@@ -131,7 +129,7 @@ class DB_cliente_natural(DB):
         try:
            
             
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_correo = %s ;", ('cl_id',data['cl_correo'],))
+            self.cursor.execute("SELECT %s FROM empleado WHERE em_correo = %s ;", ('em_codigo',data['em_correo'],))
                  
             obj = self.cursor.fetchone()  
 
@@ -141,7 +139,7 @@ class DB_cliente_natural(DB):
                       
 
         
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_cedula = %s ;", ('cl_id',data['cl_cedula'],))
+            self.cursor.execute("SELECT %s FROM empleado WHERE em_correo = %s ;", ('em_codigo',data['em_correo'],))
                     
             obj = self.cursor.fetchone()  
 
@@ -149,14 +147,6 @@ class DB_cliente_natural(DB):
                 return jsonify({'invalido':'cedula ya registrada'})  
 
              
-
-
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_rif = %s ;", ('cl_id',data['cl_rif'],))
-                    
-            obj = self.cursor.fetchone()  
-
-            if obj is not None:    
-                return jsonify({'invalido':'el rif ya esta registrado'})  
 
            
 
@@ -166,25 +156,4 @@ class DB_cliente_natural(DB):
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-    def verif_login(self,data):
-        
-        try:
-            
-            self.cursor.execute("SELECT * FROM cliente  WHERE cl_correo = %s ;", (data['cl_correo'],))        
-
-            obj = self.cursor.fetchone()  
-
-            if obj is None:    
-                return jsonify({'invalido':'correo o contraseña invalida'}) 
-
-            if data['cl_contraseña'] == obj[2] : 
-                return jsonify({'mensaje':'login valido'}) 
-            else:
-                return jsonify({'invalido':'correo o contraseña invalida'}) 
-
-        except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidorr'})
     
-  
-
-   

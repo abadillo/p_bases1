@@ -50,7 +50,7 @@ $(document).ready(function() {
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
-    } );
+    });
  
     $('#boton_eliminar').click( function () {
         

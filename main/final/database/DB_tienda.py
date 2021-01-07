@@ -10,6 +10,30 @@ import decimal
 
 class DB_tienda(DB):
 
+    def get (self,item):
+
+        try:
+
+            id = item
+            
+            self.cursor.execute("SELECT * FROM tienda WHERE ti_codigo = %s", (id,) )
+            resp = self.cursor.fetchone()
+            
+            columnas = self.cursor.description
+           
+            resp = self.querydictdecimal(resp,columnas)
+
+            data = resp[0]
+
+            for atributo in data:
+                if (data[atributo] == None):
+                    data[atributo] = ''
+
+            return data 
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
+
 
     def getall (self):  
     

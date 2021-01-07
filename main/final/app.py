@@ -94,7 +94,7 @@ def mostrar(obj):
 
         if request.method == 'GET':
 
-            return render_template
+            return render_template("mostrar_tienda.html")
     
         if request.method == 'POST':
 
@@ -111,8 +111,14 @@ def mostrar(obj):
 def manejo_tienda():
     
     if request.method == 'GET':                 #busca datos con el ti_codigo
-        return "datos de tienda"
+         
+        id = request.args['codigo']
+        
+        db = DB_tienda()
+        data = db.get(id) 
 
+        return jsonify(data)        
+       
     if request.method == 'POST':                    #crea la tienda con (Data)
 
         db = DB_lugar()   
@@ -129,7 +135,8 @@ def manejo_tienda():
         print(id_direccion)
 
         data = {
-            'ti_nombre'     :   request.form['inputtienda'],                 
+            'ti_nombre'     :   request.form['inputtienda'],
+           # 'ti_correo'     :   request.form['inputcorreo'],
             'fk_lugar'      :   id_direccion,
         }
 

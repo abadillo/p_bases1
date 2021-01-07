@@ -12,6 +12,7 @@ CREATE TABLE lugar(
 CREATE TABLE tienda(
 	ti_codigo		SERIAL,
 	ti_nombre		VARCHAR(20)	NOT NULL,
+	--ti_correo		VARCHAR(30)	
 	fk_lugar		INTEGER NOT NULL,
 	CONSTRAINT pk_ti_codigo PRIMARY KEY (ti_codigo),
 	CONSTRAINT fk_lugar FOREIGN KEY (fk_lugar) REFERENCES lugar (lu_codigo)

@@ -33,7 +33,15 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
 
             }
 
-            console.log(y);
+            if (lu_tipo == 'ESTADO')
+            $('#selectestado').html(opciones.join(''));
+        else if (lu_tipo == 'MUNICIPIO')
+            $('#selectmunicipio').html(opciones.join(''));
+        else 
+            $('#selectparroquia ').html(opciones.join(''));
+
+
+           /* console.log(y);
 
             if (y == 1) {
 
@@ -53,7 +61,7 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
                 else 
                     $('#selectparroquia2').html(opciones.join(''));
                                     
-            }
+            }*/
             
 
             
@@ -145,7 +153,7 @@ $(function(){
                     c_error(response['invalido']);
 				
 				else
-					window.location.href =  "/"				
+					window.location.href =  "/mostrar/tiendas";				
                 
             }).fail(function(response){
                 c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
@@ -156,14 +164,19 @@ $(function(){
     });
 });
 
-$(function(){
+$(function(){ // FUNCION PARA GENERAR EL CORREO
     $('#Generarc').click(function(){
-        var tienda=$('#inputtienda').val()
-        if (tienda =='') {
+
+        var tienda=$('#inputtienda').val();
+
+        if (tienda =='') 
             alert("No agrego un nombre en Tienda");
+        
+        else{
+           var ucab='@UCABMART.com'; 
+           var generado = tienda + ucab;
+           console.log($('#Correo').val(generado));
         }
-
-
     });
 });
 

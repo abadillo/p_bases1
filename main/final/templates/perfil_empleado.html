@@ -1,0 +1,204 @@
+<html>
+
+    <head>
+        
+        <title>UCABMART</title>
+        
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+        <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
+        
+        <link href="../static/css/perfil_empleado.css" rel="stylesheet" type="text/css" >
+
+
+
+
+        <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>   
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+        <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+        
+        <script src="../static/js/perfil_empleado.js"></script>
+
+       
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+        <div id="fondo1">
+
+            <a href="../templates/UCABMART.html"><img type="image" id="logo" src="../static/media/UCABMART6.png"></a>
+
+            <div class="linea"></div>
+
+            <div id="loading">
+                <img id="loading-image" src="../static/media/loading.gif" alt="Loading..." />
+            </div>
+
+            <div id="fondo2">
+
+                <form>
+                    
+
+                    <div id="espacio"></div> <!--Demasiado chimbo esto, separa el cuadro rojo del blanco-->
+                
+                    <div id="fondo3" class="form-group">
+                        
+                        <div id="margen" class="form-group">
+
+                            <h2> Datos de Perfil </h2>
+                            <button id="Modificar" class="btn btn-lg btn-secondary" type="button"> Modificar datos </button>
+
+                            <button id="Cancelar" class="btn btn-lg btn-secondary" type="button" style = "display: none;">  Cancelar Modificación </button>
+
+                            <button id="Confirmar" class="btn btn-lg btn-primary" type="button" style = "display: none;">  Confirmar Modificación </button>
+
+                                                    
+                            <div id="Margen-campos">
+
+
+                                <h4 id="IDENTIFICADOR"></h4>
+                            
+                                <h4> Empleado </h4>    
+                            
+                                <input id="id_user" name= "id_user" class="form-control"  disabled>
+
+                                <h4 id="cedula"> Cedula </h4>
+                            
+
+                                <input id="inputcedula" name= "inputcedula" class="form-control" placeholder ="Cédula" type="tlf"  minlength="6" maxlength="9" disabled autofocus>    
+                                        
+                            
+                                <h4 id="Telefono"> Telefono </h4>
+                    
+                                <input id="inputtelefono" name= "inputtelefono" class="form-control" type="tel" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" disabled autofocus>
+
+                                <div class="form-group" id="tipotlf1"> 
+                
+                                    <select name="tipotlf1" id="tipotlf1" class="custom-select browser-default"  autofocus>
+                                        <option value="" selected disabled>TIPO</option>
+                                        <option value="CASA">CASA</option>                            
+                                        <option value="OFICINA">OFICINA</option>   
+                                        <option value="CELULAR">CELULAR</option>  
+                                        
+                                    </select>  
+                
+                                </div>
+
+                                <h12 class= "text-muted" id="fecha_h">Fecha de Nacimiento</h12>
+                        
+                                <input id="selectfecha" name="selectfecha" class="custom-select browser-default" type="date"  disabled autofocus >
+
+                               
+                                <div class="form-group" id="selectrol2"> 
+
+                                    <select id="selectrol" name="selectrol" class="custom-select browser-default" required disabled autofocus>
+                                        <option value="" selected disabled>ROL</option>
+                                        <option value="0"> - </option>
+                                    </select>  
+        
+                                </div> 
+
+
+
+                                
+                                <div id="Alinear">  <!-- Alinea todo desde nombre hasta direcciion-->
+
+                                <h4> Nombres </h4>                           
+                                                        
+                                <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" disabled autofocus>   
+        
+                                <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" disabled autofocus>   
+
+
+                                <h4 id="Apellido"> Apellidos</h4>
+
+                                <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" disabled autofocus> 
+        
+                                <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" disabled autofocus > 
+        
+
+                                
+                                <h4 id="tienda-registro"> Tienda Registro</h4>
+            
+                                <input id="tiendaregistro" name="tiendaregistro" class="form-control" disabled> 
+
+
+                                <h4 id="super-registro">Supervisor</h4>
+
+                                <div class="form-group" id="selectempsup2"> 
+
+                                    <select id="selectempsup" name="selectempsup" class="custom-select browser-default" required disabled autofocus>
+                                        <option value="" selected disabled>SUPERVISOR</option>
+                                        <option value="0"> - </option>
+                                    </select>  
+        
+                                </div> 
+                                
+
+                                <h4 id="sueldo-registro"> Sueldo (Bs.)</h4>
+        
+                                <input id="inputsueldo" name= "inputsueldo" class="form-control" placeholder ="Sueldo" type="text" pattern="[0-9]*"  minlength="2" maxlength="20" disabled required autofocus>
+
+
+
+
+
+
+
+                                <h4 id="correo"> Correo </h4>                            
+        
+                                <input id="inputcorreo" name="inputcorreo" class="form-control" type="email" 
+                                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                                placeholder="Correo Electrónico" disabled autofocus>
+        
+                                <div id="contraseña">    <h4 > Contraseña </h4>  
+        
+                                <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" disabled autofocus>
+                            
+                                </div>
+
+                                
+                                
+                                
+                            
+
+
+
+                               
+
+
+
+                                
+
+                                </div>
+
+                            </div>  
+                        
+
+
+                      
+
+                        </div> 
+                    
+                    </div>
+
+                </form>
+
+
+
+            </div>
+
+            
+        </div>   
+
+
+        
+
+    </body>
+    
+    
+
+</html>

@@ -104,6 +104,19 @@ def mostrar(obj):
             return jsonify(resp)  
 
 
+    if obj == 'empleados':
+
+        if request.method == 'GET':
+            return render_template("mostrar.html")
+
+        if request.method == 'POST':
+
+            db = DB_empleado()         
+            resp = db.getall()
+
+            return jsonify(resp)  
+
+
     if obj == 'tiendas':
 
         if request.method == 'GET':
@@ -117,6 +130,8 @@ def mostrar(obj):
 
             return jsonify(resp)
     
+
+
 
 ########   REST   ###########
 

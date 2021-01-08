@@ -10,7 +10,7 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
-    $("#titulo").html("Clientes Naturales");
+    $("#titulo").html("Empleados");
 
     $('#tabla_datatable').DataTable({
         
@@ -19,31 +19,36 @@ $(document).ready(function() {
         scrollX: true,
 
         ajax: {
-            url:   '/mostrar/naturales',
+            url:   '/mostrar/empleados',
             type: 'POST',
             dataSrc: ""
         },
 
         columns: [
-            { data: "cl_id" ,         title: "ID"},
-            { data: "cl_correo" ,     title: "CORREO"},
-            { data: "cl_contrasena" , title: "CONT"},
-            { data: "cl_cedula" ,     title: "CEDULA"},
-            { data: "cl_rif" ,        title: "RIF"},
-            { data: "cl_p_nombre" ,   title: "P_NOMBRE"},
-            { data: "cl_s_nombre" ,   title: "S_NOMBRE"},
-            { data: "cl_p_apellido" , title: "P_APELLIDO"},
-            { data: "cl_s_apellido" , title: "S_APELLIDO"},
-            { data: "cl_afiliacion" , title: "N_AFIL"},
-            { data: "fk_lugar" , title: "DIR"},
+            { data: "em_codigo" ,     title: "COD"},
+            { data: "em_correo" ,     title: "CORREO"},
+            { data: "em_contrasena" , title: "CONT"},
+            { data: "em_cedula" ,     title: "CEDULA"},
+            { data: "em_p_nombre" ,   title: "P_NOMBRE"},
+            { data: "em_s_nombre" ,   title: "S_NOMBRE"},
+            { data: "em_p_apellido" , title: "P_APELLIDO"},
+            { data: "em_s_apellido" , title: "S_APELLIDO"},
+            { data: "em_sueldo" ,     title: "SUELDO"},
+            { data: "em_fecha_nac" ,  title: "FECHA NAC"},
+            { data: "fk_rol" ,        title: "ROL"},
+            { data: "fk_tienda" ,     title: "TIENDA R"},
+            { data: "fk_empleado_sup", title: "COD_SUP"},
            
         ]
+
+        
         
     });
     
 
     var table = $('#tabla_datatable').DataTable();
- 
+
+
     $('#tabla_datatable tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
@@ -60,11 +65,11 @@ $(document).ready(function() {
 
         if (sel){
           
-            var id = sel['cl_id'];
+            var id = sel['em_codigo'];
 
             $.ajax({
                 
-                url:   '/manejo_natural',
+                url:   '/manejo_empleado',
                 data:  id.toString(),
                 type: 'DELETE',
                     
@@ -84,7 +89,7 @@ $(document).ready(function() {
 
     $('#boton_añadir').click( function () {
         
-        window.location.href =  "/registro/natural"		
+        window.location.href =  "/registro/empleado"		
 
     } );
 
@@ -94,8 +99,8 @@ $(document).ready(function() {
 
         if (sel){
 
-            var id = sel['cl_id'];
-            window.location.href =  '/natural/'+id;	
+            var id = sel['em_codigo'];
+            window.location.href =  '/empleado/'+id;	
 
         }
 

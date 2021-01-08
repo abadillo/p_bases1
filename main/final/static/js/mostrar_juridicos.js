@@ -10,6 +10,8 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
+    $("#titulo").html("Clientes Juridicos");
+
     $('#tabla_datatable').DataTable({
         
         scrollY:        '50vh',

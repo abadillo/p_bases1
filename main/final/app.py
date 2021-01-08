@@ -78,10 +78,10 @@ def ver_perfil(entidad,id):
 @app.route('/mostrar/<obj>',methods=['GET','POST'])    
 def mostrar(obj):
 
-    if obj == 'clientes':
+    if obj == 'naturales':
     
         if request.method == 'GET':
-            return render_template("mostrar_clientes.html")
+            return render_template("mostrar.html")
 
         if request.method == 'POST':
 
@@ -94,7 +94,7 @@ def mostrar(obj):
     if obj == 'juridicos':
 
         if request.method == 'GET':
-            return render_template("mostrar_juridicos.html")
+            return render_template("mostrar.html")
 
         if request.method == 'POST':
 

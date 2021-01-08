@@ -21,10 +21,15 @@
     <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
 
 
-    <script src="../static/js/mostrar_clientes.js"></script>
+   
+    <script>
+        var nombre = (window.location.pathname.split('/'))[2];
+        console.log(nombre)
 
-    
-
+        let myScript = document.createElement("script");
+        myScript.setAttribute("src", "../static/js/mostrar_"+nombre+".js");
+        document.head.appendChild(myScript);    
+    </script>
   
   
 </head>
@@ -38,7 +43,7 @@
             
             <div id="margen">
                 
-                <h3 class="text-center">CLIENTES</h3>
+                <h3 id = "titulo" class="text-center"></h3>
                 
                 <table id="tabla_datatable" class="display nowrap" >   </table>
                         

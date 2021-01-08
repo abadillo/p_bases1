@@ -83,7 +83,7 @@ class DB_tienda(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM tienda WHERE lu_codigo = %s", (id,) )
+            self.cursor.execute("DELETE FROM tienda WHERE ti_codigo = %s", (id,) )
          
             self.connection.commit()
             
@@ -92,6 +92,39 @@ class DB_tienda(DB):
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+    def update (self, id, data):
+
+        try:
+
+            datamod = dict(data)
+            dataol = self.get(id)
+            
+            for atributo in data:
+                if (data[atributo] == dataol[atributo]):
+                    datamod.pop(atributo)
+                    
+            
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
+            
+            for key in datamod.keys():
+                if (datamod[key] == '' or datamod[key] == ' '): datamod[key] = None
+
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE tienda SET {0} WHERE ti_codigo = {1}'.format(values,id)
+
+            print(self.cursor.mogrify(query,datamod)) 
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'tienda modificado satisfactoriamente'}) 
+            
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
+
 
 
     def verifica_exist(self,data):

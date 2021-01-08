@@ -150,7 +150,6 @@ def manejo_tienda():
 
         data = {
             'ti_nombre'     :   request.form['inputtienda'],
-           # 'ti_correo'     :   request.form['inputcorreo'],
             'fk_lugar'      :   id_direccion,
         }
 
@@ -159,9 +158,38 @@ def manejo_tienda():
         return resp
 
     if request.method == 'PUT':
-       
 
-        return render_template()   #update
+       id = int(request.form['id_user'])
+
+       data = {
+
+           'li_nombre' : request.form['inputtienda'],
+       }
+
+       db = DB_tienda()
+       resp = db.update(id,data)
+
+
+       id_direccion = (db.get(id))['fk_lugar']
+
+       direccion = {
+            'lu_nombre'     :   request.form['inputdir'],   
+            'fk_lugar'      :   int(request.form['selectparroquia']),     
+       }
+    
+       db = DB_lugar()
+       resp2 = db.update( id_direccion , direccion )    
+
+       if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+        
+       if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+
+
+       return jsonify(resp)    
+
+    return render_template()   #update
 
     if request.method == 'DELETE':
 

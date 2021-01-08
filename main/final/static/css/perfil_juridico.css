@@ -119,11 +119,13 @@ h2{
     position:relative;
     right: -270px;
     top: -30px;
+    display: none;
 }
 #Confirmar{
     position:relative;
     right: -510px;
     top: -78px;
+    display: none;
 }
 #botones-eliminar{
     background-color: white;
@@ -166,8 +168,8 @@ h2{
 }
 #tipotlf2{
     position: relative;
-    top: -66px;
-    right: -277px;
+    top: -94px;
+    right: -405px;
     width: 100px;
 }
 #inputtelefono3{
@@ -178,13 +180,13 @@ h2{
 }
 #tipotlf3{
     position: relative;
-    top: -180px;
-    right: -705px;
+    top: -184px;
+    right: -660px;
     width: 100px;
 }
 #Alinear{
     position: relative;
-    top: -170px;
+    top: -130px;
 
 }
 #inputrazon{

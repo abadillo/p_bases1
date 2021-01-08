@@ -16,7 +16,7 @@ $(document).ready(function() {
         
         scrollY:        '50vh',
         scrollCollapse: true,
-        scrollX: true,
+       
 
         ajax: {
             url:   '/mostrar/juridicos',

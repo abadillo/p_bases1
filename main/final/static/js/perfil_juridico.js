@@ -258,12 +258,12 @@ $(document).ready(function() {
 
 
 
-    $('#loading').hide();
-
+    $('#loading').hide();   
     
     
 
 });
+
 
 $(function(){
     $("#Modificar").click(function(){
@@ -304,6 +304,7 @@ $(function(){
     });
 });
 
+/*
 $(function(){
     $("#Cancelar").click(function(){
         window.location.href=window.location.href;
@@ -347,7 +348,7 @@ $(function(){
         
     });
 });
-       
+     */  
         
 
    

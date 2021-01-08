@@ -10,6 +10,8 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
+    $("#titulo").html("Clientes Naturales");
+
     $('#tabla_datatable').DataTable({
         
         scrollY:        '50vh',
@@ -17,7 +19,7 @@ $(document).ready(function() {
         scrollX: true,
 
         ajax: {
-            url:   '/mostrar/clientes',
+            url:   '/mostrar/naturales',
             type: 'POST',
             dataSrc: ""
         },

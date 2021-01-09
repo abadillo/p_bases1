@@ -141,7 +141,7 @@ $(function(){
                     c_error(response['invalido']);
 				
                 else
-                    window.location.href =  "/mostrar/clientes";
+                    window.location.href =  "/mostrar/naturales";
                     /*window.location.href =  "/"*/
                     			
                 

@@ -1,11 +1,12 @@
 
 
-
 /*
 NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da errorFI
 					pero si NO ES UNIQUE entonces si puede ser ''
 					por tanto se insertaran como NULL/NONE
 */
+
+
 
 
 
@@ -18,7 +19,7 @@ WHERE schemaname != 'pg_catalog' AND
 SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'public' 
-ORDER BY ORDINAL_POSITION;
+ORDER BY TABLE_NAME;
 
 
 /*

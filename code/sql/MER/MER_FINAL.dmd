@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="MR6_v3_20210109" id="5AA35D3B-78EC-EFA2-D694-965D6A2B4E63" version="3.5">
+<createdBy>AntonioB</createdBy>
+<createdTime>2020-11-13 01:39:26 UTC</createdTime>
+<ownerDesignName>dpro</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>5AA35D3B-78EC-EFA2-D694-965D6A2B4E63</designId>
+</OSDM_Design>

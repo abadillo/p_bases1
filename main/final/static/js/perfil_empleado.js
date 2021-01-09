@@ -76,10 +76,17 @@ $(document).ready(function() {
     $("#inputcont").val(datos.em_contrasena);
 
 
+    
+
+
     var date = new Date(datos.em_fecha_nac),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-        day = ("0" + date.getDate()).slice(-2);
+        day = ("0" + (date.getDate())).slice(-2);
     var fecha = ([date.getFullYear(), mnth, day].join("-"));
+
+  
+    
+    fecha.setDate(fecha.getDate() + 1);
 
 
     $('#selectfecha').val(fecha);

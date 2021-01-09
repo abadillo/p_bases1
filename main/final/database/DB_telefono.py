@@ -10,26 +10,26 @@ import decimal
 
 class DB_telefono(DB):
 
-
-    def getall (self):  
+    def getall2 (self,tipo,fk_obj):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM telefono")
+            query = 'SELECT * FROM telefono WHERE {0} = {1}'.format(tipo,fk_obj)
+            
+            print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
             resp = self.cursor.fetchall()
+
             columnas = self.cursor.description
 
             data = self.querydictdecimal(resp,columnas)
-
-            for entidad in data:
-                for atributo in entidad:
-                    if type(entidad[atributo]) == decimal.Decimal:
-                        entidad[atributo] = int(entidad[atributo])
 
             return data 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+    
+
       
     def add (self, data):
         
@@ -52,26 +52,40 @@ class DB_telefono(DB):
         except Exception:
             return None
             
+            
 
-    def delete (self,id):
+    def update (self, id, data):
 
         try:
 
-            self.cursor.execute("DELETE FROM telefono WHERE lu_codigo = %s", (id,) )
+            datamod = dict(data)
+            dataol = self.get(id)
+            
+            for atributo in data:
+                if (data[atributo] == dataol[atributo]):
+                    datamod.pop(atributo)
+
          
-            self.connection.commit()
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
             
 
-            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE lugar SET {0} WHERE lu_codigo = {1}'.format(values,id)
+
+            print(self.cursor.mogrify(query, data))
+
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'Direccion modificada satisfactoriamente'}) 
+            
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
 
 
-    def verifica_exist(self,data):
-        return None
-       
 
-    def verif_login(self,data):
-        return None
-   
+
+

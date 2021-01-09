@@ -69,7 +69,13 @@ $(document).ready(function() {
     var idv_estado;
     var idv_municipio;
     var idv_parroquia;
-    
+
+    var telefono1 = null;
+    var tipot1 = null;
+    var telefono2 = null;
+    var tipot2 = null;
+    var telefono3 = null;
+    var tipot3 = null;
     
     $.ajax({
                 
@@ -131,15 +137,50 @@ $(document).ready(function() {
             direccion = response['direccion']
         });
 
-   
-    
+
+        $.ajax({
+                
+            url:   '/telefonos/'+id,
+            type: 'GET',
+            data: {
+                'tipo': 'fk_cliente' ,
+            },
+            async: false, 
+                
+            }).done(function(response){
+                
+                var telefonos = response;
+
+                if ( telefonos[0] ){
+                    telefono1 = telefonos[0].te_numero;
+                    tipot1 = telefonos[0].te_tipo;
+                }
+                if ( telefonos[1] ){
+                    telefono2 = telefonos[1].te_numero;
+                    tipot2 = telefonos[1].te_tipo;
+                }
+                if ( telefonos[2] ){
+                    telefono3 = telefonos[2].te_numero;
+                    tipot3 = telefonos[2].te_tipo;
+                }
+                                
+            });
+
+    console.log(telefono1);
+    console.log(telefono2);
+    console.log(telefono3);
+
+    $("#inputtelefono").val(telefono1);
+    $("#inputtelefono2").val(telefono2);
+    $("#inputtelefono3").val(telefono3);
+
 
 
 
     $("#id_user").val(datos.cl_id);
     $("#inputcedula").val(datos.cl_cedula);
     $("#inputcorreo").val(datos.cl_correo);
-    $("#inputtelefono").val("nada");
+    
     $("#inputpnombre").val(datos.cl_p_nombre);
     $("#inputsnombre").val(datos.cl_s_nombre);
     $("#inputpapellido").val(datos.cl_p_apellido);

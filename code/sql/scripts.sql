@@ -12,11 +12,21 @@ CREATE TABLE lugar(
 CREATE TABLE tienda(
 	ti_codigo		SERIAL,
 	ti_nombre		VARCHAR(20)	NOT NULL,
-	--ti_correo		VARCHAR(30)	
+	ti_correo		VARCHAR(50) NOT NULL,	
 	fk_lugar		INTEGER NOT NULL,
 	CONSTRAINT pk_ti_codigo PRIMARY KEY (ti_codigo),
 	CONSTRAINT fk_lugar FOREIGN KEY (fk_lugar) REFERENCES lugar (lu_codigo)
 );
+
+
+
+
+
+
+
+
+/*CLIENTES*/
+
 
 CREATE TABLE cliente(
 	cl_id				SERIAL,	 
@@ -129,6 +139,13 @@ CREATE TABLE metodo_pago_compra(
 );
 
 
+
+
+
+
+
+
+
 /* EMPLEADOS */
 
 
@@ -139,9 +156,6 @@ CREATE TABLE rol(
 
 	CONSTRAINT pk_ro_codigo PRIMARY KEY (ro_codigo)
 );
-
-
-
 
 
 CREATE TABLE empleado(
@@ -233,8 +247,7 @@ CREATE TABLE control_entrada(
 CREATE TABLE vacaciones(
 
 	va_fecha_ini	TIMESTAMP	NOT NULL,
-	va_fecha_fin	TIMESTAMP	NOT NULL,
-	va_estatus		VARCHAR(20)	NOT NULL,				
+	va_fecha_fin	TIMESTAMP	NOT NULL,			
 
 	fk_empleado		INTEGER,
 
@@ -242,8 +255,7 @@ CREATE TABLE vacaciones(
 	CONSTRAINT pk_vacaciones PRIMARY KEY (va_fecha_ini,fk_empleado), 
 
 
-	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_cedula),
-	CONSTRAINT ch_va_estatus CHECK (va_estatus IN ('PENDIENTE', 'EN PROCESO', 'FINALIZADO'))
+	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_cedula)
 
 );
 
@@ -252,11 +264,7 @@ CREATE TABLE vacaciones(
 
 
 
-
-
-
-
-
+/*PROVEEDOR*/
 
 
 CREATE TABLE proveedor(
@@ -275,6 +283,14 @@ CREATE TABLE proveedor(
 	CONSTRAINT fk_lugar_fisica FOREIGN KEY (fk_lugar_fisica) REFERENCES lugar (lu_codigo),
 	CONSTRAINT fk_lugar_fiscal FOREIGN KEY (fk_lugar_fiscal) REFERENCES lugar (lu_codigo)
 );
+
+
+
+
+
+
+
+
 
 CREATE TABLE persona_contacto(
 	peco_cedula		SERIAL,

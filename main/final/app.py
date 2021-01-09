@@ -277,6 +277,32 @@ def manejo_natural():
         db.add(telefono) 
 
 
+
+        try:
+            
+            telefono2 = {
+                'te_tipo'            :   request.form['tipotlf2'],        
+                'te_numero'          :   int(request.form['inputtelefono2']), 
+                'fk_cliente'         :   id_cliente,         
+            }
+
+            db.add(telefono2) 
+       
+        except: None
+
+        try:
+            
+            telefono3 = {
+                'te_tipo'            :   request.form['tipotlf3'],        
+                'te_numero'          :   int(request.form['inputtelefono3']), 
+                'fk_cliente'         :   id_cliente,         
+            }
+
+            db.add(telefono3) 
+       
+        except: None
+
+
         return jsonify({'mensaje': id_cliente }) 
 
     if request.method == 'PUT':
@@ -675,7 +701,6 @@ def manejo_metodo_pago():
 
 
 
-
 #### comboboxes / getall where #####
 
 
@@ -724,6 +749,24 @@ def metodos_pago(id):
 
         return jsonify(resp)
 
+
+
+@app.route('/telefonos/<id>',methods=['POST','GET'])  
+def telefonos(id):
+    
+    if request.method == 'GET':
+
+        fk_obj = id
+        tipo = request.args.get('tipo')
+        
+
+        db = DB_telefono()         
+        resp = db.getall2(tipo,fk_obj)
+        print(resp)
+
+        return jsonify(resp)
+
+    
            
 
         

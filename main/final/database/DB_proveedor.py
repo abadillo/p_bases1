@@ -5,19 +5,19 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
+from pprint import pprint
 
 
- 
-class DB_empleado(DB):
+class DB_proveedor(DB):
 
-
+    
     def get (self,item):
 
         try:
 
             id = item
             
-            self.cursor.execute("SELECT * FROM empleado WHERE em_codigo = %s", (id,) )
+            self.cursor.execute("SELECT * FROM cliente WHERE cl_id = %s", (id,) )
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -33,24 +33,29 @@ class DB_empleado(DB):
             return data 
 
         except Exception:
-            return ({'error':'Error: Hubo un problema con el servidor o el empleado no existe'})
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
-    def getall (self):  
+    def getall (self, tipo):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM empleado")
+            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = %s " , (tipo,) ) 
             resp = self.cursor.fetchall()
+
+            self.connection.commit()
 
             columnas = self.cursor.description
 
             data = self.querydictdecimal(resp,columnas)
 
+            
+
             return data 
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return pprint({'error':'Error: Hubo un problema con el servidor'})
+      
     
     def add (self, data):
         
@@ -63,7 +68,7 @@ class DB_empleado(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO empleado ({0}) VALUES ({1}) RETURNING em_codigo'.format(columns, values)
+            query = 'INSERT INTO cliente ({0}) VALUES ({1}) RETURNING cl_id'.format(columns, values)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
@@ -76,6 +81,7 @@ class DB_empleado(DB):
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
 
     def update (self, id, data):
 
@@ -97,41 +103,44 @@ class DB_empleado(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE empleado SET {0} WHERE em_codigo = {1}'.format(values,id)
+            query = 'UPDATE cliente SET {0} WHERE cl_id = {1}'.format(values,id)
 
             print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
-            return ({'mensaje':'empleado modificado satisfactoriamente'}) 
+            return ({'mensaje':'Cliente modificado satisfactoriamente'}) 
             
 
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
 
+
     def delete (self,id):
 
         try:
 
-            self.cursor.execute("DELETE FROM empleado WHERE em_codigo = %s", (id,) )
+            self.cursor.execute("DELETE FROM cliente WHERE cl_id = %s", (id,) )
          
-            self.connection.commit()
-            
+            self.connection.commit()  
+
+                   
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-    
+
+ 
     def verif(self,atributo,valor):
         
         try:
             
             if type(valor) == str:
-                self.cursor.execute ("SELECT * FROM empleado WHERE {0} = '{1}'".format (atributo,valor))
+                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
             else:
-                self.cursor.execute ("SELECT * FROM empleado WHERE {0} = '{1}'".format (atributo,valor))
+                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
 
             obj = self.cursor.fetchone()  
 
@@ -143,3 +152,23 @@ class DB_empleado(DB):
         
         except Exception:
             return 2
+
+
+    def getafiliacion (self, n_tienda):
+
+        try:
+            
+            self.cursor.execute("SELECT COUNT(fk_tienda) FROM cliente WHERE fk_tienda = %s", (n_tienda,)
+            )
+            
+            numero = self.cursor.fetchone()[0]
+
+            return (numero + 1)
+
+        
+        except Exception:
+            return 0
+
+
+
+    

@@ -14,6 +14,7 @@ from database.DB_metodo_pago import DB_metodo_pago
 from database.DB_generic import DB_generic
 from database.DB_empleado import DB_empleado
 from database.DB_persona_contacto import DB_persona_contacto
+from database.DB_proveedor import DB_proveedor
 
 
 app = Flask(__name__)
@@ -130,6 +131,19 @@ def mostrar(obj):
             resp = db.getall()
 
             return jsonify(resp)
+
+
+    if obj == 'proveedores':
+
+        if request.method == 'GET':
+            return render_template("mostrar.html")
+
+        if request.method == 'POST':
+
+            db = DB_proveedor()         
+            resp = db.getall()
+
+            return jsonify(resp)  
     
 
 
@@ -282,7 +296,6 @@ def manejo_natural():
         
         #direccion de usuario
         direccion = {
-            'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
             'lu_tipo'       :   'DIRECCION',             
             'fk_lugar'      :   request.form['selectparroquia'],         
@@ -475,7 +488,7 @@ def manejo_juridico():
 
         #datos correo y contraseña
         db = DB_usuario()
-        data2 = db.get2(id,'fk_juridico')
+        data2 = db.get2(id,'fk_cliente')
         
         #añadde data2 a data 
         data.update(data2)
@@ -528,7 +541,6 @@ def manejo_juridico():
         db3 = DB_lugar() 
 
         direccion = {
-            'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
             'lu_tipo'       :   'DIRECCION',             
             'fk_lugar'      :   request.form['selectparroquia'],         
@@ -540,7 +552,6 @@ def manejo_juridico():
         try:
             
             direccion2 = {
-                'lu_codigo'     :   None,
                 'lu_nombre'     :   request.form['inputdir2'],        
                 'lu_tipo'       :   'DIRECCION',             
                 'fk_lugar'      :   request.form['selectparroquia2'],         
@@ -657,66 +668,138 @@ def manejo_juridico():
 
 
         return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
-
    
-    if request.method == 'PUT':
+    if request.method == 'PUT':              #listo
         
         id = int(request.form['id_user'])
 
         data = {
-            
-            'cl_contrasena'   :    request.form['inputcont'],
-            'cl_razon_social' :    request.form['inputrazon'], 
-            'cl_s_nombre'     :    request.form['inputpagina'],
-            'cl_den_comercial'   :    request.form['inputden'],
-            'cl_capital'   :    request.form['inputcapital'],
+            'cl_razon_social'   :    request.form['inputrazon'],
+            'cl_s_nombre'       :    request.form['inputpagina'],
+            'cl_den_comercial'  :    request.form['inputden'],
+            'cl_capital'        :    request.form['inputcapital'],
+        }
+
+
+        #actualiza contrañase
+        
+        data_us = {
+            'us_contrasena' :    request.form['inputcont'],
         }
         
+        db2 = DB_usuario()
+        resp2 = db2.update2( id, 'fk_cliente', data_us)
+
+
+
+        #actualiza direcciones
+
+        datosuser =  db.get(id)
+
+        id_direccion = datosuser['fk_lugar_fiscal']
+        db = DB_lugar()
+        
+        direccion = {
+            'lu_nombre'        :   request.form['inputdir'],   
+            'fk_lugar'  :   int(request.form['selectparroquia']),     
+        }
+        
+        resp3 = db.update( id_direccion , direccion ) 
+
+
+        #si id_direccion2 es null o 0 se intenta crear
+
+        #TERRIBLEEEEE
+        
+        id_direccion2 = datosuser['fk_lugar_fisica']
+
+        try:
+            direccion2 = {
+                'lu_nombre'     :   request.form['inputdir2'], 
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :   request.form['selectparroquia2'],         
+            }
+
+
+            if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
+                resp4 =  db.update( id_direccion2 , direccion2 ) 
+                if (type(resp4) == int): 
+                    data['fk_lugar_fisica'] = resp4
+            
+        except Exception: 
+            None
+
+
         db = DB_cliente()
         resp = db.update(id,data)
 
-        
-        cliente = db.get(id)
-
-        id_direccion = (cliente)['fk_lugar_fiscal']
-
-        direccion = {
-            'lu_nombre'     :   request.form['inputdir'],   
-            'fk_lugar'      :   int(request.form['selectparroquia']),     
-        }
-        
-        db2 = DB_lugar()
-        resp2 = db2.update( id_direccion , direccion ) 
 
 
 
-        id_direccion2 = (cliente)['fk_lugar_fisica']
+        #actualiza telefonos
 
-        if id_direccion2:
-
-            direccion2 = {
-                'lu_nombre'     :   request.form['inputdir2'],   
-                'fk_lugar'      :   int(request.form['selectparroquia2']),
-            }
-            
-            resp3 = db2.update( id_direccion2 , direccion2 ) 
-
-        else: print('bueno')
+        db = DB_telefono()
 
 
-        #resp3 =  DB_telefono().update() 
+        if (request.form['tlfcodigo']):
+            codigo_tlf = int(request.form['tlfcodigo'])
 
-        #nota, si ambas claves son iguales solo retorna una 
+            try:
+                telefono = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono']),  
+                }
+
+                resp6 =  db.update( codigo_tlf, telefono ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf)
+
+
+
+        if (request.form['tlfcodigo2']):
+            codigo_tlf2 = int(request.form['tlfcodigo2'])
+
+            try:
+                telefono2 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono2']),  
+                }
+
+                resp6 =  db.update( codigo_tlf2, telefono2 ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf2)
+
+
+
+        if (request.form['tlfcodigo3']):
+            codigo_tlf3 = int(request.form['tlfcodigo3'])
+
+            try:
+                telefono3 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono3']),  
+                }
+
+                resp6 =  db.update( codigo_tlf3, telefono3 ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf3)
+
+
+
 
         if ('mensaje') in resp.keys(): 
             return jsonify(resp)
-            
         if ('mensaje') in resp2.keys(): 
             return jsonify(resp2)
-
- 
-        return jsonify(resp)
+        if ('mensaje') in resp3.keys(): 
+            return jsonify(resp3)
         
+        
+        return jsonify(resp)
+      
     if request.method == 'DELETE':
 
         id = int(request.get_data())
@@ -726,6 +809,11 @@ def manejo_juridico():
         resp = db.delete(id)
 
         return resp
+
+
+@app.route('/manejo_proveedor', methods= ['GET', 'POST','PUT','DELETE'])
+def manejo_proveedor():
+    return None
 
 
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])

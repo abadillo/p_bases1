@@ -10,7 +10,7 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
-    $("#titulo").html("Clientes Naturales");
+    $("#titulo").html("Proveedores");
 
     $('#tabla_datatable').DataTable({
         
@@ -19,22 +19,21 @@ $(document).ready(function() {
        
 
         ajax: {
-            url:   '/mostrar/naturales',
+            url:   '/mostrar/proveedores',
             type: 'POST',
             dataSrc: ""
         },
 
         columns: [
-            { data: "cl_id" ,         title: "ID"},
-            { data: "cl_cedula" ,     title: "CEDULA"},
-            { data: "cl_afiliacion" , title: "N_AFIL"},
-            { data: "cl_puntos" ,     title: "PUNTOS"},
-            { data: "cl_rif" ,        title: "RIF"},
-            { data: "cl_p_nombre" ,   title: "P_NOMBRE"},
-            { data: "cl_s_nombre" ,   title: "S_NOMBRE"},
-            { data: "cl_p_apellido" , title: "P_APELLIDO"},
-            { data: "cl_s_apellido" , title: "S_APELLIDO"},
-            { data: "fk_lugar" ,      title: "DIR"},
+            { data: "po_id" ,           title: "ID"},
+            { data: "po_rif" ,          title: "RIF"},
+            { data: "po_den_comercial", title: "DEN COM"},
+            { data: "po_razon_social" , title: "RAZON"},
+            { data: "po_pagina_web" ,   title: "WEB"},
+            { data: "po_correo",        title: "CORREO"},
+            { data: "po_correo_alt" ,   title: "CORREO ALT"},
+            { data: "fk_lugar_fisica" , title: "DIR"},
+            { data: "fk_lugar_fiscal" , title: "DIR2"},
            
         ]
         
@@ -51,7 +50,7 @@ $(document).ready(function() {
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
-    });
+    } );
  
     $('#boton_eliminar').click( function () {
         
@@ -59,11 +58,11 @@ $(document).ready(function() {
 
         if (sel){
           
-            var id = sel['cl_id'];
+            var id = sel['po_id'];
 
             $.ajax({
                 
-                url:   '/manejo_natural',
+                url:   '/manejo_proveedor',
                 data:  id.toString(),
                 type: 'DELETE',
                     
@@ -73,17 +72,17 @@ $(document).ready(function() {
                     table.row('.selected').remove().draw( false );
                     
                 }).fail(function(response){
-                    alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+                    c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
                 });
 
         }
-        else alerta('Debe seleccionar algo');
+        else alert('Debe seleccionar algo');
             
     });
 
     $('#boton_añadir').click( function () {
         
-        window.location.href =  "/registro/natural"		
+        window.location.href =  "/registro/proveedor"		
 
     } );
 
@@ -93,12 +92,12 @@ $(document).ready(function() {
 
         if (sel){
 
-            var id = sel['cl_id'];
-            window.location.href =  '/natural/'+id;	
+            var id = sel['po_id'];
+            window.location.href =  '/proveedor/'+id;	
 
         }
 
-        else alerta('Debe seleccionar algo');
+        else alert('Debe seleccionar algo');
     });
 
 });

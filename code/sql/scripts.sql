@@ -216,7 +216,7 @@ CREATE TABLE metodo_pago(
 	CONSTRAINT pk_metodo_pago PRIMARY KEY (mc_documento,fk_cliente,fk_tipo_pago),
 
 
-	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id),	
+	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE,
 	CONSTRAINT fk_tipo_pago FOREIGN KEY (fk_tipo_pago) REFERENCES tipo_pago (tp_codigo)
 );
 
@@ -260,9 +260,10 @@ CREATE TABLE usuario(
 
 	CONSTRAINT pk_usuario PRIMARY KEY (us_codigo),
 	CONSTRAINT fk_rol FOREIGN KEY (fk_rol) REFERENCES rol(ro_codigo),
-    CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(cl_id),
-	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_codigo)
+    CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(cl_id) ON DELETE CASCADE,
+	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_codigo) ON DELETE CASCADE
 );
+
 
 
 
@@ -305,10 +306,9 @@ CREATE TABLE proveedor(
 );
 
 
-
-
 CREATE TABLE persona_contacto(
-	peco_cedula		SERIAL,
+	peco_codigo		SERIAL,
+	peco_cedula		NUMERIC(10) NOT NULL,
 	peco_p_nombre	VARCHAR(20)	NOT NULL,
 	peco_p_apellido	VARCHAR(20)	NOT NULL,
 	peco_s_nombre	VARCHAR(20)	,
@@ -316,16 +316,15 @@ CREATE TABLE persona_contacto(
 	fk_cliente		INTEGER,
 	fk_proveedor	INTEGER,
 
-	CONSTRAINT pk_persona PRIMARY KEY (peco_cedula),
-	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id),
-	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(po_id)
+	CONSTRAINT pk_persona PRIMARY KEY (peco_codigo) ,
+	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE,
+	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(po_id) ON DELETE CASCADE
 );
-
 
 CREATE TABLE telefono(
 	te_codigo			SERIAL,
 	te_tipo				VARCHAR(20)	NOT NULL,
-	te_numero			NUMERIC(10)	NOT NULL,
+	te_numero			NUMERIC(15)	NOT NULL,
 	fk_cliente			INTEGER,
 	fk_empleado			INTEGER,
 	fk_proveedor		INTEGER,
@@ -335,10 +334,10 @@ CREATE TABLE telefono(
 	CONSTRAINT pk_telefono PRIMARY KEY (te_codigo),
 	CONSTRAINT ch_te_tipo CHECK (te_tipo IN ('CELULAR', 'OFICINA', 'CASA')),
 
-	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id),
-	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_cedula),
-	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(po_id),
-	CONSTRAINT fk_persona_contacto FOREIGN KEY (fk_persona_contacto) REFERENCES persona_contacto(peco_cedula)
+	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE,
+	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_cedula) ON DELETE CASCADE,
+	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(po_id) ON DELETE CASCADE,
+	CONSTRAINT fk_persona_contacto FOREIGN KEY (fk_persona_contacto) REFERENCES persona_contacto(peco_codigo) ON DELETE CASCADE
 );
 
 

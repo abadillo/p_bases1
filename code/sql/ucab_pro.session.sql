@@ -19,7 +19,7 @@ WHERE schemaname != 'pg_catalog' AND
 SELECT *   --MUESTRA LOS ATRIBUTOS QUE ESTAN EN TODAS LAS TABLAS
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'public' 
-ORDER BY ORDINAL_POSITION;
+ORDER BY TABLE_NAME;
 
 /*
 ALTER TABLE cliente_natural DROP cl_rif;
@@ -28,10 +28,28 @@ ALTER TABLE cliente DROP cl_rifj;
 ALTER TABLE metodo_pago_compra ALTER COLUMN mp_documento TYPE VARCHAR(25);
 select * from metodo_pago;
 drop table empleado;
+SELECT COUNT(fk_tienda) FROM cliente WHERE fk_tienda = 2;
+
+DELETE FROM cliente WHERE cl_id = 10;
+
+select * from
+cliente
 
 select * from rol;
 INSERT INTO rol (ro_nombre) VALUES ('CAJERO');
 
 
 
+
+SELECT * from cliente;
+
+
+drop table persona_contacto;
+ALTER TABLE persona_contacto ALTER COLUMN peco_cedula TYPE INTEGER;
+
+
+
+
+drop table metodo_pago;
+delete from cliente where cl_id > 0 ;
 */

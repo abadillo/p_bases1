@@ -77,6 +77,7 @@ class DB_lugar(DB):
     def update (self, id, data):
 
         try:
+            if ((not (id)) or id == 0): return self.add(data)
 
             datamod = dict(data)
             dataol = self.get(id)

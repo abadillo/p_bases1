@@ -17,7 +17,7 @@ class DB_persona_contacto(DB):
 
             id = item
             
-            self.cursor.execute("SELECT * FROM persona_contacto WHERE peco_cedula = %s", (id,) )
+            self.cursor.execute("SELECT * FROM persona_contacto WHERE peco_codigo = %s", (id,) )
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -47,7 +47,7 @@ class DB_persona_contacto(DB):
             values = ','.join(['%({})s'.format(k) for k in keys])
 
             
-            query = 'INSERT INTO persona_contacto ({0}) VALUES ({1}) RETURNING peco_cedula'.format(columns, values)
+            query = 'INSERT INTO persona_contacto ({0}) VALUES ({1}) RETURNING peco_codigo'.format(columns, values)
             
             print(self.cursor.mogrify(query, data))  
 
@@ -83,7 +83,7 @@ class DB_persona_contacto(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE persona_contacto SET {0} WHERE peco_cedula = {1}'.format(values,id)
+            query = 'UPDATE persona_contacto SET {0} WHERE peco_codigo = {1}'.format(values,id)
 
             print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
@@ -101,7 +101,7 @@ class DB_persona_contacto(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM persona_contacto WHERE peco_cedula = %s", (id,) )
+            self.cursor.execute("DELETE FROM persona_contacto WHERE peco_codigo = %s", (id,) )
             print(id)
 
             self.connection.commit()  

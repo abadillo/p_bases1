@@ -4,8 +4,8 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal    # 2)comando "py
 from psycopg2 import Error
 from psycopg2 import sql
 
-from database.DB_cliente_natural import DB_cliente_natural
-from database.DB_cliente_juridico import DB_cliente_juridico
+from database.DB_usuario import DB_usuario
+from database.DB_cliente import DB_cliente
 
 from database.DB_lugar import DB_lugar
 from database.DB_telefono import DB_telefono
@@ -38,7 +38,7 @@ def inicio_sesion():
 
     else: 
         
-        db = DB_cliente_natural()
+        db = DB_cliente()
 
         data = {
             'cl_correo'     : request.form['inputCorreo'],    
@@ -85,8 +85,8 @@ def mostrar(obj):
 
         if request.method == 'POST':
 
-            db = DB_cliente_natural()         
-            resp = db.getall()
+            db = DB_cliente()         
+            resp = db.getall('NATURAL')
 
             return jsonify(resp)    
 
@@ -98,8 +98,8 @@ def mostrar(obj):
 
         if request.method == 'POST':
 
-            db = DB_cliente_juridico()         
-            resp = db.getall()
+            db = DB_cliente()         
+            resp = db.getall('JURIDICO')
 
             return jsonify(resp)  
 
@@ -225,34 +225,62 @@ def manejo_natural():
      
         id = request.args['id']
         
-        db = DB_cliente_natural()
+        db = DB_cliente()
         data = db.get(id) 
+
+        db = DB_usuario()
+        data2 = db.get2(id,'fk_cliente')
+        
+        print (data)
+        print (data2)
+        data.update(data2)
+        
+
 
         return jsonify(data)
 
-    if request.method == 'POST': 
-       
+    if request.method == 'POST':            #listo
+        
+        #datos cliente
+
         data = {
-            'cl_correo'     :    request.form['inputcorreo'], 
-            'cl_cedula'     :int(request.form['inputcedula']),   
-            'cl_rif'        :   request.form['inputrif'], 
-            'cl_contrasena' :    request.form['inputcont'],     
-            'cl_afiliacion' :    123,
+            'cl_cedula'     :int(request.form['inputcedula']), 
+            'cl_rif'        :    request.form['inputrif'], 
+            'cl_afiliacion' :    None,
             'cl_p_nombre'   :    request.form['inputpnombre'],
             'cl_s_nombre'   :    request.form['inputsnombre'],   
             'cl_p_apellido' :    request.form['inputpapellido'], 
             'cl_s_apellido' :    request.form['inputsapellido'], 
+            'cl_puntos'     :    0,
             'fk_lugar'      :    None,    
             'fk_tienda'     :    int(request.form['selecttienda']),
             'cl_tipo'       :    'NATURAL',
+            
+        }
+
+        #datos usuario
+
+        d_user = {
+            'us_correo'     :    request.form['inputcorreo'], 
+            'us_contrasena' :    request.form['inputcont'],  
+            'fk_cliente'    :    None,
+            'fk_rol'        :    1,
         }
         
+        #validacion de existencia de cedula, rif y correo
+        db = DB_cliente()
+        resp = db.verif('cl_rif',data['cl_rif'])
+        if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
+        resp = db.verif('cl_cedula',data['cl_cedula'])
+        if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
+        
+        db2 = DB_usuario()
+        resp = db2.verif('us_correo',d_user['us_correo'])
+        if (resp): return jsonify({'invalido': 'Este correo ya esta registrado'}) 
 
-        db = DB_cliente_natural()
-        resp = db.verifica_exist(data)
-        if (resp != 0): return resp
 
         
+        #direccion de usuario
         direccion = {
             'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
@@ -260,13 +288,26 @@ def manejo_natural():
             'fk_lugar'      :   request.form['selectparroquia'],         
         }
 
-        db2 = DB_lugar() 
-        data['fk_lugar'] = db2.add(direccion)
+        db3 = DB_lugar() 
+        
+        #datos adicionales de cliente
+        data['fk_lugar'] = db3.add(direccion)
+        data['cl_afiliacion'] = db.getafiliacion(data['fk_tienda'])
+        
+    
 
+        #insersion de cliente y usuario
+        
         id_cliente = db.add(data)
 
+        d_user['fk_cliente'] = id_cliente
+        db2.add(d_user)
 
-        db = DB_telefono()   
+
+
+        #telefonos y personas de contacto
+
+        db4 = DB_telefono()   
 
         telefono = {
             'te_tipo'            :   request.form['tipotlf'],        
@@ -274,9 +315,7 @@ def manejo_natural():
             'fk_cliente'         :   id_cliente,         
         }
 
-        db.add(telefono) 
-
-
+        db4.add(telefono) 
 
         try:
             
@@ -286,7 +325,7 @@ def manejo_natural():
                 'fk_cliente'         :   id_cliente,         
             }
 
-            db.add(telefono2) 
+            db4.add(telefono2) 
        
         except: None
 
@@ -298,12 +337,12 @@ def manejo_natural():
                 'fk_cliente'         :   id_cliente,         
             }
 
-            db.add(telefono3) 
+            db4.add(telefono3) 
        
         except: None
 
 
-        return jsonify({'mensaje': id_cliente }) 
+        return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
 
     if request.method == 'PUT':
         
@@ -318,7 +357,7 @@ def manejo_natural():
             'cl_s_apellido' :    request.form['inputsapellido'],
         }
         
-        db = DB_cliente_natural()
+        db = DB_cliente()
         resp = db.update(id,data)
 
         
@@ -346,13 +385,12 @@ def manejo_natural():
  
         return jsonify(resp)
         
-    if request.method == 'DELETE':
+    if request.method == 'DELETE':          
 
         id = int(request.get_data())
 
-        db = DB_cliente_natural()   
-
-        resp = db.delete(id)
+        db2 = DB_cliente() 
+        resp = db2.delete(id)
 
         return resp
 
@@ -365,7 +403,7 @@ def manejo_juridico():
      
         id = request.args['id']
         
-        db = DB_cliente_juridico()
+        db = DB_cliente()
         data = db.get(id) 
 
         return jsonify(data)
@@ -390,7 +428,7 @@ def manejo_juridico():
         }
         
         
-        db = DB_cliente_juridico()
+        db = DB_cliente()
         resp = db.verifica_exist(data)
         if (resp != 0): return resp
 
@@ -493,7 +531,7 @@ def manejo_juridico():
             'cl_capital'   :    request.form['inputcapital'],
         }
         
-        db = DB_cliente_juridico()
+        db = DB_cliente()
         resp = db.update(id,data)
 
         
@@ -542,7 +580,7 @@ def manejo_juridico():
 
         id = int(request.get_data())
 
-        db = DB_cliente_juridico()   
+        db = DB_cliente()   
 
         resp = db.delete(id)
 

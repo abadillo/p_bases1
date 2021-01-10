@@ -5,13 +5,12 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
+from pprint import pprint
 
 
+class DB_cliente(DB):
 
-
-class DB_cliente_natural(DB):
-
-
+    
     def get (self,item):
 
         try:
@@ -37,21 +36,26 @@ class DB_cliente_natural(DB):
             return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
-    def getall (self):  
+    def getall (self, tipo):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = 'NATURAL'")
+            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = %s " , (tipo,) ) 
             resp = self.cursor.fetchall()
+
+            self.connection.commit()
 
             columnas = self.cursor.description
 
             data = self.querydictdecimal(resp,columnas)
 
+            
+
             return data 
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return pprint({'error':'Error: Hubo un problema con el servidor'})
+      
     
     def add (self, data):
         
@@ -77,6 +81,7 @@ class DB_cliente_natural(DB):
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
 
     def update (self, id, data):
 
@@ -110,14 +115,16 @@ class DB_cliente_natural(DB):
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
 
+
     def delete (self,id):
 
         try:
 
             self.cursor.execute("DELETE FROM cliente WHERE cl_id = %s", (id,) )
          
-            self.connection.commit()
-            
+            self.connection.commit()  
+
+                   
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 
@@ -125,65 +132,43 @@ class DB_cliente_natural(DB):
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
-    def verifica_exist(self,data):
-
-        try:
-           
-            
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_correo = %s ;", ('cl_id',data['cl_correo'],))
-                 
-            obj = self.cursor.fetchone()  
-
-            if obj is not None:    
-                return jsonify({'invalido':'correo ya registrado'})  
-
-                      
-
-        
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_cedula = %s ;", ('cl_id',data['cl_cedula'],))
-                    
-            obj = self.cursor.fetchone()  
-
-            if obj is not None:    
-                return jsonify({'invalido':'cedula ya registrada'})  
-
-             
-
-
-            self.cursor.execute("SELECT %s FROM cliente WHERE cl_rif = %s ;", ('cl_id',data['cl_rif'],))
-                    
-            obj = self.cursor.fetchone()  
-
-            if obj is not None:    
-                return jsonify({'invalido':'el rif ya esta registrado'})  
-
-           
-
-            return 0
-
-
-        except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
-
-    def verif_login(self,data):
+ 
+    def verif(self,atributo,valor):
         
         try:
             
-            self.cursor.execute("SELECT * FROM cliente  WHERE cl_correo = %s ;", (data['cl_correo'],))        
+            if type(valor) == str:
+                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
+            else:
+                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
 
             obj = self.cursor.fetchone()  
 
             if obj is None:    
-                return jsonify({'invalido':'correo o contraseña invalida'}) 
-
-            if data['cl_contraseña'] == obj[2] : 
-                return jsonify({'mensaje':'login valido'}) 
+                return None
             else:
-                return jsonify({'invalido':'correo o contraseña invalida'}) 
+                return 1
 
+        
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidorr'})
-    
-  
+            return 2
 
-   
+
+    def getafiliacion (self, n_tienda):
+
+        try:
+            
+            self.cursor.execute("SELECT COUNT(fk_tienda) FROM cliente WHERE fk_tienda = %s", (n_tienda,)
+            )
+            
+            numero = self.cursor.fetchone()[0]
+
+            return (numero + 1)
+
+        
+        except Exception:
+            return 0
+
+
+
+    

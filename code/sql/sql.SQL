@@ -102,6 +102,7 @@ CREATE TABLE proveedor(
 CREATE TABLE tienda(
 	ti_codigo		NUMERIC(10)	NOT NULL	UNIQUE,
 	ti_nombre		VARCHAR(20)	NOT NULL,
+	ti_correo		VARCHAR(20),
 	fk_lugar		NUMERIC(10) NOT NULL,
 	CONSTRAINT pk_ti_codigo PRIMARY KEY (ti_codigo),
 	CONSTRAINT fk_lugar FOREIGN KEY (fk_lugar) REFERENCES lugar (lu_codigo)

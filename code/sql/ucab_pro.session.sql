@@ -10,17 +10,16 @@ NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da errorFI
 
 
 
-SELECT *
+SELECT *   --MUESTRA LAS TABLAS QUE HAY EN LA BASE DE DATOS
 FROM pg_catalog.pg_tables
 WHERE schemaname != 'pg_catalog' AND 
     schemaname != 'information_schema';
 
 
-SELECT *
+SELECT *   --MUESTRA LOS ATRIBUTOS QUE ESTAN EN TODAS LAS TABLAS
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'public' 
-ORDER BY TABLE_NAME;
-
+ORDER BY ORDINAL_POSITION;
 
 /*
 ALTER TABLE cliente_natural DROP cl_rif;

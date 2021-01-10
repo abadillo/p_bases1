@@ -296,8 +296,9 @@ $(function(){
     });
 });
 
+
 $(function(){
-    $("#Confirmar").click(function(){
+    $('form').submit(function(e){
       
         $("#id_user").removeAttr('disabled');
 
@@ -330,6 +331,8 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
+        e.preventDefault();
+        
         
     });
 });

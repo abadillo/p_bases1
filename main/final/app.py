@@ -13,6 +13,7 @@ from database.DB_tienda import DB_tienda
 from database.DB_metodo_pago import DB_metodo_pago
 from database.DB_generic import DB_generic
 from database.DB_empleado import DB_empleado
+from database.DB_persona_contacto import DB_persona_contacto
 
 
 app = Flask(__name__)
@@ -221,7 +222,7 @@ def manejo_tienda():
 @app.route('/manejo_natural', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_natural():
 
-    if request.method == 'GET':
+    if request.method == 'GET':         #listo
      
         id = request.args['id']
         
@@ -295,7 +296,7 @@ def manejo_natural():
         
     
 
-        #insersion de cliente y usuario
+        #insercion de cliente y usuario
         
         id_cliente = db.add(data)
 
@@ -304,7 +305,7 @@ def manejo_natural():
 
 
 
-        #telefonos y personas de contacto
+        #telefonos
 
         db4 = DB_telefono()   
 
@@ -343,7 +344,7 @@ def manejo_natural():
 
         return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
 
-    if request.method == 'PUT':
+    if request.method == 'PUT':              #listo
         
         id = int(request.form['id_user'])
 
@@ -438,6 +439,8 @@ def manejo_natural():
                 resp6 = db.delete(codigo_tlf3)
 
 
+
+
         if ('mensaje') in resp.keys(): 
             return jsonify(resp)
         if ('mensaje') in resp2.keys(): 
@@ -447,9 +450,8 @@ def manejo_natural():
         
         
         return jsonify(resp)
-
-        
-    if request.method == 'DELETE':          
+      
+    if request.method == 'DELETE':          #listo
 
         id = int(request.get_data())
 
@@ -467,47 +469,74 @@ def manejo_juridico():
      
         id = request.args['id']
         
+        #datos normales
         db = DB_cliente()
         data = db.get(id) 
 
+        #datos correo y contraseña
+        db = DB_usuario()
+        data2 = db.get2(id,'fk_juridico')
+        
+        #añadde data2 a data 
+        data.update(data2)
+        
         return jsonify(data)
 
-    if request.method == 'POST':
+    if request.method == 'POST':            #listo
+        
+        #datos cliente
 
         data = {
-            'cl_correo'         :    request.form['inputcorreo'],   
             'cl_rif'            :    request.form['inputrif'], 
-            'cl_contrasena'     :    request.form['inputcont'],     
-            'cl_afiliacion'     :    123,
-
+            'cl_afiliacion'     :    None,
             'cl_razon_social'   :    request.form['inputrazon'],
             'cl_pagina_web'     :    request.form['inputpagina'],   
             'cl_den_comercial'  :    request.form['inputden'], 
             'cl_capital'        :    int(request.form['inputcapital']), 
-
+            'cl_puntos'         :    0,
             'fk_lugar_fiscal'   :    None,   
             'fk_lugar_fisica'   :    None,   
             'fk_tienda'         :    int(request.form['selecttienda']),
             'cl_tipo'           :    'JURIDICO',
+            
+        }
+
+        #datos usuario
+
+        d_user = {
+            'us_correo'     :    request.form['inputcorreo'], 
+            'us_contrasena' :    request.form['inputcont'],  
+            'fk_cliente'    :    None,
+            'fk_rol'        :    1,
         }
         
-        
+        #validacion de existencia de cedula, rif y correo
         db = DB_cliente()
-        resp = db.verifica_exist(data)
-        if (resp != 0): return resp
+        resp = db.verif('cl_rif',data['cl_rif'])
+        if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
+        
+        db2 = DB_usuario()
+        resp = db2.verif('us_correo',d_user['us_correo'])
+        if (resp): return jsonify({'invalido': 'Este correo ya esta registrado'}) 
+
 
         
+
+
+        #direccion de usuario
+
+        db3 = DB_lugar() 
+
         direccion = {
             'lu_codigo'     :   None,
             'lu_nombre'     :   request.form['inputdir'],        
             'lu_tipo'       :   'DIRECCION',             
             'fk_lugar'      :   request.form['selectparroquia'],         
         }
-       
-        
-        db2 = DB_lugar()  
-        data['fk_lugar_fiscal'] = db2.add(direccion)
-        
+
+        data['fk_lugar_fiscal'] = db3.add(direccion)
+
+
         try:
             
             direccion2 = {
@@ -518,70 +547,119 @@ def manejo_juridico():
             }
 
             if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
-                data['fk_lugar_fisica'] = db2.add(direccion2)
+                data['fk_lugar_fisica'] = db3.add(direccion2)
        
         except: None
-            
 
 
+        
+        
+        #datos adicionales de cliente
+       
+        data['cl_afiliacion'] = db.getafiliacion(data['fk_tienda'])
+        
+    
+
+        #insercion de cliente y usuario
+        
         id_cliente = db.add(data)
 
+        d_user['fk_cliente'] = id_cliente
+        db2.add(d_user)
 
-        db = DB_telefono()   
+
+
+        #telefonos 
+
+        db4 = DB_telefono()   
 
         telefono = {
             'te_tipo'            :   request.form['tipotlf'],        
-            'te_numero'          :   int(request.form['inputtelefono']), 
+            'te_numero'          :   int(request.form['inputtelefono']),  
             'fk_cliente'         :   id_cliente,         
         }
 
-        db.add(telefono) 
+        db4.add(telefono) 
 
-        
         try:
-
+            
             telefono2 = {
                 'te_tipo'            :   request.form['tipotlf2'],        
                 'te_numero'          :   int(request.form['inputtelefono2']), 
                 'fk_cliente'         :   id_cliente,         
             }
 
-            db.add(telefono2) 
+            db4.add(telefono2) 
        
         except: None
 
         try:
-
+            
             telefono3 = {
                 'te_tipo'            :   request.form['tipotlf3'],        
                 'te_numero'          :   int(request.form['inputtelefono3']), 
                 'fk_cliente'         :   id_cliente,         
             }
 
-            db.add(telefono3) 
-
+            db4.add(telefono3) 
+       
         except: None
 
-        '''
 
-        Primer-nom	"alez"
-        Segundo-nom	"ba"
-        Primer-ap	"dasd"
-        Segundo-ap	"dasd"
-        Cedula1 "26993117"
-        Telefono2	"0412578466"
+        #personas de contacto
 
-        Primer-nom2	"antonio"
-        Segundo-nom2	"badil524123lo"
-        Primer-ap2	"alexander"
-        Segundo-ap2	"leon"
-        Telefono2	"04125788461"
-
-        '''
+        db5 = DB_persona_contacto()
 
 
-        return jsonify({'mensaje': id_cliente }) 
+        persona1 = {
+            'peco_cedula'     :int(request.form['Cedula1']), 
+            'peco_p_nombre'   :    request.form['Primer-nom'],
+            'peco_s_nombre'   :    request.form['Segundo-nom'],   
+            'peco_p_apellido' :    request.form['Primer-ap'], 
+            'peco_s_apellido' :    request.form['Segundo-ap'], 
+            'fk_cliente'      :   id_cliente,  
+        }
 
+        idcontacto = db5.add(persona1)
+                
+        telefonop = {
+            'te_tipo'               :   'CELULAR',        
+            'te_numero'             :   int(request.form['Telefono']),
+            'fk_persona_contacto'   :   idcontacto,         
+        }
+
+        db4.add(telefonop) 
+
+        try:
+            
+            persona2 = {
+                'peco_cedula'     : int(request.form['Cedula2']), 
+                'peco_p_nombre'   :    request.form['Primer-nom2'],
+                'peco_s_nombre'   :    request.form['Segundo-nom2'],   
+                'peco_p_apellido' :    request.form['Primer-ap2'], 
+                'peco_s_apellido' :    request.form['Segundo-ap2'], 
+                'fk_cliente'      :   id_cliente,       
+            }
+
+            if not (persona2['peco_p_nombre'] == '' or persona2['peco_p_nombre'] == ' '):
+                
+                idcontacto2 = db5.add(persona2)
+                telefonop2 = {
+                    'te_tipo'            :   'CELULAR',        
+                    'te_numero'          :   int(request.form['Telefono2']),  
+                    'fk_persona_contacto'         :   idcontacto2,         
+                }   
+
+                db4.add(telefonop2) 
+       
+        except: None
+
+
+
+        return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
+
+
+   
     if request.method == 'PUT':
         
         id = int(request.form['id_user'])

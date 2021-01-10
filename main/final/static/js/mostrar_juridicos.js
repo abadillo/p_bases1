@@ -25,12 +25,17 @@ $(document).ready(function() {
         },
 
         columns: [
-            { data: "cl_id" ,         title: "ID"},
-            { data: "cl_correo" ,     title: "CORREO"},
-            { data: "cl_contrasena" , title: "CONT"},
-            { data: "cl_rif" ,        title: "RIF"},
-            { data: "cl_afiliacion" , title: "N_AFIL"},
-            { data: "fk_lugar_fiscal" , title: "DIR"},
+            { data: "cl_id" ,          title: "ID"},
+            { data: "cl_rif" ,         title: "RIF"},
+            { data: "cl_afiliacion" ,  title: "N_AFIL"},
+            { data: "cl_puntos" ,      title: "PUNTOS"},
+            { data: "cl_den_comercial", title: "DEN COM"},
+            { data: "cl_razon_social" , title: "RAZON"},
+            { data: "cl_pagina_web" ,   title: "WEB"},
+            { data: "cl_capital" ,      title: "CAPITAL"},
+            { data: "fk_lugar_fisica" , title: "DIR"},
+            { data: "fk_lugar_fiscal" , title: "DIR2"},
+           
            
         ]
         

@@ -465,7 +465,7 @@ def manejo_natural():
 @app.route('/manejo_juridico', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_juridico():
 
-    if request.method == 'GET':
+    if request.method == 'GET':         #listo
      
         id = request.args['id']
         
@@ -657,7 +657,6 @@ def manejo_juridico():
 
 
         return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
-
 
    
     if request.method == 'PUT':

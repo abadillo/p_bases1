@@ -37,31 +37,6 @@ class DB_usuario(DB):
 
 
 
-    def get (self,item):
-
-        try:
-
-            id = item
-            
-            self.cursor.execute("SELECT * FROM cliente WHERE FK = %s", (id,) )
-            resp = self.cursor.fetchone()
-            
-            columnas = self.cursor.description
-           
-            resp = self.querydictdecimal(resp,columnas)
-
-            data = resp[0]
-
-            for atributo in data:
-                if (data[atributo] == None):
-                    data[atributo] = ''
-
-            return data 
-
-        except Exception:
-            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
-
-
 
     def add (self, data):
         
@@ -85,6 +60,42 @@ class DB_usuario(DB):
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
+    def update2 (self, id_cl_em ,tipo , data):
+
+        try:
+
+            datamod = dict(data)
+            dataol = self.get2(id_cl_em,tipo)
+            
+
+            for atributo in data:
+                if (data[atributo] == dataol[atributo]):
+                    datamod.pop(atributo)
+                    
+            
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
+            
+            for key in datamod.keys():
+                if (datamod[key] == '' or datamod[key] == ' '): datamod[key] = None
+
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE usuario SET {0} WHERE {1} = {2}'.format(values,tipo,id_cl_em)
+
+            print(self.cursor.mogrify(query,datamod)) 
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'Usuario modificado satisfactoriamente'}) 
+            
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
+
+
 
 
     def delete(self, id_cl_em,tipo):

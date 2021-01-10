@@ -10,6 +10,32 @@ import decimal
 
 class DB_telefono(DB):
 
+    def get2(self, id_cl_em,tipo):
+
+        try:
+            query = 'SELECT * FROM usuario WHERE {0} = {1}'.format(tipo, id_cl_em)
+            
+            print(self.cursor.mogrify(query)) 
+            self.cursor.execute(query)
+
+            resp = self.cursor.fetchone()         
+            columnas = self.cursor.description
+           
+            resp = self.querydictdecimal(resp,columnas)
+
+            data = resp[0]
+
+            for atributo in data:
+                if (data[atributo] == None):
+                    data[atributo] = ''
+
+            return data 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
+
     def getall2 (self,tipo,fk_obj):  
     
         try:

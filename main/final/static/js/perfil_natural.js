@@ -58,6 +58,15 @@ $(document).ready(function() {
     
     var id = (window.location.pathname.split('/'))[2];
     
+
+    $("#tlfcodigo").hide();
+    $("#tlfcodigo2").hide();
+    $("#tlfcodigo3").hide();
+
+
+
+
+
     var datos;
     var tienda_registro;
 
@@ -141,36 +150,36 @@ $(document).ready(function() {
         });
 
 
-        $.ajax({
-                
-            url:   '/telefonos/'+id,
-            type: 'GET',
-            data: {
-                'tipo': 'fk_cliente' ,
-            },
-            async: false, 
-                
-            }).done(function(response){
-                
-                var telefonos = response;
+    $.ajax({
+            
+        url:   '/telefonos/'+id,
+        type: 'GET',
+        data: {
+            'tipo': 'fk_cliente' ,
+        },
+        async: false, 
+            
+        }).done(function(response){
+            
+            var telefonos = response;
 
-                if ( telefonos[0] ){
-                    telefono1 = telefonos[0].te_numero;
-                    tipot1 = telefonos[0].te_tipo;
-                    tlfcodigo = telefonos[0].te_codigo;
-                }
-                if ( telefonos[1] ){
-                    telefono2 = telefonos[1].te_numero;
-                    tipot2 = telefonos[1].te_tipo;
-                    tlfcodigo2 = telefonos[1].te_codigo;
-                }
-                if ( telefonos[2] ){
-                    telefono3 = telefonos[2].te_numero;
-                    tipot3 = telefonos[2].te_tipo;
-                    tlfcodigo3 = telefonos[2].te_codigo;
-                }
-                                
-            });
+            if ( telefonos[0] ){
+                telefono1 = telefonos[0].te_numero;
+                tipot1 = telefonos[0].te_tipo;
+                tlfcodigo = telefonos[0].te_codigo;
+            }
+            if ( telefonos[1] ){
+                telefono2 = telefonos[1].te_numero;
+                tipot2 = telefonos[1].te_tipo;
+                tlfcodigo2 = telefonos[1].te_codigo;
+            }
+            if ( telefonos[2] ){
+                telefono3 = telefonos[2].te_numero;
+                tipot3 = telefonos[2].te_tipo;
+                tlfcodigo3 = telefonos[2].te_codigo;
+            }
+                            
+        });
 
     console.log(telefono1);
     console.log(telefono2);
@@ -179,8 +188,6 @@ $(document).ready(function() {
     $("#inputtelefono").val(telefono1);
     $("#inputtelefono2").val(telefono2);
     $("#inputtelefono3").val(telefono3);
-
-
 
     $("#tlfcodigo").val(tlfcodigo);
     $("#tlfcodigo2").val(tlfcodigo2);
@@ -195,7 +202,6 @@ $(document).ready(function() {
     $("#inputsnombre").val(datos.cl_s_nombre);
     $("#inputpapellido").val(datos.cl_p_apellido);
     $("#inputsapellido").val(datos.cl_s_apellido);
-   
     $("#inputrif").val(datos.cl_rif);
 
     $("#inputcorreo").val(datos.us_correo);
@@ -207,7 +213,7 @@ $(document).ready(function() {
 
 
 
-
+    /* DIRECCION */
 
     lugares('ESTADO','',idv_estado);
     lugares('MUNICIPIO',idv_estado,idv_municipio);
@@ -219,14 +225,14 @@ $(document).ready(function() {
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,idv_municipio);
+        lugares('MUNICIPIO',id_estado,0);
     });
         
 
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,idv_parroquia);
+        lugares('PARROQUIA',id_municipio,0);
     });
 
     
@@ -267,10 +273,12 @@ $(function(){
         $("#inputpapellido").removeAttr('disabled');
         $("#inputsapellido").removeAttr('disabled');
         $("#inputcont").removeAttr('disabled');
+        
         $("#selectestado").removeAttr('disabled');
         $("#selectmunicipio").removeAttr('disabled');
         $("#selectparroquia").removeAttr('disabled');
         $("#inputdir").removeAttr('disabled');
+        
         
         $("#Modificar").css("display","none"); 
         $("#Cancelar").css("display","block"); 

@@ -29,7 +29,7 @@ class DB_generic(DB):
             return data 
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return None
       
 
     def add (self, data):

@@ -179,14 +179,18 @@ $(document).ready(function() {
 
     $("#id_user").val(datos.cl_id);
     $("#inputcedula").val(datos.cl_cedula);
-    $("#inputcorreo").val(datos.cl_correo);
-    
+ 
     $("#inputpnombre").val(datos.cl_p_nombre);
     $("#inputsnombre").val(datos.cl_s_nombre);
     $("#inputpapellido").val(datos.cl_p_apellido);
     $("#inputsapellido").val(datos.cl_s_apellido);
-    $("#inputcont").val(datos.cl_contrasena);
+   
     $("#inputrif").val(datos.cl_rif);
+
+
+    $("#inputcont").val(datos.us_contrasena);
+
+
 
     $("#tiendaregistro").val(tienda_registro);
     

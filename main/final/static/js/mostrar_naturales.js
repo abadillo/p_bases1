@@ -16,7 +16,7 @@ $(document).ready(function() {
         
         scrollY:        '50vh',
         scrollCollapse: true,
-        scrollX: true,
+       
 
         ajax: {
             url:   '/mostrar/naturales',
@@ -26,8 +26,7 @@ $(document).ready(function() {
 
         columns: [
             { data: "cl_id" ,         title: "ID"},
-            { data: "cl_correo" ,     title: "CORREO"},
-            { data: "cl_contrasena" , title: "CONT"},
+           
             { data: "cl_cedula" ,     title: "CEDULA"},
             { data: "cl_rif" ,        title: "RIF"},
             { data: "cl_p_nombre" ,   title: "P_NOMBRE"},

@@ -219,7 +219,7 @@ def manejo_tienda():
 
        return jsonify(resp)    
 
-    return render_template()   #update
+    
 
     if request.method == 'DELETE':
 

@@ -371,8 +371,11 @@ def manejo_natural():
         resp2 = db2.update2( id, 'fk_cliente', data_us)
 
 
+        #actualiza direccion
+
+        datosuser =  db.get(id)
+        id_direccion = datosuser['fk_lugar']
         
-        id_direccion = (db.get(id))['fk_lugar']
 
         direccion = {
             'lu_nombre'     :   request.form['inputdir'],   
@@ -383,20 +386,66 @@ def manejo_natural():
         resp3 = db.update( id_direccion , direccion ) 
 
 
-        #resp3 =  DB_telefono().update() 
+        #actualiza telefonos
 
-        #nota, si ambas claves son iguales solo retorna una 
+        db = DB_telefono()
+
+
+        if (request.form['tlfcodigo']):
+            codigo_tlf = int(request.form['tlfcodigo'])
+
+            try:
+                telefono = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono']),  
+                }
+
+                resp6 =  db.update( codigo_tlf, telefono ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf)
+
+
+
+        if (request.form['tlfcodigo2']):
+            codigo_tlf2 = int(request.form['tlfcodigo2'])
+
+            try:
+                telefono2 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono2']),  
+                }
+
+                resp6 =  db.update( codigo_tlf2, telefono2 ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf2)
+
+
+
+        if (request.form['tlfcodigo3']):
+            codigo_tlf3 = int(request.form['tlfcodigo3'])
+
+            try:
+                telefono3 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono3']),  
+                }
+
+                resp6 =  db.update( codigo_tlf3, telefono3 ) 
+
+            except Exception: 
+                resp6 = db.delete(codigo_tlf3)
+
 
         if ('mensaje') in resp.keys(): 
             return jsonify(resp)
-            
         if ('mensaje') in resp2.keys(): 
             return jsonify(resp2)
-
         if ('mensaje') in resp3.keys(): 
             return jsonify(resp3)
-
- 
+        
+        
         return jsonify(resp)
 
         

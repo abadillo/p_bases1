@@ -36,8 +36,6 @@ class DB_usuario(DB):
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
 
-
-
     def add (self, data):
         
         try:
@@ -94,8 +92,6 @@ class DB_usuario(DB):
 
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
-
-
 
 
     def delete(self, id_cl_em,tipo):

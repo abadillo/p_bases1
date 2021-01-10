@@ -72,10 +72,13 @@ $(document).ready(function() {
 
     var telefono1 = null;
     var tipot1 = null;
+    var tlfcodigo = null;
     var telefono2 = null;
     var tipot2 = null;
+    var tlfcodigo2 = null;
     var telefono3 = null;
     var tipot3 = null;
+    var tlfcodigo3 = null;
     
     $.ajax({
                 
@@ -154,14 +157,17 @@ $(document).ready(function() {
                 if ( telefonos[0] ){
                     telefono1 = telefonos[0].te_numero;
                     tipot1 = telefonos[0].te_tipo;
+                    tlfcodigo = telefonos[0].te_codigo;
                 }
                 if ( telefonos[1] ){
                     telefono2 = telefonos[1].te_numero;
                     tipot2 = telefonos[1].te_tipo;
+                    tlfcodigo2 = telefonos[1].te_codigo;
                 }
                 if ( telefonos[2] ){
                     telefono3 = telefonos[2].te_numero;
                     tipot3 = telefonos[2].te_tipo;
+                    tlfcodigo3 = telefonos[2].te_codigo;
                 }
                                 
             });
@@ -174,6 +180,11 @@ $(document).ready(function() {
     $("#inputtelefono2").val(telefono2);
     $("#inputtelefono3").val(telefono3);
 
+
+
+    $("#tlfcodigo").val(tlfcodigo);
+    $("#tlfcodigo2").val(tlfcodigo2);
+    $("#tlfcodigo3").val(tlfcodigo3);
 
 
 
@@ -193,6 +204,9 @@ $(document).ready(function() {
     $("#tiendaregistro").val(tienda_registro);
     
     $("#inputdir").val(direccion);
+
+
+
 
 
     lugares('ESTADO','',idv_estado);

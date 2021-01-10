@@ -10,15 +10,16 @@ import decimal
 
 class DB_telefono(DB):
 
-    def get2(self, id_cl_em,tipo):
+
+    def get (self,item):
 
         try:
-            query = 'SELECT * FROM usuario WHERE {0} = {1}'.format(tipo, id_cl_em)
-            
-            print(self.cursor.mogrify(query)) 
-            self.cursor.execute(query)
 
-            resp = self.cursor.fetchone()         
+            id = item
+            
+            self.cursor.execute("SELECT * FROM telefono WHERE te_codigo = %s", (id,) )
+            resp = self.cursor.fetchone()
+            
             columnas = self.cursor.description
            
             resp = self.querydictdecimal(resp,columnas)
@@ -32,7 +33,7 @@ class DB_telefono(DB):
             return data 
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
 
@@ -90,26 +91,43 @@ class DB_telefono(DB):
             for atributo in data:
                 if (data[atributo] == dataol[atributo]):
                     datamod.pop(atributo)
-
-         
+                    
+            
             if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
             
+            for key in datamod.keys():
+                if (datamod[key] == '' or datamod[key] == ' '): datamod[key] = None
 
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE lugar SET {0} WHERE lu_codigo = {1}'.format(values,id)
+            query = 'UPDATE telefono SET {0} WHERE te_codigo = {1}'.format(values,id)
 
-            print(self.cursor.mogrify(query, data))
-
+            print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
-            return ({'mensaje':'Direccion modificada satisfactoriamente'}) 
+            return ({'mensaje':'Telefono modificado satisfactoriamente'}) 
             
 
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
+
+
+    
+    def delete (self,id):
+
+        try:
+
+            self.cursor.execute("DELETE FROM telefono WHERE te_codigo = %s", (id,) )
+            print(id)
+
+            self.connection.commit()  
+                
+            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
 

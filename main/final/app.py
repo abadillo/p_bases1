@@ -813,8 +813,137 @@ def manejo_juridico():
 
 @app.route('/manejo_proveedor', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_proveedor():
-    return None
+    if request.method == 'GET':
+        id = request.args['id']
 
+        db = DB_proveedor()
+        data = db.get(id) 
+
+        return jsonify(data)
+
+    if request.method == 'POST':
+
+        data = {
+            'po_rif'            :request.form['inputrif'],
+            'po_den_comercial'  :request.form['inputden'],
+            'po_razon_scocial'  :request.form['inputrazon'],
+            'po_pagina_web'     :request.form['inputpagina'],
+            'po_correo'         :request.form['inputcorreo'],
+            'po_correo_alt'     :request.form['inputcorreo2'],
+            'fk_lugar_fiscal'   : None,
+            'fk_lugar_fisica'   : None,
+        }
+
+        db = DB_proveedor()
+        resp = db.verif('cl_rif',data['cl_rif'])
+        if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
+       
+
+        db2 = DB_lugar() 
+
+        direccion = {
+            'lu_nombre'     :   request.form['inputdir'],        
+            'lu_tipo'       :   'DIRECCION',             
+            'fk_lugar'      :   request.form['selectparroquia'],         
+        }
+
+        data['fk_lugar_fiscal'] = db2.add(direccion)
+
+        try:
+
+            direccion2 = {
+                'lu_nombre'     :   request.form['inputdir2'],        
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :   request.form['selectparroquia2'],         
+            }
+
+            if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
+                data['fk_lugar_fisica'] = db2.add(direccion2)
+       
+        except: None
+
+       
+        db3 = DB_telefono()   
+
+        telefono = {
+            'te_tipo'            :   request.form['tipotlf'],        
+            'te_numero'          :   int(request.form['inputtelefono']),  
+            'fk_cliente'         :   id_cliente,         
+        }
+
+        db3.add(telefono) 
+
+        try:
+            
+            telefono2 = {
+                'te_tipo'            :   request.form['tipotlf2'],        
+                'te_numero'          :   int(request.form['inputtelefono2']), 
+                'fk_cliente'         :   id_cliente,         
+            }
+
+            db3.add(telefono2) 
+       
+        except: None
+
+        try:
+            
+            telefono3 = {
+                'te_tipo'            :   request.form['tipotlf3'],        
+                'te_numero'          :   int(request.form['inputtelefono3']), 
+                'fk_cliente'         :   id_cliente,         
+            }
+
+            db3.add(telefono3) 
+       
+        except: None
+
+        db4 = DB_persona_contacto()
+
+
+        persona1 = {
+            'peco_cedula'     :int(request.form['Cedula1']), 
+            'peco_p_nombre'   :    request.form['Primer-nom'],
+            'peco_s_nombre'   :    request.form['Segundo-nom'],   
+            'peco_p_apellido' :    request.form['Primer-ap'], 
+            'peco_s_apellido' :    request.form['Segundo-ap'], 
+            'fk_cliente'      :   id_cliente,  
+        }
+
+        idcontacto = db4.add(persona1)
+                
+        telefonop = {
+            'te_tipo'               :   'CELULAR',        
+            'te_numero'             :   int(request.form['Telefono']),
+            'fk_persona_contacto'   :   idcontacto,         
+        }
+
+        db3.add(telefonop) 
+
+        try:
+            
+            persona2 = {
+                'peco_cedula'     : int(request.form['Cedula2']), 
+                'peco_p_nombre'   :    request.form['Primer-nom2'],
+                'peco_s_nombre'   :    request.form['Segundo-nom2'],   
+                'peco_p_apellido' :    request.form['Primer-ap2'], 
+                'peco_s_apellido' :    request.form['Segundo-ap2'], 
+                'fk_cliente'      :   id_cliente,       
+            }
+
+            if not (persona2['peco_p_nombre'] == '' or persona2['peco_p_nombre'] == ' '):
+                
+                idcontacto2 = db4.add(persona2)
+                telefonop2 = {
+                    'te_tipo'            :   'CELULAR',        
+                    'te_numero'          :   int(request.form['Telefono2']),  
+                    'fk_persona_contacto'         :   idcontacto2,         
+                }   
+
+                db3.add(telefonop2) 
+       
+        except: None
+
+        
 
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_empleado():

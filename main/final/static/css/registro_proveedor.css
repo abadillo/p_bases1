@@ -86,29 +86,16 @@ body{
     right: -320px;
     text-decoration: underline;
 }
-#margenes{
-    position: relative;
-    right: -100px;   
-    margin-top: 40px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
-#perfil-juri{
-    position: relative;
-    right: -400px;
-    top: -20px;
-}
-
-#circulo-margen{
-   margin-right: 100px;
-
-}
 #margen{    
         margin-left: 100px;
-        margin-top: 50px;   
+        margin-top: 50px;       
     
-    
+}
+#margen-campos{
+    position: relative;
+    top: 40px;
+
 }
 #inputrif{
     width: 200px;
@@ -167,7 +154,7 @@ option{
     width: 150px;
     height: 45px;
     position: relative;
-    top:80px;
+    top:120px;
     right:-550px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -274,6 +261,12 @@ h5{
     position: relative;
     right: -100px;
     top:90px
+}
+#inputcorreo2{
+    width: 560px;
+    position: relative;
+    right: -100px;
+    top:-20px;
 }
 #inputden{
     width: 250px;

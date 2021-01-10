@@ -9,6 +9,7 @@
     <meta charset="utf-8"> 
 
     <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+    <script src="../static/js/registro_proveedor.js"></script>
 
  </head> 
  
@@ -29,26 +30,13 @@
 
                     <div id="margen"> <!--Margen para toda la pagina-->
 
+                        
                         <h1 id="registro"> Registro </h1>
 
-                        <div id="margenes"> <!--Margen solo para los botones radio-->
+                        <div id="margen-campos">
 
-                            <span id="circulo-margen" class="form-check">
-
-                                <input class="form-check-input" type="radio" name="selecttipo1" id="selecttipo1">
-                                <label class="form-check-label text-muted" for="selecttipo1"> Perfil Natural </label>
-
-                            </span>
-                    
-                            <span id="perfil-juri" class="form-check">           
-
-                                <input class="form-check-input" type="radio" name="selecttipo2" id="selecttipo2" checked >
-                                <label class="form-check-label text-muted" for="selecttipo2"> Perfil Juridico </label>
-
-                            </span> 
-                    
-                        </div> <!--Termina margen de botones radio-->                   
-
+                        <div id="espacio"></div> 
+                       
                         <input id="inputrif" name="inputrif" class="form-control" type="text" placeholder="RIF" pattern="[A-Z]{1}[0-9]{9}" maxlength="10" required autofocus title="Debe poner una letra:'VEPJG' y 9 numeros " />
 
                         <input id="inputtelefono" name="inputtelefono" class="form-control" type="text" pattern="[0-9]*" placeholder="Teléfono 1(Obligatorio)" minlength="7" maxlength="11" required autofocus>
@@ -93,6 +81,8 @@
 
                         <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
 
+                        </div>
+
                     </div> <!--Termina margen para toda la pagina-->
 
                 </div> <!--Termina primer fondo blanco de la pagina-->
@@ -132,6 +122,10 @@
 
                         <input id="inputpagina" name="inputpagina" class="form-control" type="text" placeholder="Pagina Web (Opcional)"/> 
                     
+                        <input id="inputcorreo2" name="inputcorreo2" class="form-control" type="email" 
+                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+                        placeholder="Correo Electrónico Alterno" required autofocus>
+
                         <div id="Combo-boxes">
                             
                             <h4>Dirección de Habitación </h4>

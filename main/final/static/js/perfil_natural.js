@@ -179,7 +179,7 @@ $(document).ready(function() {
 
     $("#id_user").val(datos.cl_id);
     $("#inputcedula").val(datos.cl_cedula);
- 
+    
     $("#inputpnombre").val(datos.cl_p_nombre);
     $("#inputsnombre").val(datos.cl_s_nombre);
     $("#inputpapellido").val(datos.cl_p_apellido);
@@ -187,10 +187,8 @@ $(document).ready(function() {
    
     $("#inputrif").val(datos.cl_rif);
 
-
+    $("#inputcorreo").val(datos.us_correo);
     $("#inputcont").val(datos.us_contrasena);
-
-
 
     $("#tiendaregistro").val(tienda_registro);
     

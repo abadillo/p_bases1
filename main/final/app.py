@@ -225,18 +225,17 @@ def manejo_natural():
      
         id = request.args['id']
         
+        #datos normales
         db = DB_cliente()
         data = db.get(id) 
 
+        #datos correo y contraseña
         db = DB_usuario()
         data2 = db.get2(id,'fk_cliente')
         
-        print (data)
-        print (data2)
+        #añadde data2 a data 
         data.update(data2)
         
-
-
         return jsonify(data)
 
     if request.method == 'POST':            #listo
@@ -349,16 +348,28 @@ def manejo_natural():
         id = int(request.form['id_user'])
 
         data = {
-            
-            'cl_contrasena' :    request.form['inputcont'],
+        
             'cl_p_nombre'   :    request.form['inputpnombre'], 
             'cl_s_nombre'   :    request.form['inputsnombre'],  
             'cl_p_apellido' :    request.form['inputpapellido'], 
             'cl_s_apellido' :    request.form['inputsapellido'],
-        }
-        
+        }        
+
         db = DB_cliente()
         resp = db.update(id,data)
+
+
+        
+
+        #actualiza contrañase
+        
+        data_us = {
+            'us_contrasena' :    request.form['inputcont'],
+        }
+        
+        db2 = DB_usuario()
+        resp2 = db2.update2( id, 'fk_cliente', data_us)
+
 
         
         id_direccion = (db.get(id))['fk_lugar']
@@ -369,7 +380,7 @@ def manejo_natural():
         }
         
         db = DB_lugar()
-        resp2 = db.update( id_direccion , direccion ) 
+        resp3 = db.update( id_direccion , direccion ) 
 
 
         #resp3 =  DB_telefono().update() 
@@ -382,8 +393,12 @@ def manejo_natural():
         if ('mensaje') in resp2.keys(): 
             return jsonify(resp2)
 
+        if ('mensaje') in resp3.keys(): 
+            return jsonify(resp3)
+
  
         return jsonify(resp)
+
         
     if request.method == 'DELETE':          
 

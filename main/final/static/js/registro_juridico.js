@@ -192,9 +192,9 @@ $(function(){
 				else if (response['invalido'])
                     alerta(response['invalido']);
 				
-                /*else
+                else
                     window.location.href =  "/mostrar/juridicos";
-					window.location.href =  "/"*/				
+								
                 
             }).fail(function(response){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');

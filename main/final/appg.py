@@ -677,7 +677,7 @@ def manejo_juridico():
             'cl_razon_social'   :    request.form['inputrazon'],
             'cl_s_nombre'       :    request.form['inputpagina'],
             'cl_den_comercial'  :    request.form['inputden'],
-            'cl_capital'        :    int(request.form['inputcapital']),
+            'cl_capital'        :    request.form['inputcapital'],
         }
 
 
@@ -693,66 +693,44 @@ def manejo_juridico():
 
 
         #actualiza direcciones
-        
-        db = DB_cliente()
+
         datosuser =  db.get(id)
 
         id_direccion = datosuser['fk_lugar_fiscal']
-        db3 = DB_lugar()
+        db = DB_lugar()
         
         direccion = {
             'lu_nombre'        :   request.form['inputdir'],   
             'fk_lugar'  :   int(request.form['selectparroquia']),     
         }
         
-        resp3 = db3.update(id_direccion , direccion) 
+        resp3 = db.update( id_direccion , direccion ) 
 
 
-        #actualiza direccion opcional (crear, actualizar o borrar)
+        #si id_direccion2 es null o 0 se intenta crear
 
-        flag = 0
+        #TERRIBLEEEEE
+        
+        id_direccion2 = datosuser['fk_lugar_fisica']
 
         try:
             direccion2 = {
-                    'lu_nombre'     :   request.form['inputdir2'], 
-                    'lu_tipo'       :   'DIRECCION',             
-                    'fk_lugar'      :   request.form['selectparroquia2'],         
+                'lu_nombre'     :   request.form['inputdir2'], 
+                'lu_tipo'       :   'DIRECCION',             
+                'fk_lugar'      :   request.form['selectparroquia2'],         
             }
-            flag = 1
-        except Exception:
+
+
+            if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
+                resp4 =  db.update( id_direccion2 , direccion2 ) 
+                if (type(resp4) == int): 
+                    data['fk_lugar_fisica'] = resp4
+            
+        except Exception: 
             None
 
-        id_direccion2 = datosuser['fk_lugar_fisica']
 
-        if (flag == 1):
-        
-            if (direccion2['lu_nombre'] != '' and direccion2['lu_nombre'] != ' ' ):
-            
-                direccion2['fk_lugar'] = int(direccion2['fk_lugar']) 
-
-                if id_direccion2: 
-
-                    resp4 =  db.update( id_direccion2 , direccion2 ) 
-                                
-                else:                     
-                    resp4 = db3.add(direccion2)
-                    data['fk_lugar_fisica'] = resp4
-
-            else:
-                if id_direccion2 : 
-                    db3.delete(id_direccion2) 
-                    data['fk_lugar_fisica'] = None
-                
-        else:
-            if id_direccion2 : 
-                db3.delete(id_direccion2) 
-                data['fk_lugar_fisica'] = None
-            
-            
-
-        
-
-        #actualiza usuario base 
+        db = DB_cliente()
         resp = db.update(id,data)
 
 
@@ -760,7 +738,7 @@ def manejo_juridico():
 
         #actualiza telefonos
 
-        db5 = DB_telefono()
+        db = DB_telefono()
 
 
         if (request.form['tlfcodigo']):
@@ -772,10 +750,10 @@ def manejo_juridico():
                     'te_numero'          :   int(request.form['inputtelefono']),  
                 }
 
-                resp6 =  db5.update( codigo_tlf, telefono ) 
+                resp6 =  db.update( codigo_tlf, telefono ) 
 
             except Exception: 
-                resp6 = db5.delete(codigo_tlf)
+                resp6 = db.delete(codigo_tlf)
 
 
 
@@ -788,10 +766,10 @@ def manejo_juridico():
                     'te_numero'          :   int(request.form['inputtelefono2']),  
                 }
 
-                resp6 =  db5.update( codigo_tlf2, telefono2 ) 
+                resp6 =  db.update( codigo_tlf2, telefono2 ) 
 
             except Exception: 
-                resp6 = db5.delete(codigo_tlf2)
+                resp6 = db.delete(codigo_tlf2)
 
 
 
@@ -804,10 +782,11 @@ def manejo_juridico():
                     'te_numero'          :   int(request.form['inputtelefono3']),  
                 }
 
-                resp6 =  db5.update( codigo_tlf3, telefono3 ) 
+                resp6 =  db.update( codigo_tlf3, telefono3 ) 
 
             except Exception: 
-                resp6 = db5.delete(codigo_tlf3)
+                resp6 = db.delete(codigo_tlf3)
+
 
 
 
@@ -821,7 +800,7 @@ def manejo_juridico():
         
         return jsonify(resp)
       
-    if request.method == 'DELETE':      #listo
+    if request.method == 'DELETE':
 
         id = int(request.get_data())
 
@@ -834,7 +813,6 @@ def manejo_juridico():
 
 @app.route('/manejo_proveedor', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_proveedor():
-   
     if request.method == 'GET':
         id = request.args['id']
 
@@ -848,7 +826,7 @@ def manejo_proveedor():
         data = {
             'po_rif'            :request.form['inputrif'],
             'po_den_comercial'  :request.form['inputden'],
-            'po_razon_social'  :request.form['inputrazon'],
+            'po_razon_scocial'  :request.form['inputrazon'],
             'po_pagina_web'     :request.form['inputpagina'],
             'po_correo'         :request.form['inputcorreo'],
             'po_correo_alt'     :request.form['inputcorreo2'],
@@ -857,7 +835,7 @@ def manejo_proveedor():
         }
 
         db = DB_proveedor()
-        resp = db.verif('po_rif',data['po_rif'])
+        resp = db.verif('cl_rif',data['cl_rif'])
         if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
        
 
@@ -965,7 +943,7 @@ def manejo_proveedor():
        
         except: None
 
-
+        
 
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_empleado():

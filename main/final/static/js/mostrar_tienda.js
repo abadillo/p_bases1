@@ -10,6 +10,8 @@ function alerta(mensaje){
 
 $(document).ready(function(){
 
+    $("#titulo").html("Tiendas");
+
     $('#tabla_datatable').DataTable({
 
         scrollY:        '50vh',

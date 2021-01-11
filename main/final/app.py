@@ -123,7 +123,7 @@ def mostrar(obj):
 
         if request.method == 'GET':
 
-            return render_template("mostrar_tienda.html")
+            return render_template("mostrar.html")
     
         if request.method == 'POST':
 
@@ -966,6 +966,157 @@ def manejo_proveedor():
         except: None
 
         return jsonify({'mensaje': 'Proveedor Creado Satisfactoriamente' }) 
+
+    if request.method == 'PUT':
+
+        id = int(request.form['id'])
+
+        data = {
+
+            'po_den_comercial'      :request.form['inputden'],
+            'po_razon_social'       :request.form['inputrazon'],
+            'po_correo'             :request.form['inputcorreo'],
+            'po_pagina_web'         :request.form['inputpagina'],
+        }
+
+        db = DB_proveedor()
+        resp = db.update(id,data)      
+
+        #Actualiza direcciones proveedor
+
+        db2 = DB_proveedor()
+        datosuser =  db2.get(id)
+
+        id_direccion = datosuser['fk_lugar_fiscal']       
+        db3 = DB_lugar()       
+
+        direccion ={
+            'lu_nombre'     : request.form['inputdir'],
+            'fk_lugar'      : int(request.form['selecparroquia']),
+        }
+
+        resp2 = db3.update(id_direccion , direccion) 
+
+        flag = 0
+
+        try: 
+            direccion2 = {
+                    'lu_nombre'     :   request.form['inputdir2'], 
+                    'lu_tipo'       :   'DIRECCION',             
+                    'fk_lugar'      :   request.form['selectparroquia2'],                 
+            }
+            flag = 1
+        except Exception:
+            None
+
+        id_direccion2 = datosuser['fk_lugar_fisica']
+
+        if (flag == 1):
+        
+            if (direccion2['lu_nombre'] != '' and direccion2['lu_nombre'] != ' ' ):
+            
+                direccion2['fk_lugar'] = int(direccion2['fk_lugar']) 
+
+                if id_direccion2: 
+
+                    resp4 =  db2.update( id_direccion2 , direccion2 ) 
+                                
+                else:                     
+                    resp4 = db3.add(direccion2)
+                    data['fk_lugar_fisica'] = resp4
+
+            else:
+                if id_direccion2 : 
+                    db3.delete(id_direccion2) 
+                    data['fk_lugar_fisica'] = None
+                
+        else:
+            if id_direccion2 : 
+                db3.delete(id_direccion2) 
+                data['fk_lugar_fisica'] = None
+            
+            
+
+        
+
+        #actualiza usuario base 
+        resp = db2.update(id,data)
+
+
+        #actualiza telefonos
+
+        db5 = DB_telefono()
+
+
+        if (request.form['tlfcodigo']):
+            codigo_tlf = int(request.form['tlfcodigo'])
+
+            try:
+                telefono = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf, telefono ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf)
+
+
+
+        if (request.form['tlfcodigo2']):
+            codigo_tlf2 = int(request.form['tlfcodigo2'])
+
+            try:
+                telefono2 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono2']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf2, telefono2 ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf2)
+
+
+
+        if (request.form['tlfcodigo3']):
+            codigo_tlf3 = int(request.form['tlfcodigo3'])
+
+            try:
+                telefono3 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono3']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf3, telefono3 ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf3)
+
+
+
+        if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+        if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+        if ('mensaje') in resp3.keys(): 
+            return jsonify(resp3)
+        
+        
+        return jsonify(resp)
+      
+
+
+    if request.method == 'DELETE':
+
+        id = int(request.get_data())
+
+        db = DB_proveedor()   
+
+        resp = db.delete(id)
+
+        return resp
 
 
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])

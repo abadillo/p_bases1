@@ -6,8 +6,7 @@ function alerta(mensaje){
     alert(mensaje);
 
 };
-
-function lugares (lu_tipo, fk_lugar,sel_op){
+function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({
                 
@@ -21,7 +20,8 @@ function lugares (lu_tipo, fk_lugar,sel_op){
             
         }).done(function(resp){
         
-            lugars = resp;          
+            lugars = resp;     
+            console.log(lugars);     
 
             var opciones = [];
 
@@ -36,17 +36,32 @@ function lugares (lu_tipo, fk_lugar,sel_op){
 
             }
 
+            console.log(y);
 
-            if (lu_tipo == 'ESTADO')
-                $('#selectestado').html(opciones.join(''));
-            else if (lu_tipo == 'MUNICIPIO')
-                $('#selectmunicipio').html(opciones.join(''));
-            else 
-                $('#selectparroquia ').html(opciones.join(''));
+            if (y == 1) {
+
+                if (lu_tipo == 'ESTADO')
+                    $('#selectestado').html(opciones.join(''));
+                else if (lu_tipo == 'MUNICIPIO')
+                    $('#selectmunicipio').html(opciones.join(''));
+                else 
+                    $('#selectparroquia').html(opciones.join(''));
+
+            } else if (y == 2){
+                
+                if (lu_tipo == 'ESTADO')
+                    $('#selectestado2').html(opciones.join(''));
+                else if (lu_tipo == 'MUNICIPIO')
+                    $('#selectmunicipio2').html(opciones.join(''));
+                else 
+                    $('#selectparroquia2').html(opciones.join(''));
+                                    
+            }
+            
 
             
         }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
 
@@ -58,20 +73,20 @@ $(document).ready(function() {
     var id_municipio;
     var id_parroquia;
 
-    lugares('ESTADO','',0);
+    lugares('ESTADO','',0,1);
     
    
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,0);
+        lugares('MUNICIPIO',id_estado,0,1);
     });
         
 
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,0);
+        lugares('PARROQUIA',id_municipio,0,1);
     });
 
     
@@ -159,9 +174,9 @@ $(function(){
 				else if (response['invalido'])
                     alerta(response['invalido']);
 				
-                /*else
-                    window.location.href =  "/mostrar/juridicos";
-					window.location.href =  "/"*/				
+                else
+                    window.location.href =  "/mostrar/proveedores";
+									
                 
             }).fail(function(response){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
@@ -212,7 +227,7 @@ $(function(){//Botones Continuar, registro y personas contacto
         var form = $('form');
         var flag = 0;
      
-        for (var n = 9; n <= 19; n++){
+        for (var n = 9; n <= 21; n++){
             if (!(form[0][n].checkValidity())){
                 form[0][n].reportValidity();
                 console.log(form[0][n]);

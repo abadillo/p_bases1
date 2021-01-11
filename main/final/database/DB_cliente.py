@@ -136,11 +136,9 @@ class DB_cliente(DB):
     def verif(self,atributo,valor):
         
         try:
-            
-            if type(valor) == str:
-                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
-            else:
-                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
+        
+            self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
+           
 
             obj = self.cursor.fetchone()  
 

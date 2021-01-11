@@ -53,8 +53,7 @@
             
                         </div>
 
-                        <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social" required autofocus>
-                    
+                        
                         <div id="espacio"></div>   <!-- Separacion entre fondos-->
 
                         <div class="form-group" id="tienda-registro"> 
@@ -73,11 +72,44 @@
 
                         <div id="espacio"></div>  
 
-                        <input id="inputcont" name="inputcont" class="form-control" type="password"  placeholder="Contraseña" minlength="8" maxlength="16" required autofocus>
+                        <input id="inputden" name="inputden" class="form-control" type="text" placeholder="Denominacion Comercial" required autofocus> 
 
-                        <input id="inputcontval" name="inputcontval"  class="form-control" type="password"  minlength="8" maxlength="16" placeholder="Verifique Contraseña" required autofocus> 
+                        <input id="inputrazon" name="inputrazon" class="form-control" type="text" placeholder="Razón Social" required autofocus>
 
                         <div id="espacio"> </div> 
+
+                        <div id="Combo-boxes2">
+                        
+                            <h4 id="Direccion-fisica">Dirección Fisica (Opcional) </h4>
+    
+                            <div class="form-group" id="Estado2"> 
+    
+                                 <select id="selectestado2" name="selectestado2" class="custom-select browser-default" autofocus>
+                                    <option value="" selected disabled>ESTADO</option>
+                               </select>  
+    
+                            </div> 
+    
+                            <div class="form-group" id="Municipio2"> 
+    
+                                <select name="selectmunicipio2" id="selectmunicipio2" class="custom-select browser-default" autofocus>
+                                    <option value="" selected disabled>MUNICIPIO</option>
+                                </select>  
+    
+                            </div>
+    
+                            <div class="form-group" id="Parroquia2"> 
+    
+                                <select name="selectparroquia2" id="selectparroquia2" class="custom-select browser-default" autofocus>
+                                    <option value="" selected disabled>PARROQUIA</option>    
+                                </select>  
+    
+                            </div> 
+    
+                            <input id="inputdir2" name="inputdir2" class="form-control" type="text" placeholder="Direccion Fisica" autofocus> 
+    
+                        </div>
+    
 
                         <button id="Continuar" class="btn btn-lg btn-secondary" type="button">  Continuar    </button>
 
@@ -124,11 +156,11 @@
                     
                         <input id="inputcorreo2" name="inputcorreo2" class="form-control" type="email" 
                         pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
-                        placeholder="Correo Electrónico Alterno" required autofocus>
+                        placeholder="Correo Electrónico (Opcional))" autofocus>
 
                         <div id="Combo-boxes">
                             
-                            <h4>Dirección de Habitación </h4>
+                            <h4>Dirección de Fisica </h4>
                         
                             <div class="form-group" id="Estado"> 
 
@@ -185,42 +217,7 @@
 
                     <h1 id="registro"> Registro </h1>
 
-                    <input id="inputcapital" name="inputcapital" class="form-control" type="text" placeholder="Capital Disponible" required autofocus> 
-
-                    <input id="inputden" name="inputden" class="form-control" type="text" placeholder="Denominacion Comercial" required autofocus> 
-
-                    <div id="Combo-boxes">
-                        
-                        <h4 id="Direccion-fisica">Dirección Fisica (Opcional) </h4>
-
-                        <div class="form-group" id="Estado2"> 
-
-                             <select id="selectestado2" name="selectestado2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>ESTADO</option>
-                           </select>  
-
-                        </div> 
-
-                        <div class="form-group" id="Municipio2"> 
-
-                            <select name="selectmunicipio2" id="selectmunicipio2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>MUNICIPIO</option>
-                            </select>  
-
-                        </div>
-
-                        <div class="form-group" id="Parroquia2"> 
-
-                            <select name="selectparroquia2" id="selectparroquia2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>PARROQUIA</option>    
-                            </select>  
-
-                        </div> 
-
-                        <input id="inputdir2" name="inputdir2" class="form-control" type="text" placeholder="Direccion Fisica" autofocus> 
-
-                    </div>
-
+                    
                     <h3> Contactos Alternos </h3>
 
                     <button id="boton-uno" class="btn btn-lg btn-primary botones" type="button"> Uno </button>

@@ -17,7 +17,7 @@ class DB_proveedor(DB):
 
             id = item
             
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_id = %s", (id,) )
+            self.cursor.execute("SELECT * FROM proveedor WHERE po_id = %s", (id,) )
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -36,26 +36,25 @@ class DB_proveedor(DB):
             return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
-    def getall (self, tipo):  
+    def getall (self):  
     
         try:
 
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_tipo = %s " , (tipo,) ) 
+            self.cursor.execute("SELECT * FROM proveedor") 
             resp = self.cursor.fetchall()
-
-            self.connection.commit()
-
             columnas = self.cursor.description
 
             data = self.querydictdecimal(resp,columnas)
 
-            
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == decimal.Decimal:
+                        entidad[atributo] = int(entidad[atributo])
 
             return data 
 
         except Exception:
-            return pprint({'error':'Error: Hubo un problema con el servidor'})
-      
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
     
     def add (self, data):
         
@@ -68,7 +67,7 @@ class DB_proveedor(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO cliente ({0}) VALUES ({1}) RETURNING cl_id'.format(columns, values)
+            query = 'INSERT INTO proveedor ({0}) VALUES ({1}) RETURNING po_id'.format(columns, values)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
@@ -103,13 +102,13 @@ class DB_proveedor(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE cliente SET {0} WHERE cl_id = {1}'.format(values,id)
+            query = 'UPDATE proveedor SET {0} WHERE po_id = {1}'.format(values,id)
 
             print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
-            return ({'mensaje':'Cliente modificado satisfactoriamente'}) 
+            return ({'mensaje':'Proveedor modificado satisfactoriamente'}) 
             
 
         except Exception:
@@ -120,7 +119,7 @@ class DB_proveedor(DB):
 
         try:
 
-            self.cursor.execute("DELETE FROM cliente WHERE cl_id = %s", (id,) )
+            self.cursor.execute("DELETE FROM proveedor WHERE po_id = %s", (id,) )
          
             self.connection.commit()  
 
@@ -138,9 +137,9 @@ class DB_proveedor(DB):
         try:
             
             if type(valor) == str:
-                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
+                self.cursor.execute ("SELECT * FROM proveedor WHERE {0} = '{1}'".format (atributo,valor))
             else:
-                self.cursor.execute ("SELECT * FROM cliente WHERE {0} = '{1}'".format (atributo,valor))
+                self.cursor.execute ("SELECT * FROM proveedor WHERE {0} = '{1}'".format (atributo,valor))
 
             obj = self.cursor.fetchone()  
 

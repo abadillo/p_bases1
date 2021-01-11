@@ -826,7 +826,7 @@ def manejo_proveedor():
         data = {
             'po_rif'            :request.form['inputrif'],
             'po_den_comercial'  :request.form['inputden'],
-            'po_razon_scocial'  :request.form['inputrazon'],
+            'po_razon_social'  :request.form['inputrazon'],
             'po_pagina_web'     :request.form['inputpagina'],
             'po_correo'         :request.form['inputcorreo'],
             'po_correo_alt'     :request.form['inputcorreo2'],
@@ -835,7 +835,7 @@ def manejo_proveedor():
         }
 
         db = DB_proveedor()
-        resp = db.verif('cl_rif',data['cl_rif'])
+        resp = db.verif('po_rif',data['po_rif'])
         if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
        
 

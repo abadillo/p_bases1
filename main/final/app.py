@@ -1193,9 +1193,8 @@ def manejo_empleado():
 
 
         return jsonify({'mensaje': 'Empleado Creado Satisfactoriamente' }) 
-
-
-    if request.method == 'PUT':
+        
+    if request.method == 'PUT':         #listo
         
         id = int(request.form['id_user'])
 
@@ -1236,7 +1235,7 @@ def manejo_empleado():
  
         return jsonify(resp)
         
-    if request.method == 'DELETE':
+    if request.method == 'DELETE':      #listo
 
         id = int(request.get_data())
 

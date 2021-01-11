@@ -80,7 +80,28 @@ $(document).ready(function() {
         id_parroquia = $(this).find('option:selected').val();
     });
     
+    var id_estado2;
+    var id_municipio2;
+    var id_parroquia2;
 
+    lugares('ESTADO','',0,2);
+    
+    $('#selectestado2').change(function() {
+
+        id_estado2 = $(this).find('option:selected').val();
+        lugares('MUNICIPIO',id_estado2,0,2);
+    });
+    
+    $('#selectmunicipio2').change(function() {
+
+        id_municipio2 = $(this).find('option:selected').val();
+        lugares('PARROQUIA',id_municipio2,0,2);
+    });
+
+    $('#selectparroquia2').change(function() {
+
+        id_parroquia2 = $(this).find('option:selected').val();
+    });
 
     var tiendas;
     var id_tienda;
@@ -119,9 +140,41 @@ $(document).ready(function() {
     
 });
 
-
-
 $(function(){
+    $('form').submit(function(e){
+
+        $.ajax({
+            
+            url:   '/manejo_proveedor',
+            data:  $('form').serialize(),
+            type: 'POST',
+                
+            }).done(function(response){
+                
+                console.log(response);
+                
+                if(response['error'])
+					alerta(response['error']);
+				
+				else if (response['invalido'])
+                    alerta(response['invalido']);
+				
+                /*else
+                    window.location.href =  "/mostrar/juridicos";
+					window.location.href =  "/"*/				
+                
+            }).fail(function(response){
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            });
+
+        e.preventDefault();
+    
+    });
+});
+
+
+
+$(function(){//Botones Continuar, registro y personas contacto
 
    
     
@@ -139,17 +192,6 @@ $(function(){
             }
         }
     
-        var cont = ($("#inputcont").val());
-        var contval = ($("#inputcontval").val());
-        
-        if (cont != contval){
-            $("#inputcontval")[0].setCustomValidity("Las contraseñas no coinciden");
-            $("#inputcontval")[0].reportValidity();
-            $("#inputcontval")[0].setCustomValidity('');
-            flag = 1;
-        } 
-        
-
         if (flag == 0 ){
             $("#fondo3").fadeOut("slow");       
             $("#fondo4").fadeIn("slow");     

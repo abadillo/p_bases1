@@ -202,7 +202,7 @@ $(document).ready(function() {
         url:   '/telefonos/'+id,
         type: 'GET',
         data: {
-            'tipo': 'fk_cliente' ,
+            'tipo': 'fk_proveedor' ,
         },
         async: false, 
             

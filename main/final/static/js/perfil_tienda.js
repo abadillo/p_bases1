@@ -143,6 +143,7 @@ $(document).ready(function() {
 
     $("#id_user").val(datos.ti_codigo);
     $("#inputtienda").val(datos.ti_nombre);
+    $("#inputdir").val(direccion);
    
    
 
@@ -182,7 +183,7 @@ $(document).ready(function() {
 });
 
 $(function(){
-    $("#Confirmar").click(function(){
+    $('form').submit(function(e){
       
         $("#id_user").removeAttr('disabled');
 
@@ -215,7 +216,7 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
-        
+        e.preventDefault();
     });
 });
 

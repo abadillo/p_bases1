@@ -159,8 +159,7 @@ def mostrar(obj):
 @app.route('/manejo_tienda',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_tienda():
     
-    if request.method == 'GET':                 #busca datos con el ti_codigo
-
+    if request.method == 'GET':                 #listo
         id = request.args['codigo']
         
         db = DB_tienda()
@@ -168,7 +167,7 @@ def manejo_tienda():
 
         return jsonify(data)   
 
-    if request.method == 'POST':                    #crea la tienda con (Data)
+    if request.method == 'POST':                    #listo
 
         db = DB_lugar()   
 
@@ -181,7 +180,6 @@ def manejo_tienda():
 
         id_direccion = db.add(direccion)
 
-        print(id_direccion)
 
         data = {
             'ti_nombre'     :   request.form['inputtienda'],
@@ -1162,15 +1160,18 @@ def manejo_empleado():
         }
         
         #validacion de existencia de correo
-        
+        db = DB_empleado()
         db2 = DB_usuario()
         resp = db2.verif('us_correo',d_user['us_correo'])
         if (resp): return jsonify({'invalido': 'Este correo ya esta registrado'}) 
+        resp = db.verif('em_cedula',data['em_cedula'])
+        if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
+        
 
     
 
         #insercion de empleado y usuario
-        db = DB_empleado()
+       
         id_empleado = db.add(data)
 
         d_user['fk_empleado'] = id_empleado

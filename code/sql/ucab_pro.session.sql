@@ -39,13 +39,16 @@ select * from rol;
 INSERT INTO rol (ro_nombre) VALUES ('CAJERO');
 
 
-
-
 SELECT * from cliente;
 
 
 drop table persona_contacto;
 ALTER TABLE persona_contacto ALTER COLUMN peco_cedula TYPE INTEGER;
+
+
+ALTER TABLE empleado DROP CONSTRAINT fk_empleado_sup;
+ALTER TABLE empleado
+add CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo);
 
 
 

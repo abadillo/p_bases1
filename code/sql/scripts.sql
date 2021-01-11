@@ -80,7 +80,7 @@ CREATE TABLE empleado(
 
 	CONSTRAINT pk_empleado PRIMARY KEY (em_codigo),
     CONSTRAINT fk_tienda FOREIGN KEY (fk_tienda) REFERENCES tienda(ti_codigo),	
-	CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_cedula)
+	CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo)
 );
 
 CREATE TABLE horario(
@@ -148,7 +148,6 @@ CREATE TABLE vacaciones(
 	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_cedula)
 
 );
-
 
 
 

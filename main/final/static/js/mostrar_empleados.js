@@ -26,8 +26,6 @@ $(document).ready(function() {
 
         columns: [
             { data: "em_codigo" ,     title: "COD"},
-            { data: "em_correo" ,     title: "CORREO"},
-            { data: "em_contrasena" , title: "CONT"},
             { data: "em_cedula" ,     title: "CEDULA"},
             { data: "em_p_nombre" ,   title: "P_NOMBRE"},
             { data: "em_s_nombre" ,   title: "S_NOMBRE"},
@@ -35,7 +33,6 @@ $(document).ready(function() {
             { data: "em_s_apellido" , title: "S_APELLIDO"},
             { data: "em_sueldo" ,     title: "SUELDO"},
             { data: "em_fecha_nac" ,  title: "FECHA NAC"},
-            { data: "fk_rol" ,        title: "ROL"},
             { data: "fk_tienda" ,     title: "TIENDA R"},
             { data: "fk_empleado_sup", title: "COD_SUP"},
            

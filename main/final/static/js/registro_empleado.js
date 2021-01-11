@@ -6,14 +6,18 @@ function alerta(mensaje){
 };
 
 
-
-
-
 $(document).ready(function() {
 
 
     var tiendas;
     var id_tienda;
+
+    var empleados;
+    var id_empleado_sup;
+
+    var rol;
+    var id_rol;
+    
     
     $.ajax({
                 
@@ -46,6 +50,85 @@ $(document).ready(function() {
         id_tienda = $(this).find('option:selected').val();
 
     });
+
+
+
+    $.ajax({
+                
+        url:   '/roles',
+        type: 'POST',
+        dataSrc: "",
+            
+        }).done(function(resp){
+            
+            roles = resp;         
+
+            var opciones = [];
+
+            opciones.push('<option value="default" selected disabled>ROL</option>');
+
+            for (var i=1, l=roles.length; i<l; i++){
+                opciones.push('<option value="'+roles[i].ro_codigo+'">'+roles[i].ro_nombre+'<opciones>');
+            }
+
+            $('#selectrol').html(opciones.join(''));
+
+            
+        }).fail(function(resp){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+    });
+
+
+    $('#selectrol').change(function() {
+
+        id_rol = $(this).find('option:selected').val();
+
+    });
+
+
+
+
+
+
+
+
+    $.ajax({
+                
+        url:   '/mostrar/empleados',
+        type: 'POST',
+        dataSrc: "",
+            
+        }).done(function(resp){
+            
+            empleados = resp;         
+
+            var opciones = [];
+
+            opciones.push('<option value="default" selected disabled>SUPERVISOR</option>');
+
+            for (var i=0, l=empleados.length; i<l; i++){
+                opciones.push('<option value="'+empleados[i].em_codigo+'">'+empleados[i].em_p_nombre + ' ' + empleados[i].em_p_apellido+'<opciones>');
+            }
+
+            $('#selectempsup').html(opciones.join(''));
+
+            
+        }).fail(function(resp){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+    });
+
+
+    $('#selectempsup').change(function() {
+
+        id_empleado_sup = $(this).find('option:selected').val();
+
+    });
+
+
+
+   
+
+
     
 });
 
@@ -68,8 +151,8 @@ $(function(){
                     alerta(response['invalido']);
 				
                 else
-                    /*window.location.href =  "/mostrar/empleados";*/
-                    window.location.href =  "/"
+                    window.location.href =  "/mostrar/empleados";
+                    
                     			
                 
             }).fail(function(response){

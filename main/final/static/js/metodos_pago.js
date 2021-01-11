@@ -18,9 +18,14 @@ $(document).ready(function() {
 
 
         ajax: {
-            url:   '/metodos_pago/'+id,
+            url:   '/metodo_pago_cliente',
             type: 'GET',
+            data: {
+                'id': id
+            },
             dataSrc: ""
+
+            
         },
 
         columns: [
@@ -57,7 +62,7 @@ $(document).ready(function() {
           
             $.ajax({
                 
-                url:   '/metodo_pago',
+                url:   '/metodo_pago_cliente',
                 data:  sel,
                 type: 'DELETE',
                     
@@ -92,10 +97,11 @@ $(document).ready(function() {
 
     $.ajax({
                 
-        url:  '/metodos_pago/'+1,
+        url:  '/metodos_pago',
         type: 'POST',
         dataSrc: "",
         async: false, 
+        
             
         }).done(function(resp){
         
@@ -127,14 +133,17 @@ $(document).ready(function() {
 
         $.ajax({
             
-            url:   '/metodo_pago',
+            url:   '/metodo_pago_cliente',
+            type: 'POST',
             data: {
                 'mc_documento' : mc_documento ,
                 'fk_cliente'   : fk_cliente,
                 'fk_tipo_pago' : fk_tipo_pago,
 	
             },
-            type: 'POST',
+            async: false, 
+                   
+            
                 
             }).done(function(response){
                             

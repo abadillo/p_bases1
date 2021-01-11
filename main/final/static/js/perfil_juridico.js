@@ -364,7 +364,7 @@ $(function(){
         $("#Modificar").css("display","none"); 
         $("#Cancelar").css("display","block"); 
        
-
+        $("#Confirmar").removeAttr('disabled');
         $("#Carnet").css("display","none"); 
         $("#Confirmar").css("display","block"); 
        

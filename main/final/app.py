@@ -848,7 +848,7 @@ def manejo_proveedor():
         data = {
             'po_rif'            :request.form['inputrif'],
             'po_den_comercial'  :request.form['inputden'],
-            'po_razon_social'  :request.form['inputrazon'],
+            'po_razon_social'   :request.form['inputrazon'],
             'po_pagina_web'     :request.form['inputpagina'],
             'po_correo'         :request.form['inputcorreo'],
             'po_correo_alt'     :request.form['inputcorreo2'],
@@ -856,8 +856,8 @@ def manejo_proveedor():
             'fk_lugar_fisica'   : None,
         }
 
-        db = DB_proveedor()
-        resp = db.verif('po_rif',data['po_rif'])
+        db = DB_proveedor() 
+        resp = db.verif('po_rif',data['po_rif'])        
         if (resp): return jsonify({'invalido': 'Este rif ya esta registrado'}) 
        
 
@@ -884,13 +884,13 @@ def manejo_proveedor():
        
         except: None
 
-       
+        id_proveedor = db.add(data)
         db3 = DB_telefono()   
 
         telefono = {
             'te_tipo'            :   request.form['tipotlf'],        
             'te_numero'          :   int(request.form['inputtelefono']),  
-            'fk_cliente'         :   id_cliente,         
+            'fk_proveedor'         :   id_proveedor,         
         }
 
         db3.add(telefono) 
@@ -900,7 +900,7 @@ def manejo_proveedor():
             telefono2 = {
                 'te_tipo'            :   request.form['tipotlf2'],        
                 'te_numero'          :   int(request.form['inputtelefono2']), 
-                'fk_cliente'         :   id_cliente,         
+                'fk_proveedor'       :   id_proveedor,         
             }
 
             db3.add(telefono2) 
@@ -912,7 +912,7 @@ def manejo_proveedor():
             telefono3 = {
                 'te_tipo'            :   request.form['tipotlf3'],        
                 'te_numero'          :   int(request.form['inputtelefono3']), 
-                'fk_cliente'         :   id_cliente,         
+                'fk_proveedor'       :   id_proveedor,         
             }
 
             db3.add(telefono3) 
@@ -928,7 +928,7 @@ def manejo_proveedor():
             'peco_s_nombre'   :    request.form['Segundo-nom'],   
             'peco_p_apellido' :    request.form['Primer-ap'], 
             'peco_s_apellido' :    request.form['Segundo-ap'], 
-            'fk_cliente'      :   id_cliente,  
+            'fk_proveedor'    :   id_proveedor,  
         }
 
         idcontacto = db4.add(persona1)
@@ -949,7 +949,7 @@ def manejo_proveedor():
                 'peco_s_nombre'   :    request.form['Segundo-nom2'],   
                 'peco_p_apellido' :    request.form['Primer-ap2'], 
                 'peco_s_apellido' :    request.form['Segundo-ap2'], 
-                'fk_cliente'      :   id_cliente,       
+                'fk_proveedor'    :    id_proveedor,       
             }
 
             if not (persona2['peco_p_nombre'] == '' or persona2['peco_p_nombre'] == ' '):
@@ -965,6 +965,7 @@ def manejo_proveedor():
        
         except: None
 
+        return jsonify({'mensaje': 'Proveedor Creado Satisfactoriamente' }) 
 
 
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])

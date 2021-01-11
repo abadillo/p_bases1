@@ -43,9 +43,10 @@ $(document).ready(function() {
         }
     } );
 
-
     
-
+    $('#tipo').hide();
+    $('#inputdocmt').hide();
+    $('#boton_añadir2').hide();
 
  
     $('#boton_eliminar').click( function () {
@@ -74,7 +75,6 @@ $(document).ready(function() {
             
     });
 
-
     $('#boton_añadir').click( function () {
         
         $('#boton_añadir').hide();
@@ -87,13 +87,7 @@ $(document).ready(function() {
     } );
 
 
-    
-
-
-    $('#tipo').hide();
-    $('#inputdocmt').hide();
-    $('#boton_añadir2').hide();
-
+    /*combox e inputs*/
 
 
     $.ajax({
@@ -124,9 +118,6 @@ $(document).ready(function() {
 
 
 
-
-
-    
 
     $('#boton_añadir2').click( function () {
     

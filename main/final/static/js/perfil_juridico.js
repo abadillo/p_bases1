@@ -75,6 +75,12 @@ $(document).ready(function() {
     
     var id = (window.location.pathname.split('/'))[2];
     
+    
+    $("#tlfcodigo").hide();
+    $("#tlfcodigo2").hide();
+    $("#tlfcodigo3").hide();
+
+
     var datos;
     var tienda_registro;
 
@@ -96,6 +102,17 @@ $(document).ready(function() {
     var idv_estado2;
     var idv_municipio2;
     var idv_parroquia2;
+
+    
+    var telefono1 = null;
+    var tipot1 = null;
+    var tlfcodigo = null;
+    var telefono2 = null;
+    var tipot2 = null;
+    var tlfcodigo2 = null;
+    var telefono3 = null;
+    var tipot3 = null;
+    var tlfcodigo3 = null;
     
     
     $.ajax({
@@ -181,27 +198,69 @@ $(document).ready(function() {
             
 
         });
+
+    $.ajax({
+        
+        url:   '/telefonos/'+id,
+        type: 'GET',
+        data: {
+            'tipo': 'fk_cliente' ,
+        },
+        async: false, 
+            
+        }).done(function(response){
+            
+            var telefonos = response;
+
+            if ( telefonos[0] ){
+                telefono1 = telefonos[0].te_numero;
+                tipot1 = telefonos[0].te_tipo;
+                tlfcodigo = telefonos[0].te_codigo;
+            }
+            if ( telefonos[1] ){
+                telefono2 = telefonos[1].te_numero;
+                tipot2 = telefonos[1].te_tipo;
+                tlfcodigo2 = telefonos[1].te_codigo;
+            }
+            if ( telefonos[2] ){
+                telefono3 = telefonos[2].te_numero;
+                tipot3 = telefonos[2].te_tipo;
+                tlfcodigo3 = telefonos[2].te_codigo;
+            }
+                            
+        });
+    
+
+    $("#inputtelefono").val(telefono1);
+    $("#inputtelefono2").val(telefono2);
+    $("#inputtelefono3").val(telefono3);
+    
+    $("#tlfcodigo").val(tlfcodigo);
+    $("#tlfcodigo2").val(tlfcodigo2);
+    $("#tlfcodigo3").val(tlfcodigo3);
     
 
 
 
     $("#id_user").val(datos.cl_id);
     $("#inputrif").val(datos.cl_rif);
-    $("#inputcorreo").val(datos.cl_correo);
-    $("#inputtelefono").val("nada");
     $("#inputrazon").val(datos.cl_razon_social);
     $("#inputpagina").val(datos.cl_pagina_web);
     $("#inputden").val(datos.cl_den_comercial);
     $("#inputcapital").val(datos.cl_capital);
-    $("#inputcont").val(datos.cl_contrasena);
 
-    
-   
+    $("#inputcorreo").val(datos.us_correo);
+    $("#inputcont").val(datos.us_contrasena);
 
     $("#tiendaregistro").val(tienda_registro);
     
     $("#inputdir").val(direccion);
     $("#inputdir2").val(direccion2);
+
+
+
+    /*DIRECCION 1*/
+
 
 
     lugares('ESTADO','',idv_estado,1);
@@ -212,13 +271,13 @@ $(document).ready(function() {
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,idv_municipio,1);
+        lugares('MUNICIPIO',id_estado,0,1);
     });
         
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,idv_parroquia,1);
+        lugares('PARROQUIA',id_municipio,0,1);
     });
 
     $('#selectparroquia').change(function() {
@@ -227,27 +286,32 @@ $(document).ready(function() {
     });
 
 
-    lugares('ESTADO','',idv_estado,2);
+    /*DIRECCION 2*/
+
+
+
+    
 
 
     if (direccion2){
-        
-        lugares('MUNICIPIO',idv_estado,idv_municipio,2);
-        lugares('PARROQUIA',idv_municipio,idv_parroquia,2); 
+        lugares('ESTADO','',idv_estado2,2);
+        lugares('MUNICIPIO',idv_estado2,idv_municipio2,2);
+        lugares('PARROQUIA',idv_municipio2,idv_parroquia2,2); 
     }
-    
+    else
+        lugares('ESTADO','',0,2);
 
 
     $('#selectestado2').change(function() {
 
         id_estado2 = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado2,idv_municipio2,2);
+        lugares('MUNICIPIO',id_estado2,0,2);
     });
         
     $('#selectmunicipio2').change(function() {
 
         id_municipio2 = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio2,idv_parroquia2,2);
+        lugares('PARROQUIA',id_municipio2,0,2);
     });
 
     $('#selectparroquia2').change(function() {
@@ -268,14 +332,17 @@ $(document).ready(function() {
 $(function(){
     $("#Modificar").click(function(){
         
-        $("#inputtelefono").removeAttr('disabled');
-        $("#inputtelefono2").removeAttr('disabled');
-        $("#inputtelefono3").removeAttr('disabled');
+        
         $("#inputrazon").removeAttr('disabled');
         $("#inputpagina").removeAttr('disabled');
         $("#inputden").removeAttr('disabled');
         $("#inputcapital").removeAttr('disabled');
         $("#inputcont").removeAttr('disabled');
+
+
+        $("#inputtelefono").removeAttr('disabled');
+        $("#inputtelefono2").removeAttr('disabled');
+        $("#inputtelefono3").removeAttr('disabled');
 
         $("#tipotlf1").removeAttr('disabled');
         $("#tipotlf2").removeAttr('disabled');
@@ -304,16 +371,17 @@ $(function(){
     });
 });
 
-/*
+
 $(function(){
     $("#Cancelar").click(function(){
         window.location.href=window.location.href;
     });
 });
 
+
 $(function(){
-    $("#Confirmar").click(function(){
-      
+    $('form').submit(function(e){
+
         $("#id_user").removeAttr('disabled');
 
         $('#loading').show()
@@ -345,10 +413,11 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
+        e.preventDefault();
         
     });
 });
-     */  
+
         
 
    

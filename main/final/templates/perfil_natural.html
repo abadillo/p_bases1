@@ -60,7 +60,7 @@
                             
                             <button id="Cancelar" class="btn btn-lg btn-secondary" type="button" style = "display: none;">  Cancelar Modificación </button>
 
-                            <button id="Confirmar" class="btn btn-lg btn-primary" type="button" style = "display: none;">  Confirmar Modificación </button>
+                            <button id="Confirmar" class="btn btn-lg btn-primary" type="submit" style = "display: none;">  Confirmar Modificación </button>
 
                                                     
                             <div id="Margen-campos">
@@ -130,14 +130,14 @@
 
                                 <h4> Nombres </h4>                           
                                                         
-                                <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" disabled autofocus>   
+                                <input id="inputpnombre" name="inputpnombre" class="form-control" type="text" placeholder ="Primer Nombre" required disabled autofocus>   
         
                                 <input id="inputsnombre" name="inputsnombre" class="form-control" type="text" placeholder ="Segundo Nombre" disabled autofocus>   
 
 
                                 <h4 id="Apellido"> Apellidos</h4>
 
-                                <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" disabled autofocus> 
+                                <input id="inputpapellido" name="inputpapellido" class="form-control" type="text" placeholder="Primer Apellido" disabled required autofocus> 
         
                                 <input id="inputsapellido" name="inputsapellido" class="form-control" type="text" placeholder="Segundo Apellido" disabled autofocus > 
         
@@ -156,7 +156,8 @@
         
                                 <div id="contraseña">    <h4 > Contraseña </h4>  
         
-                                <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" disabled autofocus>
+                                <input id="inputcont" name="inputcont" class="form-control" type="text"  placeholder="Contraseña" minlength="8" maxlength="16" required disabled autofocus>
+
                             
                                 </div>
 
@@ -172,7 +173,7 @@
                             
                                     <div class="form-group" id="Estado"> 
 
-                                        <select id="selectestado" name="selectestado" class="custom-select browser-default" disabled autofocus>
+                                        <select id="selectestado" name="selectestado" class="custom-select browser-default" disabled autofocus required>
                                             <option value="" selected disabled>ESTADO</option>
                                             <option value="0">opcion</option>
                                         </select>  
@@ -181,7 +182,7 @@
                             
                                     <div class="form-group" id="Municipio"> 
                     
-                                        <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" disabled autofocus>
+                                        <select name="selectmunicipio" id="selectmunicipio" class="custom-select browser-default" disabled autofocus required>
                                             <option value="" selected disabled>MUNICIPIO</option>
                                             <option value="1">opcion</option>                            
                                         
@@ -191,14 +192,14 @@
                     
                                     <div class="form-group" id="Parroquia"> 
                     
-                                        <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" disabled>
+                                        <select name="selectparroquia" id="selectparroquia" class="custom-select browser-default" disabled required>
                                             <option value="default" selected disabled>PARROQUIA</option>
                                             <option value="2">opcion</option>                            
                                         </select>  
                     
                                     </div> 
                     
-                                    <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" disabled autofocus> 
+                                    <input id="inputdir" name="inputdir" class="form-control" type="text" placeholder="Direccion" required disabled autofocus> 
 
                             
                                 </div>    
@@ -234,7 +235,7 @@
 
                                     <div class="form-group tamaño " id="tipo"> 
                         
-                                        <select name="selecttipo" id="selecttipo" class="custom-select browser-default" required>
+                                        <select name="selecttipo" id="selecttipo" class="custom-select browser-default" >
         
                                             <option value="default" selected disabled>Tipos</option>      
         
@@ -243,7 +244,7 @@
                                     </div> 
 
 
-                                    <input id="inputdocmt" name="inputdocumt" class="form-control tamaño" type="text" placeholder="N° Documento"  required > 
+                                    <input id="inputdocmt" name="inputdocumt" class="form-control tamaño" type="text" placeholder="N° Documento"  > 
                    
                                     <button id="boton_añadir2" class="btn btn-secondary btn-block rounded customb" type="button">Añadir</button>
                     

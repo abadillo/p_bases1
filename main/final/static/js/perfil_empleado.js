@@ -85,7 +85,7 @@ $(document).ready(function() {
     var fecha = ([date.getFullYear(), mnth, day].join("-"));
 
   
-    
+     
     fecha.setDate(fecha.getDate() + 1);
 
 

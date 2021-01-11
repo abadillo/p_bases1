@@ -190,7 +190,7 @@ def manejo_tienda():
         resp = db.add(data)
         return resp
 
-    if request.method == 'PUT':
+    if request.method == 'PUT':                    #listo
 
        id = int(request.form['id_user'])
 
@@ -222,9 +222,7 @@ def manejo_tienda():
 
        return jsonify(resp)    
 
-    
-
-    if request.method == 'DELETE':
+    if request.method == 'DELETE':                  #listo
 
         id = int(request.form['codigos'])
 
@@ -866,9 +864,9 @@ def manejo_proveedor():
         db2 = DB_lugar() 
 
         direccion = {
-            'lu_nombre'     :   request.form['inputdir'],        
+            'lu_nombre'     :   request.form['inputdir2'],        
             'lu_tipo'       :   'DIRECCION',             
-            'fk_lugar'      :   request.form['selectparroquia'],         
+            'fk_lugar'      :   request.form['selectparroquia2'],         
         }
 
         data['fk_lugar_fiscal'] = db2.add(direccion)
@@ -876,9 +874,9 @@ def manejo_proveedor():
         try:
 
             direccion2 = {
-                'lu_nombre'     :   request.form['inputdir2'],        
+                'lu_nombre'     :   request.form['inputdir'],        
                 'lu_tipo'       :   'DIRECCION',             
-                'fk_lugar'      :   request.form['selectparroquia2'],         
+                'fk_lugar'      :   request.form['selectparroquia'],         
             }
 
             if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
@@ -1108,8 +1106,6 @@ def manejo_proveedor():
         
         return jsonify(resp)
       
-
-
     if request.method == 'DELETE':
 
         id = int(request.get_data())
@@ -1133,7 +1129,7 @@ def manejo_empleado():
 
         return jsonify(data)
 
-    if request.method == 'POST':            #listo
+    if request.method == 'POST':        #listo
         
         #datos empleado
 
@@ -1193,8 +1189,8 @@ def manejo_empleado():
 
 
         return jsonify({'mensaje': 'Empleado Creado Satisfactoriamente' }) 
-        
-    if request.method == 'PUT':         #listo
+
+    if request.method == 'PUT':         
         
         id = int(request.form['id_user'])
 
@@ -1235,7 +1231,7 @@ def manejo_empleado():
  
         return jsonify(resp)
         
-    if request.method == 'DELETE':      #listo
+    if request.method == 'DELETE':      
 
         id = int(request.get_data())
 

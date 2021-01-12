@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+   
+    <meta name="viewport" content="width=device-width" />
+    <title>UCABMART</title>
+
+    <meta charset="utf-8">    
+
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
+    <link rel="stylesheet"type="text/css" href="../static/css/mostrar.css">
+
+
+
+    <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+    <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+
+   
+    <script src="../static/js/mostrar_inventario.js"></script>
+  
+  
+</head>
+
+<body>
+
+    <div id="fondo1">
+       
+        <section id="posicion">
+            <a href="../templates/UCABMART.html"><img type="image" id="logo" src="../static/media/UCABMART6.png"></a>
+            
+            <div id="margen">
+                
+                <h3 id = "titulo" class="text-center"></h3>
+                
+                <div class="form-group py-3" id="tienda-registro">
+
+                    <select id="selecttienda" name="selecttienda" class="custom-select browser-default w-25 float-right"  autofocus>
+                        <option value="" selected disabled>TIENDA</option>
+                    
+                    </select>  
+
+                </div> 
+
+               
+
+                <table id="tabla_datatable" class="display nowrap" >   </table>
+                        
+                
+
+            </div>
+                
+        </section>
+
+    </div>
+
+</body>
+
+
+</html>

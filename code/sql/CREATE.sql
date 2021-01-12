@@ -446,7 +446,6 @@ CREATE TABLE zona (
 );
 
 
-
 CREATE TABLE almacen (
 
 	fk_tienda	      INTEGER NOT NULL,

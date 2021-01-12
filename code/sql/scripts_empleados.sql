@@ -1,196 +1,4 @@
-﻿-- TODAS LAS MONEDAS
-INSERT INTO moneda VALUES ('1','BOLÍVARES' )
-INSERT INTO moneda VALUES ('2','DOLARES')
-INSERT INTO moneda VALUES ('3','EUROS')
-INSERT INTO moneda VALUES ('4','PUNTOS')
-
---TIPOS DE PAGO
-INSERT INTO tipo_pago VALUES ('1','Tarjeta de crédito')
-INSERT INTO tipo_pago VALUES ('2','Tarjeta de débito')
-INSERT INTO tipo_pago VALUES ('3','Cheque')
-INSERT INTO tipo_pago VALUES ('4','Efectivo')
-INSERT INTO tipo_pago VALUES ('5','Puntos')
-
--- COTIZACION
-INSERT INTO cotizacion (fk_moneda,ct_fecha,ct_valor) VALUES (2,current_timestamp,1088800)
-INSERT INTO cotizacion (fk_moneda,ct_fecha,ct_valor) VALUES (3,current_timestamp,1359000)
-INSERT INTO cotizacion (fk_moneda,ct_fecha,ct_valor) VALUES (4,current_timestamp,10000)
-
-
-UPDATE cotizacion SET ct_expira = current_timestamp WHERE fk_moneda= '2' 
-
-INSERT INTO cotizacion (fk_moneda,ct_fecha,ct_valor) VALUES (2,current_timestamp,1230800)
-
---HORARIO
---Lunes
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (1, 'Lunes-Turno mañana', 'LUNES' ,'07:00' ,'12:00'); 
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (2, 'Lunes-Turno tarde', 'LUNES' ,'07:00' ,'12:00');
-
-
---Martes
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (3, 'Martes-Turno mañana', 'MARTES' ,'07:00' ,'12:00'); 
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (4, 'Martes-Turno tarde', 'MARTES' ,'01:00' ,'7:00'); 
-
---Miercoles
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (5, 'Miercoles-Turno mañana', 'MIERCOLES' ,'07:00' ,'12:00');
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (6, 'Miercoles-Turno tarde', 'MIERCOLES' ,'01:00' ,'7:00');
-
---Jueves
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (7, 'Jueves-Turno mañana', 'JUEVES' ,'07:00' ,'12:00');
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (8, 'Jueves-Turno tarde', 'JUEVES' ,'01:00' ,'7:00');
-
---Viernes
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (9, 'Viernes-Turno mañana', 'VIERNES' ,'07:00' ,'12:00');
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (10, 'Viernes-Turno tarde', 'VIERNES' ,'01:00' ,'7:00');
-
---Sabado
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (11, 'Sabado-Turno mañana', 'SABADO' ,'07:00' ,'12:00');
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (12, 'Sabado-Turno tarde', 'SABADO' ,'01:00' ,'7:00');
-
---Domingo
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (13, 'Domingo-Turno mañana', 'DOMINGO' ,'07:00' ,'12:00');
-
-INSERT INTO horario (ho_codigo, ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES (14, 'Domingo-Turno tarde', 'DOMINGO' ,'01:00' ,'7:00');
-
-
---ROLES
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (1, 'Cliente');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (2, 'Gerente de tienda');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (3, 'Coordinador de promoción y Ventas');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (4, 'Coordinador de despacho');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (5, 'Jefe de entrega');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (6, 'Jefe de compras');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (7, 'Jefe de pasillo');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (8, 'Cajero');
-
-INSERT INTO rol (ro_codigo, ro_nombre) VALUES (9, 'Coordinador de Talento Humano');
-
-
---BENEFICIO
-
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (1, 'Seguro medico');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (2, 'Jubilaciom');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (3, 'Gastos de transporte');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (4, 'Seguro de vida');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (5, 'Seguro de discapacidad');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (6, 'Reembolso de matriculas');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (7, 'Descuento en gimnasio');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (8, 'Estacionamiento gratuito');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (9, 'Vacaciones');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (10, 'Pensiones');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (11, 'Pago de horas extras');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (12, 'Pago de horas nocturnas');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (13, 'Teletrabajo');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (14, 'Pago de guardería');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (15, 'Extensión de baja maternal/paternal');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (16, 'Formación laboral');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (17, 'Utilidades/Aguinaldos');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (18, 'Fondo de ahorro');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (19, 'Bonos de productividad');
-
-INSERT INTO beneficio (be_codigo, be_nombre) VALUES (20, 'Comedor gratuito');
-
-
-
-
--- CLIENTES
-
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V309068691','NATURAL',0,13,30906869,'JUAN','MÁXIMO','OVIDIO','ANDRÉS',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V138733389','NATURAL',0,13,13873338,'IGNACIO','TARSICIO','ALEXANDER','JOSÉ',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V197110626','NATURAL',0,13,19711062,'JONATHAN','FEDERICO','MARK','EMILIO',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (4,'V239433011','NATURAL',0,13,23943301,'EMILIA','GEORGINA','DULCINEA','ADRIANA',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (5,'V122792088','NATURAL',0,13,12279208,'CORNELIO','ALEXANDER','CLEMENTE','DOMENICO',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (6,'V293947632','NATURAL',0,13,29394763,'LORENA','DÁMARIS','MARINA','MARÍA',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (7,'V345802724','NATURAL',0,13,34580272,'CLEMENTE','BIENVENIDO','MARGARITO','PACIANO',32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (8,'J324380654','JURIDICO',0,13,'Lidotel Centro Lido Caracas, S.A.S.','http://www.lidotel.com/Venezuela/1/Caracas','Lidotel',55000000000,NULL,32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J116800325','JURIDICO',0,13,'Restaurant Alto, C.A.','https://www.instagram.com/restaurantalto/','Alto Restaurant',27000000000,NULL,32);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J675261630','JURIDICO',0,13,'Centro MediAlfa','https://www.instagram.com/centromedialfa/?hl=es','MediAlfa',44500000000,NULL,32);
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V242608669','NATURAL',0,14,24260866,'FABIÁN','SAMUEL','OCTAVIO','JUAN',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V130500633','NATURAL',0,14,13050063,'AURELIA','LUZ','ESPERANZA','FACUNDA',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V274888689','NATURAL',0,14,27488868,'AIDANA','ZOE','VIVIANA','AFRODITA',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (4,'V335806289','NATURAL',0,14,33580628,'JUDITH','ESMERALDA','ALTAGRACIA','MOIRA',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (5,'V341429761','NATURAL',0,14,34142976,'MARCUS','ELEAZAR','NICOLÁS','SILVESTER',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (6,'V120383449','NATURAL',0,14,12038344,'JORDANA','LINDA','MARILUZ','ADRIA',33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (7,'J472443997','JURIDICO',0,14,'Hotel Eurobuilding, C.A.','http://www.hoteleuro.com/','Eurobuilding',70000000000,NULL,33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (8,'J846784790','JURIDICO',0,14,'Meliá Caracas, C.A.','https://www.melia.com/en/hotels/venezuela/caracas/gran-melia-caracas/','Meliá Caracas',50000000000,NULL,33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J999308074','JURIDICO',0,14,'El Rincon Del Sabor de Petare, S.A.S.',NULL,'El Roncón Del Sabor',22800000000,NULL,33);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J648529850','JURIDICO',0,14,'Pizzería Restaurant la Guacamaya, S.R.L.',NULL,'La Guacamaya',33500000000,NULL,33);
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V280898877','NATURAL',0,15,28089887,'BRENO','IVÁN','FAUSTO','LEONARDO',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V158832647','NATURAL',0,15,15883264,'IMMA','GRETA','CELINA','NAZARET',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V213321900','NATURAL',0,15,21332190,'TRINIDAD','DANIELA','ADELINA','HEIDI',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (4,'V179544142','NATURAL',0,15,17954414,'JACQUELINE','MIA','EMILIA','LUCÍA',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (5,'V270584342','NATURAL',0,15,27058434,'ÁNGEL','FACUNDO','KLEMENT','MAGNUS',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (6,'V148598489','NATURAL',0,15,14859848,'OLIVIA','GEORGIA','FABRICIA','TIFFANY',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (7,'V162770051','NATURAL',0,15,16277005,'OPHELIA','NADIA','NINA','BEATRIZ',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (8,'V242349798','NATURAL',0,15,24234979,'JHOAN','HÉRCULES','JAVIER','MARCELO',34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J869076112','JURIDICO',0,15,' Hospital General Dr. José Ignacio Baldó, C.A.',NULL,' Hospital El Algodonal',12000000000,NULL,34);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J259324782','JURIDICO',0,15,'Prolicor ANTÍMANO III, S.R.L.',NULL,'Prolicor ANTÍMANO III',45000000000,NULL,34);
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V255515744','NATURAL',0,16,25551574,'CARLOS','BENICIO','YVES','FERMÍN',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V100321702','NATURAL',0,16,10032170,'PEREGRINO','LEOPOLDO','JULIANO','MARCUS',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V202479438','NATURAL',0,16,20247943,'IGNACIO','OVIDIO','LEONEL','ANTHONY',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (4,'V265864520','NATURAL',0,16,26586452,'FABIO','CARLOS','FACUNDO','ELEAZAR',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (5,'V304505546','NATURAL',0,16,30450554,'JAVIER','ADRIÁN','CAMILO','CLEMENTE',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (6,'V245223863','NATURAL',0,16,24522386,'PASTOR','RÉGULO','FACUNDO','MATÍAS',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (7,'V128023631','NATURAL',0,16,12802363,'JULIA','ADELA','CARLOTA','POLA',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (8,'V203660110','NATURAL',0,16,20366011,'VALERIO','MARGARITO','AMADOR','PASTOR',35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J725532390','JURIDICO',0,16,'Hesperia WTC Valencia, C.A.','https://www.hoteleshesperia.com.ve/hotel/hesperia-wtc-valencia','WTC Valencia',68540000000,NULL,35);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J272744426','JURIDICO',0,16,'Executive Suites Valencia, S.A.S.','https://executivesuites.com.ve/','Executive Suites',38000000000,NULL,35);
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V348752651','NATURAL',0,17,34875265,'JUAN','ISIDRO','EDWIN','ÁLVARO',36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V130493682','NATURAL',0,17,13049368,'SANTIAGO','FAUSTO','CALÍGULA','BENITO',36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V170310810','NATURAL',0,17,17031081,'BRUNO','CONSTANTINO','CRISTO','CICERÓN',36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (4,'J590860351','JURIDICO',0,17,'Clinica Zulia, S.R.L.',NULL,'Clinica Zulia',75000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (5,'J799800422','JURIDICO',0,17,'Centro Clinico Los Olivos, S.A.S.','http://cclo.com.ve/','Centro Clinico Los Olivos',50000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (6,'J529510113','JURIDICO',0,17,'Centro Clínico Materno Pediátrico Zulia, S.R.L.','http://clinicazulia.com/','Materno Pediátrico Zulia',8000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (7,'J753179559','JURIDICO',0,17,'Clinica La Sagrada Familia, C.A.','http://www.lasagrada.com.ve/','Clinica Sagrada Familia',90000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (8,'J810797583','JURIDICO',0,17,'Cauchos La Plaza, S.A.S.',NULL,'Cauchos La Plaza',3000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J161434617','JURIDICO',0,17,'Viacasa Automercados, C.A.','http://www.viacasa.com/','Viacasa',4000000000,NULL,36);
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J235121809','JURIDICO',0,17,'Automercado & Panaderia La Marina, S.A.S.',NULL,' Automercado La Marina',77500000000,NULL,36);
-
-
-
-
-
-
-
-
+﻿
 --EMPLEADOS
 
 INSERT INTO empleado (em_cedula, em_p_nombre, em_s_nombre, em_p_apellido, em_s_apellido, em_sueldo, em_fecha_nac, fk_tienda) VALUES (21368152,'TULIO','AURELIO','PARDO','SANTILLAN',300000000,('2002-7-9'),13);
@@ -785,4 +593,595 @@ INSERT INTO empleado (em_cedula, em_p_nombre, em_s_nombre, em_p_apellido, em_s_a
 INSERT INTO empleado (em_cedula, em_p_nombre, em_s_nombre, em_p_apellido, em_s_apellido, em_sueldo, em_fecha_nac, fk_tienda) VALUES (14108321,'CAROLA','PASTORA','BUTLER','SALAZAR',150000000,('1996-2-21'),71);
 
 
-select * from empleado;
+--ASIGNACION DE SUPERVISOR
+
+
+UPDATE empleado SET fk_empleado_sup = 14 WHERE em_codigo = 15;
+UPDATE empleado SET fk_empleado_sup = 14 WHERE em_codigo = 16;
+UPDATE empleado SET fk_empleado_sup = 14 WHERE em_codigo = 17;
+UPDATE empleado SET fk_empleado_sup = 15 WHERE em_codigo = 18;
+UPDATE empleado SET fk_empleado_sup = 15 WHERE em_codigo = 19;
+UPDATE empleado SET fk_empleado_sup = 16 WHERE em_codigo = 20;
+UPDATE empleado SET fk_empleado_sup = 16 WHERE em_codigo = 21;
+UPDATE empleado SET fk_empleado_sup = 17 WHERE em_codigo = 22;
+UPDATE empleado SET fk_empleado_sup = 17 WHERE em_codigo = 23;
+
+UPDATE empleado SET fk_empleado_sup = 24 WHERE em_codigo = 25;
+UPDATE empleado SET fk_empleado_sup = 24 WHERE em_codigo = 26;
+UPDATE empleado SET fk_empleado_sup = 24 WHERE em_codigo = 27;
+UPDATE empleado SET fk_empleado_sup = 25 WHERE em_codigo = 28;
+UPDATE empleado SET fk_empleado_sup = 25 WHERE em_codigo = 29;
+UPDATE empleado SET fk_empleado_sup = 26 WHERE em_codigo = 30;
+UPDATE empleado SET fk_empleado_sup = 26 WHERE em_codigo = 31;
+UPDATE empleado SET fk_empleado_sup = 27 WHERE em_codigo = 32;
+UPDATE empleado SET fk_empleado_sup = 27 WHERE em_codigo = 33;
+
+UPDATE empleado SET fk_empleado_sup = 34 WHERE em_codigo = 35;
+UPDATE empleado SET fk_empleado_sup = 34 WHERE em_codigo = 36;
+UPDATE empleado SET fk_empleado_sup = 34 WHERE em_codigo = 37;
+UPDATE empleado SET fk_empleado_sup = 35 WHERE em_codigo = 38;
+UPDATE empleado SET fk_empleado_sup = 35 WHERE em_codigo = 39;
+UPDATE empleado SET fk_empleado_sup = 36 WHERE em_codigo = 40;
+UPDATE empleado SET fk_empleado_sup = 36 WHERE em_codigo = 41;
+UPDATE empleado SET fk_empleado_sup = 37 WHERE em_codigo = 42;
+UPDATE empleado SET fk_empleado_sup = 37 WHERE em_codigo = 43;
+
+UPDATE empleado SET fk_empleado_sup = 44 WHERE em_codigo = 45;
+UPDATE empleado SET fk_empleado_sup = 44 WHERE em_codigo = 46;
+UPDATE empleado SET fk_empleado_sup = 44 WHERE em_codigo = 47;
+UPDATE empleado SET fk_empleado_sup = 45 WHERE em_codigo = 48;
+UPDATE empleado SET fk_empleado_sup = 45 WHERE em_codigo = 49;
+UPDATE empleado SET fk_empleado_sup = 46 WHERE em_codigo = 50;
+UPDATE empleado SET fk_empleado_sup = 46 WHERE em_codigo = 51;
+UPDATE empleado SET fk_empleado_sup = 47 WHERE em_codigo = 52;
+UPDATE empleado SET fk_empleado_sup = 47 WHERE em_codigo = 53;
+
+UPDATE empleado SET fk_empleado_sup = 54 WHERE em_codigo = 55;
+UPDATE empleado SET fk_empleado_sup = 54 WHERE em_codigo = 56;
+UPDATE empleado SET fk_empleado_sup = 54 WHERE em_codigo = 57;
+UPDATE empleado SET fk_empleado_sup = 55 WHERE em_codigo = 58;
+UPDATE empleado SET fk_empleado_sup = 55 WHERE em_codigo = 59;
+UPDATE empleado SET fk_empleado_sup = 56 WHERE em_codigo = 60;
+UPDATE empleado SET fk_empleado_sup = 56 WHERE em_codigo = 61;
+UPDATE empleado SET fk_empleado_sup = 57 WHERE em_codigo = 62;
+UPDATE empleado SET fk_empleado_sup = 57 WHERE em_codigo = 63;
+
+UPDATE empleado SET fk_empleado_sup = 64 WHERE em_codigo = 65;
+UPDATE empleado SET fk_empleado_sup = 64 WHERE em_codigo = 66;
+UPDATE empleado SET fk_empleado_sup = 64 WHERE em_codigo = 67;
+UPDATE empleado SET fk_empleado_sup = 65 WHERE em_codigo = 68;
+UPDATE empleado SET fk_empleado_sup = 65 WHERE em_codigo = 69;
+UPDATE empleado SET fk_empleado_sup = 66 WHERE em_codigo = 70;
+UPDATE empleado SET fk_empleado_sup = 66 WHERE em_codigo = 71;
+UPDATE empleado SET fk_empleado_sup = 67 WHERE em_codigo = 72;
+UPDATE empleado SET fk_empleado_sup = 67 WHERE em_codigo = 73;
+
+UPDATE empleado SET fk_empleado_sup = 74 WHERE em_codigo = 75;
+UPDATE empleado SET fk_empleado_sup = 74 WHERE em_codigo = 76;
+UPDATE empleado SET fk_empleado_sup = 74 WHERE em_codigo = 77;
+UPDATE empleado SET fk_empleado_sup = 75 WHERE em_codigo = 78;
+UPDATE empleado SET fk_empleado_sup = 75 WHERE em_codigo = 79;
+UPDATE empleado SET fk_empleado_sup = 76 WHERE em_codigo = 80;
+UPDATE empleado SET fk_empleado_sup = 76 WHERE em_codigo = 81;
+UPDATE empleado SET fk_empleado_sup = 77 WHERE em_codigo = 82;
+UPDATE empleado SET fk_empleado_sup = 77 WHERE em_codigo = 83;
+
+UPDATE empleado SET fk_empleado_sup = 84 WHERE em_codigo = 85;
+UPDATE empleado SET fk_empleado_sup = 84 WHERE em_codigo = 86;
+UPDATE empleado SET fk_empleado_sup = 84 WHERE em_codigo = 87;
+UPDATE empleado SET fk_empleado_sup = 85 WHERE em_codigo = 88;
+UPDATE empleado SET fk_empleado_sup = 85 WHERE em_codigo = 89;
+UPDATE empleado SET fk_empleado_sup = 86 WHERE em_codigo = 90;
+UPDATE empleado SET fk_empleado_sup = 86 WHERE em_codigo = 91;
+UPDATE empleado SET fk_empleado_sup = 87 WHERE em_codigo = 92;
+UPDATE empleado SET fk_empleado_sup = 87 WHERE em_codigo = 93;
+
+UPDATE empleado SET fk_empleado_sup = 94 WHERE em_codigo = 95;
+UPDATE empleado SET fk_empleado_sup = 94 WHERE em_codigo = 96;
+UPDATE empleado SET fk_empleado_sup = 94 WHERE em_codigo = 97;
+UPDATE empleado SET fk_empleado_sup = 95 WHERE em_codigo = 98;
+UPDATE empleado SET fk_empleado_sup = 95 WHERE em_codigo = 99;
+UPDATE empleado SET fk_empleado_sup = 96 WHERE em_codigo = 100;
+UPDATE empleado SET fk_empleado_sup = 96 WHERE em_codigo = 101;
+UPDATE empleado SET fk_empleado_sup = 97 WHERE em_codigo = 102;
+UPDATE empleado SET fk_empleado_sup = 97 WHERE em_codigo = 103;
+
+UPDATE empleado SET fk_empleado_sup = 104 WHERE em_codigo = 105;
+UPDATE empleado SET fk_empleado_sup = 104 WHERE em_codigo = 106;
+UPDATE empleado SET fk_empleado_sup = 104 WHERE em_codigo = 107;
+UPDATE empleado SET fk_empleado_sup = 105 WHERE em_codigo = 108;
+UPDATE empleado SET fk_empleado_sup = 105 WHERE em_codigo = 109;
+UPDATE empleado SET fk_empleado_sup = 106 WHERE em_codigo = 110;
+UPDATE empleado SET fk_empleado_sup = 106 WHERE em_codigo = 111;
+UPDATE empleado SET fk_empleado_sup = 107 WHERE em_codigo = 112;
+UPDATE empleado SET fk_empleado_sup = 107 WHERE em_codigo = 113;
+
+UPDATE empleado SET fk_empleado_sup = 114 WHERE em_codigo = 115;
+UPDATE empleado SET fk_empleado_sup = 114 WHERE em_codigo = 116;
+UPDATE empleado SET fk_empleado_sup = 114 WHERE em_codigo = 117;
+UPDATE empleado SET fk_empleado_sup = 115 WHERE em_codigo = 118;
+UPDATE empleado SET fk_empleado_sup = 115 WHERE em_codigo = 119;
+UPDATE empleado SET fk_empleado_sup = 116 WHERE em_codigo = 120;
+UPDATE empleado SET fk_empleado_sup = 116 WHERE em_codigo = 121;
+UPDATE empleado SET fk_empleado_sup = 117 WHERE em_codigo = 122;
+UPDATE empleado SET fk_empleado_sup = 117 WHERE em_codigo = 123;
+
+UPDATE empleado SET fk_empleado_sup = 124 WHERE em_codigo = 125;
+UPDATE empleado SET fk_empleado_sup = 124 WHERE em_codigo = 126;
+UPDATE empleado SET fk_empleado_sup = 124 WHERE em_codigo = 127;
+UPDATE empleado SET fk_empleado_sup = 125 WHERE em_codigo = 128;
+UPDATE empleado SET fk_empleado_sup = 125 WHERE em_codigo = 129;
+UPDATE empleado SET fk_empleado_sup = 126 WHERE em_codigo = 130;
+UPDATE empleado SET fk_empleado_sup = 126 WHERE em_codigo = 131;
+UPDATE empleado SET fk_empleado_sup = 127 WHERE em_codigo = 132;
+UPDATE empleado SET fk_empleado_sup = 127 WHERE em_codigo = 133;
+
+UPDATE empleado SET fk_empleado_sup = 134 WHERE em_codigo = 135;
+UPDATE empleado SET fk_empleado_sup = 134 WHERE em_codigo = 136;
+UPDATE empleado SET fk_empleado_sup = 134 WHERE em_codigo = 137;
+UPDATE empleado SET fk_empleado_sup = 135 WHERE em_codigo = 138;
+UPDATE empleado SET fk_empleado_sup = 135 WHERE em_codigo = 139;
+UPDATE empleado SET fk_empleado_sup = 136 WHERE em_codigo = 140;
+UPDATE empleado SET fk_empleado_sup = 136 WHERE em_codigo = 141;
+UPDATE empleado SET fk_empleado_sup = 137 WHERE em_codigo = 142;
+UPDATE empleado SET fk_empleado_sup = 137 WHERE em_codigo = 143;
+
+UPDATE empleado SET fk_empleado_sup = 144 WHERE em_codigo = 145;
+UPDATE empleado SET fk_empleado_sup = 144 WHERE em_codigo = 146;
+UPDATE empleado SET fk_empleado_sup = 144 WHERE em_codigo = 147;
+UPDATE empleado SET fk_empleado_sup = 145 WHERE em_codigo = 148;
+UPDATE empleado SET fk_empleado_sup = 145 WHERE em_codigo = 149;
+UPDATE empleado SET fk_empleado_sup = 146 WHERE em_codigo = 150;
+UPDATE empleado SET fk_empleado_sup = 146 WHERE em_codigo = 151;
+UPDATE empleado SET fk_empleado_sup = 147 WHERE em_codigo = 152;
+UPDATE empleado SET fk_empleado_sup = 147 WHERE em_codigo = 153;
+
+UPDATE empleado SET fk_empleado_sup = 154 WHERE em_codigo = 155;
+UPDATE empleado SET fk_empleado_sup = 154 WHERE em_codigo = 156;
+UPDATE empleado SET fk_empleado_sup = 154 WHERE em_codigo = 157;
+UPDATE empleado SET fk_empleado_sup = 155 WHERE em_codigo = 158;
+UPDATE empleado SET fk_empleado_sup = 155 WHERE em_codigo = 159;
+UPDATE empleado SET fk_empleado_sup = 156 WHERE em_codigo = 160;
+UPDATE empleado SET fk_empleado_sup = 156 WHERE em_codigo = 161;
+UPDATE empleado SET fk_empleado_sup = 157 WHERE em_codigo = 162;
+UPDATE empleado SET fk_empleado_sup = 157 WHERE em_codigo = 163;
+
+UPDATE empleado SET fk_empleado_sup = 164 WHERE em_codigo = 165;
+UPDATE empleado SET fk_empleado_sup = 164 WHERE em_codigo = 166;
+UPDATE empleado SET fk_empleado_sup = 164 WHERE em_codigo = 167;
+UPDATE empleado SET fk_empleado_sup = 165 WHERE em_codigo = 168;
+UPDATE empleado SET fk_empleado_sup = 165 WHERE em_codigo = 169;
+UPDATE empleado SET fk_empleado_sup = 166 WHERE em_codigo = 170;
+UPDATE empleado SET fk_empleado_sup = 166 WHERE em_codigo = 171;
+UPDATE empleado SET fk_empleado_sup = 167 WHERE em_codigo = 172;
+UPDATE empleado SET fk_empleado_sup = 167 WHERE em_codigo = 173;
+
+UPDATE empleado SET fk_empleado_sup = 174 WHERE em_codigo = 175;
+UPDATE empleado SET fk_empleado_sup = 174 WHERE em_codigo = 176;
+UPDATE empleado SET fk_empleado_sup = 174 WHERE em_codigo = 177;
+UPDATE empleado SET fk_empleado_sup = 175 WHERE em_codigo = 178;
+UPDATE empleado SET fk_empleado_sup = 175 WHERE em_codigo = 179;
+UPDATE empleado SET fk_empleado_sup = 176 WHERE em_codigo = 180;
+UPDATE empleado SET fk_empleado_sup = 176 WHERE em_codigo = 181;
+UPDATE empleado SET fk_empleado_sup = 177 WHERE em_codigo = 182;
+UPDATE empleado SET fk_empleado_sup = 177 WHERE em_codigo = 183;
+
+UPDATE empleado SET fk_empleado_sup = 184 WHERE em_codigo = 185;
+UPDATE empleado SET fk_empleado_sup = 184 WHERE em_codigo = 186;
+UPDATE empleado SET fk_empleado_sup = 184 WHERE em_codigo = 187;
+UPDATE empleado SET fk_empleado_sup = 185 WHERE em_codigo = 188;
+UPDATE empleado SET fk_empleado_sup = 185 WHERE em_codigo = 189;
+UPDATE empleado SET fk_empleado_sup = 186 WHERE em_codigo = 190;
+UPDATE empleado SET fk_empleado_sup = 186 WHERE em_codigo = 191;
+UPDATE empleado SET fk_empleado_sup = 187 WHERE em_codigo = 192;
+UPDATE empleado SET fk_empleado_sup = 187 WHERE em_codigo = 193;
+
+UPDATE empleado SET fk_empleado_sup = 194 WHERE em_codigo = 195;
+UPDATE empleado SET fk_empleado_sup = 194 WHERE em_codigo = 196;
+UPDATE empleado SET fk_empleado_sup = 194 WHERE em_codigo = 197;
+UPDATE empleado SET fk_empleado_sup = 195 WHERE em_codigo = 198;
+UPDATE empleado SET fk_empleado_sup = 195 WHERE em_codigo = 199;
+UPDATE empleado SET fk_empleado_sup = 196 WHERE em_codigo = 200;
+UPDATE empleado SET fk_empleado_sup = 196 WHERE em_codigo = 201;
+UPDATE empleado SET fk_empleado_sup = 197 WHERE em_codigo = 202;
+UPDATE empleado SET fk_empleado_sup = 197 WHERE em_codigo = 203;
+
+UPDATE empleado SET fk_empleado_sup = 204 WHERE em_codigo = 205;
+UPDATE empleado SET fk_empleado_sup = 204 WHERE em_codigo = 206;
+UPDATE empleado SET fk_empleado_sup = 204 WHERE em_codigo = 207;
+UPDATE empleado SET fk_empleado_sup = 205 WHERE em_codigo = 208;
+UPDATE empleado SET fk_empleado_sup = 205 WHERE em_codigo = 209;
+UPDATE empleado SET fk_empleado_sup = 206 WHERE em_codigo = 210;
+UPDATE empleado SET fk_empleado_sup = 206 WHERE em_codigo = 211;
+UPDATE empleado SET fk_empleado_sup = 207 WHERE em_codigo = 212;
+UPDATE empleado SET fk_empleado_sup = 207 WHERE em_codigo = 213;
+
+UPDATE empleado SET fk_empleado_sup = 214 WHERE em_codigo = 215;
+UPDATE empleado SET fk_empleado_sup = 214 WHERE em_codigo = 216;
+UPDATE empleado SET fk_empleado_sup = 214 WHERE em_codigo = 217;
+UPDATE empleado SET fk_empleado_sup = 215 WHERE em_codigo = 218;
+UPDATE empleado SET fk_empleado_sup = 215 WHERE em_codigo = 219;
+UPDATE empleado SET fk_empleado_sup = 216 WHERE em_codigo = 220;
+UPDATE empleado SET fk_empleado_sup = 216 WHERE em_codigo = 221;
+UPDATE empleado SET fk_empleado_sup = 217 WHERE em_codigo = 222;
+UPDATE empleado SET fk_empleado_sup = 217 WHERE em_codigo = 223;
+
+UPDATE empleado SET fk_empleado_sup = 224 WHERE em_codigo = 225;
+UPDATE empleado SET fk_empleado_sup = 224 WHERE em_codigo = 226;
+UPDATE empleado SET fk_empleado_sup = 224 WHERE em_codigo = 227;
+UPDATE empleado SET fk_empleado_sup = 225 WHERE em_codigo = 228;
+UPDATE empleado SET fk_empleado_sup = 225 WHERE em_codigo = 229;
+UPDATE empleado SET fk_empleado_sup = 226 WHERE em_codigo = 230;
+UPDATE empleado SET fk_empleado_sup = 226 WHERE em_codigo = 231;
+UPDATE empleado SET fk_empleado_sup = 227 WHERE em_codigo = 232;
+UPDATE empleado SET fk_empleado_sup = 227 WHERE em_codigo = 233;
+
+UPDATE empleado SET fk_empleado_sup = 234 WHERE em_codigo = 235;
+UPDATE empleado SET fk_empleado_sup = 234 WHERE em_codigo = 236;
+UPDATE empleado SET fk_empleado_sup = 234 WHERE em_codigo = 237;
+UPDATE empleado SET fk_empleado_sup = 235 WHERE em_codigo = 238;
+UPDATE empleado SET fk_empleado_sup = 235 WHERE em_codigo = 239;
+UPDATE empleado SET fk_empleado_sup = 236 WHERE em_codigo = 240;
+UPDATE empleado SET fk_empleado_sup = 236 WHERE em_codigo = 241;
+UPDATE empleado SET fk_empleado_sup = 237 WHERE em_codigo = 242;
+UPDATE empleado SET fk_empleado_sup = 237 WHERE em_codigo = 243;
+
+UPDATE empleado SET fk_empleado_sup = 244 WHERE em_codigo = 245;
+UPDATE empleado SET fk_empleado_sup = 244 WHERE em_codigo = 246;
+UPDATE empleado SET fk_empleado_sup = 244 WHERE em_codigo = 247;
+UPDATE empleado SET fk_empleado_sup = 245 WHERE em_codigo = 248;
+UPDATE empleado SET fk_empleado_sup = 245 WHERE em_codigo = 249;
+UPDATE empleado SET fk_empleado_sup = 246 WHERE em_codigo = 250;
+UPDATE empleado SET fk_empleado_sup = 246 WHERE em_codigo = 251;
+UPDATE empleado SET fk_empleado_sup = 247 WHERE em_codigo = 252;
+UPDATE empleado SET fk_empleado_sup = 247 WHERE em_codigo = 253;
+
+UPDATE empleado SET fk_empleado_sup = 254 WHERE em_codigo = 255;
+UPDATE empleado SET fk_empleado_sup = 254 WHERE em_codigo = 256;
+UPDATE empleado SET fk_empleado_sup = 254 WHERE em_codigo = 257;
+UPDATE empleado SET fk_empleado_sup = 255 WHERE em_codigo = 258;
+UPDATE empleado SET fk_empleado_sup = 255 WHERE em_codigo = 259;
+UPDATE empleado SET fk_empleado_sup = 256 WHERE em_codigo = 260;
+UPDATE empleado SET fk_empleado_sup = 256 WHERE em_codigo = 261;
+UPDATE empleado SET fk_empleado_sup = 257 WHERE em_codigo = 262;
+UPDATE empleado SET fk_empleado_sup = 257 WHERE em_codigo = 263;
+
+UPDATE empleado SET fk_empleado_sup = 264 WHERE em_codigo = 265;
+UPDATE empleado SET fk_empleado_sup = 264 WHERE em_codigo = 266;
+UPDATE empleado SET fk_empleado_sup = 264 WHERE em_codigo = 267;
+UPDATE empleado SET fk_empleado_sup = 265 WHERE em_codigo = 268;
+UPDATE empleado SET fk_empleado_sup = 265 WHERE em_codigo = 269;
+UPDATE empleado SET fk_empleado_sup = 266 WHERE em_codigo = 270;
+UPDATE empleado SET fk_empleado_sup = 266 WHERE em_codigo = 271;
+UPDATE empleado SET fk_empleado_sup = 267 WHERE em_codigo = 272;
+UPDATE empleado SET fk_empleado_sup = 267 WHERE em_codigo = 273;
+
+UPDATE empleado SET fk_empleado_sup = 274 WHERE em_codigo = 275;
+UPDATE empleado SET fk_empleado_sup = 274 WHERE em_codigo = 276;
+UPDATE empleado SET fk_empleado_sup = 274 WHERE em_codigo = 277;
+UPDATE empleado SET fk_empleado_sup = 275 WHERE em_codigo = 278;
+UPDATE empleado SET fk_empleado_sup = 275 WHERE em_codigo = 279;
+UPDATE empleado SET fk_empleado_sup = 276 WHERE em_codigo = 280;
+UPDATE empleado SET fk_empleado_sup = 276 WHERE em_codigo = 281;
+UPDATE empleado SET fk_empleado_sup = 277 WHERE em_codigo = 282;
+UPDATE empleado SET fk_empleado_sup = 277 WHERE em_codigo = 283;
+
+UPDATE empleado SET fk_empleado_sup = 284 WHERE em_codigo = 285;
+UPDATE empleado SET fk_empleado_sup = 284 WHERE em_codigo = 286;
+UPDATE empleado SET fk_empleado_sup = 284 WHERE em_codigo = 287;
+UPDATE empleado SET fk_empleado_sup = 285 WHERE em_codigo = 288;
+UPDATE empleado SET fk_empleado_sup = 285 WHERE em_codigo = 289;
+UPDATE empleado SET fk_empleado_sup = 286 WHERE em_codigo = 290;
+UPDATE empleado SET fk_empleado_sup = 286 WHERE em_codigo = 291;
+UPDATE empleado SET fk_empleado_sup = 287 WHERE em_codigo = 292;
+UPDATE empleado SET fk_empleado_sup = 287 WHERE em_codigo = 293;
+
+UPDATE empleado SET fk_empleado_sup = 294 WHERE em_codigo = 295;
+UPDATE empleado SET fk_empleado_sup = 294 WHERE em_codigo = 296;
+UPDATE empleado SET fk_empleado_sup = 294 WHERE em_codigo = 297;
+UPDATE empleado SET fk_empleado_sup = 295 WHERE em_codigo = 298;
+UPDATE empleado SET fk_empleado_sup = 295 WHERE em_codigo = 299;
+UPDATE empleado SET fk_empleado_sup = 296 WHERE em_codigo = 300;
+UPDATE empleado SET fk_empleado_sup = 296 WHERE em_codigo = 301;
+UPDATE empleado SET fk_empleado_sup = 297 WHERE em_codigo = 302;
+UPDATE empleado SET fk_empleado_sup = 297 WHERE em_codigo = 303;
+
+UPDATE empleado SET fk_empleado_sup = 304 WHERE em_codigo = 305;
+UPDATE empleado SET fk_empleado_sup = 304 WHERE em_codigo = 306;
+UPDATE empleado SET fk_empleado_sup = 304 WHERE em_codigo = 307;
+UPDATE empleado SET fk_empleado_sup = 305 WHERE em_codigo = 308;
+UPDATE empleado SET fk_empleado_sup = 305 WHERE em_codigo = 309;
+UPDATE empleado SET fk_empleado_sup = 306 WHERE em_codigo = 310;
+UPDATE empleado SET fk_empleado_sup = 306 WHERE em_codigo = 311;
+UPDATE empleado SET fk_empleado_sup = 307 WHERE em_codigo = 312;
+UPDATE empleado SET fk_empleado_sup = 307 WHERE em_codigo = 313;
+
+UPDATE empleado SET fk_empleado_sup = 314 WHERE em_codigo = 315;
+UPDATE empleado SET fk_empleado_sup = 314 WHERE em_codigo = 316;
+UPDATE empleado SET fk_empleado_sup = 314 WHERE em_codigo = 317;
+UPDATE empleado SET fk_empleado_sup = 315 WHERE em_codigo = 318;
+UPDATE empleado SET fk_empleado_sup = 315 WHERE em_codigo = 319;
+UPDATE empleado SET fk_empleado_sup = 316 WHERE em_codigo = 320;
+UPDATE empleado SET fk_empleado_sup = 316 WHERE em_codigo = 321;
+UPDATE empleado SET fk_empleado_sup = 317 WHERE em_codigo = 322;
+UPDATE empleado SET fk_empleado_sup = 317 WHERE em_codigo = 323;
+
+UPDATE empleado SET fk_empleado_sup = 324 WHERE em_codigo = 325;
+UPDATE empleado SET fk_empleado_sup = 324 WHERE em_codigo = 326;
+UPDATE empleado SET fk_empleado_sup = 324 WHERE em_codigo = 327;
+UPDATE empleado SET fk_empleado_sup = 325 WHERE em_codigo = 328;
+UPDATE empleado SET fk_empleado_sup = 325 WHERE em_codigo = 329;
+UPDATE empleado SET fk_empleado_sup = 326 WHERE em_codigo = 330;
+UPDATE empleado SET fk_empleado_sup = 326 WHERE em_codigo = 331;
+UPDATE empleado SET fk_empleado_sup = 327 WHERE em_codigo = 332;
+UPDATE empleado SET fk_empleado_sup = 327 WHERE em_codigo = 333;
+
+UPDATE empleado SET fk_empleado_sup = 334 WHERE em_codigo = 335;
+UPDATE empleado SET fk_empleado_sup = 334 WHERE em_codigo = 336;
+UPDATE empleado SET fk_empleado_sup = 334 WHERE em_codigo = 337;
+UPDATE empleado SET fk_empleado_sup = 335 WHERE em_codigo = 338;
+UPDATE empleado SET fk_empleado_sup = 335 WHERE em_codigo = 339;
+UPDATE empleado SET fk_empleado_sup = 336 WHERE em_codigo = 340;
+UPDATE empleado SET fk_empleado_sup = 336 WHERE em_codigo = 341;
+UPDATE empleado SET fk_empleado_sup = 337 WHERE em_codigo = 342;
+UPDATE empleado SET fk_empleado_sup = 337 WHERE em_codigo = 343;
+
+UPDATE empleado SET fk_empleado_sup = 344 WHERE em_codigo = 345;
+UPDATE empleado SET fk_empleado_sup = 344 WHERE em_codigo = 346;
+UPDATE empleado SET fk_empleado_sup = 344 WHERE em_codigo = 347;
+UPDATE empleado SET fk_empleado_sup = 345 WHERE em_codigo = 348;
+UPDATE empleado SET fk_empleado_sup = 345 WHERE em_codigo = 349;
+UPDATE empleado SET fk_empleado_sup = 346 WHERE em_codigo = 350;
+UPDATE empleado SET fk_empleado_sup = 346 WHERE em_codigo = 351;
+UPDATE empleado SET fk_empleado_sup = 347 WHERE em_codigo = 352;
+UPDATE empleado SET fk_empleado_sup = 347 WHERE em_codigo = 353;
+
+UPDATE empleado SET fk_empleado_sup = 354 WHERE em_codigo = 355;
+UPDATE empleado SET fk_empleado_sup = 354 WHERE em_codigo = 356;
+UPDATE empleado SET fk_empleado_sup = 354 WHERE em_codigo = 357;
+UPDATE empleado SET fk_empleado_sup = 355 WHERE em_codigo = 358;
+UPDATE empleado SET fk_empleado_sup = 355 WHERE em_codigo = 359;
+UPDATE empleado SET fk_empleado_sup = 356 WHERE em_codigo = 360;
+UPDATE empleado SET fk_empleado_sup = 356 WHERE em_codigo = 361;
+UPDATE empleado SET fk_empleado_sup = 357 WHERE em_codigo = 362;
+UPDATE empleado SET fk_empleado_sup = 357 WHERE em_codigo = 363;
+
+UPDATE empleado SET fk_empleado_sup = 364 WHERE em_codigo = 365;
+UPDATE empleado SET fk_empleado_sup = 364 WHERE em_codigo = 366;
+UPDATE empleado SET fk_empleado_sup = 364 WHERE em_codigo = 367;
+UPDATE empleado SET fk_empleado_sup = 365 WHERE em_codigo = 368;
+UPDATE empleado SET fk_empleado_sup = 365 WHERE em_codigo = 369;
+UPDATE empleado SET fk_empleado_sup = 366 WHERE em_codigo = 370;
+UPDATE empleado SET fk_empleado_sup = 366 WHERE em_codigo = 371;
+UPDATE empleado SET fk_empleado_sup = 367 WHERE em_codigo = 372;
+UPDATE empleado SET fk_empleado_sup = 367 WHERE em_codigo = 373;
+
+UPDATE empleado SET fk_empleado_sup = 374 WHERE em_codigo = 375;
+UPDATE empleado SET fk_empleado_sup = 374 WHERE em_codigo = 376;
+UPDATE empleado SET fk_empleado_sup = 374 WHERE em_codigo = 377;
+UPDATE empleado SET fk_empleado_sup = 375 WHERE em_codigo = 378;
+UPDATE empleado SET fk_empleado_sup = 375 WHERE em_codigo = 379;
+UPDATE empleado SET fk_empleado_sup = 376 WHERE em_codigo = 380;
+UPDATE empleado SET fk_empleado_sup = 376 WHERE em_codigo = 381;
+UPDATE empleado SET fk_empleado_sup = 377 WHERE em_codigo = 382;
+UPDATE empleado SET fk_empleado_sup = 377 WHERE em_codigo = 383;
+
+UPDATE empleado SET fk_empleado_sup = 384 WHERE em_codigo = 385;
+UPDATE empleado SET fk_empleado_sup = 384 WHERE em_codigo = 386;
+UPDATE empleado SET fk_empleado_sup = 384 WHERE em_codigo = 387;
+UPDATE empleado SET fk_empleado_sup = 385 WHERE em_codigo = 388;
+UPDATE empleado SET fk_empleado_sup = 385 WHERE em_codigo = 389;
+UPDATE empleado SET fk_empleado_sup = 386 WHERE em_codigo = 390;
+UPDATE empleado SET fk_empleado_sup = 386 WHERE em_codigo = 391;
+UPDATE empleado SET fk_empleado_sup = 387 WHERE em_codigo = 392;
+UPDATE empleado SET fk_empleado_sup = 387 WHERE em_codigo = 393;
+
+UPDATE empleado SET fk_empleado_sup = 394 WHERE em_codigo = 395;
+UPDATE empleado SET fk_empleado_sup = 394 WHERE em_codigo = 396;
+UPDATE empleado SET fk_empleado_sup = 394 WHERE em_codigo = 397;
+UPDATE empleado SET fk_empleado_sup = 395 WHERE em_codigo = 398;
+UPDATE empleado SET fk_empleado_sup = 395 WHERE em_codigo = 399;
+UPDATE empleado SET fk_empleado_sup = 396 WHERE em_codigo = 400;
+UPDATE empleado SET fk_empleado_sup = 396 WHERE em_codigo = 401;
+UPDATE empleado SET fk_empleado_sup = 397 WHERE em_codigo = 402;
+UPDATE empleado SET fk_empleado_sup = 397 WHERE em_codigo = 403;
+
+UPDATE empleado SET fk_empleado_sup = 404 WHERE em_codigo = 405;
+UPDATE empleado SET fk_empleado_sup = 404 WHERE em_codigo = 406;
+UPDATE empleado SET fk_empleado_sup = 404 WHERE em_codigo = 407;
+UPDATE empleado SET fk_empleado_sup = 405 WHERE em_codigo = 408;
+UPDATE empleado SET fk_empleado_sup = 405 WHERE em_codigo = 409;
+UPDATE empleado SET fk_empleado_sup = 406 WHERE em_codigo = 410;
+UPDATE empleado SET fk_empleado_sup = 406 WHERE em_codigo = 411;
+UPDATE empleado SET fk_empleado_sup = 407 WHERE em_codigo = 412;
+UPDATE empleado SET fk_empleado_sup = 407 WHERE em_codigo = 413;
+
+UPDATE empleado SET fk_empleado_sup = 414 WHERE em_codigo = 415;
+UPDATE empleado SET fk_empleado_sup = 414 WHERE em_codigo = 416;
+UPDATE empleado SET fk_empleado_sup = 414 WHERE em_codigo = 417;
+UPDATE empleado SET fk_empleado_sup = 415 WHERE em_codigo = 418;
+UPDATE empleado SET fk_empleado_sup = 415 WHERE em_codigo = 419;
+UPDATE empleado SET fk_empleado_sup = 416 WHERE em_codigo = 420;
+UPDATE empleado SET fk_empleado_sup = 416 WHERE em_codigo = 421;
+UPDATE empleado SET fk_empleado_sup = 417 WHERE em_codigo = 422;
+UPDATE empleado SET fk_empleado_sup = 417 WHERE em_codigo = 423;
+
+UPDATE empleado SET fk_empleado_sup = 424 WHERE em_codigo = 425;
+UPDATE empleado SET fk_empleado_sup = 424 WHERE em_codigo = 426;
+UPDATE empleado SET fk_empleado_sup = 424 WHERE em_codigo = 427;
+UPDATE empleado SET fk_empleado_sup = 425 WHERE em_codigo = 428;
+UPDATE empleado SET fk_empleado_sup = 425 WHERE em_codigo = 429;
+UPDATE empleado SET fk_empleado_sup = 426 WHERE em_codigo = 430;
+UPDATE empleado SET fk_empleado_sup = 426 WHERE em_codigo = 431;
+UPDATE empleado SET fk_empleado_sup = 427 WHERE em_codigo = 432;
+UPDATE empleado SET fk_empleado_sup = 427 WHERE em_codigo = 433;
+
+UPDATE empleado SET fk_empleado_sup = 434 WHERE em_codigo = 435;
+UPDATE empleado SET fk_empleado_sup = 434 WHERE em_codigo = 436;
+UPDATE empleado SET fk_empleado_sup = 434 WHERE em_codigo = 437;
+UPDATE empleado SET fk_empleado_sup = 435 WHERE em_codigo = 438;
+UPDATE empleado SET fk_empleado_sup = 435 WHERE em_codigo = 439;
+UPDATE empleado SET fk_empleado_sup = 436 WHERE em_codigo = 440;
+UPDATE empleado SET fk_empleado_sup = 436 WHERE em_codigo = 441;
+UPDATE empleado SET fk_empleado_sup = 437 WHERE em_codigo = 442;
+UPDATE empleado SET fk_empleado_sup = 437 WHERE em_codigo = 443;
+
+UPDATE empleado SET fk_empleado_sup = 444 WHERE em_codigo = 445;
+UPDATE empleado SET fk_empleado_sup = 444 WHERE em_codigo = 446;
+UPDATE empleado SET fk_empleado_sup = 444 WHERE em_codigo = 447;
+UPDATE empleado SET fk_empleado_sup = 445 WHERE em_codigo = 448;
+UPDATE empleado SET fk_empleado_sup = 445 WHERE em_codigo = 449;
+UPDATE empleado SET fk_empleado_sup = 446 WHERE em_codigo = 450;
+UPDATE empleado SET fk_empleado_sup = 446 WHERE em_codigo = 451;
+UPDATE empleado SET fk_empleado_sup = 447 WHERE em_codigo = 452;
+UPDATE empleado SET fk_empleado_sup = 447 WHERE em_codigo = 453;
+
+UPDATE empleado SET fk_empleado_sup = 454 WHERE em_codigo = 455;
+UPDATE empleado SET fk_empleado_sup = 454 WHERE em_codigo = 456;
+UPDATE empleado SET fk_empleado_sup = 454 WHERE em_codigo = 457;
+UPDATE empleado SET fk_empleado_sup = 455 WHERE em_codigo = 458;
+UPDATE empleado SET fk_empleado_sup = 455 WHERE em_codigo = 459;
+UPDATE empleado SET fk_empleado_sup = 456 WHERE em_codigo = 460;
+UPDATE empleado SET fk_empleado_sup = 456 WHERE em_codigo = 461;
+UPDATE empleado SET fk_empleado_sup = 457 WHERE em_codigo = 462;
+UPDATE empleado SET fk_empleado_sup = 457 WHERE em_codigo = 463;
+
+UPDATE empleado SET fk_empleado_sup = 464 WHERE em_codigo = 465;
+UPDATE empleado SET fk_empleado_sup = 464 WHERE em_codigo = 466;
+UPDATE empleado SET fk_empleado_sup = 464 WHERE em_codigo = 467;
+UPDATE empleado SET fk_empleado_sup = 465 WHERE em_codigo = 468;
+UPDATE empleado SET fk_empleado_sup = 465 WHERE em_codigo = 469;
+UPDATE empleado SET fk_empleado_sup = 466 WHERE em_codigo = 470;
+UPDATE empleado SET fk_empleado_sup = 466 WHERE em_codigo = 471;
+UPDATE empleado SET fk_empleado_sup = 467 WHERE em_codigo = 472;
+UPDATE empleado SET fk_empleado_sup = 467 WHERE em_codigo = 473;
+
+UPDATE empleado SET fk_empleado_sup = 474 WHERE em_codigo = 475;
+UPDATE empleado SET fk_empleado_sup = 474 WHERE em_codigo = 476;
+UPDATE empleado SET fk_empleado_sup = 474 WHERE em_codigo = 477;
+UPDATE empleado SET fk_empleado_sup = 475 WHERE em_codigo = 478;
+UPDATE empleado SET fk_empleado_sup = 475 WHERE em_codigo = 479;
+UPDATE empleado SET fk_empleado_sup = 476 WHERE em_codigo = 480;
+UPDATE empleado SET fk_empleado_sup = 476 WHERE em_codigo = 481;
+UPDATE empleado SET fk_empleado_sup = 477 WHERE em_codigo = 482;
+UPDATE empleado SET fk_empleado_sup = 477 WHERE em_codigo = 483;
+
+UPDATE empleado SET fk_empleado_sup = 484 WHERE em_codigo = 485;
+UPDATE empleado SET fk_empleado_sup = 484 WHERE em_codigo = 486;
+UPDATE empleado SET fk_empleado_sup = 484 WHERE em_codigo = 487;
+UPDATE empleado SET fk_empleado_sup = 485 WHERE em_codigo = 488;
+UPDATE empleado SET fk_empleado_sup = 485 WHERE em_codigo = 489;
+UPDATE empleado SET fk_empleado_sup = 486 WHERE em_codigo = 490;
+UPDATE empleado SET fk_empleado_sup = 486 WHERE em_codigo = 491;
+UPDATE empleado SET fk_empleado_sup = 487 WHERE em_codigo = 492;
+UPDATE empleado SET fk_empleado_sup = 487 WHERE em_codigo = 493;
+
+UPDATE empleado SET fk_empleado_sup = 494 WHERE em_codigo = 495;
+UPDATE empleado SET fk_empleado_sup = 494 WHERE em_codigo = 496;
+UPDATE empleado SET fk_empleado_sup = 494 WHERE em_codigo = 497;
+UPDATE empleado SET fk_empleado_sup = 495 WHERE em_codigo = 498;
+UPDATE empleado SET fk_empleado_sup = 495 WHERE em_codigo = 499;
+UPDATE empleado SET fk_empleado_sup = 496 WHERE em_codigo = 500;
+UPDATE empleado SET fk_empleado_sup = 496 WHERE em_codigo = 501;
+UPDATE empleado SET fk_empleado_sup = 497 WHERE em_codigo = 502;
+UPDATE empleado SET fk_empleado_sup = 497 WHERE em_codigo = 503;
+
+UPDATE empleado SET fk_empleado_sup = 504 WHERE em_codigo = 505;
+UPDATE empleado SET fk_empleado_sup = 504 WHERE em_codigo = 506;
+UPDATE empleado SET fk_empleado_sup = 504 WHERE em_codigo = 507;
+UPDATE empleado SET fk_empleado_sup = 505 WHERE em_codigo = 508;
+UPDATE empleado SET fk_empleado_sup = 505 WHERE em_codigo = 509;
+UPDATE empleado SET fk_empleado_sup = 506 WHERE em_codigo = 510;
+UPDATE empleado SET fk_empleado_sup = 506 WHERE em_codigo = 511;
+UPDATE empleado SET fk_empleado_sup = 507 WHERE em_codigo = 512;
+UPDATE empleado SET fk_empleado_sup = 507 WHERE em_codigo = 513;
+
+UPDATE empleado SET fk_empleado_sup = 514 WHERE em_codigo = 515;
+UPDATE empleado SET fk_empleado_sup = 514 WHERE em_codigo = 516;
+UPDATE empleado SET fk_empleado_sup = 514 WHERE em_codigo = 517;
+UPDATE empleado SET fk_empleado_sup = 515 WHERE em_codigo = 518;
+UPDATE empleado SET fk_empleado_sup = 515 WHERE em_codigo = 519;
+UPDATE empleado SET fk_empleado_sup = 516 WHERE em_codigo = 520;
+UPDATE empleado SET fk_empleado_sup = 516 WHERE em_codigo = 521;
+UPDATE empleado SET fk_empleado_sup = 517 WHERE em_codigo = 522;
+UPDATE empleado SET fk_empleado_sup = 517 WHERE em_codigo = 523;
+
+UPDATE empleado SET fk_empleado_sup = 524 WHERE em_codigo = 525;
+UPDATE empleado SET fk_empleado_sup = 524 WHERE em_codigo = 526;
+UPDATE empleado SET fk_empleado_sup = 524 WHERE em_codigo = 527;
+UPDATE empleado SET fk_empleado_sup = 525 WHERE em_codigo = 528;
+UPDATE empleado SET fk_empleado_sup = 525 WHERE em_codigo = 529;
+UPDATE empleado SET fk_empleado_sup = 526 WHERE em_codigo = 530;
+UPDATE empleado SET fk_empleado_sup = 526 WHERE em_codigo = 531;
+UPDATE empleado SET fk_empleado_sup = 527 WHERE em_codigo = 532;
+UPDATE empleado SET fk_empleado_sup = 527 WHERE em_codigo = 533;
+
+UPDATE empleado SET fk_empleado_sup = 534 WHERE em_codigo = 535;
+UPDATE empleado SET fk_empleado_sup = 534 WHERE em_codigo = 536;
+UPDATE empleado SET fk_empleado_sup = 534 WHERE em_codigo = 537;
+UPDATE empleado SET fk_empleado_sup = 535 WHERE em_codigo = 538;
+UPDATE empleado SET fk_empleado_sup = 535 WHERE em_codigo = 539;
+UPDATE empleado SET fk_empleado_sup = 536 WHERE em_codigo = 540;
+UPDATE empleado SET fk_empleado_sup = 536 WHERE em_codigo = 541;
+UPDATE empleado SET fk_empleado_sup = 537 WHERE em_codigo = 542;
+UPDATE empleado SET fk_empleado_sup = 537 WHERE em_codigo = 543;
+
+UPDATE empleado SET fk_empleado_sup = 544 WHERE em_codigo = 545;
+UPDATE empleado SET fk_empleado_sup = 544 WHERE em_codigo = 546;
+UPDATE empleado SET fk_empleado_sup = 544 WHERE em_codigo = 547;
+UPDATE empleado SET fk_empleado_sup = 545 WHERE em_codigo = 548;
+UPDATE empleado SET fk_empleado_sup = 545 WHERE em_codigo = 549;
+UPDATE empleado SET fk_empleado_sup = 546 WHERE em_codigo = 550;
+UPDATE empleado SET fk_empleado_sup = 546 WHERE em_codigo = 551;
+UPDATE empleado SET fk_empleado_sup = 547 WHERE em_codigo = 552;
+UPDATE empleado SET fk_empleado_sup = 547 WHERE em_codigo = 553;
+
+UPDATE empleado SET fk_empleado_sup = 554 WHERE em_codigo = 555;
+UPDATE empleado SET fk_empleado_sup = 554 WHERE em_codigo = 556;
+UPDATE empleado SET fk_empleado_sup = 554 WHERE em_codigo = 557;
+UPDATE empleado SET fk_empleado_sup = 555 WHERE em_codigo = 558;
+UPDATE empleado SET fk_empleado_sup = 555 WHERE em_codigo = 559;
+UPDATE empleado SET fk_empleado_sup = 556 WHERE em_codigo = 560;
+UPDATE empleado SET fk_empleado_sup = 556 WHERE em_codigo = 561;
+UPDATE empleado SET fk_empleado_sup = 557 WHERE em_codigo = 562;
+UPDATE empleado SET fk_empleado_sup = 557 WHERE em_codigo = 563;
+
+UPDATE empleado SET fk_empleado_sup = 564 WHERE em_codigo = 565;
+UPDATE empleado SET fk_empleado_sup = 564 WHERE em_codigo = 566;
+UPDATE empleado SET fk_empleado_sup = 564 WHERE em_codigo = 567;
+UPDATE empleado SET fk_empleado_sup = 565 WHERE em_codigo = 568;
+UPDATE empleado SET fk_empleado_sup = 565 WHERE em_codigo = 569;
+UPDATE empleado SET fk_empleado_sup = 566 WHERE em_codigo = 570;
+UPDATE empleado SET fk_empleado_sup = 566 WHERE em_codigo = 571;
+UPDATE empleado SET fk_empleado_sup = 567 WHERE em_codigo = 572;
+UPDATE empleado SET fk_empleado_sup = 567 WHERE em_codigo = 573;
+
+UPDATE empleado SET fk_empleado_sup = 574 WHERE em_codigo = 575;
+UPDATE empleado SET fk_empleado_sup = 574 WHERE em_codigo = 576;
+UPDATE empleado SET fk_empleado_sup = 574 WHERE em_codigo = 577;
+UPDATE empleado SET fk_empleado_sup = 575 WHERE em_codigo = 578;
+UPDATE empleado SET fk_empleado_sup = 575 WHERE em_codigo = 579;
+UPDATE empleado SET fk_empleado_sup = 576 WHERE em_codigo = 580;
+UPDATE empleado SET fk_empleado_sup = 576 WHERE em_codigo = 581;
+UPDATE empleado SET fk_empleado_sup = 577 WHERE em_codigo = 582;
+UPDATE empleado SET fk_empleado_sup = 577 WHERE em_codigo = 583;
+
+UPDATE empleado SET fk_empleado_sup = 584 WHERE em_codigo = 585;
+UPDATE empleado SET fk_empleado_sup = 584 WHERE em_codigo = 586;
+UPDATE empleado SET fk_empleado_sup = 584 WHERE em_codigo = 587;
+UPDATE empleado SET fk_empleado_sup = 585 WHERE em_codigo = 588;
+UPDATE empleado SET fk_empleado_sup = 585 WHERE em_codigo = 589;
+UPDATE empleado SET fk_empleado_sup = 586 WHERE em_codigo = 590;
+UPDATE empleado SET fk_empleado_sup = 586 WHERE em_codigo = 591;
+UPDATE empleado SET fk_empleado_sup = 587 WHERE em_codigo = 592;
+UPDATE empleado SET fk_empleado_sup = 587 WHERE em_codigo = 593;
+
+UPDATE empleado SET fk_empleado_sup = 594 WHERE em_codigo = 595;
+UPDATE empleado SET fk_empleado_sup = 594 WHERE em_codigo = 596;
+UPDATE empleado SET fk_empleado_sup = 594 WHERE em_codigo = 597;
+UPDATE empleado SET fk_empleado_sup = 595 WHERE em_codigo = 598;
+UPDATE empleado SET fk_empleado_sup = 595 WHERE em_codigo = 599;
+UPDATE empleado SET fk_empleado_sup = 596 WHERE em_codigo = 600;
+UPDATE empleado SET fk_empleado_sup = 596 WHERE em_codigo = 601;
+UPDATE empleado SET fk_empleado_sup = 597 WHERE em_codigo = 602;
+UPDATE empleado SET fk_empleado_sup = 597 WHERE em_codigo = 603;

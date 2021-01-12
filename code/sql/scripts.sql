@@ -61,7 +61,6 @@ CREATE TABLE privilegio_rol(
 
 
 
-
 /* EMPLEADOS */
 
 CREATE TABLE empleado(
@@ -145,7 +144,7 @@ CREATE TABLE vacaciones(
 	CONSTRAINT pk_vacaciones PRIMARY KEY (va_fecha_ini,fk_empleado), 
 
 
-	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_cedula)
+	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_codigo)
 
 );
 
@@ -175,9 +174,9 @@ CREATE TABLE cliente(
 	/*JURIDICO*/
 
     cl_razon_social     VARCHAR(50),  
-	cl_pagina_web       VARCHAR(50),
+	cl_pagina_web       VARCHAR(100),
 	cl_den_comercial    VARCHAR(50),
-    cl_capital          NUMERIC(10),
+    cl_capital          NUMERIC(20),
 	fk_lugar_fiscal		INTEGER,
 	fk_lugar_fisica		INTEGER,
 	  
@@ -334,7 +333,7 @@ CREATE TABLE telefono(
 	CONSTRAINT ch_te_tipo CHECK (te_tipo IN ('CELULAR', 'OFICINA', 'CASA')),
 
 	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE,
-	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_cedula) ON DELETE CASCADE,
+	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_codigo) ON DELETE CASCADE,
 	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(po_id) ON DELETE CASCADE,
 	CONSTRAINT fk_persona_contacto FOREIGN KEY (fk_persona_contacto) REFERENCES persona_contacto(peco_codigo) ON DELETE CASCADE
 );
@@ -356,7 +355,7 @@ CREATE TABLE marca(
 CREATE TABLE rubro(
 
 	ru_codigo 	SERIAL,
-	ru_nombre   VARCHAR(20) NOT NULL,
+	ru_nombre   VARCHAR(30) NOT NULL,
 
 	CONSTRAINT pk_rubro PRIMARY KEY (ru_codigo)
 );

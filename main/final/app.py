@@ -17,7 +17,7 @@ from database.DB_generic import DB_generic
 from database.DB_empleado import DB_empleado
 from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
-
+from database.DB_inventario import DB_inventario
 
 
 app = Flask(__name__)
@@ -148,6 +148,8 @@ def mostrar(obj):
             return jsonify(resp)
 
     
+
+    
     if obj == 'roles':
 
         if request.method == 'POST':
@@ -160,6 +162,8 @@ def mostrar(obj):
 
 
             return jsonify(resp)
+
+
 
             
 
@@ -1493,6 +1497,21 @@ def beneficios():
 
         return jsonify(resp)
 
+
+@app.route('/inventario/<id>',methods=['GET','POST'])  
+def inventario(id):
+
+    if request.method == 'GET':
+        return render_template("inventario.html")
+
+    if request.method == 'POST':
+
+        tienda = int(request.form['tienda'])
+
+        db = DB_inventario()         
+        resp = db.getall3(tienda)
+
+        return jsonify(resp)
 
 
 

@@ -20,12 +20,24 @@ ORDER BY TABLE_NAME;
 
 /*				*/
 
+
+SELECT * 
+FROM producto 
+INNER JOIN pasillo ON pasillo.fk_producto = producto.pr_id
+INNER JOIN almacen ON almacen.fk_producto = producto.pr_id
+WHERE almacen.fk_tienda = 18;
+
+
+
+
+
+
 INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)
 SELECT * FROM telefono
 
 ALTER TABLE cliente ALTER COLUMN cl_pagina_web TYPE VARCHAR(100);
 
-
+select * from producto;
 
 DELETE FROM empleado WHERE em_codigo = 13
 

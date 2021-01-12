@@ -327,3 +327,42 @@ $(document).ready(function() {
 });
 
 
+$(function(){
+    $('form').submit(function(e){
+
+        $("#id_user").removeAttr('disabled');
+
+        $('#loading').show()
+
+        $.ajax({
+            
+            url:   '/manejo_proveedor',
+            data:  $('form').serialize(),
+            type: 'PUT',
+                
+            }).done(function(response){
+                
+                $('#loading').hide()
+
+                if(response['error'])
+					alerta(response['error']);
+				
+				else if (response['invalido'])
+                    alerta(response['invalido']);
+				
+                else
+                    alerta(response['mensaje']);
+                
+                
+                window.location.href=window.location.href;
+             	
+                
+            }).fail(function(response){
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            });
+
+        e.preventDefault();
+        
+    });
+});
+

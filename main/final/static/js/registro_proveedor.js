@@ -6,6 +6,7 @@ function alerta(mensaje){
     alert(mensaje);
 
 };
+
 function lugares (lu_tipo, fk_lugar,sel_op,y){
 
     $.ajax({
@@ -73,20 +74,20 @@ $(document).ready(function() {
     var id_municipio;
     var id_parroquia;
 
-    lugares('ESTADO','',0,1);
+    lugares('ESTADO','',0,2);
     
    
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,0,1);
+        lugares('MUNICIPIO',id_estado,0,2);
     });
         
 
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,0,1);
+        lugares('PARROQUIA',id_municipio,0,2);
     });
 
     
@@ -99,18 +100,18 @@ $(document).ready(function() {
     var id_municipio2;
     var id_parroquia2;
 
-    lugares('ESTADO','',0,2);
+    lugares('ESTADO','',0,1);
     
     $('#selectestado2').change(function() {
 
         id_estado2 = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado2,0,2);
+        lugares('MUNICIPIO',id_estado2,0,1);
     });
     
     $('#selectmunicipio2').change(function() {
 
         id_municipio2 = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio2,0,2);
+        lugares('PARROQUIA',id_municipio2,0,1);
     });
 
     $('#selectparroquia2').change(function() {
@@ -118,40 +119,8 @@ $(document).ready(function() {
         id_parroquia2 = $(this).find('option:selected').val();
     });
 
-    var tiendas;
-    var id_tienda;
+   
     
-    $.ajax({
-                
-        url:   '/mostrar/tiendas',
-        type: 'POST',
-        dataSrc: "",
-            
-        }).done(function(resp){
-            
-            tiendas = resp;         
-
-            var opciones = [];
-
-            opciones.push('<option value="default" selected disabled>TIENDAS</option>');
-
-            for (var i=0, l=tiendas.length; i<l; i++){
-                opciones.push('<option value="'+tiendas[i].ti_codigo+'">'+tiendas[i].ti_nombre+'<opciones>');
-            }
-
-            $('#selecttienda').html(opciones.join(''));
-
-            
-        }).fail(function(resp){
-            c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
-    });
-
-
-    $('#selecttienda').change(function() {
-
-        id_tienda = $(this).find('option:selected').val();
-
-    });
     
 });
 
@@ -186,6 +155,7 @@ $(function(){
     
     });
 });
+
 
 
 

@@ -60,7 +60,33 @@ INSERT INTO rubro (ru_codigo,ru_nombre) VALUES ('18','Cauchos');
 
 
 
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('1','Refrigeración');
 
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('2','Electrodomesticos');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('3','Papeleria');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('4','Limpieza');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('5','Alimentos');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('6','Higiene Personal');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('7','Alimentos');
+
+INSERT INTO zona (zo_codigo,zo_nombre) VALUES ('8','AutoAutopartes');
+
+
+
+
+
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,13,1,1,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,115,1,2,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,116,1,3,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,117,2,1,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,118,3,1,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,119,4,1,100);
+INSERT INTO pasillo (fk_tienda, fk_producto, pa_pasillo,pa_anaquel,pa_cantidad) VALUES (71,120,4,2,100);
 
 
 

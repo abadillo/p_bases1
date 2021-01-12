@@ -71,7 +71,7 @@ body {
 #fondo2{
     background-color: #f8176d;
     width: 1170px;
-    height: 1950px;
+    height: 1450px;
     position: relative;
     top: 20px;
     border-radius: 5px 5px 5px 5px;
@@ -82,7 +82,7 @@ body {
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
-    height: 1900px;
+    height: 1400px;
     width:1116px;
     border-radius: 5px 5px 5px 5px;
     border: 3px rgba(128, 128, 128, 0) solid;
@@ -127,6 +127,9 @@ h2{
 
 #Margen-campos{
     margin-top: 50px;
+    margin-right: 100px;
+    position: relative;
+    right: 70px;
 
 }
 #id_user{
@@ -186,14 +189,15 @@ h2{
 #inputrazon{
     width: 250px;  
 }
+#web{
+    position: relative;
+    top:20px;
+}
 #inputpagina{
     width: 350px;
     position: relative;
-    top: 5px;
+    top: 30px;
 }
-
-
-
 #dencom{
     position: relative;
     top: -150px;
@@ -217,16 +221,6 @@ h2{
     top: -145px;
     right: -505;
 }
-#tienda-registro{
-    position: relative;
-    top: -70px;
-}
-#tiendaregistro{
-    width: 758px;
-    position: relative;
-    top: -65px;
-}
-
 #correo{
     position: relative;
     top: -30px;
@@ -239,7 +233,7 @@ h2{
 #inputcorreo2{
     width: 400px;
     position: relative;
-    top: -20px;
+    top: -10px;
 }
 
 
@@ -251,7 +245,7 @@ h2{
 
 #Combo-boxes{
     position: relative;
-    top: -60px;
+    top: 30px;
 }
 #Estado{
     width: 300px;    
@@ -277,7 +271,7 @@ h2{
 
 #Combo-boxes2{
     position: relative;
-    top: -100px;
+    top: -10px;
 }
 #Estado2{
     width: 300px;    

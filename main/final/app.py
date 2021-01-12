@@ -969,10 +969,10 @@ def manejo_proveedor():
 
     if request.method == 'PUT':
 
-        id = int(request.form['id'])
+        id = int(request.form['id_user'])
 
         data = {
-
+            
             'po_den_comercial'      :request.form['inputden'],
             'po_razon_social'       :request.form['inputrazon'],
             'po_correo'             :request.form['inputcorreo'],

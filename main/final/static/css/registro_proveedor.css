@@ -249,7 +249,7 @@ body{
 }
 #inputdir{
     position: relative;
-    top:-50px;
+    top:-100px;
     right: -6px;
     width: 555px;
 }
@@ -263,7 +263,7 @@ h5{
     width: 150px;
     height: 45px;
     position: relative;
-    top:33px;
+    top:-35px;
     right:-375px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -275,7 +275,7 @@ h5{
     width: 150px;
     height: 45px;
     position: relative;
-    top:33px;
+    top:-35px;
     right:-385px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
@@ -305,6 +305,11 @@ h3{
     position: relative;
     top: -70px;
     right: -90px;
+}
+#margen_de_contactos{
+    position: relative;
+    top: 150px;
+
 }
 #Datos-extra1{
     border: 1px black solid;

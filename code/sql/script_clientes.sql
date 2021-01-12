@@ -1,10 +1,6 @@
 ﻿
-
-
-
-
 -- CLIENTES
-
+select * from cliente;
 
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V309068691','NATURAL',0,13,30906869,'JUAN','MÁXIMO','OVIDIO','ANDRÉS',32);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V138733389','NATURAL',0,13,13873338,'IGNACIO','TARSICIO','ALEXANDER','JOSÉ',32);

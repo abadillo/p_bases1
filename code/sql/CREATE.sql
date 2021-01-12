@@ -393,8 +393,15 @@ CREATE TABLE descuento (
 
 	CONSTRAINT pk_descuento PRIMARY KEY (de_fecha_ini,fk_producto),
 
-	CONSTRAINT ch_de_porcentaje CHECK ( 0 > de_porcentaje AND de_porcentaje < 100)
+	CONSTRAINT ch_de_porcentaje CHECK ( de_porcentaje > 0 AND de_porcentaje < 100)
 );
+
+
+
+ALTER TABLE descuento DROP CONSTRAINT ch_de_porcentaje;
+ALTER TABLE descuento
+add CONSTRAINT ch_de_porcentaje CHECK ( de_porcentaje > 0 AND de_porcentaje < 100);
+
 
 
 
@@ -405,11 +412,9 @@ CREATE TABLE estatus_reposicion (
 
 	er_codigo 	  SERIAL,
 	er_nombre     VARCHAR(20) NOT NULL,
-	fk_producto   INTEGER,
-
+	
 	CONSTRAINT pk_estatus_reposicion PRIMARY KEY (er_codigo),
 
-	CONSTRAINT fk_producto FOREIGN KEY (fk_producto) REFERENCES producto (pr_id)
 );
 
 

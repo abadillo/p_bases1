@@ -16,7 +16,7 @@ class DB_inventario(DB):
     
         try:
            
-            query = 'SELECT * FROM producto INNER JOIN pasillo ON pasillo.fk_producto = producto.pr_id INNER JOIN almacen ON almacen.fk_producto = producto.pr_id WHERE almacen.fk_tienda = {0}'.format(tienda)
+            query = 'SELECT * FROM producto INNER JOIN almacen ON almacen.fk_producto = producto.pr_id WHERE almacen.fk_tienda = {0}'.format(tienda)
             
             
             print(self.cursor.mogrify(query))  

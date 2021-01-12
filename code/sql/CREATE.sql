@@ -398,10 +398,6 @@ CREATE TABLE descuento (
 
 
 
-ALTER TABLE descuento DROP CONSTRAINT ch_de_porcentaje;
-ALTER TABLE descuento
-add CONSTRAINT ch_de_porcentaje CHECK ( de_porcentaje > 0 AND de_porcentaje < 100);
-
 
 
 

@@ -83,7 +83,7 @@ WHERE almacen.fk_tienda = 18;
 INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)
 SELECT * FROM telefono
 
-ALTER TABLE cliente ALTER COLUMN cl_pagina_web TYPE VARCHAR(100);
+ALTER TABLE proveedor ALTER COLUMN po_rif TYPE VARCHAR(50);
 
 select * from producto;
 
@@ -93,7 +93,7 @@ DELETE FROM empleado WHERE em_codigo = 13
 
 
 
-ALTER TABLE telefono DROP CONSTRAINT fk_empleado;
+ALTER TABLE tienda DROP CONSTRAINT fk_empleado;
 ALTER TABLE telefono
 add CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_codigo) ON DELETE CASCADE;
 
@@ -101,3 +101,7 @@ add CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_cod
 drop table metodo_pago;
 delete from cliente where cl_id > 0 ;
 */
+
+drop database grupo4db1_;
+
+create database grupo4bd1_;

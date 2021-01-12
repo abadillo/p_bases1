@@ -3,9 +3,9 @@ import psycopg2
 from psycopg2 import Error
 from flask import Flask, render_template, json, request, jsonify
 import decimal
- 
-
+from datetime import datetime
 from configuracion import configuracion
+import datetime
 
 class DB(metaclass=ABCMeta):
 
@@ -46,6 +46,7 @@ class DB(metaclass=ABCMeta):
             for atributo in entidad:
                 if type(entidad[atributo]) == decimal.Decimal:
                     entidad[atributo] = int(entidad[atributo])
+               
 
         return data_cv
 

@@ -18,7 +18,26 @@ class DB_generic(DB):
            
             query = 'SELECT * FROM {0}'.format(tabla)
 
-            #print(self.cursor.mogrify(query))  
+            print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
+            
+            resp = self.cursor.fetchall()
+            columnas = self.cursor.description
+            data = self.querydictdecimal(resp,columnas)
+
+            return data 
+
+        except Exception:
+            return None
+      
+
+    def getwhere (self,tabla,atributo,valor):  
+    
+        try:
+           
+            query = 'SELECT * FROM {0} WHERE {1} = {2}'.format(tabla,atributo,valor)
+
+            print(self.cursor.mogrify(query))  
             self.cursor.execute(query)
         
             resp = self.cursor.fetchall()
@@ -30,9 +49,10 @@ class DB_generic(DB):
 
         except Exception:
             return None
-      
 
-    def add (self, data):
+
+            
+    def add (self,table, data):
         
         try:
 
@@ -43,33 +63,39 @@ class DB_generic(DB):
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
-            query = 'INSERT INTO metodo_pago ({0}) VALUES ({1})'.format(columns, values)
+            query = 'INSERT INTO {0} ({1}) VALUES ({2})'.format(table,columns, values)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
             self.connection.commit()
             
-            return jsonify({'mensaje':'metodo_pago creado satisfactoriamente'}) 
+            return jsonify({'mensaje':'horario creado satisfactoriamente'}) 
 
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
   
-
+    def delete (self,table, data):
+        
         try:
 
+            keys = data.keys()
+            values = ' AND '.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'DELETE FROM {0} WHERE {1}'.format(table,values)
             
-            self.cursor.execute("DELETE FROM metodo_pago WHERE cl_id = %s", (id,) )
-         
+            print(self.cursor.mogrify(query, data)) 
+            self.cursor.execute(query,data)
             self.connection.commit()
-            
+
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
+      
 
     
    

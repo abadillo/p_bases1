@@ -240,15 +240,15 @@ $(document).ready(function() {
 
 
 
-    $("#id_user").val(datos.cl_id);
-    $("#inputrif").val(datos.cl_rif);
-    $("#inputrazon").val(datos.cl_razon_social);
-    $("#inputpagina").val(datos.cl_pagina_web);
-    $("#inputden").val(datos.cl_den_comercial);
-    $("#inputcapital").val(datos.cl_capital);
+    $("#id_user").val(datos.po_id);
+    $("#inputrif").val(datos.po_rif);
+    $("#inputrazon").val(datos.po_razon_social);
+    $("#inputpagina").val(datos.po_pagina_web);
+    $("#inputden").val(datos.po_den_comercial);
 
-    $("#inputcorreo").val(datos.us_correo);
-    $("#inputcont").val(datos.us_contrasena);
+    $("#inputcorreo").val(datos.po_correo);
+    
+    $("#inputcorreo2").val(datos.po_correo_alt);
 
     $("#tiendaregistro").val(tienda_registro);
     
@@ -324,6 +324,56 @@ $(document).ready(function() {
     
     
 
+});
+
+
+$(function(){
+    $("#Modificar").click(function(){
+        
+        
+        $("#inputrazon").removeAttr('disabled');
+        $("#inputpagina").removeAttr('disabled');
+        $("#inputden").removeAttr('disabled');
+        $("#inputcapital").removeAttr('disabled');
+        $("#inputcorreo").removeAttr('disabled');
+        $("#inputcorreo2").removeAttr('disabled');
+        
+        $("#inputtelefono").removeAttr('disabled');
+        $("#inputtelefono2").removeAttr('disabled');
+        $("#inputtelefono3").removeAttr('disabled');
+
+        $("#tipotlf1").removeAttr('disabled');
+        $("#tipotlf2").removeAttr('disabled');
+        $("#tipotlf3").removeAttr('disabled');
+        
+
+        $("#selectestado").removeAttr('disabled');
+        $("#selectmunicipio").removeAttr('disabled');
+        $("#selectparroquia").removeAttr('disabled');
+        $("#inputdir").removeAttr('disabled');
+
+        $("#selectestado2").removeAttr('disabled');
+        $("#selectmunicipio2").removeAttr('disabled');
+        $("#selectparroquia2").removeAttr('disabled');
+        $("#inputdir2").removeAttr('disabled');
+
+
+        
+        $("#Modificar").css("display","none"); 
+        $("#Cancelar").css("display","block"); 
+       
+        $("#Confirmar").removeAttr('disabled');
+        $("#Carnet").css("display","none"); 
+        $("#Confirmar").css("display","block"); 
+       
+    });
+});
+
+
+$(function(){
+    $("#Cancelar").click(function(){
+        window.location.href=window.location.href;
+    });
 });
 
 

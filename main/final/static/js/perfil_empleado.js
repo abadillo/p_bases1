@@ -7,6 +7,44 @@ function alerta(mensaje){
 
 };
 
+function llenacombo ( ent, titulo, ent_codigo, ent_valor , nombrecbx, opcion){
+
+
+    $.ajax({
+                
+        url:   '/mostrar/'+ent,
+        type: 'POST',
+        dataSrc: "", 
+        async: false,
+            
+        }).done(function(resp){
+        
+            resp;          
+
+            var opciones = [];
+
+            opciones.push('<option value="0" selected disabled>'+titulo+'</option>');
+
+            for (var i=0, l=resp.length; i<l; i++){
+                
+
+                if (opcion == resp[i][ent_codigo])
+                    opciones.push('<option selected value="'+resp[i][ent_codigo]+'">'+resp[i][ent_valor]+'<opciones>');
+                else 
+                    opciones.push('<option value="'+resp[i][ent_codigo]+'">'+resp[i][ent_valor]+'<opciones>');
+            }
+
+            
+            $(nombrecbx).html(opciones.join(''));
+
+            
+        }).fail(function(resp){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+    });
+
+
+};
+
 
 $(document).ready(function() {
     
@@ -14,6 +52,11 @@ $(document).ready(function() {
     
     var datos;
     var tienda_registro;
+
+    
+    $("#tlfcodigo").hide();
+    var tlfcodigo = null;
+    var telefono1 = null;
     
     
     $.ajax({
@@ -40,64 +83,64 @@ $(document).ready(function() {
     console.log(datos);
 
     $.ajax({
-                
-        url:   '/mostrar/tiendas',
-        type: 'POST',
-        dataSrc: "",
+        
+        url:   '/telefonos/'+id,
+        type: 'GET',
+        data: {
+            'tipo': 'fk_empleado' ,
+        },
         async: false, 
             
-        }).done(function(resp){
+        }).done(function(response){
             
-            tiendas = resp;
-            for (var i=0, l=tiendas.length; i<l; i++){
-                if (tiendas[i].ti_codigo == datos.fk_tienda)
-                    tienda_registro = tiendas[i].ti_nombre;
-            }     
-                      
-        }).fail(function(resp){
-            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            var telefonos = response;
+
+            if ( telefonos[0] ){
+                telefono1 = telefonos[0].te_numero;
+                tipot1 = telefonos[0].te_tipo;
+                tlfcodigo = telefonos[0].te_codigo;
+            }
+      
+                            
         });
 
-
+    
+  
+    var d = new Date(datos.em_fecha_nac);
+    d.setDate(d.getDate() + 1);
+    var datestring = d.getFullYear() + '-' + ("0"+(d.getMonth()+1)).slice(-2) + "-" +  ("0" + d.getDate()).slice(-2);
 
    
+
+    llenacombo('tiendas','TIENDA REGISTRO','ti_codigo','ti_nombre','#selecttienda',datos.fk_tienda);
+    llenacombo('roles','ROL','ro_codigo','ro_nombre','#selectrol',datos.fk_rol);
+    llenacombo('empleados','SUPERVISOR','em_codigo','em_p_apellido','#selectempsup',datos.fk_empleado_sup);
     
-
-
 
     $("#id_user").val(datos.em_codigo);
     $("#inputcedula").val(datos.em_cedula);
-    $("#inputcorreo").val(datos.em_correo);
-    $("#inputtelefono").val("nada");
+
+
+    $("#selectfecha").val(datestring);
+
+    $("#tlfcodigo").val(tlfcodigo);
+    $("#inputtelefono").val(telefono1);
+    
     $("#inputpnombre").val(datos.em_p_nombre);
     $("#inputsnombre").val(datos.em_s_nombre);
     $("#inputpapellido").val(datos.em_p_apellido);
     $("#inputsapellido").val(datos.em_s_apellido);
-    $("#inputcont").val(datos.em_contrasena);
 
-
-    
-
-
-    var date = new Date(datos.em_fecha_nac),
-        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-        day = ("0" + (date.getDate())).slice(-2);
-    var fecha = ([date.getFullYear(), mnth, day].join("-"));
-
-  
-     
-    fecha.setDate(fecha.getDate() + 1);
-
-
-    $('#selectfecha').val(fecha);
-   
     $("#inputsueldo").val(datos.em_sueldo);
     $("#tiendaregistro").val(tienda_registro);
+
+
+    $("#inputcorreo").val(datos.us_correo);
+    $("#inputcont").val(datos.us_contrasena);
+
+   
     
     
-
-
-
 
 
     $('#loading').hide();
@@ -117,7 +160,8 @@ $(function(){
         $("#inputpapellido").removeAttr('disabled');
         $("#inputsapellido").removeAttr('disabled');
         $("#inputcont").removeAttr('disabled');
-        
+        $("#selecttienda").removeAttr('disabled');
+    
         $("#selectrol").removeAttr('disabled');
         $("#selectempsup").removeAttr('disabled');
         $("#inputsueldo").removeAttr('disabled');
@@ -137,8 +181,9 @@ $(function(){
     });
 });
 
+
 $(function(){
-    $("#Confirmar").click(function(){
+    $('form').submit(function(e){
       
         $("#id_user").removeAttr('disabled');
 
@@ -171,6 +216,7 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
             });
 
+        e.preventDefault();
         
     });
 });

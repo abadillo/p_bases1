@@ -47,28 +47,10 @@ VALUES ('18','J000345298','Insdustrias Vlelmor','Insdustrias Vlelmor.CA','Instri
 
 
 
---Pruebas
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('1', 'Colgate','FALSE')
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('2', 'Ariel','FALSE')
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('3', 'Head & Shoulders','FALSE')
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('4', 'Primor','FALSE');
---Pruebas
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('5', 'Martextil','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('6', 'Tecnomarca','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('7', 'Chocolatieres','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('8', 'FishMarket','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('9', 'AvesMart','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('10', 'DelicatesesMart','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('11', 'Ofis','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('12', 'Mueblesoft','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('13', 'MuebleHogar','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('14', 'CarMarket','TRUE');
-INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('15', 'IndustrialMart','TRUE');
 
 
 
 
-o
 --Pruebas
 INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor) VALUES ('1','1000000','Crema de Dientes','100','1','1','2');
 INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor) VALUES ('2','3500000','Jabon en Polvo','500','2','2','2');
@@ -216,7 +198,12 @@ INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_pro
 INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor) VALUES ('110','4000000','Blanqueador','0','2','15','18');
 
 
-
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(115,2000000,'Toallas Blancas',0,4,5,10);
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(116,3000000,'Toallas Negras',0,4,5,10);
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(117, 10000000, 'Cornetas 10ohms', 0,  7 ,6 ,11 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(118, 600000, 'Chocolates Rellenos', 50,  9 ,7 ,12 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(119, 1200000, 'Jamon de Pavo', 1000 , 3 ,10 ,8 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(120, 11000000, 'Carpetas Amarillas', 0 , 15, 11 ,14 );
 --------RUBROS--------
 --Pruebas
 INSERT INTO rubro (ru_codigo,ru_nombre) VALUES ('1','Higiene');
@@ -262,5 +249,24 @@ INSERT INTO rubro (ru_codigo,ru_nombre) VALUES ('18','Cauchos');
 
 
 
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(115,2000000,'Toallas Blancas',0,4,5,10);
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(116,3000000,'Toallas Negras',0,4,5,10);
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(117, 10000000, 'Cornetas 10ohms', 0,  7 ,6 ,11 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(118, 600000, 'Chocolates Rellenos', 50,  9 ,7 ,12 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(119, 1200000, 'Jamon de Pavo', 1000 , 3 ,10 ,8 );
+INSERT INTO producto(pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor)VALUES(120, 11000000, 'Carpetas Amarillas', 0 , 15, 11 ,14 );
 
 
+
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (115,'2020-3-9','2020-3-19',50,TRUE);
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (116,'2020-7-15','2020-7-25',75,TRUE);
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (117,'2020-3-9','2020-3-19',20,TRUE);
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (118,'2020-7-05','2020-7-15',20,FALSE);
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (119,'2019-3-9','2019-3-19',30,FALSE);
+
+INSERT INTO descuento (fk_producto,de_fecha_ini,de_fecha_fin,de_porcentaje,de_notimart) VALUES (120,'2020-1-15','2020-1-25',50,FALSE);

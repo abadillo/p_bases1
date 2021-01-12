@@ -6,6 +6,23 @@ NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da errorFI
 					por tanto se insertaran como NULL/NONE
 */
 
+
+
+select * from cotizacion
+SELECT * FROM EMPLEADO;
+SELECT * FROM CLIENTE;
+SELECT * FROM TIENDA
+
+SELECT pr_id,pr_nombre FROM PRODUCTO;
+SELECT * FROM PRIVILEGIO;
+select * from zona;
+select * from telefono;
+
+SELECT * FROM PROVEEDOR
+
+select * from usuario;
+/*				
+
 SELECT *   --MUESTRA LAS TABLAS QUE HAY EN LA BASE DE DATOS
 FROM pg_catalog.pg_tables
 WHERE schemaname != 'pg_catalog' AND 
@@ -18,39 +35,6 @@ WHERE TABLE_SCHEMA = 'public'
 ORDER BY TABLE_NAME;
 
 
-/*				*/
-
-
-SELECT * 
-FROM producto 
-INNER JOIN pasillo ON pasillo.fk_producto = producto.pr_id
-INNER JOIN almacen ON almacen.fk_producto = producto.pr_id
-WHERE almacen.fk_tienda = 18;
-
-
-
-
-
-
-INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)
-SELECT * FROM telefono
-
-ALTER TABLE cliente ALTER COLUMN cl_pagina_web TYPE VARCHAR(100);
-
-select * from producto;
-
-DELETE FROM empleado WHERE em_codigo = 13
-
-
-
-
-
-ALTER TABLE telefono DROP CONSTRAINT fk_empleado;
-ALTER TABLE telefono
-add CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_codigo) ON DELETE CASCADE;
-
-
-/*
 ALTER TABLE cliente_natural DROP cl_rif;
 ALTER TABLE cliente_natural ADD cl_rif VARCHAR(20) UNIQUE;
 ALTER TABLE cliente DROP cl_rifj;
@@ -80,6 +64,36 @@ ALTER TABLE empleado
 add CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo);
 
 
+
+SELECT * 
+FROM producto 
+INNER JOIN pasillo ON pasillo.fk_producto = producto.pr_id
+INNER JOIN almacen ON almacen.fk_producto = producto.pr_id
+WHERE almacen.fk_tienda = 18;
+
+
+
+
+
+
+
+
+INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)
+SELECT * FROM telefono
+
+ALTER TABLE cliente ALTER COLUMN cl_pagina_web TYPE VARCHAR(100);
+
+select * from producto;
+
+DELETE FROM empleado WHERE em_codigo = 13
+
+
+
+
+
+ALTER TABLE telefono DROP CONSTRAINT fk_empleado;
+ALTER TABLE telefono
+add CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_codigo) ON DELETE CASCADE;
 
 
 drop table metodo_pago;

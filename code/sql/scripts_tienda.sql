@@ -12,7 +12,7 @@ INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Puerto La Cruz',42)
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Carúpano',43);
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - El Tigre',44);
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - San Cristóbal',45);
-INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Margarita',46);
+INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Margarita',46);    
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Coro',47);
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Guanare',48);
 INSERT INTO tienda (ti_nombre, fk_lugar) VALUES ('UCABmart - Trujillo',49);

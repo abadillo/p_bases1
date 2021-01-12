@@ -112,11 +112,11 @@ class DB_empleado(DB):
     def delete (self,id):
 
         try:
-
+            print(5)
             self.cursor.execute("DELETE FROM empleado WHERE em_codigo = %s", (id,) )
          
             self.connection.commit()
-            
+            print(5)
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 

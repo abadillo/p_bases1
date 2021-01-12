@@ -70,7 +70,7 @@ body {
 #fondo2{
     background-color: #f8176d;
     width: 1170px;
-    height: 1700px;
+    height: 2000px;
     position: relative;
     top: 20px;
     border-radius: 5px 5px 5px 5px;
@@ -81,7 +81,7 @@ body {
     margin-top: 20px;
     margin-left: 20px;
     background-color: white;
-    height: 1650px;
+    height: 1950px;
     width:1116px;
     border-radius: 5px 5px 5px 5px;
     border: 3px rgba(128, 128, 128, 0) solid;
@@ -140,34 +140,54 @@ h2{
     right: -505px;
     top: -75px;
 }
+
+
+
+
+#telefono{
+    position: relative;
+    top: -30px;
+}
 #inputtelefono{
     width: 250px;
     position: relative;
+    top: -20px;
 }
-#tipotlf1{
+
+#fecha_h{
+    width: 300px;
     position: relative;
-    top: -1px;
-    right: -75px;
-    width: 100px;
+    top: -97px;
+    right: -275px
 }
-
-
 #selectfecha{
+    position: relative;
+    top: 10px;
+    right: 0px;
+    width: 255px;
+}
+
+#rols{
     width: 250px;
     position: relative;
-    top:-92px;
-    right: -255px;
+    top: -165px;
+    right: -560px
 }
-#selectrol{
+#selectrol2{
     width: 250px;
     position: relative;
-    top: -184px;
-    right: -510px;
+    top: -170px;
+    right: -560px;
 }
+
+
+
+
+
 
 #Alinear{
     position: relative;
-    top: -170px;
+    top: -100px;
 
 }
 #inputpnombre{
@@ -195,36 +215,42 @@ h2{
     top: -105;
     right: -505;
 }
+
+
 #tienda-registro{
     position: relative;
-    top: -70px;
+    top: -30px;
 }
 #tiendaregistro{
-    width: 250px;
+    width: 400px;
     position: relative;
-    top: -65px;
+    top: -20px;
 }
 
 #super-registro{
+    width: 300px;
     position: relative;
-    top: -70px;
+    top: -120px;
+    right: -300px
+}
+#selectempsup{
+    position: relative;
+    top: -110px;
+    right: -305px;
+    width: 250px;
 }
 
-#selectempsup{
+#sueldo-registro{
     width: 250px;
     position: relative;
-    top:-92px;
-    right: -255px;
-}
-#sueldo-registro{
-    position: relative;
-    top: -70px;
+    top: -205px;
+    right: -560px
 }
 #inputsueldo{
-    width: 250px;
+    width: 200px;
     position: relative;
-    top: -184px;
-    right: -510px;
+    top: -200px;
+    right: -560px;
 }
 
 
@@ -233,16 +259,16 @@ h2{
 
 #correo{
     position: relative;
-    top: -30px;
+    top: -130px;
 }
 #inputcorreo{
     width: 400px;
     position: relative;
-    top: -20px;
+    top: -120px;
 }
 #contraseña{
     position: relative;
-    top: -101px;
+    top: -201px;
     right: -505px;
 }
 #inputcont{
@@ -251,28 +277,27 @@ h2{
     top: 5px;
 }
 
-#Combo-boxes{
-    position: relative;
-    top: -130px;
-}
-#Estado{
-    width: 300px;    
-}
-#Municipio{
-    width: 300;
-    position: relative;
-    top: -54px;
-    right: -270px;
-}
-#Parroquia{
-    width: 300;
-    position: relative;
-    top:-109px;
-    right: -530px;
-}
-#inputdir{
-    width: 758px;
-    position: relative;
-    top: -80px;
 
+#tabla3{
+    width: 600px;
+    position: relative;
+    top: -200px;
+    right: -100px;
+    border: 2px black groove;
+    border-radius: 3px 3px 3px 3px;
+    padding: 50px;
+    padding-bottom: 40px;
+}
+
+
+
+#tabla4{
+    width: 600px;
+    position: relative;
+    top: -100px;
+    right: -100px;
+    border: 2px black groove;
+    border-radius: 3px 3px 3px 3px;
+    padding: 50px;
+    padding-bottom: 40px;
 }

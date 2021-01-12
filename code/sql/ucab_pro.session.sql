@@ -6,10 +6,6 @@ NOTA:  Si atributo es varchar() UNIQUE , no se puede '' y da errorFI
 					por tanto se insertaran como NULL/NONE
 */
 
-
-
-
-
 SELECT *   --MUESTRA LAS TABLAS QUE HAY EN LA BASE DE DATOS
 FROM pg_catalog.pg_tables
 WHERE schemaname != 'pg_catalog' AND 
@@ -20,6 +16,27 @@ SELECT *   --MUESTRA LOS ATRIBUTOS QUE ESTAN EN TODAS LAS TABLAS
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'public' 
 ORDER BY TABLE_NAME;
+
+
+/*				*/
+
+INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)
+SELECT * FROM telefono
+
+ALTER TABLE cliente ALTER COLUMN cl_pagina_web TYPE VARCHAR(100);
+
+
+
+DELETE FROM empleado WHERE em_codigo = 13
+
+
+
+
+
+ALTER TABLE telefono DROP CONSTRAINT fk_empleado;
+ALTER TABLE telefono
+add CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado (em_codigo) ON DELETE CASCADE;
+
 
 /*
 ALTER TABLE cliente_natural DROP cl_rif;

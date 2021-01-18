@@ -1,11 +1,11 @@
 ﻿
 
---Pruebas
+--MARCAS
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('1', 'Colgate','FALSE')
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('2', 'Ariel','FALSE')
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('3', 'Head & Shoulders','FALSE')
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('4', 'Primor','FALSE');
---Pruebas
+
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('5', 'Martextil','TRUE');
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('6', 'Tecnomarca','TRUE');
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('7', 'Chocolatieres','TRUE');

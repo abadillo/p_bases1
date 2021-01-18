@@ -25,6 +25,8 @@ delete from empleado where em_codigo > 0;
 select * from usuario;
 /*				
 
+
+
 SELECT *   --MUESTRA LAS TABLAS QUE HAY EN LA BASE DE DATOS
 FROM pg_catalog.pg_tables
 WHERE schemaname != 'pg_catalog' AND 
@@ -64,6 +66,10 @@ ALTER TABLE persona_contacto ALTER COLUMN peco_cedula TYPE INTEGER;
 ALTER TABLE empleado DROP CONSTRAINT fk_empleado_sup;
 ALTER TABLE empleado
 add CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo);
+	ALTER TABLE empleado ADD
+    CONSTRAINT fk_rubro FOREIGN KEY (fk_rubro) REFERENCES rubro (ru_codigo) ON DELETE CASCADE,
+	CONSTRAINT fk_marca FOREIGN KEY (fk_marca) REFERENCES marca (ma_codigo) ON DELETE CASCADE,
+	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor (po_id) ON DELETE CASCADE	
 
 
 

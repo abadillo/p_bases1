@@ -74,20 +74,20 @@ $(document).ready(function() {
     var id_municipio;
     var id_parroquia;
 
-    lugares('ESTADO','',0,2);
+    lugares('ESTADO','',0,1);
     
    
     $('#selectestado').change(function() {
 
         id_estado = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado,0,2);
+        lugares('MUNICIPIO',id_estado,0,1);
     });
         
 
     $('#selectmunicipio').change(function() {
 
         id_municipio = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio,0,2);
+        lugares('PARROQUIA',id_municipio,0,1);
     });
 
     
@@ -100,18 +100,18 @@ $(document).ready(function() {
     var id_municipio2;
     var id_parroquia2;
 
-    lugares('ESTADO','',0,1);
+    lugares('ESTADO','',0,2);
     
     $('#selectestado2').change(function() {
 
         id_estado2 = $(this).find('option:selected').val();
-        lugares('MUNICIPIO',id_estado2,0,1);
+        lugares('MUNICIPIO',id_estado2,0,2);
     });
     
     $('#selectmunicipio2').change(function() {
 
         id_municipio2 = $(this).find('option:selected').val();
-        lugares('PARROQUIA',id_municipio2,0,1);
+        lugares('PARROQUIA',id_municipio2,0,2);
     });
 
     $('#selectparroquia2').change(function() {

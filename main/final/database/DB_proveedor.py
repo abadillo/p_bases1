@@ -118,12 +118,10 @@ class DB_proveedor(DB):
     def delete (self,id):
 
         try:
-
+            print('Entra al execute')
             self.cursor.execute("DELETE FROM proveedor WHERE po_id = %s", (id,) )
-         
-            self.connection.commit()  
-
-                   
+            print('Sale del execute')
+            self.connection.commit()                     
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
 

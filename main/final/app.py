@@ -1047,9 +1047,9 @@ def manejo_proveedor():
         db2 = DB_lugar() 
 
         direccion = {
-            'lu_nombre'     :   request.form['inputdir2'],        
+            'lu_nombre'     :   request.form['inputdir'],        
             'lu_tipo'       :   'DIRECCION',             
-            'fk_lugar'      :   request.form['selectparroquia2'],         
+            'fk_lugar'      :   request.form['selectparroquia'],         
         }
 
         data['fk_lugar_fiscal'] = db2.add(direccion)
@@ -1057,9 +1057,9 @@ def manejo_proveedor():
         try:
 
             direccion2 = {
-                'lu_nombre'     :   request.form['inputdir'],        
+                'lu_nombre'     :   request.form['inputdir2'],        
                 'lu_tipo'       :   'DIRECCION',             
-                'fk_lugar'      :   request.form['selectparroquia'],         
+                'fk_lugar'      :   request.form['selectparroquia2'],         
             }
 
             if not (direccion2['lu_nombre'] == '' or direccion2['lu_nombre'] == ' '):
@@ -1295,9 +1295,11 @@ def manejo_proveedor():
 
         db = DB_proveedor()   
 
-        resp = db.delete(id)
+        resp = db.delete(id)        
 
         return resp
+
+          
 
 
 

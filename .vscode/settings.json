@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "labs-dbservices01.ucab.edu.ve",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Elefante",
+            "username": "grupo4bd1",
+            "password": "bases1_abgmjd",
+            "database": "grupo4db1_"
+        }
+    ]
+}

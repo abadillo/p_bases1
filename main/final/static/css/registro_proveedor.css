@@ -139,33 +139,33 @@ body{
     top: -16px;
     right: -420px;
 }
-#Combo-boxes2{
+#Combo-boxes{
     position: relative;
     right: -110px;
     top:-30px;
     width: 300px;    
 }
 
-#Parroquia2{
+#Parroquia{
     width: 230px;
     position: relative;
     right: -386px;
     top:-103px;
 }
 
-#Municipio2{
+#Municipio{
     position: relative;
     right: -196px;
     top:-49px;
     width: 230px;
 }
-#Estado2{
+#Estado{
     position: relative;
     right: -6px;
     top:5px;
     width: 230px;
 }
-#inputdir2{
+#inputdir{
     position: relative;
     top:-80px;
     right: -6px;
@@ -221,33 +221,33 @@ body{
     right: -103px;
     top:10px;
 }
-#Combo-boxes{
+#Combo-boxes2{
     position: relative;
     right: -100px;
     top:20px;
     width: 300px;    
 }
 
-#Parroquia{
+#Parroquia2{
     width: 230px;
     position: relative;
     right: -386px;
     top:-103px;
 }
 
-#Municipio{
+#Municipio2{
     position: relative;
     right: -196px;
     top:-49px;
     width: 230px;
 }
-#Estado{
+#Estado2{
     position: relative;
     right: -6px;
     top:5px;
     width: 230px;
 }
-#inputdir{
+#inputdir2{
     position: relative;
     top:-100px;
     right: -6px;
@@ -264,7 +264,7 @@ h5{
     height: 45px;
     position: relative;
     top:-35px;
-    right:-375px;
+    right:-335px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }
@@ -276,7 +276,7 @@ h5{
     height: 45px;
     position: relative;
     top:-35px;
-    right:-385px;
+    right:-355px;
     border: 2px black solid;
     border-radius: 3px 3px 3px 3px;
 }

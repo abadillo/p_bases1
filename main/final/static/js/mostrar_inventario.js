@@ -78,7 +78,7 @@ $(document).ready(function() {
             { data: "pr_peso" ,         title: "PESO"},
             { data: "pr_precio" ,       title: "PRECIO"},
             { data: "al_cantidad",      title: "CNT EN ALMACEN"},
-            
+            { data: "pa_cantidad",      title: "CNT EN PASILLO"},      
             
         
    

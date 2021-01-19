@@ -1,4 +1,4 @@
-function c_error(mensaje){
+function alert(mensaje){
     $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
 };
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
                     table.row('.selected').remove().draw( false );
                     
                 }).fail(function(response){
-                    c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+                    alert('No se pudo acceder al servidor. Intente de nuevo mas tarde');
                 });
 
         }

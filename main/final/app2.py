@@ -3,6 +3,8 @@ import psycopg2                                                  # 1)entrar al f
 from psycopg2.sql import SQL, Composable, Identifier, Literal    # 2)comando "python app.py"
 from psycopg2 import Error
 from psycopg2 import sql
+from datetime import datetime
+import datetime
 
 from database.DB_usuario import DB_usuario
 from database.DB_cliente import DB_cliente
@@ -15,10 +17,12 @@ from database.DB_generic import DB_generic
 from database.DB_empleado import DB_empleado
 from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
+from database.DB_inventario import DB_inventario
 
 
 app = Flask(__name__)
 app.debug = True
+
 
 
 
@@ -70,7 +74,6 @@ def registro(entidad):
 def ver_perfil(entidad,id):
      
     return render_template("perfil_"+entidad+".html")
-
 
 
 
@@ -144,6 +147,25 @@ def mostrar(obj):
             resp = db.getall()
 
             return jsonify(resp)
+
+    
+
+    
+    if obj == 'roles':
+
+        if request.method == 'POST':
+
+            db = DB_generic()
+            resp = db.getall2("rol")
+
+            del resp[0]
+                        
+
+
+            return jsonify(resp)
+
+
+
             
 
 
@@ -832,10 +854,172 @@ def manejo_juridico():
         return resp
 
 
+@app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
+def manejo_empleado():
+
+    if request.method == 'GET':         #listo
+     
+        id = request.args['id']
+        
+        db = DB_empleado()
+        data = db.get(id) 
+
+        #datos correo y contraseña
+        db = DB_usuario()
+        data2 = db.get2(id,'fk_empleado')
+        
+        #añadde data2 a data 
+        data.update(data2)
+
+       
+
+        return jsonify(data)
+
+    if request.method == 'POST':        #listo
+        
+        #datos empleado
+
+        data = {
+            'em_cedula'       :  int(request.form['inputcedula']),   
+            'em_p_nombre'     :     request.form['inputpnombre'],
+            'em_s_nombre'     :     request.form['inputsnombre'],   
+            'em_p_apellido'   :     request.form['inputpapellido'], 
+            'em_s_apellido'   :     request.form['inputsapellido'], 
+            'em_sueldo'       :  int(request.form['inputsueldo']), 
+            'em_fecha_nac'    :     request.form['selectfecha'],     
+            'fk_tienda'       :  int(request.form['selecttienda']),
+            'fk_empleado_sup' :  int(request.form['selectempsup']),  
+           
+        }
+
+        #datos usuario
+
+        d_user = {
+            'us_correo'     :    request.form['inputcorreo'], 
+            'us_contrasena' :    request.form['inputcont'],  
+            'fk_empleado'   :    None,
+            'fk_rol'        :    int(request.form['selectrol']),
+        }
+        
+        #validacion de existencia de correo
+        db = DB_empleado()
+        db2 = DB_usuario()
+        resp = db2.verif('us_correo',d_user['us_correo'])
+        if (resp): return jsonify({'invalido': 'Este correo ya esta registrado'}) 
+        resp = db.verif('em_cedula',data['em_cedula'])
+        if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
+        
+
+    
+
+        #insercion de empleado y usuario
+       
+        id_empleado = db.add(data)
+
+        d_user['fk_empleado'] = id_empleado
+        db2.add(d_user)
+
+
+
+        #telefono
+
+        db4 = DB_telefono()   
+
+        telefono = {
+            'te_tipo'            :   request.form['tipotlf'],        
+            'te_numero'          :   int(request.form['inputtelefono']),  
+            'fk_empleado'        :   id_empleado,         
+        }
+
+        db4.add(telefono) 
+
+
+        return jsonify({'mensaje': 'Empleado Creado Satisfactoriamente' }) 
+
+    if request.method == 'PUT':              #listo
+        
+        id = int(request.form['id_user'])
+
+        data = {
+        
+            'em_p_nombre'      :    request.form['inputpnombre'], 
+            'em_s_nombre'      :    request.form['inputsnombre'],  
+            'em_p_apellido'    :    request.form['inputpapellido'], 
+            'em_s_apellido'    :    request.form['inputsapellido'],
+            'em_sueldo'        :  int(request.form['inputsueldo']),   
+            'fk_tienda'        :  int(request.form['selecttienda']),
+            'fk_empleado_sup'  :  int(request.form['selectempsup']),   
+
+        }        
+
+        db = DB_empleado()
+        resp = db.update(id,data)
+
+
+        
+
+        #actualiza contrañase
+        
+        data_us = {
+            'us_contrasena' :    request.form['inputcont'],
+            'fk_rol'        :    int(request.form['selectrol']),
+        }
+        
+        db2 = DB_usuario()
+        resp2 = db2.update2( id, 'fk_empleado', data_us)
+
+
+
+        #actualiza telefonos
+
+        db = DB_telefono()
+
+
+        if (request.form['tlfcodigo']):
+            codigo_tlf = int(request.form['tlfcodigo'])
+
+            try:
+                telefono = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono']),  
+                }
+
+                resp3 =  db.update( codigo_tlf, telefono ) 
+
+            except Exception: 
+                resp3 = db.delete(codigo_tlf)
+
+
+
+       
+
+
+        if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+        if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+        if ('mensaje') in resp3.keys(): 
+            return jsonify(resp3)
+        
+        
+        
+        return jsonify(resp)
+      
+    if request.method == 'DELETE':      
+
+        id = int(request.get_data())
+
+        db = DB_empleado()   
+
+        resp = db.delete(id)
+
+        return resp
+
+
 @app.route('/manejo_proveedor', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_proveedor():
    
-    if request.method == 'GET':
+    if request.method == 'GET':             #listo  
         id = request.args['id']
 
         db = DB_proveedor()
@@ -972,30 +1156,29 @@ def manejo_proveedor():
         id = int(request.form['id_user'])
 
         data = {
-            
+
             'po_den_comercial'      :request.form['inputden'],
             'po_razon_social'       :request.form['inputrazon'],
             'po_correo'             :request.form['inputcorreo'],
             'po_pagina_web'         :request.form['inputpagina'],
         }
 
-        db = DB_proveedor()
-        resp = db.update(id,data)      
+     
 
         #Actualiza direcciones proveedor
 
-        db2 = DB_proveedor()
-        datosuser =  db2.get(id)
+        db = DB_proveedor()
+        datosuser =  db.get(id)
 
         id_direccion = datosuser['fk_lugar_fiscal']       
-        db3 = DB_lugar()       
+        db2 = DB_lugar()       
 
         direccion ={
             'lu_nombre'     : request.form['inputdir'],
-            'fk_lugar'      : int(request.form['selecparroquia']),
+            'fk_lugar'      : int(request.form['selectparroquia']),
         }
 
-        resp2 = db3.update(id_direccion , direccion) 
+        resp2 = db2.update(id_direccion , direccion) 
 
         flag = 0
 
@@ -1003,7 +1186,7 @@ def manejo_proveedor():
             direccion2 = {
                     'lu_nombre'     :   request.form['inputdir2'], 
                     'lu_tipo'       :   'DIRECCION',             
-                    'fk_lugar'      :   request.form['selectparroquia2'],                 
+                    'fk_lugar'      :   request.form['selectparroquia2'],    
             }
             flag = 1
         except Exception:
@@ -1019,15 +1202,15 @@ def manejo_proveedor():
 
                 if id_direccion2: 
 
-                    resp4 =  db2.update( id_direccion2 , direccion2 ) 
+                    resp3 =  db2.update( id_direccion2 , direccion2 ) 
                                 
                 else:                     
-                    resp4 = db3.add(direccion2)
+                    resp3 = db2.add(direccion2)
                     data['fk_lugar_fisica'] = resp4
 
             else:
                 if id_direccion2 : 
-                    db3.delete(id_direccion2) 
+                    db2.delete(id_direccion2) 
                     data['fk_lugar_fisica'] = None
                 
         else:
@@ -1035,12 +1218,11 @@ def manejo_proveedor():
                 db3.delete(id_direccion2) 
                 data['fk_lugar_fisica'] = None
             
-            
-
         
 
-        #actualiza usuario base 
-        resp = db2.update(id,data)
+        #acutaliza proveedor
+        resp = db.update(id,data)    
+
 
 
         #actualiza telefonos
@@ -1100,8 +1282,10 @@ def manejo_proveedor():
             return jsonify(resp)
         if ('mensaje') in resp2.keys(): 
             return jsonify(resp2)
+        
         if ('mensaje') in resp3.keys(): 
             return jsonify(resp3)
+        
         
         
         return jsonify(resp)
@@ -1115,132 +1299,6 @@ def manejo_proveedor():
         resp = db.delete(id)
 
         return resp
-
-
-@app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
-def manejo_empleado():
-
-    if request.method == 'GET':         #listo
-     
-        id = request.args['id']
-        
-        db = DB_empleado()
-        data = db.get(id) 
-
-        return jsonify(data)
-
-    if request.method == 'POST':        #listo
-        
-        #datos empleado
-
-        data = {
-            'em_cedula'       :  int(request.form['inputcedula']),   
-            'em_p_nombre'     :     request.form['inputpnombre'],
-            'em_s_nombre'     :     request.form['inputsnombre'],   
-            'em_p_apellido'   :     request.form['inputpapellido'], 
-            'em_s_apellido'   :     request.form['inputsapellido'], 
-            'em_sueldo'       :  int(request.form['inputsueldo']), 
-            'em_fecha_nac'    :     request.form['selectfecha'],     
-            'fk_tienda'       :  int(request.form['selecttienda']),
-            'fk_empleado_sup' :  int(request.form['selectempsup']),  
-           
-        }
-
-        #datos usuario
-
-        d_user = {
-            'us_correo'     :    request.form['inputcorreo'], 
-            'us_contrasena' :    request.form['inputcont'],  
-            'fk_empleado'   :    None,
-            'fk_rol'        :    int(request.form['selectrol']),
-        }
-        
-        #validacion de existencia de correo
-        db = DB_empleado()
-        db2 = DB_usuario()
-        resp = db2.verif('us_correo',d_user['us_correo'])
-        if (resp): return jsonify({'invalido': 'Este correo ya esta registrado'}) 
-        resp = db.verif('em_cedula',data['em_cedula'])
-        if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
-        
-
-    
-
-        #insercion de empleado y usuario
-       
-        id_empleado = db.add(data)
-
-        d_user['fk_empleado'] = id_empleado
-        db2.add(d_user)
-
-
-
-        #telefono
-
-        db4 = DB_telefono()   
-
-        telefono = {
-            'te_tipo'            :   request.form['tipotlf'],        
-            'te_numero'          :   int(request.form['inputtelefono']),  
-            'fk_empleado'        :   id_empleado,         
-        }
-
-        db4.add(telefono) 
-
-
-        return jsonify({'mensaje': 'Empleado Creado Satisfactoriamente' }) 
-
-    if request.method == 'PUT':         
-        
-        id = int(request.form['id_user'])
-
-        data = {
-            
-            'cl_contrasena' :    request.form['inputcont'],
-            'cl_p_nombre'   :    request.form['inputpnombre'], 
-            'cl_s_nombre'   :    request.form['inputsnombre'],  
-            'cl_p_apellido' :    request.form['inputpapellido'], 
-            'cl_s_apellido' :    request.form['inputsapellido'],
-        }
-        
-        db = DB_empleado()
-        resp = db.update(id,data)
-
-        
-        id_direccion = (db.get(id))['fk_lugar']
-
-        direccion = {
-            'lu_nombre'     :   request.form['inputdir'],   
-            'fk_lugar'      :   int(request.form['selectparroquia']),     
-        }
-        
-        db = DB_lugar()
-        resp2 = db.update( id_direccion , direccion ) 
-
-
-        #resp3 =  DB_telefono().update() 
-
-        #nota, si ambas claves son iguales solo retorna una 
-
-        if ('mensaje') in resp.keys(): 
-            return jsonify(resp)
-            
-        if ('mensaje') in resp2.keys(): 
-            return jsonify(resp2)
-
- 
-        return jsonify(resp)
-        
-    if request.method == 'DELETE':      
-
-        id = int(request.get_data())
-
-        db = DB_empleado()   
-
-        resp = db.delete(id)
-
-        return resp
-
 
 
 
@@ -1289,7 +1347,83 @@ def manejo_metodo_pago():
         return resp
 
 
+@app.route('/horarios_empleado', methods= ['GET', 'POST','DELETE'])
+def manejo_horarios():
 
+    if request.method == 'GET':
+        
+        id = int(request.args['id'])
+
+        db = DB_generic()         
+        resp = db.getwhere('horario_empleado','fk_empleado',id)
+
+        return jsonify(resp)
+    
+    if request.method == 'POST': 
+       
+        data = {
+            'fk_empleado'   :  int(request.form['fk_empleado']),
+            'fk_horario'     :  int(request.form['fk_horario']),
+        }
+        
+
+        db = DB_generic()
+        resp = db.add('horario_empleado',data)
+        
+        return resp
+ 
+    if request.method == 'DELETE':
+
+       
+        data = {
+            'fk_empleado'   :  int(request.form['fk_empleado']),
+            'fk_horario'     :  int(request.form['fk_horario'])
+        }
+
+        db = DB_generic()   
+        resp = db.delete('horario_empleado',data)
+
+        return resp
+
+
+
+@app.route('/beneficios_empleado', methods= ['GET', 'POST','DELETE'])
+def manejo_beneficios():
+
+    if request.method == 'GET':
+        
+        id = int(request.args['id'])
+
+        db = DB_generic()         
+        resp = db.getwhere('beneficio_empleado','fk_empleado',id)
+
+        return jsonify(resp)
+    
+    if request.method == 'POST': 
+       
+        data = {
+            'fk_empleado'   :  int(request.form['fk_empleado']),
+            'fk_beneficio'     :  int(request.form['fk_beneficio']),
+        }
+        
+
+        db = DB_generic()
+        resp = db.add('beneficio_empleado',data)
+        
+        return resp
+ 
+    if request.method == 'DELETE':
+
+       
+        data = {
+            'fk_empleado'   :  int(request.form['fk_empleado']),
+            'fk_beneficio'     :  int(request.form['fk_beneficio'])
+        }
+
+        db = DB_generic()   
+        resp = db.delete('beneficio_empleado',data)
+
+        return resp
 
 
 #### comboboxes / getall where #####
@@ -1332,28 +1466,54 @@ def metodos_pago():
 
 
 
-
 @app.route('/horarios',methods=['POST'])  
 def horarios():
     
     if request.method == 'POST':
-
+        
         db = DB_generic()
         resp = db.getall2("horario")
 
+        for entidad in resp:
+            for atributo in entidad:
+                if type(entidad[atributo]) == datetime.time:
+                    entidad[atributo] = str(entidad[atributo])
+
         return jsonify(resp)
 
 
 
-@app.route('/roles',methods=['POST'])  
-def roles():
+@app.route('/beneficios',methods=['POST'])  
+def beneficios():
     
     if request.method == 'POST':
-
+        
         db = DB_generic()
-        resp = db.getall2("rol")
+        resp = db.getall2("beneficio")
+
+        for entidad in resp:
+            for atributo in entidad:
+                if type(entidad[atributo]) == datetime.time:
+                    entidad[atributo] = str(entidad[atributo])
 
         return jsonify(resp)
+
+
+@app.route('/inventario/<id>',methods=['GET','POST'])  
+def inventario(id):
+
+    if request.method == 'GET':
+        return render_template("inventario.html")
+
+    if request.method == 'POST':
+
+        tienda = int(request.form['tienda'])
+
+        db = DB_inventario()         
+        resp = db.getall3(tienda)
+
+        return jsonify(resp)
+
 
 
 

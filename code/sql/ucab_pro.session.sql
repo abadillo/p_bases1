@@ -22,6 +22,8 @@ SELECT * FROM PROVEEDOR
 
 delete from empleado where em_codigo > 0;
 
+select * from empleado;
+
 select * from usuario;
 /*				
 

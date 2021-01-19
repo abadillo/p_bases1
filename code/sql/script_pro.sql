@@ -1,6 +1,36 @@
 ﻿
 
 
+--------PROVEEDORES--------
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal) 
+VALUES ('5','J983245688','Castelo','Castelo.CA','Castelo@gmail.com','32');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('6','J983567688','Polar','Empresas Polar.CA','EmpresasPolar@gmail.com','42');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('7','J983579088','Confort','Confort.CA','Confort@gmail.com','65');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('8','J983234088','Pollos el Corral','Empresas Pollos el Corral','PollosCorral@gmail.com','37');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('9','J983542088','Jannmar','Distribuidora Jannmar.CA','Jannmar@gmail.com','53');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('10','J987742088','Towel','Distribuidora Towel.CA','Towel@gmail.com','56');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)
+VALUES ('11','J987749088','Daka','Daka.CA','www.Daka.com','Daka@gmail.com','40');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('12','J983253088','Nestle','Nestle.CA','Nestle@gmail.com','40');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('13','J983259938','Del Mar San Carlos','Del Mar San Carlos.CA','Marsancarlos@gmail.com','38');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)
+VALUES ('14','J001225398','Mundo Papel','Mundo Papel.org','www.mundopapel2001.com','Mundopapel.2001@gmail.com','32');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)
+VALUES ('15','J000200098','Grupo Koren','Grupo Koren.org','www.grupokoren.com','GrupoKoren.2001@gmail.com','32');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('16','J000100798','Inversiones Mueblen','Inversiones Mueblen.org','Mueblen.2001@gmail.com','32');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)
+VALUES ('17','J000211298','CauchosYa','CauchosYa.org','www.cauchosya.com','cauchosya@gmail.com','33');
+INSERT INTO proveedor (po_id,po_rif,po_den_comercial,po_razon_social,po_correo,fk_lugar_fiscal)
+VALUES ('18','J000345298','Insdustrias Vlelmor','Insdustrias Vlelmor.CA','InstriasVlelmor@gmail.com','53');
+
 INSERT INTO proveedor(po_rif,po_razon_social,po_pagina_web,po_den_comercial,po_correo,fk_lugar_fiscal)VALUES('J110042212', 'Imágenes Médicas Carúpano.C.A', NULL,'IMEDICA', NULL,43);
 INSERT INTO proveedor(po_rif,po_razon_social,po_pagina_web,po_den_comercial,po_correo,fk_lugar_fiscal)VALUES('J114278877', 'El Rincon Del Sabor de Petare.S.A.S.', NULL,'El Roncón Del Sabor', NULL,33);
 INSERT INTO proveedor(po_rif,po_razon_social,po_pagina_web,po_den_comercial,po_correo,fk_lugar_fiscal)VALUES('J116800325', 'Restaurant Alto.C.A.', 'https://www.instagram.com/restaurantalto/', 'Alto Restaurant', 'https://www.instagram.com/restaurantalto/', 32);

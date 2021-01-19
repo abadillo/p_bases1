@@ -23,10 +23,34 @@ SELECT * FROM PROVEEDOR
 delete from empleado where em_codigo > 0;
 
 select * from usuario;
+
+
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'grupo4db_' 
+AND pid <> pg_backend_pid();
+
+
+
+select * from pasillo; 
+delete from rubro;
+SELECT * from producto;
+
+
+
+
+
+
+delete from marca;
+drop table marca;
+
+select * from marca;
+
+INSERT INTO marca (ma_nombre,ma_ucabmart) VALUES ('cUALQUIERcOSA','TRUE');
+
+
+
 /*				
-
-
-SELECT * FROM MARCA;
 
 SELECT *   --MUESTRA LAS TABLAS QUE HAY EN LA BASE DE DATOS
 FROM pg_catalog.pg_tables
@@ -38,6 +62,11 @@ SELECT *   --MUESTRA LOS ATRIBUTOS QUE ESTAN EN TODAS LAS TABLAS
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_SCHEMA = 'public' 
 ORDER BY TABLE_NAME;
+
+
+
+truncate  table marca RESTART IDENTITY;  -- restart nextval serial
+ 
 
 
 ALTER TABLE cliente_natural DROP cl_rif;
@@ -64,14 +93,10 @@ drop table persona_contacto;
 ALTER TABLE persona_contacto ALTER COLUMN peco_cedula TYPE INTEGER;
 
 
-ALTER TABLE empleado DROP CONSTRAINT fk_empleado_sup;
-ALTER TABLE empleado
-add CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo);
-	ALTER TABLE empleado ADD
-    CONSTRAINT fk_rubro FOREIGN KEY (fk_rubro) REFERENCES rubro (ru_codigo) ON DELETE CASCADE,
-	CONSTRAINT fk_marca FOREIGN KEY (fk_marca) REFERENCES marca (ma_codigo) ON DELETE CASCADE,
-	CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor (po_id) ON DELETE CASCADE	
-
+ALTER TABLE prducto DROP CONSTRAINT fk_empleado_sup;
+ALTER TABLE producto
+add CONSTRAINT fk_marca FOREIGN KEY (fk_marca) REFERENCES marca (ma_codigo);
+SELECT * FROM producto INNER JOIN almacen ON almacen.fk_producto = producto.pr_id WHERE almacen.fk_tienda = 19
 
 
 SELECT * 
@@ -81,10 +106,15 @@ INNER JOIN almacen ON almacen.fk_producto = producto.pr_id
 WHERE almacen.fk_tienda = 18;
 
 
+select * from almacen;
 
 
+select * from marca;
+
+SELECT * FROM producto INNER JOIN pasillo ON pasillo.fk_producto = producto.pr_id INNER JOIN almacen ON almacen.fk_producto = producto.pr_id WHERE almacen.fk_tienda = 15
 
 
+SELECT * FROM MARCA;
 
 
 INSERT INTO telefono (te_tipo,te_numero,fk_empleado) VALUES ('CASA',4125788466,12)

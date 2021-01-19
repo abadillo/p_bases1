@@ -19,6 +19,7 @@ INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('14', 'CarMarket','T
 INSERT INTO marca (ma_codigo,ma_nombre,ma_ucabmart) VALUES ('15', 'IndustrialMart','TRUE');
 
 
+
 --------RUBROS--------
 --Pruebas
 INSERT INTO rubro (ru_codigo,ru_nombre) VALUES ('1','Higiene');

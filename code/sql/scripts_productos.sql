@@ -59,6 +59,7 @@ INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_pro
 INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor) VALUES ('5','1800000','Arroz','500','3','4','2');
 --Pruebas
 
+
 -----Marcas Propias------
 --DelicatesesMart
 INSERT INTO producto (pr_id,pr_precio,pr_nombre,pr_peso,fk_rubro,fk_marca,fk_proveedor) VALUES ('6','2000000','Mortadela de Pavo','1000','3','10','5');

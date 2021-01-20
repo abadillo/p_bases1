@@ -1521,7 +1521,37 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250112,'ISLA
 
 
 
--- DE DIRECCIONES
+---- DIRECCIONES
+
+-- PARA PROVEEDORES
+
+-- MIRANDA
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250112,'CALLE BATALLA DE BELCHITE','DIRECCION',10100);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250113,'PASEO DEL DOCTOR VALLEJO','DIRECCION',10200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250114,'PLAZA DE LOS HERMANOS FALCO','DIRECCION',10300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250115,'PLAZA MAYOR DE BARAJAS','DIRECCION',10400);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250116,'CALLE DEL GENERAL GARCIA DE LA HERRANZ','DIRECCION',10500);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250117,'CALLE DE LA COOPERACION','DIRECCION',10600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250118,'PASEO DE MARCELINO CAMACHO','DIRECCION',10700);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250119,'CALLE CAIDOS DE LA DIVISION AZUL','DIRECCION',10800);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250120,'CALLE DEL GENERAL DAVILA','DIRECCION',10900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250121,'CALLE DE JUAN VIGON','DIRECCION',11000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250122,'CALLE DE MAX AUB','DIRECCION',11100);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250123,'CALLE DE MELQUIADES ALVAREZ','DIRECCION',11200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250124,'CALLE DEL GENERAL RODRIGO','DIRECCION',11300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250125,'CALLE DEL MAESTRO ANGEL LLORCA','DIRECCION',11400);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250126,'PLAZA DE JOSE CASTILLEJO','DIRECCION',11500);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250127,'CALLE DEL GENERAL ASENSIO CABANILLAS','DIRECCION',11600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250128,'CALLE DE LA POETA ANGELA FIGUERA','DIRECCION',11700);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250129,'PLAZA DEL CAUDILLO','DIRECCION',11800);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250130,'PLAZA DE EL PARDO','DIRECCION',11900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250131,'CALLE PRIMERO DE OCTUBRE','DIRECCION',12000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (250132,'CALLE DE CARLOS MORLA LYNCH','DIRECCION',12100);
+
+
+
+
+-- PARA CLIENTES
 
 INSERT INTO lugar (lu_nombre, lu_tipo, fk_lugar) VALUES ('Calle Carúpano','DIRECCION',10301);
 INSERT INTO lugar (lu_nombre, lu_tipo, fk_lugar) VALUES ('Avenida Francisco de Miranda, frente al Hospital','DIRECCION',12005);

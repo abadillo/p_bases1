@@ -1,7 +1,4 @@
-﻿
--- CLIENTES
-
-INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V309068691','NATURAL',0,13,30906869,'JUAN','MÁXIMO','OVIDIO','ANDRÉS',32);
+﻿INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V309068691','NATURAL',0,13,30906869,'JUAN','MÁXIMO','OVIDIO','ANDRÉS',32);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V138733389','NATURAL',0,13,13873338,'IGNACIO','TARSICIO','ALEXANDER','JOSÉ',32);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (3,'V197110626','NATURAL',0,13,19711062,'JONATHAN','FEDERICO','MARK','EMILIO',32);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (4,'V239433011','NATURAL',0,13,23943301,'EMILIA','GEORGINA','DULCINEA','ADRIANA',32);
@@ -55,11 +52,6 @@ INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_ra
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (8,'J810797583','JURIDICO',0,17,'Cauchos La Plaza, S.A.S.',NULL,'Cauchos La Plaza',3000000000,NULL,36);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (9,'J161434617','JURIDICO',0,17,'Viacasa Automercados, C.A.','http://www.viacasa.com/','Viacasa',4000000000,NULL,36);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_razon_social, cl_pagina_web, cl_den_comercial, cl_capital, fk_lugar_fiscal, fk_lugar_fisica) VALUES (10,'J235121809','JURIDICO',0,17,'Automercado & Panaderia La Marina, S.A.S.',NULL,' Automercado La Marina',77500000000,NULL,36);
-
-
---2do lote
-
-
 
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (1,'V131579557','NATURAL',0,13,13157955,'VIRGILIO','GULLIVER','LOZANO','CRUZ',32);
 INSERT INTO cliente (cl_afiliacion, cl_rif, cl_tipo, cl_puntos, fk_tienda, cl_cedula, cl_p_nombre, cl_s_nombre, cl_p_apellido, cl_s_apellido, fk_lugar) VALUES (2,'V239084062','NATURAL',0,13,23908406,'AMÍLCAR','PEREGRINO','ALCANTARA','VEGA',32);

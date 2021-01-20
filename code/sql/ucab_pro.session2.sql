@@ -17,6 +17,7 @@ SELECT pr_id,pr_nombre FROM PRODUCTO;
 SELECT * FROM PRIVILEGIO;
 select * from zona;
 select * from telefono;
+select * from cliente;
 
 SELECT * FROM PROVEEDOR
 

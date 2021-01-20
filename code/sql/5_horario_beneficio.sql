@@ -1,30 +1,30 @@
 ﻿--Lunes
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Lunes-Turno mañana','LUNES' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Lunes-Turno tarde','LUNES' ,'07:00' ,'12:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Lunes-Turno tarde','LUNES' ,'12:00' ,'7:00');
 
 --Martes
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Martes-Turno mañana','MARTES' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Martes-Turno tarde','MARTES' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Martes-Turno tarde','MARTES' ,'12:00' ,'7:00');
 
 --Miercoles
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Miercoles-Turno mañana','MIERCOLES' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Miercoles-Turno tarde','MIERCOLES' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Miercoles-Turno tarde','MIERCOLES' ,'12:00' ,'7:00');
 
 --Jueves
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Jueves-Turno mañana','JUEVES' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Jueves-Turno tarde','JUEVES' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Jueves-Turno tarde','JUEVES' ,'12:00' ,'7:00');
 
 --Viernes
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Viernes-Turno mañana','VIERNES' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Viernes-Turno tarde','VIERNES' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Viernes-Turno tarde','VIERNES' ,'12:00' ,'7:00');
 
 --Sabado
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Sabado-Turno mañana','SABADO' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Sabado-Turno tarde','SABADO' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Sabado-Turno tarde','SABADO' ,'12:00' ,'7:00');
 
 --Domingo
 INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Domingo-Turno mañana','DOMINGO' ,'07:00' ,'12:00');
-INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Domingo-Turno tarde','DOMINGO' ,'01:00' ,'7:00');
+INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VALUES ('Domingo-Turno tarde','DOMINGO' ,'12:00' ,'7:00');
 
 
 

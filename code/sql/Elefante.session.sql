@@ -12,5 +12,21 @@ ALTER TABLE producto DROP CONSTRAINT fk_empleado_sup;
 ALTER TABLE empleado
 add CONSTRAINT fk_empleado_sup FOREIGN KEY (fk_empleado_sup) REFERENCES empleado (em_codigo);
 	ALTER TABLE producto ADD CONSTRAINT fk_rubro FOREIGN KEY (fk_rubro) REFERENCES rubro (ru_codigo) ON DELETE CASCADE
-	ALTER TABLE producto ADD CONSTRAINT fk_marca FOREIGN KEY (fk_marca) REFERENCES marca (ma_codigo) ON DELETE CASCADE,
+	ALTER TABLE producto ADD CONSTRAINT fk_marca FOREIGN KEY (fk_marca) REFERENCES marca (ma_codigo) ON DELETE CASCADE;
 	ALTER TABLE producto ADD CONSTRAINT fk_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor (po_id) ON DELETE CASCADE
+
+
+
+33) SELECT l_nombre, l_tipo, l_total_habitantes
+FROM lugar WHERE l_tipo !='EUROPA' AND l_tipo != 'OCEANIA'
+ORDER BY l_tipo DESC
+
+
+
+SELECT COUNT(*)  FROM empleado; 
+
+
+
+
+
+

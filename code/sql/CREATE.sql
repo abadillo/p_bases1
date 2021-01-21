@@ -35,7 +35,7 @@ CREATE TABLE tienda(
 CREATE TABLE rol(
 
 	ro_codigo		   SERIAL,
-	ro_nombre		   VARCHAR(20) NOT NULL,
+	ro_nombre		   VARCHAR(50) NOT NULL,
 
 	CONSTRAINT pk_rol PRIMARY KEY (ro_codigo)
 );
@@ -288,10 +288,10 @@ CREATE TABLE usuario(
 
 CREATE TABLE proveedor(
 	po_id				SERIAL,
-	po_rif				NUMERIC(10)		NOT NULL	UNIQUE,
+	po_rif				VARCHAR(20)		NOT NULL	UNIQUE,
 	po_den_comercial	VARCHAR(50)		NOT NULL,
 	po_razon_social		VARCHAR(50)		NOT NULL,
-	po_pagina_web		VARCHAR(50),
+	po_pagina_web		VARCHAR(100),
 	po_correo			VARCHAR(50)		NOT NULL,
 	po_correo_alt		VARCHAR(50),
 	
@@ -364,7 +364,7 @@ CREATE TABLE rubro(
 CREATE TABLE producto(
 	pr_id			SERIAL,
 	pr_precio		NUMERIC(10)		NOT NULL,
-	pr_nombre		VARCHAR(20)		NOT NULL,
+	pr_nombre		VARCHAR(50)		NOT NULL,
 	pr_peso		    NUMERIC(10)	,
 	pr_imagen 		BYTEA,
 	
@@ -408,7 +408,7 @@ CREATE TABLE estatus_reposicion (
 	er_codigo 	  SERIAL,
 	er_nombre     VARCHAR(20) NOT NULL,
 	
-	CONSTRAINT pk_estatus_reposicion PRIMARY KEY (er_codigo),
+	CONSTRAINT pk_estatus_reposicion PRIMARY KEY (er_codigo)
 
 );
 
@@ -416,8 +416,8 @@ CREATE TABLE estatus_reposicion (
 CREATE TABLE orden_reposicion(
 	or_id			 SERIAL,
 	or_fecha		 TIMESTAMP NOT NULL,
-	or_cantidad		 VARCHAR(20)		NOT NULL,
-	or_monto_unidad  NUMERIC(10)	,
+	or_cantidad		 NUMERIC(20)		NOT NULL,
+	or_monto_unidad  NUMERIC(10),
 
 	fk_tienda					INTEGER NOT NULL,
 	fk_estatus_reposicion		INTEGER NOT NULL, 	

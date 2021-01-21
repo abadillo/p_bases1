@@ -1,30 +1,27 @@
 ﻿
 --MIRANDA
-
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983245688','Castelo','Castelo.CA',NULL,'Castelo@gmail.com',250112);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983567688','Polar','Empresas Polar.CA',NULL,'EmpresasPolar@gmail.com',250113);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983579088','Confort','Confort.CA',NULL,'Confort@gmail.com',250114);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983234088','Pollos el Corral','Empresas Pollos el Corral',NULL,'PollosCorral@gmail.com',250115);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983542088','Jannmar','Distribuidora Jannmar.CA',NULL,'Jannmar@gmail.com',250116);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J987742088','Towel','Distribuidora Towel.CA',NULL,'Towel@gmail.com',250117);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J987749088','Industrias Vlelmor','IndustriasVlelmor.CA',NULL,'InstriasVlelmor@gmail.com',250118);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983253088','Nestle','Nestle.CA',NULL,'Nestle@gmail.com',250119);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983259938','Del Mar San Carlos','Del Mar San Carlos.CA',NULL,'Marsancarlos@gmail.com',250120);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J001225398','Inversiones Mueblen','Inversiones Mueblen.org',NULL,'Mueblen.2001@gmail.com',250121);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200098','CauchosYa','CauchosYa.org','www.cauchosya.com','cauchosya@gmail.com',250122);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983567688','Polar','Empresas Polar.CA','NULL','EmpresasPolar@gmail.com',250113);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983234088','Towel','Distribuidora Towel.CA','NULL','Towel@gmail.com',250114);
 INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000100798','Daka','Daka.CA','www.Daka.com','Daka@gmail.com',250123);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000211298','Mundo Papel','Mundo Papel.org','www.mundopapel2001.com','Mundopapel.2001@gmail.com',250124);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000345298','Grupo Koren','Grupo Koren.org','www.grupokoren.com','GrupoKoren@gmail.com',250125);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983246191','Cauchos La Plaza','Cauchos La Plaza.S.A.S.', NULL,'CauchosLaPlaza@gmail.com',250126);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983376131','Gemstone Inn','Hotel Gemstone Inn.C.A.','www.hotelgemstoneinn.com/','GemstoneInn@gmail.com',250127);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983506071','XBOS SERVICES','XBOS SERVICES.S.A.','www.xbosservice.es.tl/','XBOSSERVICES@gmail.com',250128);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983636011','Lidotel','Lidotel Centro Lido Caracas.S.A.S.','www.lidotel.com/Venezuela/1/Caracas','Lidotel@gmail.com',250129);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983765951','Instituto Diagnóstico Barcelona','Instituto Diagnóstico Barcelona.S.A.','www.instituto-diagnostico-barcelona.negocio.site/','InstitutoDiagnósticoBarcelona@gmail.com',250130);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983895891','D&D Inn Tibana','D&D Inn Tibana.S.A.','www.ddinnhotels.com/san-fernando-de-apure/#contactenos','D&DInnTibana@gmail.com',250131);
-INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J984025831','Posada Los Nonos','Posada Los Nonos.S.R.L.','www.instagram.com/posadalosnonosc','PosadaLosNonos@gmail.com',250132);
-
-
-
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983542088','Nestle','Nestle.CA','NULL','Nestle@gmail.com',250115);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J987742088','Del Mar San Carlos','Del Mar San Carlos.CA','NULL','Marsancarlos@gmail.com',250116);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J987749088','Pollos el Corral','Empresas Pollos el Corral','NULL','PollosCorral@gmail.com',250117);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983253088','Mundo Papel','Mundo Papel.org','www.mundopapel2001.com','Mundopapel.2001@gmail.com',250118);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983259938','Jannmar','Distribuidora Jannmar.CA','NULL','Jannmar@gmail.com',250119);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J983579088','Inversiones Mueblen','Inversiones Mueblen.org','NULL','Mueblen.2001@gmail.com',250120);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J001225398','CauchosYa','CauchosYa.org','www.cauchosya.com','cauchosya@gmail.com',250121);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200098','Industrias Vlelmor','Industrias Vlelmor.CA','NULL','IndustriasVlelmor@gmail.com',250122);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200099','Confort','Confort.CA','NULL','Confort@gmail.com',250123);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200100','Distribuidora Carusil','Distribuidora Carusil Ca','NULL','DistribuidoraCarusil@gmail.com',250124);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200101','Grupo Koren','Grupo Koren.org','www.grupokoren.com','GrupoKoren@gmail.com',250125);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200102','Cauchos La Plaza',' Cauchos La Plaza.S.A.S.',' NULL','CauchosLaPlaza@gmail.com',250126);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200103',' Gemstone Inn',' Hotel Gemstone Inn.C.A.',' www.hotelgemstoneinn.com/','GemstoneInn@gmail.com',250127);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200104',' XBOS SERVICES',' XBOS SERVICES.S.A.',' www.xbosservice.es.tl/','XBOSSERVICES@gmail.com',250128);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200105',' Lidotel',' Lidotel Centro Lido Caracas.S.A.S.',' www.lidotel.com/Venezuela/1/Caracas','Lidotel@gmail.com',250129);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200106',' Instituto Diagnóstico Barcelona',' Instituto Diagnóstico Barcelona.S.A.',' www.instituto-diagnostico-barcelona.negocio.site/','InstitutoDiagnósticoBarcelona@gmail.com',250130);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200107',' D&D Inn Tibana',' D&D Inn Tibana.S.A.',' www.ddinnhotels.com/san-fernando-de-apure/#contactenos','D&DInnTibana@gmail.com',250131);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200108',' Posada Los Nonos',' Posada Los Nonos.S.R.L.',' www.instagram.com/posadalosnonosc','PosadaLosNonos@gmail.com',250132);
+INSERT INTO proveedor (po_rif,po_den_comercial,po_razon_social,po_pagina_web,po_correo,fk_lugar_fiscal)VALUES('J000200109','Castelo','Castelo.CA','NULL','Castelo@gmail.com',250133);
 
 
 

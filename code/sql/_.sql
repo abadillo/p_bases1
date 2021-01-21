@@ -1,19 +1,19 @@
 TABLE lugar;                       -- #LISTO   T: 1580 (1520 EMP, 59 D)
 
 /* TIENDA Y  PRODUCTOS*/    
-TABLE tienda;                      -- #LISTO   T: 59
-TABLE rol;                         -- #        T: 9
-TABLE privilegio;                  -- #        T: 7
-TABLE privilegio_rol;              -- #        T: 7
+TABLE tienda;                      -- #FALTA   T: 59      DIRECCIONES MAL
+TABLE rol;                         -- #        T: 
+TABLE privilegio;                  -- #        T: 
+TABLE privilegio_rol;              -- #        T: 
 
 /* EMPLEADOS */
 TABLE empleado;                    -- #        T: 590   (531 update)
 TABLE horario;                     -- #        T: 14 (7 MAÑANA, 7 TARDE)
-TABLE horario_empleado;            -- #        T: 0
+TABLE horario_empleado;            -- #        T: 
 TABLE beneficio;                   -- #        T: 20
-TABLE beneficio_empleado;          -- #        T: 0
-TABLE control_entrada;             -- #        T: 0
-TABLE vacaciones;                  -- #        T: 0
+TABLE beneficio_empleado;          -- #        T: 
+TABLE control_entrada;             -- #        T: 
+TABLE vacaciones;                  -- #        T: 
 
 /*CLIENTES*/
 TABLE cliente;                     -- #        T: 300/590 (80% NATURAL, 20% JURIDICO) ()
@@ -35,10 +35,10 @@ TABLE rubro;                       -- #LISTO   T: 18
 TABLE producto;                    -- #LISTO   T: 110 (10 POR MARCA PROPIA)
 TABLE descuento;                   -- #LISTO   T: 6
 TABLE estatus_reposicion;          -- #LISTO   T: 4
-TABLE orden_reposicion;            -- #        T: 
+TABLE orden_reposicion;            -- #LISTO   T: 6490 TXT: 110 X TIENDA
 TABLE zona;                        -- #LISTO   T: 8 
-TABLE almacen;                     -- #        T: 
-TABLE pasillo;                     -- #        T: 
+TABLE almacen;                     -- #LISTO   T: 6490 (80 X PRODUCTO POR TIENDA )   TXT: 110 X TIENDA
+TABLE pasillo;                     -- #LISTO   T: 6490 (20 X PRODUCTO POR TIENDA)    TXT: 110 X TIENDA
                                    
 
 /*CARRITO Y COMPRAS*/

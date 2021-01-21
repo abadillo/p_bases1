@@ -1,17 +1,17 @@
 ﻿
 --TIPOS DE PAGO
-INSERT INTO tipo_pago VALUES ('TARJETA DE CREDITO');
-INSERT INTO tipo_pago VALUES ('TARJETA DE DEBITO');
-INSERT INTO tipo_pago VALUES ('CHEQUE');
-INSERT INTO tipo_pago VALUES ('EFECTIVO');
-INSERT INTO tipo_pago VALUES ('PUNTOS');
+INSERT INTO tipo_pago (tp_descripcion) VALUES ('TARJETA DE CREDITO');
+INSERT INTO tipo_pago (tp_descripcion) VALUES ('TARJETA DE DEBITO');
+INSERT INTO tipo_pago (tp_descripcion) VALUES ('CHEQUE');
+INSERT INTO tipo_pago (tp_descripcion) VALUES ('EFECTIVO');
+INSERT INTO tipo_pago (tp_descripcion) VALUES ('PUNTOS');
 
 --MONEDA
-INSERT INTO moneda VALUES ('PUNTOS');
-INSERT INTO moneda VALUES ('BOLIVARES');
-INSERT INTO moneda VALUES ('DOLARES');
-INSERT INTO moneda VALUES ('EUROS');
-INSERT INTO moneda VALUES ('YENES');
+INSERT INTO moneda (mo_descripcion) VALUES ('PUNTOS');
+INSERT INTO moneda (mo_descripcion) VALUES ('BOLIVARES');
+INSERT INTO moneda (mo_descripcion) VALUES ('DOLARES');
+INSERT INTO moneda (mo_descripcion) VALUES ('EUROS');
+INSERT INTO moneda (mo_descripcion) VALUES ('YENES');
 
 
 -- COTIZACION                                            

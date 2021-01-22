@@ -5,7 +5,7 @@ INSERT INTO rol (ro_nombre) VALUES ('Coordinador de despacho');
 INSERT INTO rol (ro_nombre) VALUES ('Jefe de entrega');
 INSERT INTO rol (ro_nombre) VALUES ('Jefe de compras');
 INSERT INTO rol (ro_nombre) VALUES ('Jefe de pasillo');
-INSERT INTO rol (ro_nombre) VALUES ('Cajero');
+INSERT INTO rol (ro_nombre) VALUES ('Cajero');       -- los empleados multiplos de 5 son cajeros 
 INSERT INTO rol (ro_nombre) VALUES ('Coordinador de Talento Humano');
 
 

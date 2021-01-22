@@ -53,7 +53,7 @@ INSERT INTO marca (ma_nombre,ma_ucabmart) VALUES ('cUALQUIERcOSA','TRUE');
 
 truncate  table marca RESTART IDENTITY;  -- restart nextval serial  (no sirve)
 
-ALTER SEQUENCE proveedor_po_id_seq RESTART WITH 1
+ALTER SEQUENCE proveedor_po_id_seq RESTART WITH 1;
 
 ALTER SEQUENCE estatus_reposicion_er_codigo_seq RESTART WITH 1;
 

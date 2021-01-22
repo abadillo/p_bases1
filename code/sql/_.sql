@@ -8,11 +8,11 @@ TABLE privilegio_rol;              -- #        T:
 
 /* EMPLEADOS */
 TABLE empleado;                    -- #        T: 590   (531 update)
-TABLE horario;                     -- #        T: 14 (7 MAÑANA, 7 TARDE)
-TABLE horario_empleado;            -- #        T: 
-TABLE beneficio;                   -- #        T: 20
+TABLE horario;                     -- #LISTO   T: 14 (7 MAÑANA, 7 TARDE)
+TABLE horario_empleado;            -- #LISTO   T: 2124
+TABLE beneficio;                   -- #LISTO   T: 20
 TABLE beneficio_empleado;          -- #        T: 
-TABLE control_entrada;             -- #        T: 
+TABLE control_entrada;             -- #        T: 9558
 TABLE vacaciones;                  -- #        T: 
 
 /*CLIENTES*/
@@ -42,8 +42,8 @@ TABLE pasillo;                     -- #LISTO   T: 6490 (20 X PRODUCTO POR TIENDA
                                    
 
 /*CARRITO Y COMPRAS*/
-TABLE carrito;                     -- #        T: 
-TABLE carrito_producto;            -- #        T: 
+TABLE carrito;                     -- #LISTO   T: 413
+TABLE carrito_producto;            -- #LISTO   T: 1416
 TABLE estatus_despacho;            -- #LISTO   T: 3
-TABLE compra;                      -- #        T: (300 WEB / 120 FISICAS)  POR TIENDA ... 2 WEB Y 1 FISICA POR 1 CLIENTE, 1 COMPRAN       ))))
+TABLE compra;                      -- #        T: 413 (295 WEB / 118 FISICAS)  5 WEB, 2 FISICA POR TIENDA       ))))
 TABLE metodo_pago_compra;          -- #        T: 

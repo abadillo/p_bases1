@@ -491,11 +491,13 @@ CREATE TABLE carrito (
 	ca_monto_total	  NUMERIC(10) NOT NULL,
 
 	fk_tienda	      INTEGER NOT NULL,
+	fk_cliente 	      INTEGER NOT NULL,
 	
 
 	CONSTRAINT pk_carrito PRIMARY KEY (ca_id),
 
-	CONSTRAINT fk_tienda FOREIGN KEY (fk_tienda) REFERENCES tienda (ti_codigo)
+	CONSTRAINT fk_tienda FOREIGN KEY (fk_tienda) REFERENCES tienda (ti_codigo),
+	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE
 	
 );
 
@@ -537,8 +539,9 @@ CREATE TABLE compra(
 	co_fecha_hora		TIMESTAMP	 NOT NULL,
 	co_monto_cancelar 	NUMERIC(10)  NOT NULL,
 	co_tipo				VARCHAR(20)	 NOT NULL,
+	fk_carrito 			INTEGER		 NOT NULL,
+	fk_cliente			INTEGER 	 NOT NULL,
 	
-
 	/*FISICA*/
 
 	fk_empleado			INTEGER,
@@ -549,11 +552,12 @@ CREATE TABLE compra(
 	fk_lugar			 INTEGER,
 	fk_estatus_despacho	 INTEGER,
 	  
-	
 
 
 	CONSTRAINT pk_co_id PRIMARY KEY (co_id),
 	CONSTRAINT ch_co_tipo CHECK(co_tipo IN ('FISICA', 'WEB')),
+	CONSTRAINT fk_carrito FOREIGN KEY (fk_carrito) REFERENCES carrito (ca_id) ON DELETE CASCADE,	
+	CONSTRAINT fk_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente (cl_id) ON DELETE CASCADE,
 
 	CONSTRAINT fk_empleado FOREIGN KEY (fk_empleado) REFERENCES empleado(em_codigo),
 

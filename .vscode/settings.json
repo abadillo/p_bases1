@@ -10,5 +10,8 @@
             "password": "bases1_abgmjd",
             "database": "grupo4db1_"
         }
-    ]
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
 }

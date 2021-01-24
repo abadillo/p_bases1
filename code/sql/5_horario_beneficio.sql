@@ -30,24 +30,24 @@ INSERT INTO horario (ho_descripcion, ho_dia, ho_hora_entrada, ho_hora_salida) VA
 
 
 
-INSERT INTO beneficio (be_nombre) VALUES ('Seguro medico');
-INSERT INTO beneficio (be_nombre) VALUES ('Jubilaciom');
-INSERT INTO beneficio (be_nombre) VALUES ('Gastos de transporte');
-INSERT INTO beneficio (be_nombre) VALUES ('Seguro de vida');
-INSERT INTO beneficio (be_nombre) VALUES ('Seguro de discapacidad');
-INSERT INTO beneficio (be_nombre) VALUES ('Reembolso de matriculas');
-INSERT INTO beneficio (be_nombre) VALUES ('Descuento en gimnasio');
-INSERT INTO beneficio (be_nombre) VALUES ('Estacionamiento gratuito');
+INSERT INTO beneficio (be_nombre) VALUES ('Seguro Medico');
+INSERT INTO beneficio (be_nombre) VALUES ('Jubilacion');
+INSERT INTO beneficio (be_nombre) VALUES ('Gastos de Transporte');
+INSERT INTO beneficio (be_nombre) VALUES ('Seguro de Vida');
+INSERT INTO beneficio (be_nombre) VALUES ('Seguro de Discapacidad');
+INSERT INTO beneficio (be_nombre) VALUES ('Reembolso de Matriculas');
+INSERT INTO beneficio (be_nombre) VALUES ('Descuento en Gimnasio');
+INSERT INTO beneficio (be_nombre) VALUES ('Estacionamiento Gratuito');
 INSERT INTO beneficio (be_nombre) VALUES ('Vacaciones');
 INSERT INTO beneficio (be_nombre) VALUES ('Pensiones');
-INSERT INTO beneficio (be_nombre) VALUES ('Pago de horas extras');
-INSERT INTO beneficio (be_nombre) VALUES ('Pago de horas nocturnas');
+INSERT INTO beneficio (be_nombre) VALUES ('Pago de Horas Extras');
+INSERT INTO beneficio (be_nombre) VALUES ('Pago de Horas Nocturnas');
 INSERT INTO beneficio (be_nombre) VALUES ('Teletrabajo');
-INSERT INTO beneficio (be_nombre) VALUES ('Pago de guardería');
-INSERT INTO beneficio (be_nombre) VALUES ('Extensión de baja maternal/paternal');
-INSERT INTO beneficio (be_nombre) VALUES ('Formación laboral');
+INSERT INTO beneficio (be_nombre) VALUES ('Pago de Guardería');
+INSERT INTO beneficio (be_nombre) VALUES ('Extensión de Baja Maternal/Paternal');
+INSERT INTO beneficio (be_nombre) VALUES ('Formación Laboral');
 INSERT INTO beneficio (be_nombre) VALUES ('Utilidades/Aguinaldos');
-INSERT INTO beneficio (be_nombre) VALUES ('Fondo de ahorro');
-INSERT INTO beneficio (be_nombre) VALUES ('Bonos de productividad');
-INSERT INTO beneficio (be_nombre) VALUES ('Comedor gratuito');
+INSERT INTO beneficio (be_nombre) VALUES ('Fondo de Ahorro');
+INSERT INTO beneficio (be_nombre) VALUES ('Bonos de Productividad');
+INSERT INTO beneficio (be_nombre) VALUES ('Comedor Gratuito');
 

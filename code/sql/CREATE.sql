@@ -417,7 +417,7 @@ CREATE TABLE orden_reposicion(
 	or_id			 SERIAL,
 	or_fecha		 TIMESTAMP NOT NULL,
 	or_cantidad		 NUMERIC(20)		NOT NULL,
-	or_monto_unidad  NUMERIC(10),
+	or_monto_unidad  NUMERIC(20),
 
 	fk_tienda					INTEGER NOT NULL,
 	fk_estatus_reposicion		INTEGER NOT NULL, 	
@@ -488,7 +488,7 @@ CREATE TABLE pasillo (
 CREATE TABLE carrito (
 
 	ca_id			  SERIAL,
-	ca_monto_total	  NUMERIC(10) NOT NULL,
+	ca_monto_total	  NUMERIC(20) NOT NULL,
 
 	fk_tienda	      INTEGER NOT NULL,
 	fk_cliente 	      INTEGER NOT NULL,
@@ -505,7 +505,7 @@ CREATE TABLE carrito (
 CREATE TABLE carrito_producto (
 
 	ca_unidades	 	  NUMERIC(10) NOT NULL,
-	ca_costo	 	  NUMERIC(10) NOT NULL,
+	ca_costo	 	  NUMERIC(20) NOT NULL,
 
 	fk_carrito	      INTEGER NOT NULL,
 	fk_producto	      INTEGER NOT NULL,
@@ -537,7 +537,7 @@ CREATE TABLE estatus_despacho(
 CREATE TABLE compra(
 	co_id				SERIAL,	 
 	co_fecha_hora		TIMESTAMP	 NOT NULL,
-	co_monto_cancelar 	NUMERIC(10)  NOT NULL,
+	co_monto_cancelar 	NUMERIC(20)  NOT NULL,
 	co_tipo				VARCHAR(20)	 NOT NULL,
 	fk_carrito 			INTEGER		 NOT NULL,
 	fk_cliente			INTEGER 	 NOT NULL,
@@ -568,7 +568,7 @@ CREATE TABLE compra(
 
 CREATE TABLE metodo_pago_compra(
 	mp_documento            VARCHAR(25),
-	mp_monto				NUMERIC(10) NOT NULL,
+	mp_monto				NUMERIC(20) NOT NULL,
 	mp_cantidad				NUMERIC(10) NOT NULL,
 	
 	fk_moneda 				INTEGER NOT NULL,

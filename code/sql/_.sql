@@ -49,5 +49,5 @@ TABLE compra;                      -- #LISTO   T: 413 (295 WEB, 118 FISICA)  5 W
 TABLE metodo_pago_compra;          -- #LISTO   T: 531 (295 WEB, 236 FISICA)    
 
 
-UPDATE almacen:cantidad            --#LISTO    T: 1416
+UPDATE almacen/pasillo:cantidad    --#LISTO    T: 1416 ( ALMACEN: 885, PASILLO: 531 )
 UPDATE cliente:puntos              --#LISTO    T: 531  (2 CLIENTES: 1X4, 1X5 POR TIENDA)

@@ -7,7 +7,7 @@ from psycopg2 import sql
 import decimal
 from datetime import datetime
 import csv
-import pandas
+#import pandas
 import os
 
  
@@ -45,7 +45,7 @@ class DB_reporte(DB):
                     AND E.fk_tienda ={1}
                     ORDER BY co.coen_entrada;'''.format(fe,id)    
 
-            # print(self.cursor.mogrify(qry))
+            #print(self.cursor.mogrify(qry))
 
             self.cursor.execute(qry)           
 
@@ -60,11 +60,12 @@ class DB_reporte(DB):
                     if type(entidad[atributo]) == datetime.date:
                         entidad[atributo] = str(entidad[atributo])
 
-           
+            
+
             dict_data = data 
-            path = str(os.getcwd() + '\reportes\PRUEBA.csv')
-            print (path)
-            pandas.DataFrame(dict_data).to_csv(r+path,index=False)            
+
+          
+            pandas.DataFrame(dict_data).to_csv( os.getcwd() + r'\reportes\temp\PRUEBA.csv' ,index=False)            
 
             return data 
 

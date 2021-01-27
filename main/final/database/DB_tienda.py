@@ -127,10 +127,4 @@ class DB_tienda(DB):
 
 
 
-    def verifica_exist(self,data):
-        return None
-       
-
-    def verif_login(self,data):
-        return None
    

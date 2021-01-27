@@ -35,7 +35,7 @@ $(function(){
 
 $(function(){
 	$('#btnRegistro').click(function(){
-			window.location.href =  "/registro"
+			window.location.href =  "/registro/natural"
 		});
 });
 
@@ -45,24 +45,3 @@ function c_error(){
 	$('form').html('<div class="alert alert-danger">No se pudo acceder al servidor. Intente de nuevo mas tarde</div>');
 };
 
-
-/*
-$(
-	function(){
-	window.setInterval(function(){	update_correo()  } , 1000)
-
-		function update_correo(){
-			$.ajax({
-				url:"/update_correo",
-				type:"POST",
-				dataType: "json",
-				data: $('form').serialize(),
-				success: function(data){	$(correo_invalido).replaceWith(data)		}
-			});
-		}
-
-	}
-
-);
-
-*/

@@ -2,25 +2,33 @@ from agatereports.basic_report import BasicReport
 from database.DB_reporte import DB_reporte
 from datetime import datetime
 import datetime
+import pandas
+import os
 
-class reporte_asist():
-    """
-    CSV data source sample.
-     """
-    db = DB_reporte()
-    Datos = db.report('2020-12-01',59)
 
+class Reporte():
+    def asistencia(self,fecha,tienda):
+        
+        db = DB_reporte()
+        Datos = db.report(fecha,tienda)     
+
+        path = os.getcwd() + r'\reportes\temp\PRUEBA.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index=False) 
+
+        # jrxml_filename = './jrxml/datasource_csv.jrxml'  # input jrxml filename
+        # output_filename = './output/datasource_csv.pdf'    # output pdf filename
+
+        # CSV datasource configuration
+        #data_config = {'adapter': 'csv', 'filename': './temp/product.csv'}
+
+        #pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        #pdf_page.generate_report()
     
+if (__name__ == '__main__'):
+    Reporte().asistencia('2020-11-05',4)   
+   
     
-    
-    # jrxml_filename = './jrxml/datasource_csv.jrxml'  # input jrxml filename
-    # output_filename = './output/datasource_csv.pdf'    # output pdf filename
-
-    # CSV datasource configuration
-    #data_config = {'adapter': 'csv', 'filename': './temp/product.csv'}
-
-    #pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
-    #pdf_page.generate_report()
+   
 
 '''    dict_data= datos
 [{'em_cedula': 21886853, 'n_empleado': 'ADRIA SARA, HERMOSILLO BARBOZA', 'coen_entrada': '2020-12-01', 'coen_salida': '11:00 AM', 'ti_nombre': 'UCABmart - Chivacoa', 'rol': 'Gerente de Tienda'}, 

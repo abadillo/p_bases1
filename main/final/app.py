@@ -14,7 +14,7 @@ from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
 
-from PyQt5 import QAxContainer
+from PyQt5 import QAxContainers
 
 app = Flask(__name__)
 app.debug = True

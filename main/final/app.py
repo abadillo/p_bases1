@@ -14,9 +14,11 @@ from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
 
+from PyQt5 import QAxContainer
+
 app = Flask(__name__)
 app.debug = True
-app.secret_key = "buenardo"
+app.secret_key = "llavesupersecreta2924"
 app.permanent_session_lifetime = timedelta(days=5)
 
 

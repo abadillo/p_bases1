@@ -40,7 +40,7 @@ class DB(metaclass=ABCMeta):
             data.append(dict(zip(columnas, resp)))
 
             data_cv = data
-
+    
 
         for entidad in data_cv:
             for atributo in entidad:

@@ -64,8 +64,11 @@ class DB_reporte(DB):
 
             dict_data = data 
 
-          
-            pandas.DataFrame(dict_data).to_csv( os.getcwd() + r'\reportes\temp\PRUEBA.csv' ,index=False)            
+            path = os.getcwd() + r'\reportes\temp\PRUEBA.csv'      
+            print(path)
+            path = str(path)
+            pandas.DataFrame(dict_data).to_csv( os.getcwd() + r'\reportes\temp\PRUEBA.csv' ) 
+
 
             return data 
 

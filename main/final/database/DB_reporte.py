@@ -6,9 +6,6 @@ from psycopg2 import Error
 from psycopg2 import sql
 import decimal
 from datetime import datetime
-import csv
-#import pandas
-import os
 
  
 
@@ -59,16 +56,6 @@ class DB_reporte(DB):
                 for atributo in entidad:
                     if type(entidad[atributo]) == datetime.date:
                         entidad[atributo] = str(entidad[atributo])
-
-            
-
-            dict_data = data 
-
-            path = os.getcwd() + r'\reportes\temp\PRUEBA.csv'      
-            print(path)
-            path = str(path)
-            pandas.DataFrame(dict_data).to_csv( os.getcwd() + r'\reportes\temp\PRUEBA.csv' ) 
-
 
             return data 
 

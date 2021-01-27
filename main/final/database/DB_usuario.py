@@ -11,35 +11,38 @@ import decimal
 
 class DB_usuario(DB):
 
-    def get2(self, id_cl_em,tipo):
+    def get2(self,tipo, valor):
 
         try:
-            query = 'SELECT * FROM usuario WHERE {0} = {1}'.format(tipo, id_cl_em)
+            query = "SELECT * FROM usuario WHERE {0} = '{1}'".format(tipo, valor)
             
             print(self.cursor.mogrify(query)) 
             self.cursor.execute(query)
+            resp = self.cursor.fetchone()
 
-            resp = self.cursor.fetchone()         
-            columnas = self.cursor.description
-           
-            resp = self.querydictdecimal(resp,columnas)
+            print(resp)
 
-            data = resp[0]
+            if resp:
 
-            for atributo in data:
-                if (data[atributo] == None):
-                    data[atributo] = ''
+                columnas = self.cursor.description
+                resp = self.querydictdecimal(resp,columnas)
+                data = resp[0]
+                
+                for atributo in data:
+                    if (data[atributo] == None):
+                        data[atributo] = ''
 
-            return data 
+                return data 
+            
+            else:
+                return resp
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-
     def add (self, data):
         
         try:
-
                      
             keys = data.keys()
             columns = ','.join(keys)
@@ -58,7 +61,6 @@ class DB_usuario(DB):
         except Exception:
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
-
 
     def update2 (self, id_cl_em ,tipo , data):
 
@@ -93,7 +95,6 @@ class DB_usuario(DB):
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
 
-
     def delete(self, id_cl_em,tipo):
 
         try:
@@ -107,8 +108,6 @@ class DB_usuario(DB):
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
-
-
 
     def verif(self,atributo,valor):
         
@@ -130,6 +129,5 @@ class DB_usuario(DB):
         except Exception:
             return 2
     
-  
 
    

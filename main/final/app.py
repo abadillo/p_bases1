@@ -1,14 +1,9 @@
-from flask import Flask, render_template, json, request, jsonify #para ejecutar servidor
-import psycopg2                                                  # 1)entrar al final con "cd"
-from psycopg2.sql import SQL, Composable, Identifier, Literal    # 2)comando "python app.py"
-from psycopg2 import Error
-from psycopg2 import sql
-from datetime import datetime
-import datetime
+from flask import Flask, render_template, json, request, jsonify, session, redirect, url_for      #para ejecutar servidor
+from datetime import datetime, timedelta                                        # 1)entrar al final con "cd"
+                                                                                # 2)comando "python app.py"
 
 from database.DB_usuario import DB_usuario
 from database.DB_cliente import DB_cliente
-
 from database.DB_lugar import DB_lugar
 from database.DB_telefono import DB_telefono
 from database.DB_tienda import DB_tienda
@@ -19,12 +14,29 @@ from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
 
-
 app = Flask(__name__)
 app.debug = True
+app.secret_key = "buenardo"
+app.permanent_session_lifetime = timedelta(days=5)
 
 
 
+
+@app.route('/sesion',methods=['GET','POST','DELETE'])  
+def sesion():
+    
+    if request.method == 'GET' or request.method == 'POST':
+        
+        if 'correo' in session:
+            print(session)
+            return jsonify(str(session))
+        else:
+            return jsonify({'mensaje': 'Debe iniciar Sesion' })    
+
+    if request.method == 'DELETE':
+        
+        session.pop('correo',None)
+        return redirect(url_for('main'))
 
 
 
@@ -34,42 +46,50 @@ app.debug = True
 @app.route('/')                               
 def main():
     return render_template('inicio.html')
-    
-@app.route('/inicio_sesion',methods=['POST','GET'])         #listo falta ccs
+
+
+@app.route('/inicio_sesion',methods=['POST','GET'])         
 def inicio_sesion():
 
     if request.method == 'GET':
-        return render_template("inicio_sesion.html")
+        if 'correo' in session:
+            return redirect(url_for('main'))
+        else:
+            return render_template("inicio_sesion.html")
 
-    else: 
+    if request.method == 'POST':
         
-        db = DB_cliente()
-
-        data = {
-            'cl_correo'     : request.form['inputCorreo'],    
-            'cl_contraseña' : request.form['inputContraseña']         
-        }
-
-        resp = db.verif_login(data)
-
-        return resp
+        correo =  request.form['inputcorreo'] 
+        contrasena = request.form['inputcontrasena']         
         
+        db = DB_usuario()
+        resp = db.get2('us_correo',correo)
 
 
+        if not(resp): 
+           return jsonify({'invalido': 'Este usuario no esta registrado'}) 
+        
+       
+        if resp['us_contrasena'] == contrasena:
+            session.permanent = True
+            session['correo'] = correo
+            return jsonify({'mensaje': 'Bienvenido a UcabMart'}) 
+            
+        
+        return jsonify({'invalido': 'Contraseña Invalida'})        
+
+    
 
 
 ##### Interfaces de registro/ver perfil #####
 
-
-
-@app.route('/registro/<entidad>', methods=['GET'])  ##ventana registros
+@app.route('/registro/<entidad>')  ##ventana registros
 def registro(entidad):
 
     return render_template("registro_"+entidad+".html")
     
 
-
-@app.route('/<entidad>/<id>',methods=['GET']) ## Ver perfiles
+@app.route('/<entidad>/<id>') ## Ver perfiles
 def ver_perfil(entidad,id):
      
     return render_template("perfil_"+entidad+".html")
@@ -148,8 +168,6 @@ def mostrar(obj):
             return jsonify(resp)
 
     
-
-    
     if obj == 'roles':
 
         if request.method == 'POST':
@@ -159,17 +177,11 @@ def mostrar(obj):
 
             del resp[0]
                         
-
-
             return jsonify(resp)
 
 
 
             
-
-
-
-    
     
 
 
@@ -268,7 +280,7 @@ def manejo_natural():
 
         #datos correo y contraseña
         db = DB_usuario()
-        data2 = db.get2(id,'fk_cliente')
+        data2 = db.get2('fk_cliente',id)
         
         #añadde data2 a data 
         data.update(data2)
@@ -509,7 +521,7 @@ def manejo_juridico():
 
         #datos correo y contraseña
         db = DB_usuario()
-        data2 = db.get2(id,'fk_cliente')
+        data2 = db.get2('fk_cliente',id)
         
         #añadde data2 a data 
         data.update(data2)
@@ -865,7 +877,7 @@ def manejo_empleado():
 
         #datos correo y contraseña
         db = DB_usuario()
-        data2 = db.get2(id,'fk_empleado')
+        data2 = db.get2('fk_empleado',id)
         
         #añadde data2 a data 
         data.update(data2)

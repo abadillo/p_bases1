@@ -12,20 +12,19 @@ class Reporte():
         db = DB_reporte()
         Datos = db.report(fecha,tienda)     
 
-        path = os.getcwd() + r'\reportes\temp\PRUEBA.csv'      
+        path = os.getcwd() + r'\reportes\temp\datos_report.csv'      
         pandas.DataFrame(Datos).to_csv( path ,index=False) 
 
-        # jrxml_filename = './jrxml/datasource_csv.jrxml'  # input jrxml filename
-        # output_filename = './output/datasource_csv.pdf'    # output pdf filename
+        jrxml_filename = './reportes/jrxml/Asistencia.jrxml'  # input jrxml filename
+        output_filename = './reportes/pdf/Asistencia.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_report.csv'}
 
-        # CSV datasource configuration
-        #data_config = {'adapter': 'csv', 'filename': './temp/product.csv'}
-
-        #pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
-        #pdf_page.generate_report()
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
     
 if (__name__ == '__main__'):
-    Reporte().asistencia('2020-11-05',4)   
+    Reporte().asistencia('2020-12-05',4)   
    
     
    

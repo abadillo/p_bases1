@@ -9,11 +9,11 @@ import os
 class Reporte():
     def asistencia(self,fecha,tienda):
         
-        db = DB_reporte()
-        Datos = db.report(fecha,tienda)     
+        #db = DB_reporte()
+        #Datos = db.report(fecha,tienda)     
 
         path = os.getcwd() + r'\reportes\temp\datos_report.csv'      
-        pandas.DataFrame(Datos).to_csv( path ,index=False) 
+        #pandas.DataFrame(Datos).to_csv( path ,index=False) 
 
         jrxml_filename = './reportes/jrxml/Asistencia.jrxml'  # input jrxml filename
         output_filename = './reportes/pdf/Asistencia.pdf'    # output pdf filename

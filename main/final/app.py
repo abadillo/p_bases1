@@ -1,6 +1,6 @@
 from flask import Flask, render_template, json, request, jsonify, session, redirect, url_for      #para ejecutar servidor
 from datetime import datetime, timedelta                                        # 1)entrar al final con "cd"
-                                                                                # 2)comando "python app.py"
+# 2)comando "python app.py"
 
 from database.DB_usuario import DB_usuario
 from database.DB_cliente import DB_cliente
@@ -14,11 +14,10 @@ from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
 
-from PyQt5 import QAxContainers
 
 app = Flask(__name__)
 app.debug = True
-app.secret_key = "llavesupersecreta2924"
+app.secret_key = "llavesuperrsecreta2924"
 app.permanent_session_lifetime = timedelta(days=5)
 
 
@@ -27,34 +26,47 @@ app.permanent_session_lifetime = timedelta(days=5)
 @app.route('/sesion',methods=['GET','POST','DELETE'])  
 def sesion():
     
-    if request.method == 'GET' or request.method == 'POST':
+    if request.method == 'GET':
         
-        if 'correo' in session:
+        if 'us_correo' in session:
             print(session)
-            return jsonify(str(session))
+            resp = {
+               'us_codigo'      : session['us_codigo'],
+               'us_correo'      : session['us_correo'],
+               'fk_empleado'    : session['fk_empleado'],
+               'fk_cliente'     : session['fk_cliente'],
+               'fk_rol'         : session['fk_rol'],
+               'privilegios'    : session['privilegios']
+            }
+        
+           
+            return jsonify(resp)
         else:
             return jsonify({'mensaje': 'Debe iniciar Sesion' })    
 
     if request.method == 'DELETE':
         
-        session.pop('correo',None)
-        return redirect(url_for('main'))
+        session.pop('us_correo',None)
+        return jsonify({'mensaje': 'Se ha cerrado sesion' })    
 
 
 
 #### Interfaces principales ####
 
 
-@app.route('/')                               
+@app.route('/')                            
 def main():
     return render_template('inicio.html')
+    
+    
 
 
-@app.route('/inicio_sesion',methods=['POST','GET'])         
+
+@app.route('/inicio_sesion', methods=['GET','POST'])    
 def inicio_sesion():
 
     if request.method == 'GET':
-        if 'correo' in session:
+        if 'us_correo' in session:
             return redirect(url_for('main'))
         else:
             return render_template("inicio_sesion.html")
@@ -73,14 +85,22 @@ def inicio_sesion():
         
        
         if resp['us_contrasena'] == contrasena:
+            
             session.permanent = True
-            session['correo'] = correo
+
+            query ='SELECT P.PV_CODIGO, P.PV_DESCRIPCION FROM PRIVILEGIO P,PRIVILEGIO_ROL PR WHERE P.PV_CODIGO = PR.FK_PRIVILEGIO AND PR.FK_ROL = {0}'.format(resp['fk_rol'])
+            
+            session['us_codigo'] = resp['us_codigo']
+            session['us_correo'] = resp['us_correo']
+            session['fk_empleado'] = resp['fk_empleado']
+            session['fk_cliente'] = resp['fk_cliente']
+            session['fk_rol'] = resp['fk_rol']
+            session['privilegios'] = DB_generic().select(query)
+            
             return jsonify({'mensaje': 'Bienvenido a UcabMart'}) 
             
         
         return jsonify({'invalido': 'Contraseña Invalida'})        
-
-    
 
 
 ##### Interfaces de registro/ver perfil #####
@@ -91,9 +111,19 @@ def registro(entidad):
     return render_template("registro_"+entidad+".html")
     
 
+
+
+
+
+
 @app.route('/<entidad>/<id>') ## Ver perfiles
 def ver_perfil(entidad,id):
      
+    if entidad == 'cliente':
+        cliente = DB_cliente().get(session['fk_cliente'])
+        if cliente['cl_tipo'] == 'NATURAL':  return redirect(url_for('ver_perfil',entidad='natural', id=id))
+        if cliente['cl_tipo'] == 'JURIDICO': return redirect(url_for('ver_perfil',entidad='juridico', id=id))
+
     return render_template("perfil_"+entidad+".html")
 
 
@@ -180,6 +210,11 @@ def mostrar(obj):
             del resp[0]
                         
             return jsonify(resp)
+
+    else:
+        return """<h1>ERROR 404 </h1>
+                  <h3>This is not the page you are looking for.</h3>"""
+        
 
 
 

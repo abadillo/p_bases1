@@ -6,6 +6,25 @@ SELECT * FROM usuario WHERE us_correo = 'admin2924@gmail.com'
 
 
 
+SELECT 
+	P.PV_CODIGO,
+	P.PV_DESCRIPCION
+FROM 
+	PRIVILEGIO P,
+	PRIVILEGIO_ROL PR
+WHERE 
+	P.PV_CODIGO = PR.FK_PRIVILEGIO
+AND
+	PR.FK_ROL = 1
+
+
+----------
+CERRAR SESSION
+
+--------
+
+
+
 
 
 /*

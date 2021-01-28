@@ -47,31 +47,7 @@
 				</textElement>
 				<text><![CDATA[Reporte de Asistencia]]></text>
 			</staticText>		
-			<textField> 
-				<reportElement x="1" y="71" width="160" height="30" uuid="2864183c-f507-4fb0-8d0f-53ec13057edf"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-					<paragraph leftIndent="5"/>
-				</textElement>				
-				<textFieldExpression><![CDATA["Nombre:" + $F{tienda_reporte}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="0" width="90" height="28" uuid="08f1c1e0-e123-4004-83f2-696dec22193c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d6427f9-033a-44b1-87e2-89473b6c9c9f"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{em_cedula}]]></textFieldExpression>
-			</textField>
+			
 			
 
 		</band>
@@ -154,6 +130,7 @@
 				</textElement>
 				<text><![CDATA[Rol]]></text>
 			</staticText>
+			
 		</band>
 	</columnHeader>
 	<detail>
@@ -245,6 +222,21 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rol}]]></textFieldExpression>
 			</textField>
+
+
+
+			<textField>
+				<reportElement x="0" y="0" width="160" height="30" uuid="2864183c-f507-4fb0-8d0f-53ec13057edf"/>
+				
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tienda_reporte}]]></textFieldExpression>
+			</textField>
+	
+
+
 		</band>
 	</detail>
 </jasperReport>

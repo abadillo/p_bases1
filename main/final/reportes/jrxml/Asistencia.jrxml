@@ -6,6 +6,7 @@
 	<queryString language="SQL">
 		<![CDATA[SELECT * FROM datos_report]]>
 	</queryString>
+
 	<field name="em_cedula" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="em_cedula"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="datos_report"/>
@@ -34,9 +35,17 @@
 		<property name="com.jaspersoft.studio.field.label" value="tienda_reporte"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="datos_report"/>
 	</field>
+
+
+	<field name="tienda_reporte" class="java.lang.String">
+		<fieldDescription><![CDATA[tienda_reporte]]></fieldDescription>
+	</field>
+	
+	
 	<pageHeader>
 		<band height="107" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+
 			<staticText>
 				<reportElement x="0" y="0" width="530" height="50" uuid="d403483a-f581-4e08-9ce1-c148f96e430a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -46,15 +55,21 @@
 					<font size="25"/>
 				</textElement>
 				<text><![CDATA[Reporte de Asistencia]]></text>
-			</staticText>		
+			</staticText>
+			
+				
 			
 			
 
 		</band>
 	</pageHeader>
+	
+
+
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="90" height="20" backcolor="#D4D4D4" uuid="b8851afd-a9d6-4cee-9543-02050c7fe25c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d6427f9-033a-44b1-87e2-89473b6c9c9f"/>
@@ -133,6 +148,7 @@
 			
 		</band>
 	</columnHeader>
+
 	<detail>
 		<band height="28" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -224,7 +240,6 @@
 			</textField>
 
 
-
 			<textField>
 				<reportElement x="0" y="0" width="160" height="30" uuid="2864183c-f507-4fb0-8d0f-53ec13057edf"/>
 				
@@ -234,9 +249,15 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tienda_reporte}]]></textFieldExpression>
 			</textField>
+			
 	
 
 
 		</band>
 	</detail>
+
+
+
+
+
 </jasperReport>

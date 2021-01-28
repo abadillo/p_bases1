@@ -24,7 +24,7 @@ class Reporte():
         pdf_page.generate_report()
     
 if (__name__ == '__main__'):
-    Reporte().asistencia('2020-12-05',4)   
+    Reporte().asistencia('2020-12-01',4)   
    
     
    

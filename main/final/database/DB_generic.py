@@ -95,7 +95,26 @@ class DB_generic(DB):
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
+    
+
       
 
+    def select (self,query):  
     
+        try:
+           
+            print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
+        
+            resp = self.cursor.fetchall()
+            columnas = self.cursor.description
+            
+            data = self.querydictdecimal(resp,columnas)
+
+            return data 
+
+        except Exception:
+            return None
+
+ 
    

@@ -30,6 +30,7 @@ $(document).ready(function() {
 
         columns: [
             { data: "fk_beneficio" ,   title: "CODIGO DEL BENEFICIO"},
+            { data: "be_nombre" ,   title: "NOMBRE"},
         ]
         
     });
@@ -55,6 +56,7 @@ $(document).ready(function() {
     $('#boton_eliminar3').click( function () {
         
         var sel = table.row('.selected').data();
+        
 
         if (sel){
           
@@ -107,7 +109,7 @@ $(document).ready(function() {
             opciones.push('<option value="0" selected disabled>BENEFICIO</option>');
 
             for (var i=0, l=resp.length; i<l; i++){
-                opciones.push('<option selected value="'+resp[i].be_codigo+'">'+resp[i].be_codigo+' - '+resp[i].be_nombre+'<opciones>');
+                opciones.push('<option value="'+resp[i].be_codigo+'">'+resp[i].be_codigo+' - '+resp[i].be_nombre+'<opciones>');
              
             }
             

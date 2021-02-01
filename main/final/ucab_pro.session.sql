@@ -4,7 +4,16 @@
 
 SELECT * FROM usuario WHERE us_correo = 'admin2924@gmail.com'
 
+SELECT * FROM cliente WHERE cl_id = 1 OR cl_correo = 1 OR cl_cedula = 1 cl_rif = 1
+SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = '1'
 
+SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = 1
+
+
+SELECT * FROM cliente WHERE cl_id = J881381706 OR cl_cedula = J881381706 OR cl_rif = 'J881381706'
+
+
+SELECT * FROM carrito_producto cp, producto p WHERE p.pr_id = cp.fk_producto AND cp.fk_carrito = 542;
 
 SELECT 
 	P.PV_CODIGO,
@@ -15,7 +24,22 @@ FROM
 WHERE 
 	P.PV_CODIGO = PR.FK_PRIVILEGIO
 AND
-	PR.FK_ROL = 1
+	PR.FK_ROL = 
+	
+SELECT * FROM cliente WHERE cl_id = 1 OR cl_correo = 1 OR cl_cedula = 1 OR cl_rif = 1
+
+horario_empleado,'fk_empleado',id
+
+
+SELECT he.fk_horario,ho.ho_descripcion FROM horario_empleado he, horario ho WHERE he.fk_horario = ho.ho_codigo AND fk_empleado = 1
+
+
+SELECT bm.fk_beneficio, be.be_nombre FROM beneficio_empleado bm, beneficio be WHERE bm.fk_beneficio = be.be_codigo AND fk_empleado = 1
+
+
+
+
+
 
 
 ----------

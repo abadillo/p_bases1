@@ -19,6 +19,8 @@ body{
     height: 1100px;
     padding-left: 40px;
     padding-right: 40px;
+    transform: scale(0.7);
+    transform-origin: top center;
     
     
 }
@@ -83,7 +85,7 @@ body{
 }
 #registro{
     position: relative;
-    right: -320px;
+    right: -300px;
     text-decoration: underline;
 }
 #margenes{

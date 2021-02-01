@@ -32,9 +32,9 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
             for (var i=0, l=lugars.length; i<l; i++){
 
                 if (sel_op == lugars[i].lu_codigo)
-                    opciones.push('<option selected value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
+                    opciones.push('<option selected value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opcion>');
                 else 
-                    opciones.push('<option value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opciones>');
+                    opciones.push('<option value="'+lugars[i].lu_codigo+'">'+lugars[i].lu_nombre+'<opcion>');
 
             }
 

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, json, request, jsonify, session, redirect, url_for      #para ejecutar servidor
 from datetime import datetime, timedelta                                        # 1)entrar al final con "cd"
-# 2)comando "python app.py"
+import datetime  # 2)comando "python app.py"
 
 from database.DB_usuario import DB_usuario
 from database.DB_cliente import DB_cliente
@@ -13,6 +13,7 @@ from database.DB_empleado import DB_empleado
 from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
+from database.DB_carrito import DB_carrito
 
 
 app = Flask(__name__)
@@ -23,7 +24,7 @@ app.permanent_session_lifetime = timedelta(days=5)
 
 
 
-@app.route('/sesion',methods=['GET','POST','DELETE'])  
+@app.route('/sesion',methods=['GET','DELETE'])  
 def sesion():
     
     if request.method == 'GET':
@@ -58,8 +59,6 @@ def sesion():
 def main():
     return render_template('inicio.html')
     
- 
-
 
 
 @app.route('/inicio_sesion', methods=['GET','POST'])    
@@ -103,6 +102,23 @@ def inicio_sesion():
         return jsonify({'invalido': 'Contraseña Invalida'})        
 
 
+@app.route('/compra_fisica', methods=['GET','PUT'])    
+def compra_fisica():
+
+    if request.method == 'GET':
+        return render_template("compra_fisica.html")
+
+    if request.method == 'PUT':
+                
+        return jsonify({'invalido': 'Contraseña Invalida'})        
+
+
+
+
+
+
+
+
 ##### Interfaces de registro/ver perfil #####
 
 @app.route('/registro/<entidad>')  ##ventana registros
@@ -110,10 +126,6 @@ def registro(entidad):
 
     return render_template("registro_"+entidad+".html")
     
-
-
-
-
 
 
 @app.route('/<entidad>/<id>') ## Ver perfiles
@@ -309,20 +321,21 @@ def manejo_natural():
 
     if request.method == 'GET':         #listo
      
-        id = request.args['id']
-        
-        #datos normales
-        db = DB_cliente()
-        data = db.get(id) 
+        item = request.args['item']
+        datos_cl = DB_cliente().get(item)
+
+        if ('invalido' or 'error') in datos_cl: return datos_cl
+ 
+        id = datos_cl['cl_id']
 
         #datos correo y contraseña
         db = DB_usuario()
         data2 = db.get2('fk_cliente',id)
         
-        #añadde data2 a data 
-        data.update(data2)
+        #añadde data2 a datos_cl
+        datos_cl.update(data2)
         
-        return jsonify(data)
+        return jsonify(datos_cl)
 
     if request.method == 'POST':            #listo
         
@@ -550,20 +563,21 @@ def manejo_juridico():
 
     if request.method == 'GET':         #listo
      
-        id = request.args['id']
-        
-        #datos normales
-        db = DB_cliente()
-        data = db.get(id) 
+        item = request.args['item']
+        datos_cl = DB_cliente().get(item)
+
+        if ('invalido' or 'error') in datos_cl: return datos_cl
+ 
+        id = datos_cl['cl_id']
 
         #datos correo y contraseña
         db = DB_usuario()
         data2 = db.get2('fk_cliente',id)
         
-        #añadde data2 a data 
-        data.update(data2)
+        #añadde data2 a datos_cl
+        datos_cl.update(data2)
         
-        return jsonify(data)
+        return jsonify(datos_cl)
 
     if request.method == 'POST':            #listo
         
@@ -906,7 +920,9 @@ def manejo_juridico():
 def manejo_empleado():
 
     if request.method == 'GET':         #listo
-     
+        
+
+
         id = request.args['id']
         
         db = DB_empleado()
@@ -958,7 +974,6 @@ def manejo_empleado():
         if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
         
 
-    
 
         #insercion de empleado y usuario
        
@@ -1349,6 +1364,181 @@ def manejo_proveedor():
         return resp
 
           
+@app.route('/manejo_carrito', methods= ['GET', 'POST','PUT','DELETE'])
+def manejo_carrito():
+   
+    if request.method == 'GET':             #listo  
+        id = request.args['id']
+
+        db = DB_carrito()
+        data = db.get(id) 
+
+        return jsonify(data)
+
+    if request.method == 'POST':
+
+        tienda = DB_empleado().get(session['fk_empleado'])['fk_tienda']
+
+        data = {
+            'fk_cliente'        :int(request.form['id_cliente']),
+            'fk_tienda'         :tienda,
+            'ca_monto_total'    : 0
+        }
+
+        id_carrito = DB_carrito().add(data)
+
+        return jsonify(id_carrito)
+
+    if request.method == 'PUT':
+
+        id = int(request.form['id_user'])
+
+        data = {
+            'po_den_comercial'      :request.form['inputden'],
+            'po_razon_social'       :request.form['inputrazon'],
+            'po_correo'             :request.form['inputcorreo'],
+            'po_pagina_web'         :request.form['inputpagina'],
+        }
+
+     
+
+        #Actualiza direcciones carrito
+
+        db = DB_carrito()
+        datosuser =  db.get(id)
+
+        id_direccion = datosuser['fk_lugar_fiscal']       
+        db2 = DB_lugar()       
+
+        direccion ={
+            'lu_nombre'     : request.form['inputdir'],
+            'fk_lugar'      : int(request.form['selectparroquia']),
+        }
+
+        resp2 = db2.update(id_direccion , direccion) 
+
+        flag = 0
+
+        try: 
+            direccion2 = {
+                    'lu_nombre'     :   request.form['inputdir2'], 
+                    'lu_tipo'       :   'DIRECCION',             
+                    'fk_lugar'      :   request.form['selectparroquia2'],    
+            }
+            flag = 1
+        except Exception:
+            None
+
+        id_direccion2 = datosuser['fk_lugar_fisica']
+
+        if (flag == 1):
+        
+            if (direccion2['lu_nombre'] != '' and direccion2['lu_nombre'] != ' ' ):
+            
+                direccion2['fk_lugar'] = int(direccion2['fk_lugar']) 
+
+                if id_direccion2: 
+
+                    resp3 =  db2.update( id_direccion2 , direccion2 ) 
+                                
+                else:                     
+                    resp3 = db2.add(direccion2)
+                    data['fk_lugar_fisica'] = resp4
+
+            else:
+                if id_direccion2 : 
+                    db2.delete(id_direccion2) 
+                    data['fk_lugar_fisica'] = None
+                
+        else:
+            if id_direccion2 : 
+                db3.delete(id_direccion2) 
+                data['fk_lugar_fisica'] = None
+            
+        
+
+        #acutaliza carrito
+        resp = db.update(id,data)    
+
+
+
+        #actualiza telefonos
+
+        db5 = DB_telefono()
+
+
+        if (request.form['tlfcodigo']):
+            codigo_tlf = int(request.form['tlfcodigo'])
+
+            try:
+                telefono = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf, telefono ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf)
+
+
+
+        if (request.form['tlfcodigo2']):
+            codigo_tlf2 = int(request.form['tlfcodigo2'])
+
+            try:
+                telefono2 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono2']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf2, telefono2 ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf2)
+
+
+
+        if (request.form['tlfcodigo3']):
+            codigo_tlf3 = int(request.form['tlfcodigo3'])
+
+            try:
+                telefono3 = {
+                    'te_tipo'            :   'CASA',        
+                    'te_numero'          :   int(request.form['inputtelefono3']),  
+                }
+
+                resp6 =  db5.update( codigo_tlf3, telefono3 ) 
+
+            except Exception: 
+                resp6 = db5.delete(codigo_tlf3)
+
+
+
+        if ('mensaje') in resp.keys(): 
+            return jsonify(resp)
+        if ('mensaje') in resp2.keys(): 
+            return jsonify(resp2)
+        
+        if ('mensaje') in resp3.keys(): 
+            return jsonify(resp3)
+        
+        
+        
+        return jsonify(resp)
+      
+    if request.method == 'DELETE':
+
+        id = int(request.get_data())
+
+        db = DB_carrito()   
+
+        resp = db.delete(id)        
+
+        return resp
+
+          
+
 
 
 
@@ -1404,8 +1594,11 @@ def manejo_horarios():
         
         id = int(request.args['id'])
 
-        db = DB_generic()         
-        resp = db.getwhere('horario_empleado','fk_empleado',id)
+        db = DB_generic()  
+
+        query ='SELECT he.fk_empleado, he.fk_horario, ho.ho_descripcion FROM horario_empleado he, horario ho WHERE he.fk_horario = ho.ho_codigo AND fk_empleado = {0}'.format(id)
+
+        resp =  DB_generic().select(query)
 
         return jsonify(resp)
     
@@ -1436,17 +1629,16 @@ def manejo_horarios():
         return resp
 
 
-
 @app.route('/beneficios_empleado', methods= ['GET', 'POST','DELETE'])
 def manejo_beneficios():
 
     if request.method == 'GET':
         
         id = int(request.args['id'])
+                
+        query ='SELECT bm.fk_empleado, bm.fk_beneficio, be.be_nombre FROM beneficio_empleado bm, beneficio be WHERE bm.fk_beneficio = be.be_codigo AND fk_empleado = {0}'.format(id)
 
-        db = DB_generic()         
-        resp = db.getwhere('beneficio_empleado','fk_empleado',id)
-
+        resp =  DB_generic().select(query)
         return jsonify(resp)
     
     if request.method == 'POST': 
@@ -1504,6 +1696,22 @@ def lugares():
 
 
 
+@app.route('/inventario/<id>',methods=['GET','POST'])  
+def inventario(id):
+
+    if request.method == 'GET':
+        return render_template("inventario.html")
+
+    if request.method == 'POST':
+
+        tienda = int(request.form['tienda'])
+
+        db = DB_inventario()         
+        resp = db.getall3(tienda)
+
+        return jsonify(resp)
+
+
 @app.route('/metodos_pago',methods=['POST'])  
 def metodos_pago():
     
@@ -1529,6 +1737,8 @@ def horarios():
                 if type(entidad[atributo]) == datetime.time:
                     entidad[atributo] = str(entidad[atributo])
 
+        print(resp)
+
         return jsonify(resp)
 
 
@@ -1541,32 +1751,8 @@ def beneficios():
         db = DB_generic()
         resp = db.getall2("beneficio")
 
-        for entidad in resp:
-            for atributo in entidad:
-                if type(entidad[atributo]) == datetime.time:
-                    entidad[atributo] = str(entidad[atributo])
 
         return jsonify(resp)
-
-
-@app.route('/inventario/<id>',methods=['GET','POST'])  
-def inventario(id):
-
-    if request.method == 'GET':
-        return render_template("inventario.html")
-
-    if request.method == 'POST':
-
-        tienda = int(request.form['tienda'])
-
-        db = DB_inventario()         
-        resp = db.getall3(tienda)
-
-        return jsonify(resp)
-
-
-
-
 
 
 

@@ -176,7 +176,7 @@ $(function(){
                 window.location.href =  '/Recepción De Orden Reposición';	
                 break;
             case '22':
-                window.location.href =  '/Administración De Proveedores';	
+                window.location.href =  '/mostrar/proveedores';	
                 break;
             case '23':
                 window.location.href =  '/Administración De Monedas';	
@@ -197,7 +197,7 @@ $(function(){
                 window.location.href =  '/Emisión De Carnet';	
                 break;
             case '29':
-                window.location.href =  '/Registrar Cliente';	
+                window.location.href =  '/registro/natural';	
                 break;
             case '30':
                 window.location.href =  '/Modficar Perfil de Cliente';	
@@ -209,7 +209,7 @@ $(function(){
                 window.location.href =  '/Reposición De Pasillo';	
                 break;
             case '33':
-                window.location.href =  '/Generar Compra Fisica';	
+                window.location.href =  '/compra_fisica';	
                 break;
             case '34':
                 window.location.href =  '/Administración De Empleados';	
@@ -257,5 +257,23 @@ $(function(){
 
 });
 
+
+/*
+
+CLI23 FATIMAVANESA23@gmail.com
+
+
+EMP1 TULIOAURELIO1@gmail.com
+EMP2 CORANIAVICTORIA2@gmail.com
+EMP3 CONSUELOBELINDA3@gmail.com
+EMP4 FERMINIGNACIO4@gmail.com
+EMP5 PACIANOALVARO5@gmail.com
+EMP6 AMADASARA6@gmail.com
+EMP7 MIALEOPOLDA7@gmail.com
+EMP8 CHRISTIANEJENNIFER8@gmail.com
+EMP9 MIGUELAGUSTIN9@gmail.com
+EMP10 THAISCONSUELO10@gmail.com
+
+*/
 
 

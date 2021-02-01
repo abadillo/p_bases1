@@ -29,7 +29,8 @@ $(document).ready(function() {
         },
 
         columns: [
-            { data: "fk_horario" ,   title: "CODIGO DEL HORARIO"},
+            { data: "fk_horario" ,   title: "CODIGO"},
+            { data: "ho_descripcion" ,   title: "DESCRIPCION"},
         ]
         
     });
@@ -55,13 +56,22 @@ $(document).ready(function() {
     $('#boton_eliminar').click( function () {
         
         var sel = table.row('.selected').data();
+        
+        /*var fk_empleado = (window.location.pathname.split('/'))[2];
+
+        var obj = {
+            'fk_empleado' : fk_empleado
+        };
+
+        $.extend(sel,obj);
+        */
 
         if (sel){
           
             $.ajax({
                 
                 url:   '/horarios_empleado',
-                data:  sel,
+                data: sel,
                 type: 'DELETE',
                     
                 }).done(function(response){
@@ -92,6 +102,8 @@ $(document).ready(function() {
     /*combox e inputs*/
 
 
+
+
     $.ajax({
                 
         url:  '/horarios',
@@ -107,7 +119,7 @@ $(document).ready(function() {
             opciones.push('<option value="0" selected disabled>HORARIO</option>');
 
             for (var i=0, l=resp.length; i<l; i++){
-                opciones.push('<option selected value="'+resp[i].ho_codigo+'">'+resp[i].ho_codigo+' - '+resp[i].ho_descripcion+'<opciones>');
+                opciones.push('<option value="'+resp[i].ho_codigo+'">'+resp[i].ho_codigo+' - '+resp[i].ho_descripcion+'<opciones>');
              
             }
             

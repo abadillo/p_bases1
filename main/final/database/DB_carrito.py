@@ -5,18 +5,19 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
- 
+from pprint import pprint
 
 
-class DB_tienda(DB):
+class DB_carrito(DB):
 
+    
     def get (self,item):
 
         try:
 
             id = item
-            
-            self.cursor.execute("SELECT * FROM tienda WHERE ti_codigo = %s", (id,) )
+            '''
+            self.cursor.execute("SELECT * FROM carrito WHERE ca_id = %s", (id,))
             resp = self.cursor.fetchone()
             
             columnas = self.cursor.description
@@ -25,68 +26,55 @@ class DB_tienda(DB):
 
             data = resp[0]
 
-            for atributo in data:
-                if (data[atributo] == None):
-                    data[atributo] = ''
+            '''
 
-            return data 
+            
+
+            query = 'SELECT * FROM carrito_producto cp, producto p WHERE p.pr_id = cp.fk_producto AND cp.fk_carrito = {0}'.format(id)
+
+            print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
+        
+            resp = self.cursor.fetchall()
+            columnas = self.cursor.description
+            print(columnas)
+            
+            data2 = self.querydictdecimal(resp,columnas)
+
+            #data['productos'] = data2
+            
+
+            return data2
 
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
-    def getall (self):  
+
+  
     
-        try:
-
-            self.cursor.execute("SELECT * FROM tienda")
-            resp = self.cursor.fetchall()
-            columnas = self.cursor.description
-
-            data = self.querydictdecimal(resp,columnas)
-
-            return data 
-
-        except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
-      
     def add (self, data):
         
         try:
-
+                     
             keys = data.keys()
             columns = ','.join(keys)
             values = ','.join(['%({})s'.format(k) for k in keys])
 
+            query = 'INSERT INTO carrito ({0}) VALUES ({1}) RETURNING ca_id'.format(columns, values)
             
-            query = 'INSERT INTO tienda ({0}) VALUES ({1})'.format(columns, values)
-            
-            #print(self.cursor.mogrify(query, data))  
-
+            print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
             self.connection.commit()
-
-                     
-            return jsonify({'mensaje':'Tienda creado satisfactoriamente'}) 
-
-
-        except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
-      
-
-    def delete (self,id):
-
-        try:
-
-            self.cursor.execute("DELETE FROM tienda WHERE ti_codigo = %s", (id,) )
-         
-            self.connection.commit()
             
+            id_creado = self.cursor.fetchone()[0]
 
-            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+            return id_creado
 
         except Exception:
+            print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
 
     def update (self, id, data):
 
@@ -108,18 +96,35 @@ class DB_tienda(DB):
             keys = datamod.keys()
             values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
     
-            query = 'UPDATE tienda SET {0} WHERE ti_codigo = {1}'.format(values,id)
+            query = 'UPDATE carrito SET {0} WHERE ca_id = {1}'.format(values,id)
 
             print(self.cursor.mogrify(query,datamod)) 
             self.cursor.execute(query,datamod)
             self.connection.commit()
             
-            return ({'mensaje':'tienda modificado satisfactoriamente'}) 
+            return ({'mensaje':'carrito modificado satisfactoriamente'}) 
             
 
         except Exception:
             return ({'error':'Error: Hubo un problema con el servidor'}) 
 
 
+    def delete (self,id):
 
-   
+        try:
+            print('Entra al execute')
+            self.cursor.execute("DELETE FROM carrito WHERE ca_id = %s", (id,) )
+            print('Sale del execute')
+            self.connection.commit()                     
+
+            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
+
+ 
+
+
+
+    

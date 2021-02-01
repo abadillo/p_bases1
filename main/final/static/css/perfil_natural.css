@@ -1,26 +1,26 @@
 #loading {
-    width: 100%;
+    width: 150%;
     height: 100%;
     top: 0;
-    left: 0;
+    left: -320px;
     position: fixed;
     display: block;
     opacity: 0.7;
     background-color: #fff;
     z-index: 99;
     text-align: center;
-  }
+}
   
-  #loading-image {
+#loading-image {
     position: absolute;
     width: 250px;
-    top: 50%;
+    top: 20%;
     left: 50%;
     z-index: 100;
     margin-top: -150px;
     margin-left: -150px;
     
-  }
+}
 
 
 #fondo1{
@@ -48,13 +48,15 @@ body {
     padding-left: 40px;
     padding-right: 40px;
     
+    transform: scale(0.7);
+    transform-origin: top center;
 }
 
 #logo{
     height: 100px;
     width:50%;
     position: relative;
-    right: -320px;
+    right: -300px;
     top:10px;
 }
 

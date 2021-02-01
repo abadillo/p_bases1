@@ -7,7 +7,9 @@ function alerta(mensaje){
 
 $(document).ready(function() {
 
-    var id = (window.location.pathname.split('/'))[2];
+    $(id_user).prop("disabled", false); 
+    var id = $(id_user).val();
+    $(id_user).prop("disabled", true)
 
     $('#tabla_datatable').DataTable({
         
@@ -30,7 +32,8 @@ $(document).ready(function() {
 
         columns: [
             { data: "mc_documento" ,   title: "DOCUMENTO"},
-            { data: "fk_tipo_pago" ,   title: "TIPO DE PAGO"},
+            { data: "fk_tipo_pago" ,   title: "CODIGO"},
+            { data: "tp_descripcion" ,   title: "TIPO DE PAGO"},
         ]
         
     });

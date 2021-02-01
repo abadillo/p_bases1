@@ -17,7 +17,7 @@ class DB_metodo_pago(DB):
     
         try:
 
-            self.cursor.execute("SELECT * FROM metodo_pago WHERE fk_cliente = %s", (fk_cliente,) )
+            self.cursor.execute("SELECT mc.mc_documento,mc.fk_cliente,mc.fk_tipo_pago,tp.tp_descripcion FROM metodo_pago mc,tipo_pago tp WHERE mc.fk_tipo_pago = tp.tp_codigo AND fk_cliente = %s", (fk_cliente,) )
             resp = self.cursor.fetchall()
 
             columnas = self.cursor.description

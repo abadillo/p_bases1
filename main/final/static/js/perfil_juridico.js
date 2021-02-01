@@ -73,7 +73,7 @@ function lugares (lu_tipo, fk_lugar,sel_op,y){
 
 $(document).ready(function() {
     
-    var id = (window.location.pathname.split('/'))[2];
+    var item = (window.location.pathname.split('/'))[2];
     
     
     $("#tlfcodigo").hide();
@@ -120,7 +120,7 @@ $(document).ready(function() {
         url:   '/manejo_juridico',
         type: 'GET',
         data: {
-            'id': id,
+            'item': item,
         },
         async: false, 
                    
@@ -128,7 +128,9 @@ $(document).ready(function() {
         }).done(function(response){
             
             if (response['error'])
-				alerta(response['error']);
+                alerta(response['error']);
+            else if (response['invalido'])
+				alerta(response['invalido']);
             else 
                 datos = response; 
            

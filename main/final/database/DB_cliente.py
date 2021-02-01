@@ -14,14 +14,24 @@ class DB_cliente(DB):
     def get (self,item):
 
         try:
-
-            id = item
-            
-            self.cursor.execute("SELECT * FROM cliente WHERE cl_id = %s", (id,) )
-            resp = self.cursor.fetchone()
-            
-            columnas = self.cursor.description
            
+            try:     
+                int(item)
+                query = "SELECT * FROM cliente WHERE cl_id = {0} OR cl_cedula = {0}".format(item)
+            except:  
+                query = "SELECT * FROM cliente WHERE cl_rif = '{0}'".format(item)    
+            
+           
+            
+            print(self.cursor.mogrify(query)) 
+            self.cursor.execute(query)
+            resp = self.cursor.fetchone()
+
+            if resp is None:    
+                return ({'invalido':'Este cliente no existe'}) 
+
+
+            columnas = self.cursor.description
             resp = self.querydictdecimal(resp,columnas)
 
             data = resp[0]

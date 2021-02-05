@@ -64,5 +64,47 @@ class DB_reporte(DB):
             return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
 
 
+    def ingreso (self,fecha1,fecha2):
 
-  
+        try:
+            fe1=fecha1
+            fe2=fecha2           
+            
+            
+            qry = '''SELECT ti.ti_codigo,
+                ti.ti_nombre,
+                (SELECT SUM(co.co_monto_cancelar)
+                    FROM compra co, carrito ca
+                    WHERE co.co_fecha_hora::DATE BETWEEN '{0}' AND '{0}'
+                    AND co.fk_carrito = ca.ca_id
+                    AND ca.fk_tienda  = ti.ti_codigo
+                ) ti_ingresos,
+                (SELECT SUM(od.or_cantidad * od.or_monto_unidad)
+                    FROM orden_reposicion od
+                    WHERE od.fk_tienda = ti.ti_codigo
+                    AND od.or_fecha::DATE BETWEEN '{1}' AND '{1}'
+                ) ti_egresos
+                FROM tienda ti
+                GROUP BY ti.ti_codigo,ti.ti_nombre
+                ORDER BY ti.ti_codigo; '''.format(fe,id) 
+
+
+
+            self.cursor.execute(qry)           
+
+            resp = self.cursor.fetchall()
+
+            columnas = self.cursor.description           
+
+            data = self.querydictdecimal(resp,columnas)            
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == datetime.date:
+                        entidad[atributo] = str(entidad[atributo])
+
+            return data   
+
+        except Exception:
+            print('ERROR DE EXCEPTION')
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})

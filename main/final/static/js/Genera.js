@@ -1,16 +1,22 @@
+function c_error(mensaje){
+    $(m_invalido).replaceWith( '<p id="m_invalido">'+mensaje+'</p>'   )
+};
 
+function alerta(mensaje){
+    alert(mensaje);
 
+};
 
- $('#Genera').click(function(){
+$(function(){
 
      $('form').submit(function(e){
 
         $.ajax({
                 
-            url:   '/Genera/pdf',
+            url:   '/Genera',
             type: 'POST',
             data:  $('form').serialize(),
-            
+          
                 
             }).done(function(response){
                 
@@ -23,7 +29,7 @@
                     c_error(response['invalido']);
                 
                 else
-                    window.location.href =  "/";				
+                    window.location.href =  "/pdf";				
                 
             }).fail(function(response){
                 c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');

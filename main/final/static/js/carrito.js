@@ -10,6 +10,7 @@ var id_carrito;
 function mostrar_carrito(id_car){
 
     id_carrito = id_car;
+    id_carrito = 9;
 
     $('#tabla_datatable').DataTable({
         
@@ -38,19 +39,30 @@ function mostrar_carrito(id_car){
         ]
     });
 
-};
-    
-$(function(){
-
     $('#tabla_datatable tbody').on( 'click', 'tr', function () {
-        
-        var table = $('#tabla_datatable').DataTable();
- 
+         
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
         }
         else {
-            table.$('tr.selected').removeClass('selected');
+            $('#tabla_datatable').DataTable().$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+};
+    
+$(function(){
+
+ 
+
+    $('#tabla_datatable tbody').on( 'click', 'tr', function () {
+         
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            $('#tabla_datatable').DataTable().$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
     } );
@@ -59,14 +71,13 @@ $(function(){
     $('#boton_eliminar').click( function () {
 
         var table = $('#tabla_datatable').DataTable();
-         
         var sel = table.row('.selected').data();
 
         if (sel){
           
             $.ajax({
                 
-                url:   '/metodo_pago_cliente',
+                url:   '/manejo_carrito',
                 data:  sel,
                 type: 'DELETE',
                     
@@ -88,13 +99,15 @@ $(function(){
 
         var table = $('#tabla_datatable').DataTable();
         var codigo =  $("#codigo_producto").val();
-        var cant = 2;
+        var cant = $("#cantidad_producto").val();
 
-        if (sel){
+        if (!cant) cant = 1 
+
+        if (codigo){
           
             $.ajax({
                 
-                url:   '/metodo_pago_cliente',
+                url:   '/manejo_carrito',
                 data:  {
                     'carrito': id_carrito,
                     'codigo': codigo,
@@ -102,17 +115,32 @@ $(function(){
                 },
                 type: 'PUT',
                     
-                }).done(function(response){
+                }).done(function(resp){
                     
-                    alerta(response['mensaje']);
+                    if(resp['error'])
+                        alerta(resp['error']);
                     
+                    else if (resp['invalido'])
+                        alerta(resp['invalido']);
+                    
+                    else
+                        table.row.add( {
+                            "pr_id"       : resp['pr_id'],
+                            "pr_nombre"   : resp['pr_nombre'],
+                            "pr_peso"     : resp['pr_peso'],
+                            "ca_unidades" : resp['ca_unidades'],
+                            "ca_costo"    : resp['ca_costo'],
+                        } ).draw();
+                        
+
+                
                     
                 }).fail(function(response){
                     alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
                 });
 
         }
-        else alert('Debe seleccionar algo');
+        else alert('Codigo producto vacio ');
         
 
 

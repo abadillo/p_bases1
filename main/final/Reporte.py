@@ -42,9 +42,10 @@ class Reporte():
 
         db=DB_reporte()
         Datos = db.ingreso(fecha1,fecha2)
+        print(Datos)
 
         path = os.getcwd() + r'\reportes\temp\datos_ingresos.csv'      
-        pandas.DataFrame(Datos).to_csv( path ,index = False) 
+        pandas.DataFrame(Datos).to_csv( path ,index = True) 
 
 
         jrxml_filename = './reportes/jrxml/Ingresos.jrxml'  # input jrxml filename

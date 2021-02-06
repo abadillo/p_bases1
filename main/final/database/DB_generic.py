@@ -7,8 +7,6 @@ from psycopg2 import sql
 import decimal
 
 
- 
-
 
 class DB_generic(DB):
 
@@ -51,7 +49,6 @@ class DB_generic(DB):
             return None
 
 
-            
     def add (self,table, data):
         
         try:
@@ -69,35 +66,38 @@ class DB_generic(DB):
             self.cursor.execute(query,data)
             self.connection.commit()
             
-            return jsonify({'mensaje':'horario creado satisfactoriamente'}) 
+            return ({'mensaje':'creado satisfactoriamente'}) 
 
         except Exception:
             print(Exception)
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return ({'error':'Error: Hubo un problema con el servidor'})
 
-  
-    def delete (self,table, data):
+
+    def add_return (self,table,data,ret):
         
         try:
 
+            for key in data.keys():
+                if (data[key] == '' or data[key] == ' '): data[key] = None
+                     
             keys = data.keys()
-            values = ' AND '.join(['{} = %({})s'.format(k, k) for k in keys])
-    
-            query = 'DELETE FROM {0} WHERE {1}'.format(table,values)
+            columns = ','.join(keys)
+            values = ','.join(['%({})s'.format(k) for k in keys])
+
+            query = 'INSERT INTO {0} ({1}) VALUES ({2}) RETURNING {3}'.format(table,columns,values,ret)
             
             print(self.cursor.mogrify(query, data)) 
             self.cursor.execute(query,data)
             self.connection.commit()
+            
+            id_creado = self.cursor.fetchone()[0]
 
-
-            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+            return id_creado
 
         except Exception:
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            print(Exception)
+            return ({'error':'Error: Hubo un problema con el servidor'})
 
-    
-
-      
 
     def select (self,query):  
     
@@ -116,5 +116,71 @@ class DB_generic(DB):
         except Exception:
             return None
 
- 
+
+    def update (self, tabla, atributo, valor, data):
+
+        try:
+
+            datamod = dict(data)
+            dataol = self.getwhere(tabla,atributo,valor)[0]
+            
+            print(dataol)
+            print(datamod)
+            for atrib in data:
+                if (data[atrib] == dataol[atrib]):
+                    datamod.pop(atrib)
+                    
+            
+            if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 
+            
+            for key in datamod.keys():
+                if (datamod[key] == '' or datamod[key] == ' '): datamod[key] = None
+
+            keys = datamod.keys()
+            values = ','.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'UPDATE {0} SET {1} WHERE {2} = {3}'.format(tabla,values,atributo,valor)
+
+            print(self.cursor.mogrify(query,datamod)) 
+            self.cursor.execute(query,datamod)
+            self.connection.commit()
+            
+            return ({'mensaje':'Modificado satisfactoriamente'}) 
+            
+
+        except Exception:
+            return ({'error':'Error: Hubo un problema con el servidor'}) 
+
+    def equery (self,query):  
+    
+        try:
+           
+            print(self.cursor.mogrify(query))  
+            self.cursor.execute(query)
+            self.connection.commit()
+                
+            return 1 
+
+        except Exception:
+            return None
+
+
+    def delete (self,table, data):
+        
+        try:
+
+            keys = data.keys()
+            values = ' AND '.join(['{} = %({})s'.format(k, k) for k in keys])
+    
+            query = 'DELETE FROM {0} WHERE {1}'.format(table,values)
+            
+            print(self.cursor.mogrify(query, data)) 
+            self.cursor.execute(query,data)
+            self.connection.commit()
+
+            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+
+        except Exception:
+            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+
    

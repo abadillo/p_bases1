@@ -180,7 +180,7 @@ def mostrar(obj):
 
     
     if obj == 'roles':   
-        resp = DB_generic().getall2("rol")
+        resp = DB_generic().getall("rol")
 
 
     if obj == 'monedas':   
@@ -188,6 +188,9 @@ def mostrar(obj):
             SELECT m.*, c.* FROM moneda m , cotizacion c 
             WHERE m.mo_codigo = c.fk_moneda AND c.ct_expira is NULL
             AND m.mo_codigo > 1""")
+
+    if obj == 'marcas':   
+        resp = DB_generic().getall("marca")
 
 
     else:
@@ -1441,7 +1444,7 @@ def manejo_moneda():
 
     if request.method == 'PUT':                    
 
-        id = int(request.form['id_mo'])
+        id = int(request.form['id_moneda'])
 
         data = {
                 'mo_descripcion'     :   request.form['inputmoneda']
@@ -1487,6 +1490,69 @@ def manejo_moneda():
 
 
 
+@app.route('/manejo_marca',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_marca():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('marca','ma_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        val = False
+
+        try:
+            print(request.form['inputpropia'])
+            val = True
+        except: None
+        
+
+        data = {
+            'ma_nombre'     :   request.form['inputmarca'],
+            'ma_ucabmart'   :   val
+        }
+
+        resp = DB_generic().add('marca',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_marca'])
+
+        val = False
+
+        try:
+            print(request.form['inputpropia'])
+            val = True
+        except: None
+        
+        data = {
+            'ma_nombre'     :   request.form['inputmarca'],
+            'ma_ucabmart'   :   val
+        }
+
+        resp = DB_generic().update('marca','ma_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'ma_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('marca',data)
+       
+        return resp
+
+
 
 ### datatable embeded 
 
@@ -1498,7 +1564,7 @@ def manejo_metodo_pago():
         id = int(request.args['id'])
 
         db = DB_metodo_pago()         
-        resp = db.getall2(id)
+        resp = db.getall(id)
         print(resp)
 
         return jsonify(resp)
@@ -1661,7 +1727,7 @@ def metodos_pago():
     if request.method == 'POST':
 
         db = DB_generic()
-        resp = db.getall2("tipo_pago")
+        resp = db.getall("tipo_pago")
 
         return jsonify(resp)
 
@@ -1673,7 +1739,7 @@ def horarios():
     if request.method == 'POST':
         
         db = DB_generic()
-        resp = db.getall2("horario")
+        resp = db.getall("horario")
 
         for entidad in resp:
             for atributo in entidad:
@@ -1692,7 +1758,7 @@ def beneficios():
     if request.method == 'POST':
         
         db = DB_generic()
-        resp = db.getall2("beneficio")
+        resp = db.getall("beneficio")
 
 
         return jsonify(resp)
@@ -1712,7 +1778,7 @@ def telefonos(id):
         
 
         db = DB_telefono()         
-        resp = db.getall2(tipo,fk_obj)
+        resp = db.getall(tipo,fk_obj)
         print(resp)
 
         return jsonify(resp)

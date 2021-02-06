@@ -15,7 +15,7 @@ $(document).ready(function() {
     
     $.ajax({
                 
-        url:   '/manejo_moneda',
+        url:   '/manejo_marca',
         type: 'GET',
         data: {
             'item': item,
@@ -40,62 +40,31 @@ $(document).ready(function() {
 
 
     
-    $("#id_moneda").val(datos.mo_codigo);
-    $("#inputmoneda").val(datos.mo_descripcion);
-    
-    var cotz = datos['cotizacion'];
-    
-
-    for (var i=0, l=cotz.length; i<l; i++)
-        if (cotz[i].ct_expira == null){
-            $("#cot_actual").val(cotz[i].ct_valor);
-            $("#fechacot").html(cotz[i].ct_fecha);
-        }
-     
-
-
-    $('#tabla_datatable').DataTable({
-        
-        info: false,
-        paging: false,
-        scrollX: false,
-        bFilter: false,
-
-        data: cotz,
-
-        columns: [
-            { data: "ct_fecha" ,   title: "FECHA"},
-            { data: "ct_expira" ,   title: "EXPIRACION"},
-            { data: "ct_valor" ,   title: "VALOR BS."},
-        ]
-        
-    });
-    
+    $("#id_marca").val(datos.ma_codigo);
+    $("#inputmarca").val(datos.ma_nombre);
    
+    if (datos.ma_ucabmart) 
+        $("#inputpropia").prop("checked", true);
 
+        
     $('#loading').hide();
 
     
-    
-
 });
 
 $(function(){
     $("#Modificar").click(function(){
         
         
-        $("#inputmoneda").removeAttr('disabled');
-        $("#cot_nueva").removeAttr('disabled');
+        $("#inputmarca").removeAttr('disabled');
+        $("#inputpropia").removeAttr('disabled');
         $("#Confirmar").removeAttr('disabled');
 
 
-        
         $("#Modificar").css("display","none"); 
 
         $("#Cancelar").css("display","block"); 
         $("#Confirmar").css("display","block"); 
-        $("#cot_nueva").css("display","block");
-        $("#cot_nuevatl").css("display","block");
        
         
        
@@ -112,13 +81,13 @@ $(function(){
 $(function(){
     $('form').submit(function(e){
       
-        $("#id_moneda").removeAttr('disabled');
+        $("#id_marca").removeAttr('disabled');
 
         $('#loading').show()
 
         $.ajax({
             
-            url:   '/manejo_moneda',
+            url:   '/manejo_marca',
             data:  $('form').serialize(),
             type: 'PUT',
                 

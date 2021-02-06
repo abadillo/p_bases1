@@ -179,7 +179,7 @@ $(function(){
                 window.location.href =  '/mostrar/proveedores';	
                 break;
             case '23':
-                window.location.href =  '/Administración De Monedas';	
+                window.location.href =  '/mostrar/monedas';	
                 break;
             case '24':
                 window.location.href =  '/Administración De Cotizaciones';	

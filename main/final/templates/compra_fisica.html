@@ -33,193 +33,105 @@
 
         <div class="linea"> </div>
 
-        <form>       
+        <div id="fondo2">           
+
+            <div id="espacio"></div> 
         
-            <div id="fondo2">           
+            <div id="fondo3"> 
 
-                <div id="espacio"></div> 
-            
-                <div id="fondo3"> 
+                <div id="margen"> 
 
-                    <div id="margen"> 
-
-                        <h1 id="titulo1"> Datos del Cliente </h1>
+                    <h1 id="titulo1"> Datos del Cliente </h1>
 
 
-                        <input id="inputitem" name="inputitem" class="form-control" type="text"  placeholder="ID/Cedula/Rif" required autofocus>
+                    <input id="inputitem" name="inputitem" class="form-control" type="text"  placeholder="ID/Cedula/Rif" required autofocus>
 
-                        <button id="buscar" class="btn btn-lg btn-secondary" type="button">    Buscar    </button>
+                    <button id="buscar" class="btn btn-lg btn-secondary" type="button">    Buscar    </button>
+
+                
+                    <div id="espacio"></div>   
+                        
+                    
+                    
+                    <div class="card mr-5 mt-4">
+                        <div class="card-header">
+                            <h2 id= "datos_clid">
+
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <h4 id ="datos_cliente">
+                                
+
+                            </h4>
+                        </div>
+                    </div>
+                        
 
                     
-                        <div id="espacio"></div>   
-                          
-                        
-                        
-                        <div class="card mr-5 mt-4">
-                            <div class="card-header">
-                              <h2 id= "datos_clid">
 
-                              </h2>
-                            </div>
-                            <div class="card-body">
-                                <h4 id ="datos_cliente">
-                                    
+                    <div id="espacio"> </div> 
 
-                                </h4>
-                            </div>
-                        </div>
-                          
-
-                      
-
-                        <div id="espacio"> </div> 
-
-                        <button id="Continuar" class="btn btn-lg btn-primary" type="button">  Continuar    </button>
-
-                    </div> 
+                    <button id="Continuar" class="btn btn-lg btn-primary" type="button">  Continuar    </button>
 
                 </div> 
-                <div id="fondo4" class="form-group">
+
+            </div> 
+            <div id="fondo4" class="form-group">
 
 
-                    <div id="margen" class="form-group">
-                
-                        <h1 id="titulo2"> Carrito </h1>
-                                       
-                        <div id="espacio"></div>   
-                          
-                        
-                        
-                        <div id="tabla_carrito">                      
-                            
-                            <table id="tabla_datatable" class="display nowrap">  </table>
-                         
-                               
-
-                            <h3 id="total">2000</h3>
-
-
-                            <div class="input-group mt-5">
-                                                           
-                                  <input type="text" id="codigo_producto" class="form-control mr-3" placeholder="Codigo Producto" aria-label="Codigo Producto" aria-describedby="basic-addon2">
-                                  <span class="input-group-text mr-3" id="basic-addon2"> x </span>
-                                  <input type="text" class="form-control mr-3" placeholder="Cantidad" aria-label="Cantidad" aria-describedby="basic-addon1">
-                                  <button id= "boton_añadir" class="btn btn-primary mr-3" type="button">Añadir</button>
-                                  <button class="btn btn-danger" type="button">Eliminar</button>
-                                
-                            </div>
-                            
-
-                           
-
-                            
+                <div id="margen" class="form-group">
             
+                    <h1 id="titulo2"> Carrito </h1>
+                                    
+                    <div id="espacio"></div>   
+                        
+                    
+                    
+                    <div id="tabla_carrito">                      
+                        
+                        <table id="tabla_datatable" class="display nowrap">  </table>
+                        
+                            
+
+                        <h3 id="total"></h3>
+
+
+                        <div class="input-group mt-5">
+                                                        
+                            <input type="text" id="codigo_producto" class="form-control mr-3" placeholder="Codigo Producto" aria-label="Codigo Producto" aria-describedby="basic-addon2">
+
+                            <span class="input-group-text mr-3" id="basic-addon2"> x </span>
+
+                            <input type="text" 
+                            id="cantidad_producto" class="form-control mr-3" placeholder="Cantidad" aria-label="Cantidad" aria-describedby="basic-addon1">
+
+                            <button id= "boton_añadir" class="btn btn-primary mr-3" type="button">Añadir</button>
+                            
+                            <button id= "boton_eliminar" class="btn btn-danger" type="button">Eliminar</button>
+                            
                         </div>
-
-
-                        <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
                         
-                        <button id="Continuar2" class="btn btn-lg btn-primary" type ="button"> Continuar</button>
 
-                    </div>
-
-                </div>      
-
-                <div id="fondo5">
-
-                    <div id="margen">
-
-                    <h1 id="registro"> Registro </h1>
-
-                    <input id="inputcapital" name="inputcapital" class="form-control" type="text" placeholder="Capital Disponible"  type="text" pattern="[0-9]*" maxlength="20"  autofocus> 
-
-                    <input id="inputden" name="inputden" class="form-control" type="text" placeholder="Denominacion Comercial"  autofocus> 
-
-                    <div id="Combo-boxes">
                         
-                        <h4 id="Direccion-fisica">Dirección Fisica (Opcional) </h4>
 
-                        <div class="form-group" id="Estado2"> 
-
-                             <select id="selectestado2" name="selectestado2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>ESTADO</option>
-                           </select>  
-
-                        </div> 
-
-                        <div class="form-group" id="Municipio2"> 
-
-                            <select name="selectmunicipio2" id="selectmunicipio2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>MUNICIPIO</option>
-                            </select>  
-
-                        </div>
-
-                        <div class="form-group" id="Parroquia2"> 
-
-                            <select name="selectparroquia2" id="selectparroquia2" class="custom-select browser-default" autofocus>
-                                <option value="" selected disabled>PARROQUIA</option>    
-                            </select>  
-
-                        </div> 
-
-                        <input id="inputdir2" name="inputdir2" class="form-control" type="text" placeholder="Direccion Fisica" autofocus> 
-
-                    </div>
-
-                    <h3> Contactos Alternos </h3>
-
-                    <button id="boton-uno" class="btn btn-lg btn-primary botones" type="button"> Uno </button>
-                    <button id="boton-dos" class="btn btn-lg btn-secondary botones" type="button"> Dos </button>
-                            
-                    <div id="Datos-extra1" >
                         
-                        <input type="text" name="Primer-nom" id="Primer-nom"  class="form-control tam" placeholder="Primer Nombre" >
-                        <input type="text" name="Segundo-nom" id="Segundo-nom"  class="form-control tam" placeholder="Segundo Nombre" >
-                            
-                        <div id="espacio"> </div> 
-
-                        <input type="text" name="Primer-ap" id="Primer-ap"  class="form-control tam" placeholder="Primer Apellido" >
-                        <input type="text" name="Segundo-ap" id="Segundo-ap"  class="form-control tam" placeholder="Segundo Apellido" >
-                            
-                        <div id="espacio"> </div> 
-
-                        <input type="text" pattern="[0-9]*" id="Cedula1" name="Cedula1" class="form-control tam" placeholder="Cedula" minlength="6" maxlength="8" >
-                        <input type="text" pattern="[0-9]*" id="Telefono" name="Telefono" class="form-control tam" placeholder="Teléfono"  minlength="7" maxlength="11" >
-
-                    </div>
-
-                    <div id="Datos-extra2" >
-                        
-                        <input type="text" name="Primer-nom2" id="Primer-nom2"  class="form-control tam" placeholder="Primer Nombre" >
-                        <input type="text" name="Segundo-nom2" id="Segundo-nom2"  class="form-control tam" placeholder="Segundo Nombre" >
-                            
-                        <div id="espacio"> </div>
-
-                        <input type="text" name="Primer-ap2" id="Primer-ap2"  class="form-control tam" placeholder="Primer Apellido" >
-                        <input type="text" name="Segundo-ap2" id="Segundo-ap2"  class="form-control tam" placeholder="Segundo Apellido" >
-                        
-                        <div id="espacio"> </div>
-
-                        <input type="text" pattern="[0-9]*" id="Cedula2" name="Cedula2" class="form-control tam" placeholder="Cedula" minlength="6" maxlength="8">
-                        <input type="text" pattern="[0-9]*" id="Telefono2" name="Telefono2" class="form-control tam" placeholder="Teléfono"  minlength="7" maxlength="11" >
-
-                    </div>     
-
-                    <button id="Regresar2" class="btn btn-lg btn-secondary" type="button">  Regresar</button>                        
-                    <!-- <button id="Continuar3" class="btn btn-lg btn-primary" type="submit"> Resgitrar </button>-->                           
-                    <button id="registrar" class="btn btn-lg btn-primary" type="button"> Registrar </button>                           
-                            
-
-                </div>    
-
-
-                </div>    
-                                
-            </div>
         
-        </form>
+                    </div>
 
+
+                    <button id="Regresar" class="btn btn-lg btn-secondary" type="button">  Regresar</button>
+                    
+                    <button id="Continuar2" class="btn btn-lg btn-primary" type ="button"> Continuar</button>
+
+                </div>
+
+            </div>      
+      
+                            
+        </div>
+        
+    
     </div>                    
 </body>           
 </html>

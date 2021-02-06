@@ -14,7 +14,7 @@ from database.DB_persona_contacto import DB_persona_contacto
 from database.DB_proveedor import DB_proveedor
 from database.DB_inventario import DB_inventario
 from database.DB_carrito import DB_carrito
-
+from database.DB_producto import DB_producto
 
 app = Flask(__name__)
 app.debug = True
@@ -114,6 +114,14 @@ def compra_fisica():
 
 
 
+@app.route('/cancela_compra/<id_carrito>', methods=['GET','PUT'])    
+def cancela_compra(id_carrito):
+
+    if request.method == 'GET':
+        return render_template("cancela_compra.html")
+
+
+
 
 
 
@@ -146,89 +154,48 @@ def ver_perfil(entidad,id):
 @app.route('/mostrar/<obj>',methods=['GET','POST'])    
 def mostrar(obj):
 
+    if request.method == 'GET':
+        return render_template("mostrar.html")
+
+    #aplica para post 
+
     if obj == 'naturales':
-    
-        if request.method == 'GET':
-            return render_template("mostrar.html")
-
-        if request.method == 'POST':
-
-            db = DB_cliente()         
-            resp = db.getall('NATURAL')
-
-            return jsonify(resp)    
+        resp = DB_cliente().getall('NATURAL')
 
 
-    if obj == 'juridicos':
-
-        if request.method == 'GET':
-            return render_template("mostrar.html")
-
-        if request.method == 'POST':
-
-            db = DB_cliente()         
-            resp = db.getall('JURIDICO')
-
-            return jsonify(resp)  
+    if obj == 'juridicos':        
+        resp = DB_cliente().getall('JURIDICO')
 
 
     if obj == 'empleados':
-
-        if request.method == 'GET':
-            return render_template("mostrar.html")
-
-        if request.method == 'POST':
-
-            db = DB_empleado()         
-            resp = db.getall()
-
-            return jsonify(resp)  
+        resp = DB_empleado().getall()
 
 
     if obj == 'tiendas':
-
-        if request.method == 'GET':
-
-            return render_template("mostrar.html")
-    
-        if request.method == 'POST':
-
-            db = DB_tienda()  
-            resp = db.getall()
-
-            return jsonify(resp)
+        resp = DB_tienda().getall()
 
 
     if obj == 'proveedores':
-
-        if request.method == 'GET':
-            return render_template("mostrar.html")
-
-        if request.method == 'POST':
-
-            db = DB_proveedor()         
-            resp = db.getall()
-
-            return jsonify(resp)
+        resp = DB_proveedor().getall()
 
     
-    if obj == 'roles':
+    if obj == 'roles':   
+        resp = DB_generic().getall2("rol")
 
-        if request.method == 'POST':
 
-            db = DB_generic()
-            resp = db.getall2("rol")
+    if obj == 'monedas':   
+        resp = DB_generic().select("""
+            SELECT m.*, c.* FROM moneda m , cotizacion c 
+            WHERE m.mo_codigo = c.fk_moneda AND c.ct_expira is NULL
+            AND m.mo_codigo > 1""")
 
-            del resp[0]
-                        
-            return jsonify(resp)
 
     else:
         return """<h1>ERROR 404 </h1>
                   <h3>This is not the page you are looking for.</h3>"""
         
 
-
+    return jsonify(resp)
 
             
     
@@ -1370,8 +1337,7 @@ def manejo_carrito():
     if request.method == 'GET':             #listo  
         id = request.args['id']
 
-        db = DB_carrito()
-        data = db.get(id) 
+        data = DB_carrito().get(id) 
 
         return jsonify(data)
 
@@ -1380,8 +1346,8 @@ def manejo_carrito():
         tienda = DB_empleado().get(session['fk_empleado'])['fk_tienda']
 
         data = {
-            'fk_cliente'        :int(request.form['id_cliente']),
-            'fk_tienda'         :tienda,
+            'fk_cliente'        : int(request.form['id_cliente']),
+            'fk_tienda'         : tienda,
             'ca_monto_total'    : 0
         }
 
@@ -1389,151 +1355,49 @@ def manejo_carrito():
 
         return jsonify(id_carrito)
 
+
     if request.method == 'PUT':
 
-        id = int(request.form['id_user'])
+        pr_id = int(request.form['codigo'])
+
+        producto = DB_producto().get(pr_id)
+
+        if ('invalido' or 'error') in producto: return producto
+
+        print(producto)
+
+        unidades = request.form['cant']
 
         data = {
-            'po_den_comercial'      :request.form['inputden'],
-            'po_razon_social'       :request.form['inputrazon'],
-            'po_correo'             :request.form['inputcorreo'],
-            'po_pagina_web'         :request.form['inputpagina'],
+            'ca_unidades' : int(request.form['cant']),
+            'ca_costo'    : producto['pr_precio'],
+            'fk_carrito'  : int(request.form['carrito']),
+            'fk_producto' : pr_id
         }
 
-     
+        resp = DB_generic().add('carrito_producto',data)
 
-        #Actualiza direcciones carrito
+        print(resp)
+    
+        if ('error' in resp): 
+            return jsonify({'invalido':'invalido: producto ya en carrito'}) 
 
-        db = DB_carrito()
-        datosuser =  db.get(id)
+        data.update(producto)
 
-        id_direccion = datosuser['fk_lugar_fiscal']       
-        db2 = DB_lugar()       
+        print(data)
 
-        direccion ={
-            'lu_nombre'     : request.form['inputdir'],
-            'fk_lugar'      : int(request.form['selectparroquia']),
-        }
-
-        resp2 = db2.update(id_direccion , direccion) 
-
-        flag = 0
-
-        try: 
-            direccion2 = {
-                    'lu_nombre'     :   request.form['inputdir2'], 
-                    'lu_tipo'       :   'DIRECCION',             
-                    'fk_lugar'      :   request.form['selectparroquia2'],    
-            }
-            flag = 1
-        except Exception:
-            None
-
-        id_direccion2 = datosuser['fk_lugar_fisica']
-
-        if (flag == 1):
-        
-            if (direccion2['lu_nombre'] != '' and direccion2['lu_nombre'] != ' ' ):
-            
-                direccion2['fk_lugar'] = int(direccion2['fk_lugar']) 
-
-                if id_direccion2: 
-
-                    resp3 =  db2.update( id_direccion2 , direccion2 ) 
-                                
-                else:                     
-                    resp3 = db2.add(direccion2)
-                    data['fk_lugar_fisica'] = resp4
-
-            else:
-                if id_direccion2 : 
-                    db2.delete(id_direccion2) 
-                    data['fk_lugar_fisica'] = None
-                
-        else:
-            if id_direccion2 : 
-                db3.delete(id_direccion2) 
-                data['fk_lugar_fisica'] = None
-            
-        
-
-        #acutaliza carrito
-        resp = db.update(id,data)    
+        return data
 
 
-
-        #actualiza telefonos
-
-        db5 = DB_telefono()
-
-
-        if (request.form['tlfcodigo']):
-            codigo_tlf = int(request.form['tlfcodigo'])
-
-            try:
-                telefono = {
-                    'te_tipo'            :   'CASA',        
-                    'te_numero'          :   int(request.form['inputtelefono']),  
-                }
-
-                resp6 =  db5.update( codigo_tlf, telefono ) 
-
-            except Exception: 
-                resp6 = db5.delete(codigo_tlf)
-
-
-
-        if (request.form['tlfcodigo2']):
-            codigo_tlf2 = int(request.form['tlfcodigo2'])
-
-            try:
-                telefono2 = {
-                    'te_tipo'            :   'CASA',        
-                    'te_numero'          :   int(request.form['inputtelefono2']),  
-                }
-
-                resp6 =  db5.update( codigo_tlf2, telefono2 ) 
-
-            except Exception: 
-                resp6 = db5.delete(codigo_tlf2)
-
-
-
-        if (request.form['tlfcodigo3']):
-            codigo_tlf3 = int(request.form['tlfcodigo3'])
-
-            try:
-                telefono3 = {
-                    'te_tipo'            :   'CASA',        
-                    'te_numero'          :   int(request.form['inputtelefono3']),  
-                }
-
-                resp6 =  db5.update( codigo_tlf3, telefono3 ) 
-
-            except Exception: 
-                resp6 = db5.delete(codigo_tlf3)
-
-
-
-        if ('mensaje') in resp.keys(): 
-            return jsonify(resp)
-        if ('mensaje') in resp2.keys(): 
-            return jsonify(resp2)
-        
-        if ('mensaje') in resp3.keys(): 
-            return jsonify(resp3)
-        
-        
-        
-        return jsonify(resp)
-      
     if request.method == 'DELETE':
 
-        id = int(request.get_data())
+        data = {
+            'fk_carrito'  : int(request.form['fk_carrito']),
+            'fk_producto' : int(request.form['fk_producto'])
+        }
+        
+        resp = DB_generic().delete('carrito_producto', data )
 
-        db = DB_carrito()   
-
-        resp = db.delete(id)        
 
         return resp
 
@@ -1541,6 +1405,85 @@ def manejo_carrito():
 
 
 
+@app.route('/manejo_moneda',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_moneda():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('moneda','mo_codigo',id)[0]
+
+        cot = DB_generic().getwhere('cotizacion','fk_moneda',id) 
+        
+        data['cotizacion'] = cot
+
+        return jsonify(data)   
+
+
+    if request.method == 'POST':                    
+
+        data = {
+            'mo_descripcion'     :   request.form['inputmoneda']
+        }
+
+        id = DB_generic().add_return('moneda',data,'mo_codigo')
+
+        data_cot = {
+            'ct_fecha'  :   str(datetime.datetime.now()),
+            'ct_valor'	:	int(request.form['inputcot']),
+            'ct_expira' :   None,
+            'fk_moneda'	:	id,	
+        }
+
+        resp = DB_generic().add('cotizacion',data_cot)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_mo'])
+
+        data = {
+                'mo_descripcion'     :   request.form['inputmoneda']
+        }
+
+        resp = DB_generic().update('moneda','mo_codigo',id,data)
+
+        if (request.form['cot_nueva'] == ''): return resp
+
+        ct_fecha = str(datetime.datetime.now())
+
+        query = "UPDATE cotizacion SET ct_expira = '{0}' WHERE ct_expira is NULL AND fk_moneda = {1}".format(ct_fecha,id)
+
+        print(DB_generic().equery(query))
+
+        data_cot = {
+            'ct_fecha'  :   ct_fecha,
+            'ct_valor'	:	int(request.form['cot_nueva']),
+            'ct_expira' :   None,
+            'fk_moneda'	:	id,	
+        }
+
+        resp = DB_generic().add('cotizacion',data_cot)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data_cot = {
+            'fk_moneda'      :  id
+        }
+        data = {
+            'mo_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('cotizacion',data_cot)
+        resp = db.delete('moneda',data)
+       
+        return resp
 
 
 

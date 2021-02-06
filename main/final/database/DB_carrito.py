@@ -37,7 +37,7 @@ class DB_carrito(DB):
         
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
-            print(columnas)
+        
             
             data2 = self.querydictdecimal(resp,columnas)
 
@@ -75,7 +75,7 @@ class DB_carrito(DB):
             print(Exception)
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-
+    
     def update (self, id, data):
 
         try:
@@ -112,7 +112,7 @@ class DB_carrito(DB):
     def delete (self,id):
 
         try:
-            print('Entra al execute')
+            
             self.cursor.execute("DELETE FROM carrito WHERE ca_id = %s", (id,) )
             print('Sale del execute')
             self.connection.commit()                     

@@ -9,7 +9,60 @@ function alerta(mensaje){
 };
 
 
+
+$(document).ready(function() {
+
+    
+    
+   console.log("ready");
+
+   
+
+});
+
+
+
+
+
 $(function(){
+    $('form').submit(function(e){
+
+        $.ajax({
+            
+            url:   '/manejo_juridico',
+            data:  $('form').serialize(),
+            type: 'POST',
+                
+            }).done(function(response){
+                
+                console.log(response);
+                
+                if(response['error'])
+					alerta(response['error']);
+				
+				else if (response['invalido'])
+                    alerta(response['invalido']);
+				
+                else
+                    window.location.href =  "/mostrar/juridicos";
+								
+                
+            }).fail(function(response){
+                alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+            });
+
+        e.preventDefault();
+    
+    });
+});
+
+ 
+
+var id_cliente = 2;
+
+
+$(function(){
+
 
     var flag;
 
@@ -28,7 +81,7 @@ $(function(){
      
         if (!(form[0][0].checkValidity())){
             form[0][0].reportValidity();
-            flag = 1;                        
+            flag = 0;                           /*CAMBIAR A 1*/
         }
             
         
@@ -87,7 +140,7 @@ $(function(){
                 
         if (!(form[0][0].checkValidity())){
             form[0][0].reportValidity();
-            flag = 0;                          
+            flag = 0;                           /*CAMBIAR A 1*/
         }
             
         
@@ -111,13 +164,13 @@ $(function(){
                         alerta(response['invalido']);
                     
                     else{
-                        id_carrito = response;
+                        response;
                         
                         $("#fondo3").fadeOut("slow");       
                         $("#fondo4").fadeIn("slow");     
                         $("#fondo3").css("display", "none"); 
 
-                        mostrar_carrito(id_carrito);
+                        mostrar_carrito(response);
                     }               
                     
                 }).fail(function(response){
@@ -128,6 +181,9 @@ $(function(){
         }
 
     });  
+
+
+
 
 
 
@@ -163,6 +219,47 @@ $(function(){
         }
     });  
 
-        
+    $("#Regresar2").click(function(){
+
+        $("#fondo4").css("display", "block");   
+        $("#fondo5").fadeOut("slow");     
+        $("#fondo4").fadeIn("slow");   
+    });      
+
+
+
+
+
+    $("#boton-dos").click(function(){
+
+        $("#Datos-extra1").fadeOut("slow");
+        $("#Datos-extra2").fadeIn("slow");
+        $("#Datos-extra1").css("display","none");  
+        document.getElementById("boton-dos").style.backgroundColor= "skyblue";
+        $("#boton-uno").css("color","#fff");  
+        $("#boton-uno").css("background-color","#007bff");
+        $("#boton-uno").css("border-color","007bff");
+             
+    });
+
+    $("#boton-uno").click(function(){
+
+        $("#Datos-extra2").fadeOut("speed");
+        $("#Datos-extra1").css("display","block");      
+        $("#Datos-extra1").fadeIn("slow");   
+        document.getElementById("boton-uno").style.backgroundColor= "skyblue";
+        $("#boton-dos").css("color","#fff");  
+        $("#boton-dos").css("background-color","#6c757d");
+        $("#boton-dos").css("border-color","6c757d");     
+           
+    });   
+    
+    
+
+    $("#selecttipo1").click(function(){
+        window.location.href = "/registro/natural";
+
+    });
+   
 
 });

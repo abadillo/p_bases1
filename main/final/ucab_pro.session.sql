@@ -1,6 +1,6 @@
 
 
-
+INSERT INTO cotizacion (ct_fecha,ct_valor,ct_expira,fk_moneda) VALUES (CURRENT_TIMESTAMP,'2222222232','NULL',7)
 
 SELECT * FROM usuario WHERE us_correo = 'admin2924@gmail.com'
 
@@ -9,8 +9,49 @@ SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = '1'
 
 SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = 1
 
+select * from cotizacion
 
 SELECT * FROM cliente WHERE cl_id = J881381706 OR cl_cedula = J881381706 OR cl_rif = 'J881381706'
+
+UPDATE cotizacion SET ct_expira = '2021-02-05 21:58:22.394946' WHERE ct_expira is NULL AND fk_moneda = 14
+
+INSERT INTO cotizacion (ct_fecha,ct_valor,ct_expira,fk_moneda) VALUES ('2021-02-05 21:50:33.931152',10003211,NULL,14)
+
+SELECT E.EM_CODIGO, 
+	(SELECT COUNT(*) FROM BENEFICIO_EMPLEADO BE WHERE BE.FK_EMPLEADO = E.EM_CODIGO) BENEFICIOS
+FROM EMPLEADO E
+
+
+SELECT CA.CA_ID,
+
+ 	   (SELECT COUNT(*) FROM CARRITO_PRODUCTO CP WHERE CP.FK_CARRITO = CA.CA_ID) AS CANT_P 
+
+FROM CARRITO CA
+
+WHERE CANT_P > 14;
+
+DELETE FROM carrito_producto WHERE fk_carrito = 9 AND fk_producto = 9
+
+
+SELECT * FROM carrito_producto WHERE fk_carrito = 9 AND fk_producto = 9
+
+
+SELECT m.*, c.* FROM moneda m , cotizacion c WHERE m.mo_codigo = c.fk_moneda AND c.ct_expira is NULL
+
+select * from cotizacion
+
+
+
+SELECT m.*, max(c.ct_fecha) 
+
+FROM moneda m , cotizacion c 
+
+WHERE m.mo_codigo = c.fk_moneda 
+
+GROUP BY  m.mo_codigo
+
+
+
 
 
 SELECT * FROM carrito_producto cp, producto p WHERE p.pr_id = cp.fk_producto AND cp.fk_carrito = 542;

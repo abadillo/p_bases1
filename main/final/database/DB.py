@@ -41,12 +41,12 @@ class DB(metaclass=ABCMeta):
 
             data_cv = data
     
-
         for entidad in data_cv:
             for atributo in entidad:
-                if type(entidad[atributo]) == decimal.Decimal:
+                if (type(entidad[atributo]) == decimal.Decimal or type(entidad[atributo]) == datetime.time):
                     entidad[atributo] = int(entidad[atributo])
-               
+
+
 
         return data_cv
 

@@ -37,7 +37,7 @@ class DB_telefono(DB):
 
 
 
-    def getall2 (self,tipo,fk_obj):  
+    def getall (self,tipo,fk_obj):  
     
         try:
 

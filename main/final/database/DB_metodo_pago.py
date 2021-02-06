@@ -13,7 +13,7 @@ import decimal
 class DB_metodo_pago(DB):
 
 
-    def getall2 (self,fk_cliente):  
+    def getall (self,fk_cliente):  
     
         try:
 

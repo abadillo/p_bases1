@@ -188,7 +188,7 @@ $(function(){
                 window.location.href =  '/Administración De Tipos De Pago';	
                 break;
             case '26':
-                window.location.href =  '/Administración De Marcas';	
+                window.location.href =  '/mostrar/marcas';	
                 break;
             case '27':
                 window.location.href =  '/Administración De Rubros';	

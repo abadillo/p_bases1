@@ -10,7 +10,7 @@ import decimal
 
 class DB_generic(DB):
 
-    def getall2 (self,tabla):  
+    def getall (self,tabla):  
     
         try:
            

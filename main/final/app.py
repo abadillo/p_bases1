@@ -157,38 +157,31 @@ def mostrar(obj):
     if request.method == 'GET':
         return render_template("mostrar.html")
 
-    #aplica para post 
+    #aplica para post  <<<
 
     if obj == 'naturales':
         resp = DB_cliente().getall('NATURAL')
 
-
     if obj == 'juridicos':        
         resp = DB_cliente().getall('JURIDICO')
-
 
     if obj == 'empleados':
         resp = DB_empleado().getall()
 
-
     if obj == 'tiendas':
         resp = DB_tienda().getall()
 
-
     if obj == 'proveedores':
         resp = DB_proveedor().getall()
-
     
     if obj == 'roles':   
         resp = DB_generic().getall("rol")
-
 
     if obj == 'monedas':   
         resp = DB_generic().select("""
             SELECT m.*, c.* FROM moneda m , cotizacion c 
             WHERE m.mo_codigo = c.fk_moneda AND c.ct_expira is NULL
             AND m.mo_codigo > 1""")
-
 
     if obj == 'marcas':   
         resp = DB_generic().getall("marca")
@@ -199,6 +192,9 @@ def mostrar(obj):
     if obj == 'tipo_pagos':   
         resp = DB_generic().getall("tipo_pago")
 
+    if obj == 'rubros':   
+        resp = DB_generic().getall("rubro")
+
 
     else:
         return """<h1>ERROR 404 </h1>
@@ -206,8 +202,6 @@ def mostrar(obj):
         
 
     return jsonify(resp)
-
-            
     
 
 
@@ -290,7 +284,6 @@ def manejo_tienda():
         resp = db.delete(id)
 
         return resp
-
 
 
 @app.route('/manejo_natural', methods= ['GET', 'POST','PUT','DELETE'])
@@ -1413,8 +1406,6 @@ def manejo_carrito():
 
           
 
-
-
 @app.route('/manejo_moneda',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_moneda():
     
@@ -1495,8 +1486,6 @@ def manejo_moneda():
        
         return resp
 
-
-
 @app.route('/manejo_marca',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_marca():
     
@@ -1559,9 +1548,6 @@ def manejo_marca():
        
         return resp
 
-
-
-
 @app.route('/manejo_beneficio',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_beneficio():
     
@@ -1606,8 +1592,6 @@ def manejo_beneficio():
         resp = db.delete('beneficio',data)
        
         return resp
-
-
 
 @app.route('/manejo_tipo_pago',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_tipo_pago():
@@ -1654,7 +1638,50 @@ def manejo_tipo_pago():
        
         return resp
 
+@app.route('/manejo_rubro',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_rubro():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('rubro','ru_codigo',id)[0]
+    
+        return jsonify(data)   
 
+    if request.method == 'POST':                    
+
+        data = {
+            'ru_nombre'     :   request.form['inputrubro'],
+        }
+
+        resp = DB_generic().add('rubro',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_rubro'])
+        
+        data = {
+            'ru_nombre'     :   request.form['inputrubro'],
+        }
+
+        resp = DB_generic().update('rubro','ru_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'ru_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('rubro',data)
+       
+        return resp
 
 
 

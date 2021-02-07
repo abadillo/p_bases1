@@ -1,0 +1,73 @@
+#fondo1{
+    background-color:rgba(245, 244, 244, 0.967);
+    width: 1070px;    
+    height: 900px;
+    border-radius: 5px 5px 5px 5px;
+    border: 0px #80808000 solid;
+
+    position: relative;
+    margin: 0 auto; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body { 
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background: linear-gradient(to left, #1107d3,#3dd2fffd);  
+    position: relative;
+    height: 1100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    transform: scale(0.7);
+    transform-origin: top center;
+
+}
+#logo{
+    height: 100px;
+    width:50%;
+    position: relative;
+    right: -270px;
+    top:10px;
+   
+}
+h1{
+    position: relative;
+    right: -350px;
+}
+#ASISTENCIA{
+    position: relative;
+    top:90px;
+    right: -60px;
+    height: 40px;
+}
+.linea1{
+    position: relative;
+    left: -60px;
+    background-color:#000000;
+    height: 1px;
+    width: 1070px;
+
+} 
+.linea2{
+    position: relative;
+    left: -60px;
+    background-color:#000000;
+    height: 1px;
+    width: 1070px;
+
+} 
+#HORARIO{
+    position: relative;
+    top:250px;
+    right: -60px;
+    height: 40px;
+}
+#INGRESO_EGRESO{
+    position: relative;
+    top:350px;
+    right: -60px;
+    height: 40px;
+
+
+}

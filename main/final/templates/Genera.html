@@ -2,7 +2,7 @@
     <head>
         <title>Deberia Generar </title>
         <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
-
+        <link rel="stylesheet" type="text/css" href="../static/css/Genera.css">
             <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>        
             <script src="../static/js/Genera.js"> </script> 
         
@@ -12,12 +12,56 @@
             <small class="form-text text-danger mb-2">
                 <p id="m_invalido"></p>
               </small>
-  
-            <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD">
-            <input id="Tienda" name="Tienda" placeholder="numero">
+            <h1>GENERACION DE REPORTES UCABMART</h1>
+            <div id="fondo1">
 
-            <button id="Genera" type ="submit">Generar</button>
+                    
+                    
+                    <div id="ASISTENCIA">
 
+                        <h3>REPORTE DE ASISTENCIA  </h3>
+                        <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD" type="date" required>
+                        <input id="Tienda" name="Tienda" placeholder="numero" required>
+
+                        <button id="Genera" class="btn btn-lg btn-primary" type ="button">Generar</button>
+
+                    </div>
+
+               
+                
+                <div id="HORARIO">
+                    <div class="linea1"></div> 
+                    <h3>REPORTE DE HORARIO </h3>
+                    <input id="HORARIO1" NAME="HORARIO">
+                    <input id="HORARIO1" NAME="HORARIO">
+                    <input id="HORARIO1" NAME="HORARIO">
+                    <button> </button>
+
+                </div>
+
+                <div id="EMPLEADO">
+                    <div class="linea1"></div> 
+                    <h3>REPORTE DE HORARIO </h3>
+                    <input id="EMPLEADO" NAME="HORARIO">
+                    <input id="HORARIO1" NAME="HORARIO">
+                    <input id="HORARIO1" NAME="HORARIO">
+                    <button> </button>
+
+                </div>
+                
+                <div id="INGRESO_EGRESO">
+                    <div class="linea2"></div> 
+                
+                    <h3>REPORTE DE INGREO Y EGRESOS </h3>
+                    <input id="Fecha1"name="Fecha1"placeholder="Fecha inicial: YYYY-MM-DD" required>
+                    <input id="Fecha2"name="Fecha2"placeholder="Fecha final: YYYY-MM-DD" required>
+                  
+                    <button id="Genera3" class="btn btn-lg btn-primary" type ="button">Generar</button>
+                </div>    
+
+                    
+
+            </div>
         </form>        
     </body>    
 

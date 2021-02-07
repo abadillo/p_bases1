@@ -62,6 +62,25 @@ if (__name__ == '__main__'):
     app.run(port=5005)
    
 
+ '''print('aqui')
+        db = Reporte()
 
+        A = request.form['Fecha']      
+
+        if A != None:           
+        
+            B = request.form['Tienda']    
+            
+            resp = db.asistencia(A,B)           
+
+        else:
+
+            A = request.form['Fecha1']
+            B = request.form['Fecha2']
+
+            resp = db.ingreso(A,B)
+
+        return resp        
+     '''
 
 

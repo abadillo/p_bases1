@@ -239,7 +239,7 @@ $(function(){
                 window.location.href =  '/Reporte De Horarios';	
                 break;
             case '43':
-                window.location.href =  '/Reporte De Asistencia';	
+                window.location.href =  '/Genera/Asistencia';	
                 break;
             case '44':
                 window.location.href =  '/Reporte De Empleados';	

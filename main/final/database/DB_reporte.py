@@ -86,7 +86,7 @@ class DB_reporte(DB):
                 ) ti_egresos
                 FROM tienda ti
                 GROUP BY ti.ti_codigo,ti.ti_nombre
-                ORDER BY ti.ti_codigo; '''.format(fe,id) 
+                ORDER BY ti.ti_codigo; '''.format(fe1,fe2) 
 
 
 
@@ -106,5 +106,5 @@ class DB_reporte(DB):
             return data   
 
         except Exception:
-            print('ERROR DE EXCEPTION')
+            print('ERROR DE EXCEPTION1')
             return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})

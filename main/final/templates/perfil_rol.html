@@ -4,12 +4,20 @@
     
     <title>UCABMART</title>
     
-    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">   
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet"type="text/css" href="../static/add_ons/datatables/css/jquery.dataTables.css">
+
     <link href="../static/css/perfil_rol.css" rel="stylesheet" type="text/css" >
+    <link href="../static/css/mostrar_embedded.css" rel="stylesheet" type="text/css" >
 
 
     <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>   
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
+    <script src="../static/add_ons/datatables/js/dataTables.bootstrap4.min.js"></script>
+    
     <script src="../static/js/perfil_rol.js"></script>
+    <script src="../static/js/privilegios.js"></script>
 
     <meta charset="utf-8">
 
@@ -60,8 +68,45 @@
                                     <input id="inputrol" name="inputrol" class="form-control"  type="text" placeholder="Nombre de la Rol" disabled required autofocus>
                                 </div>
                             </div>       
-                                    
+                                
+                            <div id="espacio"></div>  
+                            <div id="espacio"></div>  
+                            
+                        
+                            <div id="tabla3">
+                
+                                <h3 class="text-center">Privilegios</h3>
+                            
+                                <table class = "mb-5" id="tabla_datatable" ></table>
 
+                                <div class="btn-group btn-block">
+                                
+                                        <button id="boton_añadir" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
+                            
+
+                                        <!--                                               
+                                        <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button> -->
+    
+    
+                                        <button id="boton_eliminar" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+                
+                                      
+                                </div>
+
+                                <div class="form-group  " id="tipo"> 
+                    
+                                    <select name="input_privilegio" id="input_privilegio" class="custom-select browser-default">
+    
+                                        <option value="default" selected disabled>Cod Privilegio</option>      
+    
+                                    </select>  
+                            
+                                </div> 
+
+
+                                <button id="boton_añadir2" class="btn btn-secondary btn-block rounded customb" type="button">Añadir</button>
+                
+                            </div>
                            
                            
 

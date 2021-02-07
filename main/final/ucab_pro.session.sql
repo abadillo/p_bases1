@@ -43,6 +43,8 @@ SELECT m.*, c.* FROM moneda m , cotizacion c WHERE m.mo_codigo = c.fk_moneda AND
 select * from cotizacion
 
 
+SELECT pr.fk_rol, pr.fk_privilegio, pv.pv_descripcion FROM privilegio_rol pr, privilegio pv WHERE pr.fk_privilegio = pv.pv_codigo AND pr.fk_rol = 1
+
 
 SELECT m.*, max(c.ct_fecha) 
 

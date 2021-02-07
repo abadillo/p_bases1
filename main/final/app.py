@@ -208,7 +208,7 @@ def mostrar(obj):
         resp = DB_generic().getall("privilegio")
 
 
-    else:
+    if not(resp):
         return """<h1>ERROR 404 </h1>
                   <h3>This is not the page you are looking for.</h3>"""
         
@@ -1931,7 +1931,6 @@ def manejo_metodo_pago_cliente():
 
         return resp
 
-
 @app.route('/horarios_empleado', methods= ['GET', 'POST','DELETE'])
 def manejo_horarios_empleado():
 
@@ -1973,7 +1972,6 @@ def manejo_horarios_empleado():
 
         return resp
 
-
 @app.route('/beneficios_empleado', methods= ['GET', 'POST','DELETE'])
 def manejo_beneficios_empleado():
 
@@ -2011,6 +2009,48 @@ def manejo_beneficios_empleado():
         resp = db.delete('beneficio_empleado',data)
 
         return resp
+
+@app.route('/privilegios_rol', methods= ['GET', 'POST','DELETE'])
+def manejo_privilegios_rol():
+
+    if request.method == 'GET':
+        
+        id = int(request.args['id'])
+
+        db = DB_generic()  
+
+        query ='SELECT pr.fk_rol, pr.fk_privilegio, pv.pv_descripcion FROM privilegio_rol pr, privilegio pv WHERE pr.fk_privilegio = pv.pv_codigo AND pr.fk_rol = {0}'.format(id)
+
+        resp =  DB_generic().select(query)
+
+        return jsonify(resp)
+    
+    if request.method == 'POST': 
+       
+        data = {
+            'fk_rol'   :  int(request.form['fk_rol']),
+            'fk_privilegio'     :  int(request.form['fk_privilegio']),
+        }
+        
+
+        db = DB_generic()
+        resp = db.add('privilegio_rol',data)
+        
+        return resp
+ 
+    if request.method == 'DELETE':
+
+       
+        data = {
+            'fk_rol'   :  int(request.form['fk_rol']),
+            'fk_privilegio'     :  int(request.form['fk_privilegio'])
+        }
+
+        db = DB_generic()   
+        resp = db.delete('privilegio_rol',data)
+
+        return resp
+
 
 
 

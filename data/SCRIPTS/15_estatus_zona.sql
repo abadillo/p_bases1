@@ -12,7 +12,7 @@ INSERT INTO estatus_despacho (ed_nombre) VALUES ('ENTREGADO');
 
 
 
-INSERT INTO zona (zo_nombre) VALUES ('Refrigeración');
+INSERT INTO zona (zo_nombre) VALUES ('Refrigeracion');
 INSERT INTO zona (zo_nombre) VALUES ('Alimentos');
 INSERT INTO zona (zo_nombre) VALUES ('Oficina y Papeleria');
 INSERT INTO zona (zo_nombre) VALUES ('Electrodomesticos');

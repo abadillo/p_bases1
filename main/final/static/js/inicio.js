@@ -185,7 +185,7 @@ $(function(){
                 window.location.href =  '/Administración De Cotizaciones';	
                 break;
             case '25':
-                window.location.href =  '/Administración De Tipos De Pago';	
+                window.location.href =  '/mostrar/tipo_pagos';	
                 break;
             case '26':
                 window.location.href =  '/mostrar/marcas';	
@@ -212,10 +212,10 @@ $(function(){
                 window.location.href =  '/compra_fisica';	
                 break;
             case '34':
-                window.location.href =  '/Administración De Empleados';	
+                window.location.href =  '/mostrar/empleados';	
                 break;
             case '35':
-                window.location.href =  '/Administración De Beneficios';	
+                window.location.href =  '/mostrar/beneficios';	
                 break;
             case '36':
                 window.location.href =  '/Asignación De Beneficios';	

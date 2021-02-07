@@ -100,7 +100,7 @@ $(document).ready(function() {
 
     $.ajax({
                 
-        url:  '/metodos_pago',
+        url:  '/tipo_pagos',
         type: 'POST',
         dataSrc: "",
         async: false, 

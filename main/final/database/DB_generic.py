@@ -178,7 +178,7 @@ class DB_generic(DB):
             self.cursor.execute(query,data)
             self.connection.commit()
 
-            return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
+            return jsonify({'mensaje':'Eliminado satisfactoriamente'}) 
 
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})

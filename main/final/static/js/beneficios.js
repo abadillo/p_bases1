@@ -96,7 +96,7 @@ $(document).ready(function() {
 
     $.ajax({
                 
-        url:  '/beneficios',
+        url:  '/mostrar/beneficios',
         type: 'POST',
         dataSrc: "",
         async: false, 

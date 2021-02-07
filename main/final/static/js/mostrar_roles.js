@@ -10,7 +10,7 @@ function alerta(mensaje){
 
 $(document).ready(function(){
 
-    $("#titulo").html("Rols");
+    $("#titulo").html("Roles");
 
     $('#tabla_datatable').DataTable({
 
@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 
         ajax: {
-            url: '/mostrar/rols',
+            url: '/mostrar/roles',
             type: 'POST',
             dataSrc: "",
         },

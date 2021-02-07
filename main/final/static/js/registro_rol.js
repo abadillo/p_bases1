@@ -23,7 +23,7 @@ $(function(){
                     c_error(response['invalido']);
 				
 				else
-					window.location.href =  "/mostrar/rols";				
+					window.location.href =  "/mostrar/roles";				
                 
             }).fail(function(response){
                 c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');

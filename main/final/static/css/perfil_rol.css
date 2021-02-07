@@ -136,12 +136,16 @@ h2{
 
 
 #tabla3{
-    width: 100%;
+    width: 600px;
     margin: 0 auto;
     position: relative;
     border: 2px black groove;
     border-radius: 3px 3px 3px 3px;
+    padding: 50px;
+    padding-bottom: 40px;
+
 }
+
 
 
 

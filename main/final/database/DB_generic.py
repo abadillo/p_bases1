@@ -5,7 +5,8 @@ from psycopg2.sql import SQL, Composable, Identifier, Literal
 from psycopg2 import Error
 from psycopg2 import sql
 import decimal
-
+from datetime import datetime, time
+import datetime
 
 
 class DB_generic(DB):
@@ -20,6 +21,7 @@ class DB_generic(DB):
             self.cursor.execute(query)
             
             resp = self.cursor.fetchall()
+            
             columnas = self.cursor.description
             data = self.querydictdecimal(resp,columnas)
 
@@ -122,13 +124,21 @@ class DB_generic(DB):
         try:
 
             datamod = dict(data)
-            dataol = self.getwhere(tabla,atributo,valor)[0]
+            dataol = self.getwhere(tabla,atributo,valor)
+
+            for entidad in dataol:
+                for atrib in entidad:
+                    if type(entidad[atrib]) == datetime.time:
+                        entidad[atrib] = str(entidad[atrib])
+
+            dataol = dataol[0]
             
             print(dataol)
             print(datamod)
-            for atrib in data:
-                if (data[atrib] == dataol[atrib]):
-                    datamod.pop(atrib)
+            
+            for atrib2 in data:
+                if (data[atrib2] == dataol[atrib2]):
+                    datamod.pop(atrib2)
                     
             
             if (not datamod): return ({'invalido':'Ningun dato fue actualizado'}) 

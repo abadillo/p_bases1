@@ -174,9 +174,6 @@ def mostrar(obj):
     if obj == 'proveedores':
         resp = DB_proveedor().getall()
     
-    if obj == 'roles':   
-        resp = DB_generic().getall("rol")
-
     if obj == 'monedas':   
         resp = DB_generic().select("""
             SELECT m.*, c.* FROM moneda m , cotizacion c 
@@ -195,6 +192,17 @@ def mostrar(obj):
     if obj == 'rubros':   
         resp = DB_generic().getall("rubro")
 
+    if obj == 'horarios':   
+        resp = DB_generic().select("""
+            SELECT ho_codigo, ho_descripcion, ho_dia, 
+            to_char(ho_hora_entrada, 'HH12:MIAM') AS ho_hora_entrada, 
+            to_char(ho_hora_salida, 'HH12:MIAM') AS ho_hora_salida FROM horario""")
+
+    if obj == 'zonas':   
+        resp = DB_generic().getall("zona")
+
+    if obj == 'roles':   
+        resp = DB_generic().getall("rol")
 
     else:
         return """<h1>ERROR 404 </h1>
@@ -1683,7 +1691,152 @@ def manejo_rubro():
        
         return resp
 
+@app.route('/manejo_horario',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_horario():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        query = """
+            SELECT ho_codigo, ho_descripcion, ho_dia, 
+            to_char(ho_hora_entrada, 'HH24:MI') AS ho_hora_entrada, 
+            to_char(ho_hora_salida, 'HH24:MI') AS ho_hora_salida FROM horario 
+            WHERE ho_codigo = {0}""".format(id)
 
+        resp = DB_generic().select(query)
+
+        return jsonify(resp[0])   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'ho_descripcion'     :   request.form['inputhorario'],
+            'ho_dia'             :   request.form['selectdia'],
+            'ho_hora_entrada'    :   request.form['inputhorae'],
+            'ho_hora_salida'     :   request.form['inputhoras']
+        }
+
+        resp = DB_generic().add('horario',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_horario'])
+
+        data = {
+            'ho_descripcion'     :   request.form['inputhorario'],
+            'ho_dia'             :   request.form['selectdia'],
+            'ho_hora_entrada'    :   request.form['inputhorae']+':00',
+            'ho_hora_salida'     :   request.form['inputhoras']+':00'
+        }
+
+
+        resp = DB_generic().update('horario','ho_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'ho_codigo'     : id
+        }
+
+        resp = DB_generic().delete('horario',data)
+       
+        return resp
+
+@app.route('/manejo_zona',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_zona():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('zona','zo_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'zo_nombre'     :   request.form['inputzona'],
+        }
+
+        resp = DB_generic().add('zona',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_zona'])
+        
+        data = {
+            'zo_nombre'     :   request.form['inputzona'],
+        }
+
+        resp = DB_generic().update('zona','zo_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'zo_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('zona',data)
+       
+        return resp
+
+@app.route('/manejo_rol',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_rol():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('rol','ro_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'ro_nombre'     :   request.form['inputrol'],
+        }
+
+        resp = DB_generic().add('rol',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_rol'])
+        
+        data = {
+            'ro_nombre'     :   request.form['inputrol'],
+        }
+
+        resp = DB_generic().update('rol','ro_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'ro_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('rol',data)
+       
+        return resp
 
 
 
@@ -1851,24 +2004,6 @@ def inventario(id):
 
         db = DB_inventario()         
         resp = db.getall3(tienda)
-
-        return jsonify(resp)
-
-
-@app.route('/horarios',methods=['POST'])  
-def horarios():
-    
-    if request.method == 'POST':
-        
-        db = DB_generic()
-        resp = db.getall("horario")
-
-        for entidad in resp:
-            for atributo in entidad:
-                if type(entidad[atributo]) == datetime.time:
-                    entidad[atributo] = str(entidad[atributo])
-
-        print(resp)
 
         return jsonify(resp)
 

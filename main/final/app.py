@@ -204,6 +204,10 @@ def mostrar(obj):
     if obj == 'roles':   
         resp = DB_generic().getall("rol")
 
+    if obj == 'privilegios':   
+        resp = DB_generic().getall("privilegio")
+
+
     else:
         return """<h1>ERROR 404 </h1>
                   <h3>This is not the page you are looking for.</h3>"""
@@ -1838,13 +1842,58 @@ def manejo_rol():
        
         return resp
 
+@app.route('/manejo_privilegio',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_privilegio():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('privilegio','pv_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'pv_descripcion'     :   request.form['inputprivilegio'],
+        }
+
+        resp = DB_generic().add('privilegio',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_privilegio'])
+        
+        data = {
+            'pv_descripcion'     :   request.form['inputprivilegio'],
+        }
+
+        resp = DB_generic().update('privilegio','pv_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'pv_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('privilegio',data)
+       
+        return resp
+
 
 
 
 ### datatable embeded 
 
 @app.route('/metodo_pago_cliente', methods= ['GET', 'POST','DELETE'])
-def manejo_metodo_pago():
+def manejo_metodo_pago_cliente():
 
     if request.method == 'GET':
         
@@ -1884,7 +1933,7 @@ def manejo_metodo_pago():
 
 
 @app.route('/horarios_empleado', methods= ['GET', 'POST','DELETE'])
-def manejo_horarios():
+def manejo_horarios_empleado():
 
     if request.method == 'GET':
         
@@ -1926,7 +1975,7 @@ def manejo_horarios():
 
 
 @app.route('/beneficios_empleado', methods= ['GET', 'POST','DELETE'])
-def manejo_beneficios():
+def manejo_beneficios_empleado():
 
     if request.method == 'GET':
         

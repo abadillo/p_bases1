@@ -189,8 +189,15 @@ def mostrar(obj):
             WHERE m.mo_codigo = c.fk_moneda AND c.ct_expira is NULL
             AND m.mo_codigo > 1""")
 
+
     if obj == 'marcas':   
         resp = DB_generic().getall("marca")
+
+    if obj == 'beneficios':   
+        resp = DB_generic().getall("beneficio")
+
+    if obj == 'tipo_pagos':   
+        resp = DB_generic().getall("tipo_pago")
 
 
     else:
@@ -1554,6 +1561,106 @@ def manejo_marca():
 
 
 
+
+@app.route('/manejo_beneficio',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_beneficio():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('beneficio','be_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'be_nombre'     :   request.form['inputbeneficio'],
+        }
+
+        resp = DB_generic().add('beneficio',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_beneficio'])
+        
+        data = {
+            'be_nombre'     :   request.form['inputbeneficio'],
+        }
+
+        resp = DB_generic().update('beneficio','be_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'be_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('beneficio',data)
+       
+        return resp
+
+
+
+@app.route('/manejo_tipo_pago',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_tipo_pago():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+        
+        data = DB_generic().getwhere('tipo_pago','tp_codigo',id)[0]
+    
+        return jsonify(data)   
+
+    if request.method == 'POST':                    
+
+        data = {
+            'tp_descripcion'     :   request.form['inputtipo_pago'],
+        }
+
+        resp = DB_generic().add('tipo_pago',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_tipo_pago'])
+        
+        data = {
+            'tp_descripcion'     :   request.form['inputtipo_pago'],
+        }
+
+        resp = DB_generic().update('tipo_pago','tp_codigo',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'tp_codigo'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('tipo_pago',data)
+       
+        return resp
+
+
+
+
+
+
+
+
 ### datatable embeded 
 
 @app.route('/metodo_pago_cliente', methods= ['GET', 'POST','DELETE'])
@@ -1677,8 +1784,9 @@ def manejo_beneficios():
         return resp
 
 
-#### comboboxes / getall where #####
 
+
+#### comboboxes / getall where #####
 
 @app.route('/lugares',methods=['POST','GET'])  
 def lugares():
@@ -1704,7 +1812,6 @@ def lugares():
         return resp
 
 
-
 @app.route('/inventario/<id>',methods=['GET','POST'])  
 def inventario(id):
 
@@ -1719,18 +1826,6 @@ def inventario(id):
         resp = db.getall3(tienda)
 
         return jsonify(resp)
-
-
-@app.route('/metodos_pago',methods=['POST'])  
-def metodos_pago():
-    
-    if request.method == 'POST':
-
-        db = DB_generic()
-        resp = db.getall("tipo_pago")
-
-        return jsonify(resp)
-
 
 
 @app.route('/horarios',methods=['POST'])  
@@ -1749,23 +1844,6 @@ def horarios():
         print(resp)
 
         return jsonify(resp)
-
-
-
-@app.route('/beneficios',methods=['POST'])  
-def beneficios():
-    
-    if request.method == 'POST':
-        
-        db = DB_generic()
-        resp = db.getall("beneficio")
-
-
-        return jsonify(resp)
-
-
-
-
 
 
 @app.route('/telefonos/<id>',methods=['POST','GET'])  

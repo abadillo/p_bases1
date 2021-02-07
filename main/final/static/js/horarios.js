@@ -106,7 +106,7 @@ $(document).ready(function() {
 
     $.ajax({
                 
-        url:  '/horarios',
+        url:  '/mostrar/horarios',
         type: 'POST',
         dataSrc: "",
         async: false, 

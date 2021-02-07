@@ -227,7 +227,7 @@ CREATE TABLE moneda(
 
 CREATE TABLE cotizacion(
 	ct_fecha        TIMESTAMP,
-	ct_valor		NUMERIC(10) NOT NULL,
+	ct_valor		NUMERIC(20) NOT NULL,
 	ct_expira       TIMESTAMP,
 
 	fk_moneda		INTEGER NOT NULL,	
@@ -509,7 +509,6 @@ CREATE TABLE carrito_producto (
 
 	fk_carrito	      INTEGER NOT NULL,
 	fk_producto	      INTEGER NOT NULL,
-
 
 	CONSTRAINT pk_carrito_producto PRIMARY KEY (fk_producto,fk_carrito),
 

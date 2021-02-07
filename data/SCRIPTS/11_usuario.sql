@@ -1184,3 +1184,6 @@ INSERT INTO usuario (us_correo,us_contrasena,fk_empleado,fk_rol) VALUES ('ADANCO
 INSERT INTO usuario (us_correo,us_contrasena,fk_empleado,fk_rol) VALUES ('MANUELLEO589@gmail.com','EMP589',589,9);
 INSERT INTO usuario (us_correo,us_contrasena,fk_empleado,fk_rol) VALUES ('CAROLAPASTORA590@gmail.com','EMP590',590,10);
 
+
+
+INSERT INTO usuario (us_correo,us_contrasena,fk_rol) VALUES ('admin2924@gmail.com','soyadmin',11);

@@ -1938,8 +1938,6 @@ def manejo_horarios_empleado():
         
         id = int(request.args['id'])
 
-        db = DB_generic()  
-
         query ='SELECT he.fk_empleado, he.fk_horario, ho.ho_descripcion FROM horario_empleado he, horario ho WHERE he.fk_horario = ho.ho_codigo AND fk_empleado = {0}'.format(id)
 
         resp =  DB_generic().select(query)
@@ -2051,6 +2049,38 @@ def manejo_privilegios_rol():
 
         return resp
 
+@app.route('/vacaciones', methods= ['GET', 'POST','DELETE'])
+def manejo_vacaciones():
+
+    if request.method == 'GET':
+        
+        id = int(request.args['id'])
+
+        resp =  DB_generic().getwhere('vacaciones','fk_empleado',id)
+
+        return jsonify(resp)
+    
+    if request.method == 'POST': 
+       
+        data = {
+            'va_fecha_ini'   :  request.form['fecha_ini'],
+            'va_fecha_fin'   :  request.form['fecha_fin'],
+            'fk_empleado'    :  int(request.form['fk_empleado']),
+        }
+
+        resp = DB_generic().add('vacaciones',data)
+        return resp
+ 
+    if request.method == 'DELETE':
+
+        data = {
+            'va_fecha_ini'   :  request.form['va_fecha_ini'],
+            'fk_empleado'    :  int(request.form['fk_empleado']),
+        }
+
+        resp = DB_generic().delete('vacaciones',data)
+
+        return resp
 
 
 

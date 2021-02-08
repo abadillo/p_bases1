@@ -22,42 +22,48 @@ $(document).ready(function() {
 });
 
 
-
 $(function(){
 
-    $("#Genera").click(function(){            
+    $( ".target" ).change(function() {
 
-        var asis = null
-        var hora = null
-        var emple = null
-        var ing = null
+        priv = $(this).find('option:selected').val();          
+        
+        
+        
+      
 
+            $("#Genera").click(function(){            
 
+                //var asis = priv;
+                priv = $(this).find('option:selected').val();          
+                alert(priv);
 
-        $.ajax({
+                $.ajax({
+                        
+                    url:   '/Genera/'+asis,
+                    type: 'POST',
+                    data:  $('form').serialize(),
                 
-            url:   '/Genera/'+asis,
-            type: 'POST',
-            data:  $('form').serialize(),
-          
-                
-            }).done(function(response){
-                
-                console.log(response);
-                
-                if(response['error'])
-                    c_error(response['error']);
-                
-                else if (response['invalido'])
-                    c_error(response['invalido']);
-                
-                else
-                    window.location.href =  "/pdf";				
-                
-            }).fail(function(response){
-                c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
-            });
+                        
+                    }).done(function(response){
+                        
+                        console.log(response);
+                        
+                        if(response['error'])
+                            c_error(response['error']);
+                        
+                        else if (response['invalido'])
+                            c_error(response['invalido']);
+                        
+                        else
+                            window.location.href =  "/pdf";				
+                        
+                    }).fail(function(response){
+                        c_error('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+                    });
 
+                });
+       
     });
     
 });

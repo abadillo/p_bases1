@@ -90,6 +90,34 @@ SELECT ho_codigo, ho_descripcion, ho_dia, to_char(ho_hora_entrada, 'HH24') AS ho
 
 
 SELECT sele.ti_nombre,
+       MAX(mon_compras),
+       sele.nom_cliente,
+       sele.cant_compras
+  FROM (SELECT ti.ti_nombre,
+              (CASE
+                  WHEN cl.cl_tipo = 'NATURAL' THEN
+                     cl.cl_p_nombre||' '||cl.cl_s_nombre||', '||cl.cl_p_apellido||' '||cl.cl_s_apellido
+                  WHEN cl.cl_tipo = 'JURIDICO' THEN
+                     cl.cl_razon_social
+               END) nom_cliente,
+               COUNT(1) cant_compras,
+               SUM(co.co_monto_cancelar) mon_compras
+          FROM compra  co,
+               carrito ca,
+               tienda  ti,
+               cliente cl
+         WHERE co.fk_carrito  = ca.ca_id
+           AND ca.fk_tienda   = ti.ti_codigo
+           AND cl.cl_id       = co.fk_cliente
+         GROUP BY ti.ti_nombre, nom_cliente
+         ORDER BY ti.ti_nombre
+        ) sele
+ GROUP BY sele.ti_nombre;
+ ORDER BY sele.ti_nombre;
+SELECT COUNT(*) FROM compra
+SELECT DISTINCT fk_tienda FROM carrito;
+SELECT DISTINCT fk_cliente FROM compra
+ SELECT sele.ti_nombre,
        sele.nom_cliente,
        sele.cant_compras,
        MAX(mon_compras)
@@ -112,8 +140,7 @@ SELECT sele.ti_nombre,
          GROUP BY ti.ti_nombre, nom_cliente
          ORDER BY ti.ti_nombre
         ) sele
- GROUP BY sele.ti_nombre, sele.nom_cliente, sele.cant_compras
- ORDER BY sele.ti_nombre;
+ GROUP BY sele.ti_nombre, sele.nom_cliente, sele.cant_compras;
 
 ----------
 CERRAR SESSION

@@ -70,6 +70,10 @@ def Generar(obj):
         resp = db.asistencia(A,B)           
 
         return resp     
+
+    if obj == 'Horario':
+
+        return 'hl'    
     
 
 

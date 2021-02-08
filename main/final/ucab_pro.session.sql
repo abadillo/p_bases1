@@ -97,7 +97,7 @@ SELECT he.fk_horario,ho.ho_descripcion FROM horario_empleado he, horario ho WHER
 
 SELECT bm.fk_beneficio, be.be_nombre FROM beneficio_empleado bm, beneficio be WHERE bm.fk_beneficio = be.be_codigo AND fk_empleado = 1
 
-SELECT * FROM horario
+SELECT * FROM tienda
 
 to_char(co.coen_entrada, 'HH12:MI AM') 
 

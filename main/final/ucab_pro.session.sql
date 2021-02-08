@@ -9,11 +9,27 @@ SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = '1'
 
 SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = 1
 
+INSERT INTO control_entrada (coen_entrada,fk_empleado) VALUES (CURRENT_TIMESTAMP,4) WHERE fk_empleado = 4
+
+SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada wHERE coen_salida is NULL AND fk_empleado = 4
+
 select * from cotizacion
 
 SELECT * FROM cliente WHERE cl_id = J881381706 OR cl_cedula = J881381706 OR cl_rif = 'J881381706'
 
 UPDATE cotizacion SET ct_expira = '2021-02-05 21:58:22.394946' WHERE ct_expira is NULL AND fk_moneda = 14
+
+UPDATE control_entrada SET coen_salida = CURRENT_TIMESTAMP WHERE coen_entrada = 08/02/2021 14:29:49 AND fk_empleado = 4
+
+
+UPDATE control_entrada SET coen_salida = CURRENT_TIMESTAMP WHERE coen_entrada = 2021-02-08 02:29:49.132854 AND fk_empleado = 4
+
+SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada  WHERE coen_salida is NULL AND fk_empleado = 4
+
+UPDATE control_entrada SET coen_salida = CURRENT_TIMESTAMP WHERE coen_salida is NULL AND fk_empleado = 4
+
+select * from control_entrada
+
 
 INSERT INTO cotizacion (ct_fecha,ct_valor,ct_expira,fk_moneda) VALUES ('2021-02-05 21:50:33.931152',10003211,NULL,14)
 

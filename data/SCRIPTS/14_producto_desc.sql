@@ -12,9 +12,9 @@ INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_prov
 
  --Martextil
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (3200000,'Toalla Grande',1000,4,2,2);
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (3000000,'Toalla Pequeña',1000,4,2,2);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (3000000,'Toalla Pequena',1000,4,2,2);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (4000000,'Toalla Maquillaje',1000,4,2,2);
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (5000000,'Alfombra para baños',1000,4,2,2);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (5000000,'Alfombra para banos',1000,4,2,2);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (3200000,'Alfombra para Entradas',1000,4,2,2);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (6000000,'Alfombra para Salas',1000,4,2,2);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (6500000,'Cojin',1000,4,2,2);
@@ -71,8 +71,8 @@ INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_prov
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (32000000,'Pavo Esmechado',500,3,6,6);
 
  --Ofis
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (10000000,'Resma de Papel Tamaño Carta',10,15,7,7);
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (13000000,'Resma de Papel Tamaño Oficio',10,15,7,7);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (10000000,'Resma de Papel Tamano Carta',10,15,7,7);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (13000000,'Resma de Papel Tamano Oficio',10,15,7,7);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (10000000,'Engrapadora',10,15,7,7);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (1000000,'Grapas',10,15,7,7);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (8000000,'Marcadores',10,15,7,7);
@@ -100,8 +100,8 @@ INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_prov
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (150000000,'Sofa Cama',10,17,9,9);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (130000000,'Mesa Para Comedor',10,17,9,9);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (140000000,'Juego de Mueble',10,17,9,9);
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (50000000,'Puf Grande y Pequeños',10,17,9,9);
-INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (60000000,'Mesa para Niños',10,17,9,9);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (50000000,'Puf Grande y Pequenos',10,17,9,9);
+INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (60000000,'Mesa para Ninos',10,17,9,9);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (100000000,'Perchero Ropero',10,17,9,9);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (60000000,'Silla de Plastico',10,17,9,9);
 INSERT INTO producto (pr_precio, pr_nombre, pr_peso, fk_rubro, fk_marca, fk_proveedor) VALUES (70000000,'Silla de Plastico',10,17,9,9);

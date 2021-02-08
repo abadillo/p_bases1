@@ -8,7 +8,7 @@ TABLE privilegio_rol;              -- #LISTO   T: 98
 
 /* EMPLEADOS */
 TABLE empleado;                    -- #LISTO   T: 590  
-TABLE horario;                     -- #LISTO   T: 14 (7 MAÑANA, 7 TARDE)
+TABLE horario;                     -- #LISTO   T: 14 (7 MAnANA, 7 TARDE)
 TABLE horario_empleado;            -- #LISTO   T: 2124
 TABLE beneficio;                   -- #LISTO   T: 20
 TABLE beneficio_empleado;          -- #LISTO   T: 1475 (2 GENERALES, 1 DEL E1-5)

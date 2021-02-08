@@ -52,11 +52,11 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20500,'JOSE 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20600,'JOSE FELIX RIBAS','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20700,'JOSE RAFAEL REVENGA','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20800,'LIBERTADOR','MUNICIPIO',20000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20900,'MARIO BRICEÑO IRAGORRY','MUNICIPIO',20000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20900,'MARIO BRICEnO IRAGORRY','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21000,'OCUMARE DE LA COSTA DE ORO','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21100,'SAN CASIMIRO','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21200,'SAN SEBASTIAN','MUNICIPIO',20000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21300,'SANTIAGO MARIÑO','MUNICIPIO',20000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21300,'SANTIAGO MARInO','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21400,'SANTOS MICHELENEA','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21500,'SUCRE','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21600,'TOVAR','MUNICIPIO',20000);
@@ -64,7 +64,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21700,'URDAN
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21800,'ZAMORA','MUNICIPIO',20000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30100,'ACHAGUAS','MUNICIPIO',30000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30200,'BIRUACA','MUNICIPIO',30000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30300,'MUÑOZ','MUNICIPIO',30000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30300,'MUnOZ','MUNICIPIO',30000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30400,'PEDRO CAMEJO','MUNICIPIO',30000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30500,'SAN FERNANDO','MUNICIPIO',30000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30600,'MUNICIPIO PAEZ','MUNICIPIO',30000);
@@ -72,7 +72,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30700,'ROMUL
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40100,'ANACO','MUNICIPIO',40000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40200,'ARAGUA','MUNICIPIO',40000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40300,'DIEGO BAUTISTA URBANEJA','MUNICIPIO',40000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40400,'FERNANDO PEÑALVER','MUNICIPIO',40000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40400,'FERNANDO PEnALVER','MUNICIPIO',40000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40500,'SAN FRANCISO DEL CARMEN CARVAJAL','MUNICIPIO',40000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40600,'FRANCISCO DE MIRANDA','MUNICIPIO',40000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (40700,'GUANIPA','MUNICIPIO',40000);
@@ -110,7 +110,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61000,'PEDRA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61100,'ROJAS','MUNICIPIO',60000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61200,'SOSA','MUNICIPIO',60000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70100,'CARONI','MUNICIPIO',70000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70200,'CEDEÑO','MUNICIPIO',70000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70200,'CEDEnO','MUNICIPIO',70000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70300,'EL CALLAO','MUNICIPIO',70000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70400,'GRAN SABANA','MUNICIPIO',70000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70500,'HERES','MUNICIPIO',70000);
@@ -171,7 +171,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120600,'BOLI
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120700,'CAJIGAL','MUNICIPIO',120000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120800,'CRUZ SALMERON ACOSTA','MUNICIPIO',120000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120900,'LIBERTADOR','MUNICIPIO',120000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (121000,'MARIÑO','MUNICIPIO',120000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (121000,'MARInO','MUNICIPIO',120000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (121100,'MEJIA','MUNICIPIO',120000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (121200,'MONTES','MUNICIPIO',120000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (121300,'RIBERO','MUNICIPIO',120000);
@@ -181,7 +181,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130100,'ACOS
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130200,'AGUASAY','MUNICIPIO',130000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130300,'BOLIVAR','MUNICIPIO',130000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130400,'CARIPE','MUNICIPIO',130000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130500,'CEDEÑO','MUNICIPIO',130000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130500,'CEDEnO','MUNICIPIO',130000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130600,'EZEQUIEL ZAMORA','MUNICIPIO',130000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130700,'LIBERTADOR','MUNICIPIO',130000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130800,'MATURIN','MUNICIPIO',130000);
@@ -197,7 +197,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140400,' GAR
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140500,' GOMEZ','MUNICIPIO',140000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140600,' MANEIRO','MUNICIPIO',140000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140700,' MARCANO','MUNICIPIO',140000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140800,' MARIÑO','MUNICIPIO',140000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140800,' MARInO','MUNICIPIO',140000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140900,' MACANAO','MUNICIPIO',140000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (141000,' TUBORES','MUNICIPIO',140000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (141100,' VILLALBA','MUNICIPIO',140000);
@@ -206,7 +206,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150200,'AGUA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150300,'ESTELLER','MUNICIPIO',150000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150400,'GUANARE','MUNICIPIO',150000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150500,'GUANARITO','MUNICIPIO',150000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150600,'MONSEÑOR JOSE VICENTE DE UNDA','MUNICIPIO',150000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150600,'MONSEnOR JOSE VICENTE DE UNDA','MUNICIPIO',150000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150700,'OSPINO','MUNICIPIO',150000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150800,'PAEZ','MUNICIPIO',150000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150900,'PAPELON','MUNICIPIO',150000);
@@ -238,7 +238,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171100,'JACU
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171200,'LOS TAQUES','MUNICIPIO',170000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171300,'MAUROA','MUNICIPIO',170000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171400,'MIRANDA','MUNICIPIO',170000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171500,'MONSEÑOR ITURRIZA','MUNICIPIO',170000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171500,'MONSEnOR ITURRIZA','MUNICIPIO',170000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171600,'PALMASOLA','MUNICIPIO',170000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171700,'PETIT','MUNICIPIO',170000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (171800,'PIRITU','MUNICIPIO',170000);
@@ -259,7 +259,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180700,'CARA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180800,'CARDENAL QUINTERO','MUNICIPIO',180000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180900,'GUARAQUE','MUNICIPIO',180000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181000,'JULIO CESAR SALAS','MUNICIPIO',180000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181100,'JUSTO BRICEÑO','MUNICIPIO',180000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181100,'JUSTO BRICEnO','MUNICIPIO',180000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181200,'LIBERTADOR','MUNICIPIO',180000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181300,'MIRANDA','MUNICIPIO',180000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181400,'OBISPO RAMOS DE LORA','MUNICIPIO',180000);
@@ -291,7 +291,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191600,'LIBE
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191700,'LOBATERA','MUNICIPIO',190000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191800,'MICHELENA','MUNICIPIO',190000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191900,'PANAMERICANO','MUNICIPIO',190000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192000,'PEDRO MARIA UREÑA','MUNICIPIO',190000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192000,'PEDRO MARIA UREnA','MUNICIPIO',190000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192100,'RAFAEL URDANETA','MUNICIPIO',190000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192200,'SAMUEL DARIO MALDONADO','MUNICIPIO',190000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192300,'SAN CRISTOBAL','MUNICIPIO',190000);
@@ -307,7 +307,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200300,' BOL
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200400,' CANDELARIA','MUNICIPIO',200000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200500,' CARACHE','MUNICIPIO',200000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200600,' ESCUQUE','MUNICIPIO',200000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200700,' JOSE FELIPE MARQUEZ CAÑIZALES','MUNICIPIO',200000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200700,' JOSE FELIPE MARQUEZ CAnIZALES','MUNICIPIO',200000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200800,' JUAN VICENTE CAMPOS ELIAS','MUNICIPIO',200000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200900,' LA CEIBA','MUNICIPIO',200000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201000,' MIRANDA','MUNICIPIO',200000);
@@ -330,7 +330,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (210600,'JOSE
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (210700,'LA TRINIDAD','MUNICIPIO',210000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (210800,'MANUEL MONGE','MUNICIPIO',210000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (210900,'NIRGUA','MUNICIPIO',210000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (211000,'PEÑA','MUNICIPIO',210000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (211000,'PEnA','MUNICIPIO',210000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (211100,'SAN FELIPE','MUNICIPIO',210000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (211200,'SUCRE','MUNICIPIO',210000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (211300,'URACHICHE','MUNICIPIO',210000);
@@ -343,7 +343,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220500,' COL
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220600,' FRANCISCO JAVIER PULGAR','MUNICIPIO',220000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220700,' JESUS ENRIQUE LOSSADA','MUNICIPIO',220000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220800,' JESUS MARIA SEMPRUN','MUNICIPIO',220000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220900,' LA CAÑADA DE URDANETA','MUNICIPIO',220000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220900,' LA CAnADA DE URDANETA','MUNICIPIO',220000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221000,' LAGUNILLAS','MUNICIPIO',220000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221100,' MACHIQUES DE PERIJA','MUNICIPIO',220000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221200,' MARA','MUNICIPIO',220000);
@@ -372,7 +372,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10201,'CUMBO
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10202,'SAN JOSE DE BARLOVENTO','PARROQUIA',10200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10301,'EL CAFETAL','PARROQUIA',10300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10302,'LAS MINAS','PARROQUIA',10300);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10303,'NUESTRA SEÑORA DEL ROSARIO','PARROQUIA',10300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10303,'NUESTRA SEnORA DEL ROSARIO','PARROQUIA',10300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10401,'HIGUEROTE','PARROQUIA',10400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10402,'CURIEPE','PARROQUIA',10400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10403,'TACARIGUA DE BRION','PARROQUIA',10400);
@@ -382,7 +382,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10701,'CHACA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10801,'CHARALLAVE','PARROQUIA',10800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10802,'LAS BRISAS','PARROQUIA',10800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (10901,'SANTA ROSA DE PALERMO','PARROQUIA',10900);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (11001,'ALTAGACIA DE LA MONTAÑA','PARROQUIA',11000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (11001,'ALTAGACIA DE LA MONTAnA','PARROQUIA',11000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (11002,'CECILIO ACOSTA','PARROQUIA',11000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (11003,'LOS TEQUES','PARROQUIA',11000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (11004,'EL JARILLO','PARROQUIA',11000);
@@ -420,7 +420,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20201,'CAMAT
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20202,'CARMEN DE CURA','PARROQUIA',20200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20301,'SANTA RITA','PARROQUIA',20300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20302,'FRANCISCO DE MIRANDA','PARROQUIA',20300);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20303,'MONSEÑOR FELICIANO GONZALEZ','PARROQUIA',20300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20303,'MONSEnOR FELICIANO GONZALEZ','PARROQUIA',20300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20401,'PEDRO JOSE OVALLES','PARROQUIA',20400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20402,'JOAQUIN CRESPO','PARROQUIA',20400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20403,'JOSE CDASANOVA GODOY','PARROQUIA',20400);
@@ -440,7 +440,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20702,'EL CO
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20801,'PALO NEGRO','PARROQUIA',20800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20802,'SAN MARTIN DE PORRES','PARROQUIA',20800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20901,'EL LIMON','PARROQUIA',20900);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20902,'CAÑA DE AZUCAR','PARROQUIA',20900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (20902,'CAnA DE AZUCAR','PARROQUIA',20900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21001,'OCUMARE DE LA COSTA','PARROQUIA',21000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21101,'SAN CASIMIRO','PARROQUIA',21100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21102,'GUIRIPA','PARROQUIA',21100);
@@ -458,7 +458,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21501,'CAGUA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21502,'BELLA VISTA','PARROQUIA',21500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21601,'TOVAR','PARROQUIA',21600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21701,'URDANETA','PARROQUIA',21700);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21702,'LA PEÑITAS','PARROQUIA',21700);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21702,'LA PEnITAS','PARROQUIA',21700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21703,'SAN FRANCISCO DE CARA','PARROQUIA',21700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21704,'TAGUAY','PARROQUIA',21700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (21801,'VILLA DE CURA','PARROQUIA',21800);
@@ -483,7 +483,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30402,'CODAZ
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30403,'CUNAVICHE','PARROQUIA',30400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30501,'SAN FERNANDO','PARROQUIA',30500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30502,'EL RECREO','PARROQUIA',30500);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30503,'PEÑALVER','PARROQUIA',30500);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30503,'PEnALVER','PARROQUIA',30500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30504,'SAN FRAFAEL DE ATAMAICA','PARROQUIA',30500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30601,'GUASDALITO','PARROQUIA',30600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (30602,'ARAMENDI','PARROQUIA',30600);
@@ -526,7 +526,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41202,'SAN P
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41301,'SAN MATEO','PARROQUIA',41300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41302,'EL CARITO','PARROQUIA',41300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41303,'SANTA INES','PARROQUIA',41300);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41304,'LA ROMEREÑA','PARROQUIA',41300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41304,'LA ROMEREnA','PARROQUIA',41300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41401,'CLARINES','PARROQUIA',41400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41402,'GUANAPE','PARROQUIA',41400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (41403,'SABANA DE UCHIRE','PARROQUIA',41400);
@@ -551,8 +551,8 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (42002,'MIGEU
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (42101,'EL CHAPARRO','PARROQUIA',42100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (42102,'TOMAS ALFARO CALATRAVA','PARROQUIA',42100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50101,'LA ESMERALDA','PARROQUIA',50100);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50102,'HUACHAMACARE, ACANAÑA','PARROQUIA',50100);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50103,'MARAWAKA, TOKY SHAMANAÑA','PARROQUIA',50100);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50102,'HUACHAMACARE, ACANAnA','PARROQUIA',50100);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50103,'MARAWAKA, TOKY SHAMANAnA','PARROQUIA',50100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50104,'MAVAKA','PARROQUIA',50100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50105,'SIERRA PARIMA, PARIMABE','PARROQUIA',50100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50201,'ATABAPO, SAN FERNANDO DE ATABAPO','PARROQUIA',50200);
@@ -561,7 +561,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50203,'YAPAC
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50204,'CANAME, GUARINUMA','PARROQUIA',50200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50301,'FERNANDO GRION TOVAR, PUERTO AYACUCHO','PARROQUIA',50300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50302,'LUIS ALBERTO GOMEZ','PARROQUIA',50300);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50303,'PAHUEÑA','PARROQUIA',50300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50303,'PAHUEnA','PARROQUIA',50300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50304,'PLATANILLAL','PARROQUIA',50300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50401,'SAMRIAPO','PARROQUIA',50400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (50402,'SIPAPO','PARROQUIA',50400);
@@ -612,7 +612,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60701,'BARRA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60702,'EL SOCORRO','PARROQUIA',60700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60703,'MAZPARRITO','PARROQUIA',60700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60801,'SANTA BARBARA','PARROQUIA',60800);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60802,'PEDRO BREICEÑO MENDEZ','PARROQUIA',60800);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60802,'PEDRO BREICEnO MENDEZ','PARROQUIA',60800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60803,'RAMON IGNACIO MENDEZ','PARROQUIA',60800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60804,'JOSE IGNACIO DEL PUMAR','PARROQUIA',60800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60901,'OBISPOS','PARROQUIA',60900);
@@ -620,7 +620,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60902,'LOS G
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60903,'EL REAL','PARROQUIA',60900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (60904,'LA LUZ','PARROQUIA',60900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61001,'CIUDAD BOLIVIA','PARROQUIA',61000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61002,'JOSE IGNACIO BRICEÑO','PARROQUIA',61000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61002,'JOSE IGNACIO BRICEnO','PARROQUIA',61000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61003,'JOSE FELIX RIBAS','PARROQUIA',61000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61004,'PAEZ','PARROQUIA',61000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (61101,'LIBERTAD','PARROQUIA',61100);
@@ -645,7 +645,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70109,'POZO 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70110,'YOCOIMA','PARROQUIA',70100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70111,'5 DE JULIO','PARROQUIA',70100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70112,'PUERTO ORDAZ','PARROQUIA',70100);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70201,'CEDEÑO','PARROQUIA',70200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70201,'CEDEnO','PARROQUIA',70200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70202,'ALTAGRACIA','PARROQUIA',70200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70203,'ASCENCION FARRERAS','PARROQUIA',70200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (70204,'GUANIAMO','PARROQUIA',70200);
@@ -712,7 +712,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81301,'SAN J
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81401,'URBANA CANDELARIA','PARROQUIA',81400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81402,'URBANA CATEDRAL','PARROQUIA',81400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81403,'URBANA EL SOCORRO','PARROQUIA',81400);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81404,'URBANA MIGUEL PEÑA','PARROQUIA',81400);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81404,'URBANA MIGUEL PEnA','PARROQUIA',81400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81405,'URBANA RAFAEL URDANETA','PARROQUIA',81400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81406,'URBANA SAN BLAS','PARROQUIA',81400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (81407,'URBANA SAN JOSE','PARROQUIA',81400);
@@ -749,7 +749,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100401,'SAN 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100402,'JOSE VIDAL MARCANO','PARROQUIA',100400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100403,'LEONARDO RUIZ PINEDA','PARROQUIA',100400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100404,'MARISCAL ANTONIO JOSE DE SUCRE','PARROQUIA',100400);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100405,'MONSEÑOR ARGIMIRO GARCIA','PARROQUIA',100400);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100405,'MONSEnOR ARGIMIRO GARCIA','PARROQUIA',100400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100406,'VIRGEN DEL VALLE','PARROQUIA',100400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100407,'SAN RAFAEL','PARROQUIA',100400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (100408,'JUAN MILLAN','PARROQUIA',100400);
@@ -792,7 +792,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (111302,'CAZO
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (111401,'SAN JOSE DE GUARIBE','PARROQUIA',111400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (111501,'SANTA MARIA DE IPIRE','PARROQUIA',111500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (111502,'ALTAMIRA','PARROQUIA',111500);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120101,'MARIÑO','PARROQUIA',120100);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120101,'MARInO','PARROQUIA',120100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120102,'ROMULO GALLEGOS','PARROQUIA',120100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120201,'SAN JOSE DE AREOCUAR','PARROQUIA',120200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (120202,'TAVERA ACOSTA','PARROQUIA',120200);
@@ -860,7 +860,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130404,'SAN 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130405,'TERESEN','PARROQUIA',130400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130406,'CARIPE','PARROQUIA',130400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130501,'AREO','PARROQUIA',130500);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130502,'CAPITAL CEDEÑO','PARROQUIA',130500);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130502,'CAPITAL CEDEnO','PARROQUIA',130500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130503,'SAN FELIX DE CANTALICIO','PARROQUIA',130500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130504,'VIENTO FRESCO','PARROQUIA',130500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (130601,'EL TEJERO','PARROQUIA',130600);
@@ -908,7 +908,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140601,'AGUI
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140602,'MANEIRO​','PARROQUIA',140600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140701,'ADRIAN​','PARROQUIA',140700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140702,'JUAN GRIEGO​','PARROQUIA',140700);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140801,'MARIÑO​','PARROQUIA',140800);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140801,'MARInO​','PARROQUIA',140800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140901,'SAN FRANCISCO DE MACANAO​','PARROQUIA',140900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (140902,'BOCA DE RIO​','PARROQUIA',140900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (141001,'TUBORES​','PARROQUIA',141000);
@@ -922,14 +922,14 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150301,'PIRI
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150302,'UVERAL','PARROQUIA',150300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150401,'CORDOVA','PARROQUIA',150400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150402,'GUANARE','PARROQUIA',150400);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150403,'SAN JOSE DE LA MONTAÑA','PARROQUIA',150400);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150403,'SAN JOSE DE LA MONTAnA','PARROQUIA',150400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150404,'SAN JUAN DE GUANAGUANARE','PARROQUIA',150400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150405,'VIRGEN DE COROMOTO','PARROQUIA',150400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150501,'GUANARITO','PARROQUIA',150500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150502,'TRINIDAD DE LA CAPILLA','PARROQUIA',150500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150503,'DIVINA PASTORA','PARROQUIA',150500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150601,'CHABASQUEN','PARROQUIA',150600);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150602,'PEÑA BLANCA','PARROQUIA',150600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150602,'PEnA BLANCA','PARROQUIA',150600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150701,'APARICION','PARROQUIA',150700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150702,'LA ESTACION','PARROQUIA',150700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150703,'OSPINO','PARROQUIA',150700);
@@ -937,7 +937,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150801,'ACAR
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150802,'PAYARA','PARROQUIA',150800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150803,'PIMPINELA','PARROQUIA',150800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150804,'RAMON PERAZA','PARROQUIA',150800);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150901,'CAÑO DELGADITO','PARROQUIA',150900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150901,'CAnO DELGADITO','PARROQUIA',150900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (150902,'PAPELON','PARROQUIA',150900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (151001,'ANTOLIN TOVAR ANQUINO','PARROQUIA',151000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (151002,'BOCONOITO','PARROQUIA',151000);
@@ -978,7 +978,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160503,'SARA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160601,'ALTAGRACIA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160602,'ANTONIO DIAZ','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160603,'CAMACARO','PARROQUIA',160600);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160604,'CASTAÑEDA','PARROQUIA',160600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160604,'CASTAnEDA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160605,'CECILIO ZUBILLAGA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160606,'CHIQUINQUIRA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160607,'EL BLANCO','PARROQUIA',160600);
@@ -987,7 +987,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160609,'HERI
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160610,'LARA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160611,'LAS MERCEDES','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160612,'MANUEL MORILLO','PARROQUIA',160600);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160613,'MONTAÑA VERDE','PARROQUIA',160600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160613,'MONTAnA VERDE','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160614,'MONTES DE OCA','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160615,'REYES DE VARGAS','PARROQUIA',160600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (160616,'TORRES','PARROQUIA',160600);
@@ -1019,7 +1019,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170102,'LA P
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170103,'LIBERTADOR','PARROQUIA',170100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170104,'SAN JUAN DE LOS CAYOS','PARROQUIA',170100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170201,'ARACUA','PARROQUIA',170200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170202,'LA PEÑA','PARROQUIA',170200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170202,'LA PEnA','PARROQUIA',170200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170203,'SAN LUIS','PARROQUIA',170200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170301,'BARIRO','PARROQUIA',170300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (170302,'BOROJO','PARROQUIA',170300);
@@ -1117,7 +1117,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180504,'EL M
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180505,'GUAIMARAL','PARROQUIA',180500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180506,'MUCUTUY ','PARROQUIA',180500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180507,'MUCUCHACHI','PARROQUIA',180500);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180601,'FERNANDEZ PEÑA','PARROQUIA',180600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180601,'FERNANDEZ PEnA','PARROQUIA',180600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180602,'MATRIZ','PARROQUIA',180600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180603,'MONTALBAN','PARROQUIA',180600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (180604,'ACEQUIAS','PARROQUIA',180600);
@@ -1138,7 +1138,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181102,'TORO
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181201,'ANTONIO SPINETTI DINI','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181202,'ARIAS','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181203,'CARACCIOLO PARRA PEREZ','PARROQUIA',181200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181204,'DOMINGO PEÑA','PARROQUIA',181200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181204,'DOMINGO PEnA','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181205,'EL LLANO','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181206,'GONZALO PICON FEBRES','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181207,'JACINTO PLAZA','PARROQUIA',181200);
@@ -1152,7 +1152,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181214,'EL M
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181215,'LOS NEVADOS','PARROQUIA',181200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181301,'ANDRES ELOY BLANCO','PARROQUIA',181300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181302,'LA VENTA','PARROQUIA',181300);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181303,'PIÑANGO','PARROQUIA',181300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181303,'PInANGO','PARROQUIA',181300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181304,'TIMOTES','PARROQUIA',181300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181401,'ELOY PAREDES','PARROQUIA',181400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (181402,'SAN RAFAEL DE ALCAZAR','PARROQUIA',181400);
@@ -1181,7 +1181,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182201,'INDE
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182202,'MARIA DE LA CONCEPCION PALACIOS BLANCO','PARROQUIA',182200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182203,'NUEVA BOLIVIA','PARROQUIA',182200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182204,'SANTA APOLONIA','PARROQUIA',182200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182301,'CAÑO EL TIGRE','PARROQUIA',182300);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182301,'CAnO EL TIGRE','PARROQUIA',182300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (182302,'ZEA','PARROQUIA',182300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190101,'CORDERO','PARROQUIA',190100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190201,'LAS MESAS','PARROQUIA',190200);
@@ -1197,7 +1197,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190502,'LA F
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190503,'TARIBA','PARROQUIA',190500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190601,'SANTA ANA DEL TACHIRA','PARROQUIA',190600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190701,'ALBERTO ADRIANI','PARROQUIA',190700);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190702,'SAN RAFAEL DEL PIÑAL','PARROQUIA',190700);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190702,'SAN RAFAEL DEL PInAL','PARROQUIA',190700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190703,'SANTO DOMINGO','PARROQUIA',190700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190801,'SAN JOSE DE BOLIVAR','PARROQUIA',190800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (190901,'BOCA DE GRITA','PARROQUIA',190900);
@@ -1209,7 +1209,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191102,'JUAN
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191103,'ROMAN CARDENAS','PARROQUIA',191100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191201,'EMILIO CONSTANTINO GUERRERO','PARROQUIA',191200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191202,'LA GRITA','PARROQUIA',191200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191203,'MONSEÑOR MIGUEL ANTONIO SALAS','PARROQUIA',191200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191203,'MONSEnOR MIGUEL ANTONIO SALAS','PARROQUIA',191200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191301,'EL COBRE','PARROQUIA',191300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191401,'BRAMON','PARROQUIA',191400);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191402,'LA PETROLEA','PARROQUIA',191400);
@@ -1227,7 +1227,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191702,'CONS
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191801,'MICHELENA','PARROQUIA',191800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191901,'COLONCITO','PARROQUIA',191900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (191902,'LA PALMITA','PARROQUIA',191900);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192001,'UREÑA','PARROQUIA',192000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192001,'UREnA','PARROQUIA',192000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192002,'NUEVA ARCADIA','PARROQUIA',192000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192101,'DELICIAS','PARROQUIA',192100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192201,'BOCONO','PARROQUIA',192200);
@@ -1246,7 +1246,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192702,'CAPI
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192703,'SAN PABLO','PARROQUIA',192700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192801,'SAN JOSECITO','PARROQUIA',192800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192901,'CARDENAS','PARROQUIA',192900);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192902,'JUAN PABLO PEÑALOZA','PARROQUIA',192900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192902,'JUAN PABLO PEnALOZA','PARROQUIA',192900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192903,'POTOSI','PARROQUIA',192900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (192904,'PREGONERO','PARROQUIA',192900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200101,'ARAGUANEY','PARROQUIA',200100);
@@ -1261,7 +1261,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200205,'BURB
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200206,'GENERAL RIBAS','PARROQUIA',200200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200207,'GUARAMACAL','PARROQUIA',200200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200208,'VEGA DE GUARAMACAL','PARROQUIA',200200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200209,'MONSEÑOR JAUREGUI','PARROQUIA',200200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200209,'MONSEnOR JAUREGUI','PARROQUIA',200200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200210,'RAFAEL RANGEL','PARROQUIA',200200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200211,'SAN MIGUEL','PARROQUIA',200200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (200212,'SAN JOSE','PARROQUIA',200200);
@@ -1303,7 +1303,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201101,'MONT
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201102,'BUENA VISTA','PARROQUIA',201100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201103,'SANTA MARIA DEL HORCON','PARROQUIA',201100);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201201,'MOTATAN','PARROQUIA',201200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201202,'EL BAÑO','PARROQUIA',201200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201202,'EL BAnO','PARROQUIA',201200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201203,'JALISCO','PARROQUIA',201200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201301,'PAMPAN','PARROQUIA',201300);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201302,'FLOR DE PATRIA','PARROQUIA',201300);
@@ -1318,7 +1318,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201503,'LA P
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201504,'LOS CEDROS','PARROQUIA',201500);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201601,'CARVAJAL','PARROQUIA',201600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201602,'CAMPO ALEGRE','PARROQUIA',201600);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201603,'ANTONIO NICOLAS BRICEÑO','PARROQUIA',201600);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201603,'ANTONIO NICOLAS BRICEnO','PARROQUIA',201600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201604,'JOSE LEONARDO SUAREZ','PARROQUIA',201600);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201701,'SABANA DE MENDOZA','PARROQUIA',201700);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201702,'JUNIN','PARROQUIA',201700);
@@ -1329,13 +1329,13 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201802,'CHIQ
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201803,'CRISTOBAL MENDOZA','PARROQUIA',201800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201804,'CRUZ CARRILLO','PARROQUIA',201800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201805,'MATRIZ','PARROQUIA',201800);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201806,'MONSEÑOR CARRILLO','PARROQUIA',201800);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201806,'MONSEnOR CARRILLO','PARROQUIA',201800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201807,'TRES ESQUINAS','PARROQUIA',201800);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201901,'CABIMBU','PARROQUIA',201900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201902,'JAJO','PARROQUIA',201900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201903,'LA MESA DE ESNUJAQUE','PARROQUIA',201900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201904,'SANTIAGO','PARROQUIA',201900);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201905,'TUÑAME','PARROQUIA',201900);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201905,'TUnAME','PARROQUIA',201900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (201906,'LA QUEBRADA','PARROQUIA',201900);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (202001,'JUAN IGNACIO MONTILLA','PARROQUIA',202000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (202002,'LA BEATRIZ','PARROQUIA',202000);
@@ -1370,7 +1370,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220103,'SAN 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220201,'SAN TIMOTEO','PARROQUIA',220200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220202,'GENERAL URDANETA','PARROQUIA',220200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220203,'LIBERTADOR','PARROQUIA',220200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220204,'MARCELINO BRICEÑO','PARROQUIA',220200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220204,'MARCELINO BRICEnO','PARROQUIA',220200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220205,'NUEVO','PARROQUIA',220200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220206,'MANUEL GUANIPA MATOS','PARROQUIA',220200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (220301,'AMBROSIO','PARROQUIA',220300);
@@ -1417,7 +1417,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221201,'SAN 
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221202,'LA SIERRITA','PARROQUIA',221200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221203,'LAS PARCELAS','PARROQUIA',221200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221204,'LUIS DE VICENTE','PARROQUIA',221200);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221205,'MONSEÑOR MARCOS SERGIO GODOY','PARROQUIA',221200);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221205,'MONSEnOR MARCOS SERGIO GODOY','PARROQUIA',221200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221206,'RICAURTE','PARROQUIA',221200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221207,'TAMARE','PARROQUIA',221200);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221301,'ANTONIO BORJAS ROMERO','PARROQUIA',221300);
@@ -1467,7 +1467,7 @@ INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (221903,'RAFA
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222001,'BOBURES','PARROQUIA',222000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222002,'GIBRALTAR','PARROQUIA',222000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222003,'HERAS','PARROQUIA',222000);
-INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222004,'MONSEÑOR ARTURO ALVAREZ','PARROQUIA',222000);
+INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222004,'MONSEnOR ARTURO ALVAREZ','PARROQUIA',222000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222005,'ROMULO GALLEGOS','PARROQUIA',222000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222006,'EL BATEY','PARROQUIA',222000);
 INSERT INTO lugar (lu_codigo, lu_nombre, lu_tipo, fk_lugar) VALUES (222101,'RAFAEL URDANETA','PARROQUIA',222100);
@@ -1879,7 +1879,7 @@ INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250459,'CALLE
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250460,'AV. CINCUNVALACION OESTE','DIRECCION',120502);
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250461,'AV. JESUS SUBERO, SAN REMO MALL','DIRECCION',42001);
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250462,'AV. FERRERO TAMAYO','DIRECCION',192301);
-INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250463,'AV. CONCEPCION MARIÑO','DIRECCION',140402);
+INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250463,'AV. CONCEPCION MARInO','DIRECCION',140402);
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250464,'TRONCAL 3','DIRECCION',170601);
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250465,'CARRETERA NACIONAL BOCONO','DIRECCION',150404);
 INSERT INTO lugar (lu_codigo,lu_nombre, lu_tipo, fk_lugar) VALUES (250466,'AVENIDA CARMONA','DIRECCION',201802);

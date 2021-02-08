@@ -245,7 +245,8 @@ $(function(){
                 window.location.href =  '/Reporte De Empleados';	
                 break;
             case '45':
-                window.location.href =  '/Registro De Horario';	
+                control_entrada();
+                window.location.href = window.location.href;
                 break;
         
            

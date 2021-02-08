@@ -52,6 +52,44 @@ def sesion():
 
 
 
+@app.route('/control_entrada', methods=['GET','POST'])    
+def control_entrada():
+
+    if request.method == 'GET':
+
+        query = """SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada 
+                   WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        resp = DB_generic().select(query)
+         
+        if resp :  return 'Se registrar la salida de su ultima entrada:\n' + resp[0]['coen_entrada'] 
+        
+        return 'Se registrara la entrada.'
+    
+
+    if request.method == 'POST':
+
+        query = """SELECT coen_entrada FROM control_entrada 
+                   WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        resp = DB_generic().select(query)
+
+        if (resp): 
+            equery = """UPDATE control_entrada SET coen_salida = CURRENT_TIMESTAMP 
+                        WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        else:
+            equery = """INSERT INTO control_entrada (coen_entrada,fk_empleado) 
+                        VALUES (CURRENT_TIMESTAMP,{0})""".format(session['fk_empleado'])
+                
+
+        if (DB_generic().equery(equery)): return 'Registro exitoso'
+        
+        return "Registro fallido\nIntentelo de nuevo"
+        
+        
+
+
 #### Interfaces principales ####
 
 
@@ -111,7 +149,6 @@ def compra_fisica():
     if request.method == 'PUT':
                 
         return jsonify({'invalido': 'Contraseña Invalida'})        
-
 
 
 @app.route('/cancela_compra/<id_carrito>', methods=['GET','PUT'])    
@@ -1938,8 +1975,6 @@ def manejo_horarios_empleado():
         
         id = int(request.args['id'])
 
-        db = DB_generic()  
-
         query ='SELECT he.fk_empleado, he.fk_horario, ho.ho_descripcion FROM horario_empleado he, horario ho WHERE he.fk_horario = ho.ho_codigo AND fk_empleado = {0}'.format(id)
 
         resp =  DB_generic().select(query)
@@ -2051,6 +2086,38 @@ def manejo_privilegios_rol():
 
         return resp
 
+@app.route('/vacaciones', methods= ['GET', 'POST','DELETE'])
+def manejo_vacaciones():
+
+    if request.method == 'GET':
+        
+        id = int(request.args['id'])
+
+        resp =  DB_generic().getwhere('vacaciones','fk_empleado',id)
+
+        return jsonify(resp)
+    
+    if request.method == 'POST': 
+       
+        data = {
+            'va_fecha_ini'   :  request.form['fecha_ini'],
+            'va_fecha_fin'   :  request.form['fecha_fin'],
+            'fk_empleado'    :  int(request.form['fk_empleado']),
+        }
+
+        resp = DB_generic().add('vacaciones',data)
+        return resp
+ 
+    if request.method == 'DELETE':
+
+        data = {
+            'va_fecha_ini'   :  request.form['va_fecha_ini'],
+            'fk_empleado'    :  int(request.form['fk_empleado']),
+        }
+
+        resp = DB_generic().delete('vacaciones',data)
+
+        return resp
 
 
 

@@ -52,6 +52,44 @@ def sesion():
 
 
 
+@app.route('/control_entrada', methods=['GET','POST'])    
+def control_entrada():
+
+    if request.method == 'GET':
+
+        query = """SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada 
+                   WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        resp = DB_generic().select(query)
+         
+        if resp :  return 'Se registrar la salida de su ultima entrada:\n' + resp[0]['coen_entrada'] 
+        
+        return 'Se registrara la entrada.'
+    
+
+    if request.method == 'POST':
+
+        query = """SELECT coen_entrada FROM control_entrada 
+                   WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        resp = DB_generic().select(query)
+
+        if (resp): 
+            equery = """UPDATE control_entrada SET coen_salida = CURRENT_TIMESTAMP 
+                        WHERE coen_salida is NULL AND fk_empleado = {0}""".format(session['fk_empleado'])
+
+        else:
+            equery = """INSERT INTO control_entrada (coen_entrada,fk_empleado) 
+                        VALUES (CURRENT_TIMESTAMP,{0})""".format(session['fk_empleado'])
+                
+
+        if (DB_generic().equery(equery)): return 'Registro exitoso'
+        
+        return "Registro fallido\nIntentelo de nuevo"
+        
+        
+
+
 #### Interfaces principales ####
 
 
@@ -111,7 +149,6 @@ def compra_fisica():
     if request.method == 'PUT':
                 
         return jsonify({'invalido': 'Contraseña Invalida'})        
-
 
 
 @app.route('/cancela_compra/<id_carrito>', methods=['GET','PUT'])    

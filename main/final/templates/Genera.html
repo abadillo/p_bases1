@@ -10,51 +10,52 @@
     </head>   
     <body>
         <form>
+            
             <small class="form-text text-danger mb-2">
                 <p id="m_invalido"></p>
-              </small>
+            </small>
+
             <h1>GENERACION DE REPORTES UCABMART</h1>
             
             <div id="fondo1">
-                
-                    <select id="Combo" class="custom-select browser-default target" name="nieve">
-                        <option value=""selected disabled>Tipo de Reportes</option>
-                        <option value="Asisitencia">Chocolate</option>
-                        <option value="Horario">Sardina</option>
-                        <option value="vainilla">Vainilla</option>
-                    </select>
-                
+            
+                <select id="selecttipo" name="selecttipo" class="custom-select browser-default">
+                    <option value=""selected disabled>TIPO DE REPORTE</option>
+                    <option value="Asistencia">ASISTENCIA</option>
+                    <option value="Horario">HORARIO</option>
+                    <option value="Ingresos">INGRESOS</option>
+                </select>
+
+
+                <button id="Genera0" name="Genera0" class="btn btn-lg btn-primary" type ="button">Generar</button>
+
                     
-                    
-                    <div id="ASISTENCIA">
+                <div id="ASISTENCIA">
 
-                        <h3>REPORTE DE ASISTENCIA  </h3>
-                        <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD" type="date" required>
-                        <input id="Tienda" name="Tienda" placeholder="numero" required>
+                    <h3>REPORTE DE ASISTENCIA  </h3>
+                    <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD" type="date" required>
+                    <input id="Tienda" name="Tienda" placeholder="numero" required>
 
-                        <button id="Genera" class="btn btn-lg btn-primary" type ="button">Generar</button>
+                   
+                </div>
 
-                    </div>
-
-               
                 
                 <div id="HORARIO">
                     <div class="linea1"></div> 
                     <h3>REPORTE DE HORARIO </h3>
-                    <input id="HORARIO1" NAME="HORARIO">
-                    <input id="HORARIO1" NAME="HORARIO">
-                    <input id="HORARIO1" NAME="HORARIO">
-                    <button> </button>
-
+                    <input id="HORARIO1" NAME="HORARIO1">
+                    <input id="HORARIO1" NAME="HORARIO2">
+                    <input id="HORARIO1" NAME="HORARIO3">
+                    
                 </div>
 
                 <div id="EMPLEADO">
                     <div class="linea1"></div> 
                     <!--<h3>REPORTE DE HORARIO </h3>-->
-                    <input id="EMPLEADO1" NAME="HORARIO">
-                    <input id="HORARIO1" NAME="HORARIO">
-                    <input id="HORARIO1" NAME="HORARIO">
-                    <button> </button>
+                    <input id="EMPLEADO1" NAME="HORARIO4">
+                    <input id="HORARIO1" NAME="HORARIO5">
+                    <input id="HORARIO1" NAME="HORARIO6">
+                    
 
                 </div>
 
@@ -65,11 +66,9 @@
                     <input id="Fecha1"name="Fecha1"placeholder="Fecha inicial: YYYY-MM-DD" required>
                     <input id="Fecha2"name="Fecha2"placeholder="Fecha final: YYYY-MM-DD" required>
                   
-                    <button id="Genera3" class="btn btn-lg btn-primary" type ="button">Generar</button>
                 </div>    
 
-                    
-
+                  
             </div>
         </form>        
     </body>    

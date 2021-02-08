@@ -22,22 +22,32 @@ from werkzeug.utils import secure_filename
 import os
 
 
-ruta_descarga =  os.getcwd() + r'\reportes\pdf'
+ruta_descarga =  os.getcwd() + r'\reportes\descargas'
 
 app = Flask(__name__)
 app.debug = True
 app.secret_key = "llavesuperrsecreta2924"
 app.permanent_session_lifetime = timedelta(days=5)
-app.debug = True
+
 app.config['DOWNLOAD_FOLDER'] = ruta_descarga
 
 
 
-@app.route('/pdf')                               
-def pdf():
-    filename = 'Asistencia.pdf'
+@app.route('/pdf/<obj>')                               
+def pdf(obj):
+    filename = obj+'.pdf'
+    print(filename)
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename,as_attachment=False)
   
+
+
+@app.route('/excel/<obj>')                               
+def excel(obj):
+    filename = obj+'.xlsx'
+    print(filename)
+    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename,as_attachment=False)
+  
+
 
 
 
@@ -47,13 +57,16 @@ def Generar(obj):
     if request.method == 'GET':
         return render_template('Genera.html')
 
-    if obj == 'Ingreso':  
+    if obj == 'Ingresos':  
 
         print('aqui')
         db = Reporte()
 
         A = request.form['Fecha1']
         B = request.form['Fecha2']
+        
+        if not (A or B): 
+            return jsonify({'invalido': 'Campos Vacios'})
 
         resp = db.ingreso(A,B)
 
@@ -64,8 +77,10 @@ def Generar(obj):
         db = Reporte()
        
         A = request.form['Fecha']      
-    
-        B = request.form['Tienda']    
+        B = request.form['Tienda']
+
+        if not (A or B): 
+            return jsonify({'invalido': 'Campos Vacios'})
         
         resp = db.asistencia(A,B)           
 
@@ -73,8 +88,15 @@ def Generar(obj):
 
     if obj == 'Horario':
 
-        return 'hl'    
+        return jsonify({'invalido': 'Campos Vacios'})    
     
+
+
+    return jsonify({'invalido': 'Ruta no definida'})
+
+
+
+
 
 
 @app.route('/sesion',methods=['GET','DELETE'])  

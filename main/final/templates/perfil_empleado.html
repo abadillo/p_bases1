@@ -13,8 +13,6 @@
         <link href="../static/css/mostrar_embedded.css" rel="stylesheet" type="text/css" >
 
 
-
-
         <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>   
         <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
         <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
@@ -23,7 +21,7 @@
         <script src="../static/js/perfil_empleado.js"></script>
         <script src="../static/js/horarios.js"></script>
         <script src="../static/js/beneficios.js"></script>
-       
+        <script src="../static/js/vacaciones.js"></script>
        
         <meta charset="utf-8">
 
@@ -244,6 +242,45 @@
                                     </div> 
                    
                                     <button id="boton_añadir4" class="btn btn-secondary btn-block rounded customb" type="button">Añadir</button>
+                    
+                                </div>
+
+
+                                <div id="tabla5">
+                
+                                    <h3 class="text-center">Vacaciones</h3>
+                                
+                                    <table id="tabla_datatable3" ></table>
+
+                                    <h1 text=" " ></h1>
+
+                                    <div class="btn-group btn-block">
+                                    
+                                            <button id="boton_añadir5" class="btn btn-primary btn-block mr-2 rounded customb" , type="button">Añadir</button>
+                                
+
+                                            <!--                                               
+                                            <button id="boton_modificar" class="btn btn-secondary btn-block rounded" , type="button">Modificar</button> -->
+        
+        
+                                            <button id="boton_eliminar5" class="btn btn-danger btn-block ml-2 rounded" , type="button">Eliminar</button>
+                    
+                                          
+
+                                    </div>
+
+                                    <div id="fechaspnl" class="form-row mt-2"  >
+                                        <div class="form-group col">
+                                            <label>Fecha Inicial</label>  
+                                            <input id="fecha_ini" name= "fecha_ini" class="form-control" type="date" autofocus > 
+                                        </div>
+                                        <div class="form-group col">
+                                            <label>Fecha Final</label> 
+                                            <input id="fecha_fin" name="fecha_fin" class="form-control" type="date" autofocus>
+                                        </div>
+                                    </div>
+                   
+                                    <button id="boton_añadir6" class="btn btn-secondary btn-block rounded customb" type="button">Añadir</button>
                     
                                 </div>
 

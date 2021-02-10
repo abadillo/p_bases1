@@ -88,14 +88,27 @@ def Generar(obj):
 
     if obj == 'Horario':
 
+        
+
         return jsonify({'invalido': 'Campos Vacios'})    
     
+    if obj == 'Frecuentes':
 
+        db = Reporte()
+
+        resp = db.frecuentes()
+
+        return resp
+
+    if obj == 'Mes':
+
+        db = Reporte()
+
+        resp = db.Mes()
+
+        return resp
 
     return jsonify({'invalido': 'Ruta no definida'})
-
-
-
 
 
 

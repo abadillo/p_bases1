@@ -14,8 +14,9 @@ $(document).ready(function() {
     $("#HORARIO").hide();
     $("#INGRESO_EGRESO").hide();
     $("#EMPLEADO").hide();
-
+    $("#FRECUENTES").hide();
     $("#Genera0").hide();
+    $("#MES").hide();
 
 
 });
@@ -37,6 +38,9 @@ $(function(){
         $("#ASISTENCIA").hide();   
         $("#HORARIO").hide();
         $("#INGRESO_EGRESO").hide();
+        $("#FRECUENTES").hide();
+        $("#MES").hide();
+        
 
         if (priv == "Asistencia")
             $("#ASISTENCIA").show(); 
@@ -44,6 +48,10 @@ $(function(){
             $("#HORARIO").show();  
         if (priv == "Ingresos")
             $("#INGRESO_EGRESO").show(); 
+        if (priv == "Frecuentes")
+            $("#FRECUENTES").show(); 
+        if (priv == "Mes")
+            $("#MES").show();         
 
     });
     

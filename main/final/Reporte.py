@@ -45,7 +45,7 @@ class Reporte():
         print(Datos)
 
         path = os.getcwd() + r'\reportes\temp\datos_ingresos.csv'      
-        pandas.DataFrame(Datos).to_csv( path ,index = True) 
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
 
 
         jrxml_filename = './reportes/jrxml/Ingresos.jrxml'  # input jrxml filename
@@ -59,11 +59,54 @@ class Reporte():
 
         return 'BIEN O BUENO'
    
+    def frecuentes(self):
+
+        db=DB_reporte()
+        Datos = db.frecuentes()
+        print(Datos)
+
+        path = os.getcwd() + r'\reportes\temp\datos_Frecuentes.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
+
+
+        jrxml_filename = './reportes/jrxml/Frecuentes.jrxml'  # input jrxml filename
+        output_filename = './reportes/descargas/Frecuentes.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_frecuentes.csv'}
+
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
+        rutapdf = os.getcwd() + r'\reportes\descargas\Frecuentes.pdf'  
+
+        return 'BIEN O BUENO'
+   
+    def Mes(self):
+
+        db=DB_reporte()
+        Datos = db.Mes()
+        print(Datos)
+
+        path = os.getcwd() + r'\reportes\temp\datos_Mes.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
+
+
+        jrxml_filename = './reportes/jrxml/Mes.jrxml'  # input jrxml filename
+        output_filename = './reportes/descargas/Mes.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_Mes.csv'}
+
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
+        rutapdf = os.getcwd() + r'\reportes\descargas\Mes.pdf'  
+
+        return 'BIEN O BUENO'    
 
 
 
 if (__name__ == '__main__'):
-    Reporte().ingreso('2020-12-01','2020-12-02')   
+    Reporte().Mes()   
+
+    {'ti_nombre': 'UCABmart - Barrancas', 'nom_cliente': 'FABIANO LEONARDO, JONES GODINEZ', 'cant_compras': 3, 'max': 238500000},
    
     
    

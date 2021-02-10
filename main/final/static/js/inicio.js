@@ -9,6 +9,45 @@ function alerta(mensaje){
 };
 
 
+function itemlist(items) {
+
+    for (var i=0, l=items.length; i<l; i++){
+        $("ul").append(`
+        
+            <li>    
+                <a href="../templates/UCABMART.html">
+                    <div id="inner" class="row">
+                        <div class="col-4">
+                            <img type="image" id="imagen" src="../static/media/brokenpng.jpg">
+                        </div>
+                        <div class="col-8">
+                            <h3>`+items[i].pr_nombre+`</h4> 
+                            <h5>`+items[i].ma_nombre+`</h5>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <h5>`+items[i].ru_nombre+`</h4> 
+                                </div>
+                                <div class="col">
+                                    <h4>`+items[i].pr_precio+` Bs.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>    
+            </li>  
+        
+        `);
+    
+    
+    }
+    
+};
+
+
+
+
+/*DE SESSION Y COMBO DE OPCIONES */
 var privilegios = null;
 var rol = null;
 var correo = null;
@@ -20,7 +59,6 @@ var fk_empleado = null;
 
 $(document).ready(function() {
   
-
     $.ajax({
                 
         url:   '/sesion',
@@ -65,7 +103,30 @@ $(document).ready(function() {
             alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
+   
+    $.ajax({
+                
+        type: 'POST',
+        url: '/mostrar/productos',
+        dataSrc: "",
+            
+    }).done(function(resp){
+    
+        if(resp['error'])
+            alerta(resp['error']);
+        
+        else if (resp['invalido'])
+            alerta(resp['invalido']);
+         
+        else
+            itemlist(resp);
 
+
+    }).fail(function(resp){
+        alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+    }); 
+
+  
 
 
 });

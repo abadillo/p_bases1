@@ -75,7 +75,7 @@ class DB_empleado(DB):
 
         except Exception:
             print(Exception)
-            return jsonify({'error':'Error: Hubo un problema con el servidor'})
+            return {'error':'Error: Hubo un problema con el servidor'}
 
     def update (self, id, data):
 

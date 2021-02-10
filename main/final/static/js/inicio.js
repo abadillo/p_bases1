@@ -15,7 +15,7 @@ function itemlist(items) {
         $("ul").append(`
         
             <li>    
-                <a href="../templates/UCABMART.html">
+                <a href="./ver_producto/`+items[i].pr_id+`">
                     <div id="inner" class="row">
                         <div class="col-4">
                             <img type="image" id="imagen" src="../static/media/brokenpng.jpg">
@@ -38,8 +38,6 @@ function itemlist(items) {
             </li>  
         
         `);
-    
-    
     }
     
 };
@@ -107,12 +105,17 @@ $(document).ready(function() {
     $.ajax({
                 
         type: 'POST',
-        url: '/mostrar/productos',
-        dataSrc: "",
+        url: '/ver_productos',
+        data:{
+            'search': 'mortadela' ,
+        }
             
     }).done(function(resp){
     
-        if(resp['error'])
+        if (!resp)
+            $("ul").append("<h3>No hay resultado</h3>")
+
+        else if(resp['error'])
             alerta(resp['error']);
         
         else if (resp['invalido'])

@@ -70,7 +70,7 @@ CREATE TABLE empleado(
 	em_s_nombre			VARCHAR(20),
 	em_p_apellido		VARCHAR(20) 	NOT NULL,
 	em_s_apellido		VARCHAR(20),
-	em_sueldo			NUMERIC(10) 	NOT NULL,
+	em_sueldo			NUMERIC(20) 	NOT NULL,
 	em_fecha_nac		DATE			NOT NULL,
 
     fk_tienda			INTEGER		    NOT NULL,
@@ -367,7 +367,6 @@ CREATE TABLE producto(
 	pr_nombre		VARCHAR(50)		NOT NULL,
 	pr_peso		    NUMERIC(10)	,
 	pr_imagen 		BYTEA,
-	
 	
 	fk_rubro		INTEGER NOT NULL, 	
 	fk_marca		INTEGER NOT NULL, 	 

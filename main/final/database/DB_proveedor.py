@@ -133,7 +133,7 @@ class DB_proveedor(DB):
     def verif(self,atributo,valor):
         
         try:
-            print(valor)
+            
             if type(valor) == str:
                 self.cursor.execute ("SELECT * FROM proveedor WHERE {0} = '{1}'".format (atributo,valor))
             else:

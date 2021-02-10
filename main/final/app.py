@@ -196,6 +196,8 @@ def mostrar(obj):
 
     #aplica para post  <<<
 
+    resp = None
+
     if obj == 'naturales':
         resp = DB_cliente().getall('NATURAL')
 
@@ -244,6 +246,10 @@ def mostrar(obj):
     if obj == 'privilegios':   
         resp = DB_generic().getall("privilegio")
 
+    if obj == 'productos':   
+        resp = DB_generic().select("""
+            SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m 
+            WHERE p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo""")
 
     if not(resp):
         return """<h1>ERROR 404 </h1>
@@ -940,8 +946,6 @@ def manejo_empleado():
 
     if request.method == 'GET':         #listo
         
-
-
         id = request.args['id']
         
         db = DB_empleado()
@@ -971,8 +975,7 @@ def manejo_empleado():
             'em_sueldo'       :  int(request.form['inputsueldo']), 
             'em_fecha_nac'    :     request.form['selectfecha'],     
             'fk_tienda'       :  int(request.form['selecttienda']),
-            'fk_empleado_sup' :  int(request.form['selectempsup']),  
-           
+            'fk_empleado_sup' :     None,  
         }
 
         #datos usuario
@@ -992,15 +995,25 @@ def manejo_empleado():
         resp = db.verif('em_cedula',data['em_cedula'])
         if (resp): return jsonify({'invalido': 'Esta cedula ya esta registrada'}) 
         
+        
+        try:
+            data['fk_empleado_sup'] = int(request.form['selectempsup'])
+        except:
+            None 
 
 
         #insercion de empleado y usuario
        
         id_empleado = db.add(data)
+        print(id_empleado)
+
+        try:
+            if 'error' in id_empleado:  return jsonify(id_empleado)
+            if 'invalido' in id_empleado: return jsonify(id_empleado)
+        except: None
 
         d_user['fk_empleado'] = id_empleado
         db2.add(d_user)
-
 
 
         #telefono
@@ -1923,6 +1936,76 @@ def manejo_privilegio():
         resp = db.delete('privilegio',data)
        
         return resp
+
+
+
+
+@app.route('/manejo_producto',methods=['GET', 'POST','PUT','DELETE'])
+def manejo_producto():
+    
+    if request.method == 'GET':                 
+        id = request.args['item']
+
+        query = """
+            SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m 
+            WHERE p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo
+            AND p.pr_id = {0}""".format(id)
+
+        resp = DB_generic().select(query)
+
+        return jsonify(resp[0]) 
+
+    if request.method == 'POST':                    
+
+        data = {
+            'pr_nombre' :   request.form['inputproducto'],
+            'pr_precio' :   int(request.form['inputprecio']),
+            'pr_peso' :     int(request.form['inputpeso']),
+            'fk_proveedor': int(request.form['selectproveedor']),
+            'fk_rubro' :    int(request.form['selectrubro']),
+            'fk_marca' :    int(request.form['selectmarca']),
+        }
+
+        resp = DB_generic().add('producto',data)
+
+        return resp
+
+    if request.method == 'PUT':                    
+
+        id = int(request.form['id_producto'])
+        
+        data = {
+            'pr_nombre' :   request.form['inputproducto'],
+            'pr_precio' :   int(request.form['inputprecio']),
+            'pr_peso' :     int(request.form['inputpeso']),
+            #'fk_proveedor': int(request.form['selectproveedor']),
+            'fk_rubro' :    int(request.form['selectrubro']),
+            'fk_marca' :    int(request.form['selectmarca']),
+        }
+
+        resp = DB_generic().update('producto','pr_id',id,data)
+
+        return jsonify(resp)    
+
+    if request.method == 'DELETE':                  
+
+        id = int(request.form['codigos'])
+
+        data = {
+            'pr_id'     : id
+        }
+
+        db = DB_generic()   
+        resp = db.delete('producto',data)
+       
+        return resp
+
+
+
+
+
+
+
 
 
 

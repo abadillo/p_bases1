@@ -1,4 +1,5 @@
 
+INSERT INTO empleado (em_cedula,em_p_nombre,em_s_nombre,em_p_apellido,em_s_apellido,em_sueldo,em_fecha_nac,fk_tienda,fk_empleado_sup) VALUES (11111111,'aaaaaaaaaa','bbbbbbbbbb','ccccccccccc','ddddddddddd',3333333330,'2000-03-01',10,4) RETURNING em_codigo
 
 INSERT INTO cotizacion (ct_fecha,ct_valor,ct_expira,fk_moneda) VALUES (CURRENT_TIMESTAMP,'2222222232','NULL',7)
 
@@ -12,6 +13,10 @@ SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = 1
 INSERT INTO control_entrada (coen_entrada,fk_empleado) VALUES (CURRENT_TIMESTAMP,4) WHERE fk_empleado = 4
 
 SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada wHERE coen_salida is NULL AND fk_empleado = 4
+
+
+INSERT INTO empleado (em_cedula,em_p_nombre,em_s_nombre,em_p_apellido,em_s_apellido,em_sueldo,em_fecha_nac,fk_tienda,fk_empleado_sup) VALUES (12323333,'Alex','sbf
+dsf','123','2',11111111112,'2000-03-09',1,6) RETURNING em_codigo
 
 select * from cotizacion
 
@@ -258,7 +263,7 @@ CERRAR SESSION
 	ALTER TABLE cliente_natural DROP cl_rif;
 	ALTER TABLE cliente_natural ADD cl_rif VARCHAR(20) UNIQUE;
 	ALTER TABLE cliente DROP cl_rifj;
-	ALTER TABLE metodo_pago_compra ALTER COLUMN mp_documento TYPE VARCHAR(25);
+	ALTER TABLE empleado ALTER COLUMN em_sueldo TYPE NUMERIC(20);
 	select * from metodo_pago;
 	drop table empleado;
 	SELECT COUNT(fk_tienda) FROM cliente WHERE fk_tienda = 2;

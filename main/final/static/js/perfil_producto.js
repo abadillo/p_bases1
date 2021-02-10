@@ -27,7 +27,6 @@ function llenacombo ( ent, titulo, ent_codigo, ent_valor , nombrecbx, opcion){
 
             for (var i=0, l=resp.length; i<l; i++){
                 
-
                 if (opcion == resp[i][ent_codigo])
                     opciones.push('<option selected value="'+resp[i][ent_codigo]+'">'+resp[i][ent_valor]+'<opciones>');
                 else 
@@ -48,23 +47,16 @@ function llenacombo ( ent, titulo, ent_codigo, ent_valor , nombrecbx, opcion){
 
 $(document).ready(function() {
     
-    var id = (window.location.pathname.split('/'))[2];
+    var item = (window.location.pathname.split('/'))[2];
     
     var datos;
-    var tienda_registro;
-
-    
-    $("#tlfcodigo").hide();
-    var tlfcodigo = null;
-    var telefono1 = null;
-    
     
     $.ajax({
                 
-        url:   '/manejo_empleado',
+        url:   '/manejo_producto',
         type: 'GET',
         data: {
-            'id': id,
+            'item': item,
         },
         async: false, 
                    
@@ -73,6 +65,8 @@ $(document).ready(function() {
         
         if (response['error'])
             alerta(response['error']);
+        else if (response['invalido'])
+            alerta(response['invalido']);
         else 
             datos = response; 
         
@@ -80,96 +74,46 @@ $(document).ready(function() {
         alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
+
     console.log(datos);
 
-    $.ajax({
-        
-        url:   '/telefonos/'+id,
-        type: 'GET',
-        data: {
-            'tipo': 'fk_empleado' ,
-        },
-        async: false, 
-            
-    }).done(function(response){
-        
-        var telefonos = response;
 
-        if ( telefonos[0] ){
-            telefono1 = telefonos[0].te_numero;
-            tipot1 = telefonos[0].te_tipo;
-            tlfcodigo = telefonos[0].te_codigo;
-        }                 
-    });
 
+    llenacombo('proveedores','PROVEEDOR','po_id','po_razon_social','#selectproveedor',datos.fk_proveedor);
+    llenacombo('rubros','RUBRO','ru_codigo','ru_nombre','#selectrubro',datos.fk_rubro);
+    llenacombo('marcas','MARCA','ma_codigo','ma_nombre','#selectmarca',datos.fk_marca);
     
-  
-    var d = new Date(datos.em_fecha_nac);
-    d.setDate(d.getDate() + 1);
-    var datestring = d.getFullYear() + '-' + ("0"+(d.getMonth()+1)).slice(-2) + "-" +  ("0" + d.getDate()).slice(-2);
-
-   
-
-    llenacombo('tiendas','TIENDA REGISTRO','ti_codigo','ti_nombre','#selecttienda',datos.fk_tienda);
-    llenacombo('roles','ROL','ro_codigo','ro_nombre','#selectrol',datos.fk_rol);
-    llenacombo('empleados','SUPERVISOR','em_codigo','em_p_apellido','#selectempsup',datos.fk_empleado_sup);
-    
-
-    $("#id_user").val(datos.em_codigo);
-    $("#inputcedula").val(datos.em_cedula);
-
-
-    $("#selectfecha").val(datestring);
-
-    $("#tlfcodigo").val(tlfcodigo);
-    $("#inputtelefono").val(telefono1);
-    
-    $("#inputpnombre").val(datos.em_p_nombre);
-    $("#inputsnombre").val(datos.em_s_nombre);
-    $("#inputpapellido").val(datos.em_p_apellido);
-    $("#inputsapellido").val(datos.em_s_apellido);
-
-    $("#inputsueldo").val(datos.em_sueldo);
-    $("#tiendaregistro").val(tienda_registro);
-
-
-    $("#inputcorreo").val(datos.us_correo);
-    $("#inputcont").val(datos.us_contrasena);
-
-   
-    
-    
-
+    $("#id_producto").val(datos.pr_id);
+    $("#inputproducto").val(datos.pr_nombre);
+    $("#inputprecio").val(datos.pr_precio);
+    $("#inputpeso").val(datos.pr_peso);
+      
 
     $('#loading').hide();
 
     
-    
-
 });
 
 $(function(){
     $("#Modificar").click(function(){
         
-        $("#inputtelefono").removeAttr('disabled');
-       
-        $("#inputpnombre").removeAttr('disabled');
-        $("#inputsnombre").removeAttr('disabled');
-        $("#inputpapellido").removeAttr('disabled');
-        $("#inputsapellido").removeAttr('disabled');
-        $("#inputcont").removeAttr('disabled');
-        $("#selecttienda").removeAttr('disabled');
-    
-        $("#selectrol").removeAttr('disabled');
-        $("#selectempsup").removeAttr('disabled');
-        $("#inputsueldo").removeAttr('disabled');
         
+        $("#inputproducto").removeAttr('disabled'); 
+        $("#inputnombre").removeAttr('disabled'); 
+        $("#inputpeso").removeAttr('disabled');
+        $("#inputprecio").removeAttr('disabled'); 
+        $("#selectmarca").removeAttr('disabled');
+        $("#selectrubro").removeAttr('disabled');
+
+
+        $("#Confirmar").removeAttr('disabled');
 
         $("#Modificar").css("display","none"); 
+
         $("#Cancelar").css("display","block"); 
-       
         $("#Confirmar").css("display","block"); 
-       
+        
+        
     });
 });
 
@@ -183,13 +127,13 @@ $(function(){
 $(function(){
     $('form').submit(function(e){
       
-        $("#id_user").removeAttr('disabled');
+        $("#id_producto").removeAttr('disabled');
 
         $('#loading').show()
 
         $.ajax({
             
-            url:   '/manejo_empleado',
+            url:   '/manejo_producto',
             data:  $('form').serialize(),
             type: 'PUT',
                 
@@ -215,6 +159,7 @@ $(function(){
             });
 
         e.preventDefault();
+        
         
     });
 });

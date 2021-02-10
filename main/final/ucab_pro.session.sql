@@ -14,6 +14,10 @@ INSERT INTO control_entrada (coen_entrada,fk_empleado) VALUES (CURRENT_TIMESTAMP
 
 SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada wHERE coen_salida is NULL AND fk_empleado = 4
 
+SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m WHERE p.pr_nombre LIKE '%caucho%' AND p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo 
+
+SELECT * FROM PRODUCTO WHERE PR_NOMBRE LIKE '%caucho%'
+
 
 INSERT INTO empleado (em_cedula,em_p_nombre,em_s_nombre,em_p_apellido,em_s_apellido,em_sueldo,em_fecha_nac,fk_tienda,fk_empleado_sup) VALUES (12323333,'Alex','sbf
 dsf','123','2',11111111112,'2000-03-09',1,6) RETURNING em_codigo

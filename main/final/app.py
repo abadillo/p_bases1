@@ -51,7 +51,6 @@ def sesion():
         return jsonify({'mensaje': 'Se ha cerrado sesion' })    
 
 
-
 @app.route('/control_entrada', methods=['GET','POST'])    
 def control_entrada():
 
@@ -87,7 +86,19 @@ def control_entrada():
         
         return "Registro fallido\nIntentelo de nuevo"
         
+     
+@app.route('/ver_productos',methods=['POST'])    
+def ver_productos():
         
+    search = request.form['search']
+
+    query = """SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m 
+                WHERE p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo AND LOWER(p.pr_nombre) LIKE '%{0}%'""".format(search)
+
+    resp = DB_generic().select(query)
+    
+    return jsonify(resp)
+    
 
 
 #### Interfaces principales ####
@@ -97,8 +108,6 @@ def control_entrada():
 def main():
     return render_template('inicio.html')
     
-
-
 @app.route('/inicio_sesion', methods=['GET','POST'])    
 def inicio_sesion():
 

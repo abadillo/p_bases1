@@ -67,7 +67,7 @@ $(document).ready(function() {
 
             opciones.push('<option value="default" selected disabled>ROL</option>');
 
-            for (var i=0, l=roles.length; i<l; i++){
+            for (var i=1, l=roles.length; i<l; i++){
                 opciones.push('<option value="'+roles[i].ro_codigo+'">'+roles[i].ro_nombre+'<opciones>');
             }
 

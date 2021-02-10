@@ -121,9 +121,8 @@ class DB_producto(DB):
     def delete (self,id):
 
         try:
-            print('Entra al execute')
-            self.cursor.execute("DELETE FROM producto WHERE pr_id = %s", (id,) )
-            print('Sale del execute')
+          
+            self.cursor.execute("DELETE FROM producto WHERE pr_id = %s", (id,))
             self.connection.commit()                     
 
             return jsonify({'mensaje':'eliminado satisfactoriamente'}) 
@@ -131,45 +130,3 @@ class DB_producto(DB):
         except Exception:
             return jsonify({'error':'Error: Hubo un problema con el servidor'})
 
-
- 
-    def verif(self,atributo,valor):
-        
-        try:
-            print(valor)
-            if type(valor) == str:
-                self.cursor.execute ("SELECT * FROM producto WHERE {0} = '{1}'".format (atributo,valor))
-            else:
-                self.cursor.execute ("SELECT * FROM producto WHERE {0} = '{1}'".format (atributo,valor))
-
-            obj = self.cursor.fetchone()  
-            print(valor)
-
-            if obj is None:    
-                return None
-            else:
-                return 1
-
-        
-        except Exception:
-            return 2
-
-
-    def getafiliacion (self, n_tienda):
-
-        try:
-            
-            self.cursor.execute("SELECT COUNT(fk_tienda) FROM cliente WHERE fk_tienda = %s", (n_tienda,)
-            )
-            
-            numero = self.cursor.fetchone()[0]
-
-            return (numero + 1)
-
-        
-        except Exception:
-            return 0
-
-
-
-    

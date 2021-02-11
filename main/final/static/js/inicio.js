@@ -207,7 +207,7 @@ $(function(){
                 window.location.href =  '/carrito_web';	
                 break;
             case '3':
-                window.location.href =  '/Generar Presupuesto';	
+                window.location.href =  '/';	/*generar presupuesto*/
                 break;
             case '4':
                 window.location.href =  '/';    	/* /Generar Compra Web */
@@ -225,43 +225,43 @@ $(function(){
                 window.location.href =  '/Genera/Frecuentes';	
                 break;
             case '9':
-                window.location.href =  '/Reporte De Mejores Clientes';	
+                window.location.href =  '/Genera/Frecuentes';	
                 break;
             case '10':
-                window.location.href =  '/Reporte De Clientes Con Presupuestos Efectivos';	
+                window.location.href =  '/';	
                 break;
             case '11':
-                window.location.href =  '/Reporte De Meses Productivos';	
+                window.location.href =  '/Genera/Mes';	
                 break;
             case '12':
-                window.location.href =  '/Reporte De Mejores Clientes';	
+                window.location.href =  '/Genera/Frecuentes';	
                 break;
             case '13':
-                window.location.href =  '/Imprimir Orden De Despacho';	
+                window.location.href =  '/';	
                 break;
             case '14':
-                window.location.href =  '/Procesar Orden De Despacho';	
+                window.location.href =  '/';	
                 break;
             case '15':
-                window.location.href =  '/Cerrar Orden De Despacho';	
+                window.location.href =  '/';	
                 break;
             case '16':
                 window.location.href =  '/mostrar/zonas';	
                 break;
             case '17':
-                window.location.href =  '/Administración De Almacen De Tienda';	
+                window.location.href =  '/inventario/1';	
                 break;
             case '18':
                 window.location.href =  '/mostrar/productos';	
                 break;
             case '19':
-                window.location.href =  '/Generación De Orden De Reposicion';	
+                window.location.href =  '/';	
                 break;
             case '20':
-                window.location.href =  '/Aprobación De Reposición';	
+                window.location.href =  '/';	
                 break;
             case '21':
-                window.location.href =  '/Recepción De Orden Reposición';	
+                window.location.href =  '/';	
                 break;
             case '22':
                 window.location.href =  '/mostrar/proveedores';	
@@ -291,10 +291,10 @@ $(function(){
                 window.location.href =  '/cliente/'+fk_cliente;	 
                 break;
             case '31':
-                window.location.href =  '/Administración De Pasillo De Tienda';	
+                window.location.href =  '/inventario/1';	
                 break;
             case '32':
-                window.location.href =  '/Reposición De Pasillo';	
+                window.location.href =  '/inventario/1';	
                 break;
             case '33':
                 window.location.href =  '/carrito_fisica';	
@@ -324,13 +324,13 @@ $(function(){
                 window.location.href =  '/mostrar/roles';	
                 break;
             case '42':
-                window.location.href =  '/Reporte De Horarios';	
+                window.location.href =  '/Genera/Horario';	
                 break;
             case '43':
                 window.location.href =  '/Genera/Asistencia';	
                 break;
             case '44':
-                window.location.href =  '/Reporte De Empleados';	
+                window.location.href =  '/Genera/Asistencia';	
                 break;
             case '45':
                 control_entrada();

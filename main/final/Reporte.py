@@ -17,7 +17,7 @@ class Reporte():
         path = os.getcwd() + r'\reportes\descargas\Asistencia.xlsx'      
         pandas.DataFrame(Datos).to_excel( path ) 
 
-        return 'BIEN O BUENO'   
+        return 1   
 
     def ingreso(self,fecha1,fecha2):
 
@@ -38,7 +38,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Ingresos.pdf'  
 
-        return 'BIEN O BUENO'
+        return 1
    
     def frecuentes(self):
 
@@ -59,7 +59,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Frecuentes.pdf'  
 
-        return 'BIEN O BUENO'
+        return 1
    
     def Mes(self):
 
@@ -80,7 +80,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Mes.pdf'  
 
-        return 'BIEN O BUENO' 
+        return 1 
 
     def Productos(self):
 
@@ -101,7 +101,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Producto.pdf'  
 
-        return 'BIEN O BUENO'  
+        return 1  
 
     def horarios(self,tienda,fecha1,fecha2):
 
@@ -122,7 +122,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Horarios.pdf'  
 
-        return 'BIEN O BUENO'      
+        return 1      
 
     def facturas(self,factu):
 
@@ -143,7 +143,7 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Facturas.pdf'  
 
-        return 'BIEN O BUENO'             
+        return 1             
 
 
 #if (__name__ == '__main__'):

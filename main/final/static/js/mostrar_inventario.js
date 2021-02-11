@@ -17,8 +17,6 @@ $(document).ready(function() {
     
     var tienda = (window.location.pathname.split('/'))[2];
 
-
-    
     var tiendas;
     var id_tienda;
     
@@ -79,13 +77,7 @@ $(document).ready(function() {
             { data: "pr_precio" ,       title: "PRECIO"},
             { data: "al_cantidad",      title: "CNT EN ALMACEN"},
             { data: "pa_cantidad",      title: "CNT EN PASILLO"},      
-            
         
-   
-   
-
-
-
         ]
         
     });
@@ -104,10 +96,42 @@ $(document).ready(function() {
     } );
  
 
+
     $('#selecttienda').change(function() {
 
         id_tienda = $(this).find('option:selected').val();
         window.location.href =  '/inventario/'+id_tienda;	
+
+    });
+
+    $('#boton_reponer').click(function() {
+
+        $.ajax({
+            
+            url:   '/inventario/'+tienda,
+            type: 'PUT',
+            data: {
+                'tienda': tienda,
+            },        
+                
+        }).done(function(response){
+            
+            console.log(response);
+            
+            if(response['error'])
+                alerta(response['error']);
+            
+            else if (response['invalido'])
+                alerta(response['invalido']);
+            
+            else{
+                alerta(response)    
+                window.location.href =   window.location.href ;	
+            }			
+            
+        }).fail(function(response){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+        });
 
     });
 

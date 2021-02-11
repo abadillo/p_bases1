@@ -11,6 +11,13 @@ function alerta(mensaje){
 
 function itemlist(items) {
 
+    if (fk_cliente)
+        boton_carrito = '<button id="Registrar" class="btn btn-sm btn-primary" type ="submit">Añadir al Carrito</button>'
+    else 
+        boton_carrito = ''
+
+    $("ul").empty();
+
     for (var i=0, l=items.length; i<l; i++){
         $("ul").append(`
         
@@ -30,7 +37,7 @@ function itemlist(items) {
                                     <h4>`+items[i].pr_precio+` Bs.</h4>
                                 </div>
                                 <div class="col-auto">
-                                    <button id="Registrar" class="btn btn-sm btn-primary" type ="submit">Añadir al Carrito</button>
+                                    `+boton_carrito+`
                                 </div>
                             </div>
                         </div>
@@ -43,7 +50,37 @@ function itemlist(items) {
     
 };
 
+function psearch(search){
 
+    $.ajax({
+                
+        type: 'POST',
+        url: '/ver_productos',
+        data:{
+            'search': search ,
+        }
+            
+    }).done(function(resp){
+    
+        if (!resp)
+            $("ul").append("<h3>No hay resultado</h3>")
+
+        else if(resp['error'])
+            alerta(resp['error']);
+        
+        else if (resp['invalido'])
+            alerta(resp['invalido']);
+         
+        else
+            itemlist(resp);
+
+
+    }).fail(function(resp){
+        alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+    }); 
+
+
+};
 
 
 /*DE SESSION Y COMBO DE OPCIONES */
@@ -102,34 +139,8 @@ $(document).ready(function() {
             alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
 
-   
-    $.ajax({
-                
-        type: 'POST',
-        url: '/ver_productos',
-        data:{
-            'search': 'a' ,
-        }
-            
-    }).done(function(resp){
-    
-        if (!resp)
-            $("ul").append("<h3>No hay resultado</h3>")
 
-        else if(resp['error'])
-            alerta(resp['error']);
-        
-        else if (resp['invalido'])
-            alerta(resp['invalido']);
-         
-        else
-            itemlist(resp);
-
-
-    }).fail(function(resp){
-        alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
-    }); 
-
+    psearch('')
   
 
 
@@ -141,6 +152,19 @@ $(document).ready(function() {
 
 
 $(function(){
+
+    $("#buscarbtn").click(function(){
+        search = $('#buscar').val();
+        psearch(search);
+    });  
+
+
+    document.addEventListener("keyup", function(event) {
+        if (event.code === 'Enter') {
+            $("#buscarbtn").click();
+        }
+    });
+
 
     function cerrar_sesion(){
 
@@ -158,9 +182,8 @@ $(function(){
                 alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
         });
     
-    
     };
-
+    
 
     $('#selectpriv').change(function() {
 
@@ -187,19 +210,19 @@ $(function(){
                 window.location.href =  '/Generar Presupuesto';	
                 break;
             case '4':
-                window.location.href =  '/Generar Compra Web';	
+                window.location.href =  '/';    	/* /Generar Compra Web */
                 break;
             case '5':
-                window.location.href =  '/Asignación De Descuentos';	
+                window.location.href =  '/';	 /*Asignación De Descuentos*/
                 break;
             case '6':
-                window.location.href =  '/Generar Revista Notimart (PDF)';	
+                window.location.href =  '/';	/*Generar Revista Notimart (PDF)*/
                 break;
             case '7':
-                window.location.href =  '/Reporte De Ingresos/Egresos';	
+                window.location.href =  '/Genera/Ingresos';	
                 break;
             case '8':
-                window.location.href =  '/Reporte De Clientes Frecuentes';	
+                window.location.href =  '/Genera/Frecuentes';	
                 break;
             case '9':
                 window.location.href =  '/Reporte De Mejores Clientes';	
@@ -223,13 +246,13 @@ $(function(){
                 window.location.href =  '/Cerrar Orden De Despacho';	
                 break;
             case '16':
-                window.location.href =  '/Administración De Zonas De Almacen';	
+                window.location.href =  '/mostrar/zonas';	
                 break;
             case '17':
                 window.location.href =  '/Administración De Almacen De Tienda';	
                 break;
             case '18':
-                window.location.href =  '/Administración De Producto';	
+                window.location.href =  '/mostrar/productos';	
                 break;
             case '19':
                 window.location.href =  '/Generación De Orden De Reposicion';	
@@ -247,7 +270,7 @@ $(function(){
                 window.location.href =  '/mostrar/monedas';	
                 break;
             case '24':
-                window.location.href =  '/Administración De Cotizaciones';	
+                window.location.href =  '/mostrar/monedas';	
                 break;
             case '25':
                 window.location.href =  '/mostrar/tipo_pagos';	
@@ -256,16 +279,16 @@ $(function(){
                 window.location.href =  '/mostrar/marcas';	
                 break;
             case '27':
-                window.location.href =  '/Administración De Rubros';	
+                window.location.href =  '/mostrar/rubros';	
                 break;
             case '28':
-                window.location.href =  '/Emisión De Carnet';	
+                window.location.href =  '/mostrar/clientes';    /*Emisión De Carnet*/	
                 break;
             case '29':
                 window.location.href =  '/registro/natural';	
                 break;
             case '30':
-                window.location.href =  '/Modficar Perfil de Cliente';	
+                window.location.href =  '/cliente/'+fk_cliente;	 
                 break;
             case '31':
                 window.location.href =  '/Administración De Pasillo De Tienda';	
@@ -274,7 +297,7 @@ $(function(){
                 window.location.href =  '/Reposición De Pasillo';	
                 break;
             case '33':
-                window.location.href =  '/compra_fisica';	
+                window.location.href =  '/carrito_fisica';	
                 break;
             case '34':
                 window.location.href =  '/mostrar/empleados';	
@@ -283,22 +306,22 @@ $(function(){
                 window.location.href =  '/mostrar/beneficios';	
                 break;
             case '36':
-                window.location.href =  '/Asignación De Beneficios';	
+                window.location.href =  '/mostrar/empleados';	
                 break;
             case '37':
-                window.location.href =  '/Administración De Horarios';	
+                window.location.href =  '/mostrar/horarios';	
                 break;
             case '38':
-                window.location.href =  '/Registro De Vacaciones';	
+                window.location.href =  '/mostrar/empleados';	
                 break;
             case '39':
-                window.location.href =  '/Administración De Privilegios';	
+                window.location.href =  '/mostrar/privilegios';	
                 break;
             case '40':
-                window.location.href =  '/Administración De Roles';	
+                window.location.href =  '/mostrar/roles';	
                 break;
             case '41':
-                window.location.href =  '/Asignación De Privilegios';	
+                window.location.href =  '/mostrar/roles';	
                 break;
             case '42':
                 window.location.href =  '/Reporte De Horarios';	

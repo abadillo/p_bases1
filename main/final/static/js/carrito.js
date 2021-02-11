@@ -4,13 +4,11 @@ function alerta(mensaje){
 
 };
 
-
 var id_carrito;
 
 function mostrar_carrito(id_car){
 
     id_carrito = id_car;
-    id_carrito = 9;
 
     $('#tabla_datatable').DataTable({
         
@@ -53,8 +51,6 @@ function mostrar_carrito(id_car){
 };
     
 $(function(){
-
- 
 
     $('#tabla_datatable tbody').on( 'click', 'tr', function () {
          

@@ -14,9 +14,11 @@ $(document).ready(function() {
     $("#HORARIO").hide();
     $("#INGRESO_EGRESO").hide();
     $("#EMPLEADO").hide();
+    $("#HORARIO").hide();
     $("#FRECUENTES").hide();
-    $("#Genera0").hide();
     $("#MES").hide();
+    $("#FACTURA").hide();
+    $("#Genera0").hide();
 
 
 });
@@ -40,6 +42,8 @@ $(function(){
         $("#INGRESO_EGRESO").hide();
         $("#FRECUENTES").hide();
         $("#MES").hide();
+        $("#FACTURA").hide();
+        
         
 
         if (priv == "Asistencia")
@@ -48,10 +52,14 @@ $(function(){
             $("#HORARIO").show();  
         if (priv == "Ingresos")
             $("#INGRESO_EGRESO").show(); 
+        if (priv == "Horario")
+            $("#HORARIO").show(); 
         if (priv == "Frecuentes")
             $("#FRECUENTES").show(); 
         if (priv == "Mes")
-            $("#MES").show();         
+            $("#MES").show();   
+        if (priv == "Factura")
+            $("#FACTURA").show();            
 
     });
     

@@ -76,7 +76,8 @@ def Generar(obj):
         
         db = Reporte()
        
-        A = request.form['Fecha']      
+        A = request.form['Fecha']     
+
         B = request.form['Tienda']
 
         if not (A or B): 
@@ -88,9 +89,20 @@ def Generar(obj):
 
     if obj == 'Horario':
 
-        
+        db = Reporte()
 
-        return jsonify({'invalido': 'Campos Vacios'})    
+        A = request.form['Tienda1'] 
+
+        B = request.form['Fecha1'] 
+
+        C = request.form['Fecha2'] 
+
+        if not (A or B or C):    
+            return jsonify({'invalido': 'Campos Vacios'})    
+
+        resp =  db.Horarios(A,B,C)
+
+        return resp
     
     if obj == 'Frecuentes':
 
@@ -107,6 +119,27 @@ def Generar(obj):
         resp = db.Mes()
 
         return resp
+
+    if obj == 'Producto':
+
+        db= Reporte()
+
+        resp = db.Producto()
+
+        return resp
+
+    if obj == 'Factura':
+
+        db= Reporte()
+
+        A = request.form['Tienda2']
+
+        if not A :    
+            return jsonify({'invalido': 'Campos Vacios'})  
+
+        resp = db.facturas(A)
+
+        return resp        
 
     return jsonify({'invalido': 'Ruta no definida'})
 

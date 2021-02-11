@@ -11,7 +11,6 @@ function alerta(mensaje){
 
 $(function(){
 
-    var flag;
 
 
     document.addEventListener("keyup", function(event) {
@@ -46,7 +45,7 @@ $(function(){
 
                 else{
                     datos_cli = response;
-                    flag = 0 
+                   
                     
                     panel_str = []
                     id_cliente = datos_cli['cl_id'];
@@ -118,10 +117,27 @@ $(function(){
     
     $("#Continuar2").click(function(){
  
-        $("#fondo4").fadeOut("slow");
-        $("#fondo5").fadeIn("slow");
-        $("#fondo4").css("display","none");
-        
+        $.ajax({
+                
+            url:   '/carrito_fisica',                 
+            type: 'PUT',
+            data:  {'id_carrito' : id_carrito,}           
+            
+        }).done(function(resp){
+            
+            if(resp['error'])
+                alerta(resp['error']);
+            
+            else if (resp['invalido'])
+                alerta(resp['invalido']);
+            
+            else
+                window.location.href = 'compra/'+resp;
+              
+        }).fail(function(response){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+        });
+
     });  
 
         

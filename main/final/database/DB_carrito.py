@@ -45,7 +45,7 @@ class DB_carrito(DB):
             return data2
 
         except Exception:
-            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})
+            return ({'error':'Error: Hubo un problema con el servidor'})
 
 
 

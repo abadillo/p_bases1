@@ -19,74 +19,77 @@
             
             <div id="fondo1">
             
-                <select id="selecttipo" name="selecttipo" class="custom-select browser-default">
-                    <option value=""selected disabled>TIPO DE REPORTE</option>
-                    <option value="Asistencia">ASISTENCIA</option>
-                    <option value="Horario">HORARIO</option>
-                    <option value="Ingresos">INGRESOS</option>
-                    <option value="Frecuentes">CLIENTES FRECUENTES</option>
-                    <option value="Productos">PRODUCTOS MAS VENDIDOS</option>
-                    <option value="Mes">MESES PRODUCTIVOS</option>
-                    <option value="Factura">FACTURA</option>
-                </select>
-
+                <div id="fondo2">
                 
+                    <select id="selecttipo" name="selecttipo" class="custom-select browser-default">
+                        <option value=""selected disabled>TIPO DE REPORTE</option>
+                        <option value="Asistencia">ASISTENCIA</option>
+                        <option value="Horario">HORARIO</option>
+                        <option value="Ingresos">INGRESOS</option>
+                        <option value="Frecuentes">CLIENTES FRECUENTES</option>
+                        <option value="Productos">PRODUCTOS MAS VENDIDOS</option>
+                        <option value="Mes">MESES PRODUCTIVOS</option>
+                        <option value="Factura">FACTURA</option>
+                    </select>
 
                     
-                <div id="ASISTENCIA">
 
-                    <h3>REPORTE DE ASISTENCIA  </h3>
-                    <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD" type="date" required>
-                    <input id="Tienda" name="Tienda" placeholder="numero" required>
+                        
+                    <div id="ASISTENCIA">
 
-                   
-                </div>
+                        <h3>REPORTE DE ASISTENCIA  </h3>
+                        <input id="Fecha" name="Fecha" placeholder="YYYY-MM-DD" type="date" required>
+                        <input id="Tienda" name="Tienda" placeholder="numero" required>
 
-                
-                <div id="HORARIO">
-                   
-                    <h3>REPORTE DE HORARIO </h3>
-                    <input id="Tienda1" NAME="Tienda1" placeholder="Num Tienda" required>
-                    <input id="Fecha1" NAME="Fecha1" placeholder="YYYY-MM-DD" required>
-                    <input id="Fecha2" NAME="Fecha2" placeholder="YYYY-MM-DD" required>
                     
-                </div>
-               
+                    </div>
 
-                <div id="INGRESO_EGRESO">
                     
+                    <div id="HORARIO">
+                    
+                        <h3>REPORTE DE HORARIO </h3>
+                        <input id="Tienda1" NAME="Tienda1" placeholder="Num Tienda" required>
+                        <input id="Fecha1" NAME="Fecha1" placeholder="YYYY-MM-DD" required>
+                        <input id="Fecha2" NAME="Fecha2" placeholder="YYYY-MM-DD" required>
+                        
+                    </div>
                 
-                    <h3>REPORTE DE INGREO Y EGRESOS </h3>
-                    <input id="Fecha1"name="Fecha1" type="date" required>
-                    <input id="Fecha2"name="Fecha2" type="date" required>
-                  
+
+                    <div id="INGRESO_EGRESO">
+                        
+                    
+                        <h3>REPORTE DE INGREO Y EGRESOS </h3>
+                        <input id="Fecha1"name="Fecha1" type="date" required>
+                        <input id="Fecha2"name="Fecha2" type="date" required>
+                    
+                    </div>    
+
+                    
+                    <div id="FRECUENTES">
+                    
+                        <h3>REPORTE CLIENTES FRECUENTES </h3>  
+                        <h5>Listado de clientes frecuentes por tienda</h5>
+                        
+                    </div>   
+                    
+                    <div id="MES">
+                    
+                        <h3>MESES PRODUCTIVOS </h3>  
+                        <h5>Listado de clientes frecuentes por tienda</h5>
+                       
+                    </div>   
+
+                    <div id="FACTURA">
+                        
+                    
+                        <h3>FACTURAS DE COMPRAS </h3>
+                        <input id="Factura"name="Factura" type="text" placeholder="Numero de factura" required>
+                        
+                    
+                    </div>    
+
+                    <button id="Genera0" name="Genera0" class="btn btn-lg btn-primary" type ="button">Generar</button>
                 </div>    
-
-                
-                <div id="FRECUENTES">
-                   
-                    <h3>REPORTE CLIENTES FRECUENTES </h3>  
-                    <h5>Listado de clientes frecuentes por tienda</h5>
-                    
-                </div>   
-                
-                <div id="MES">
-                   
-                    <h3>MESES PRODUCTIVOS </h3>  
-                    
-                </div>   
-
-                <div id="FACTURA">
-                    
-                
-                    <h3>FACTURAS DE COMPRAS </h3>
-                    <input id="Factura"name="Factura" type="text" placeholder="Numero de factura" required>
-                    
-                  
-                </div>    
-
-                <button id="Genera0" name="Genera0" class="btn btn-lg btn-primary" type ="button">Generar</button>
-                  
             </div>
         </form>        
     </body>    

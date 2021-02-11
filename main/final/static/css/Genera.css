@@ -23,6 +23,15 @@ body {
     transform-origin: top center;
 
 }
+#fondo2{
+    background: linear-gradient(#f8176d, #eb7b7b); 
+    width: 1070px;
+    height: 850px;
+    position: relative;
+    top: 20px;
+    border-radius: 5px 5px 5px 5px;
+    border: 3px rgba(128, 128, 128, 0) solid;
+}
 #logo{
     height: 100px;
     width:50%;
@@ -87,4 +96,22 @@ h1{
     top:90px;
     right: -80px;
     height: 40px;
+}
+#MES{
+    position:relative;
+    top:30px;
+    right: -50px;
+
+}
+#FACTURA{
+    position:relative;
+    top:80px;
+    right:-60px;
+    height:40px;
+}
+#Factura{
+    position:relative;
+    top:30px;
+  
+
 }

@@ -14,7 +14,6 @@
     <link rel="stylesheet"type="text/css" href="../static/css/mostrar.css">
 
 
-
     <script src="../static/add_ons/jquery/jquery-1.11.2.js"></script>
     <script src="../static/add_ons/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../static/add_ons/datatables/js/jquery.dataTables.js"></script>   
@@ -32,27 +31,26 @@
     <div id="fondo1">
        
         <section id="posicion">
-            <a href="../templates/UCABMART.html"><img type="image" id="logo" src="../static/media/UCABMART6.png"></a>
+            <a href="../"><img type="image" id="logo" src="../static/media/UCABMART6.png"></a>
             
             <div id="margen">
                 
-                <h3 id = "titulo" class="text-center"></h3>
+                <h2 id ="titulo" class="text-center"></h2>
                 
-                <div class="form-group py-3" id="tienda-registro">
+                <div class="row mb-5 mt-5">
+                    <div class="col mr-auto">
+                        <button id="boton_reponer" class="btn btn-lg btn-danger" type ="button">Reponer</button>
+                    </div>
+                    <div class="col-auto">
+                        <select id="selecttienda" name="selecttienda" class="custom-select browser-default"  autofocus>
+                            <option value="" selected disabled>TIENDA</option>
+                        </select>  
+                    </div>
+                </div>
 
-                    <select id="selecttienda" name="selecttienda" class="custom-select browser-default w-25 float-right"  autofocus>
-                        <option value="" selected disabled>TIENDA</option>
-                    
-                    </select>  
-
-                </div> 
-
-               
-
-                <table id="tabla_datatable" class="display nowrap" >   </table>
+                <table id="tabla_datatable" class="display nowrap"></table>
+                
                         
-                
-
             </div>
                 
         </section>

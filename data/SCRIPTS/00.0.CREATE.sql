@@ -571,7 +571,7 @@ CREATE TABLE metodo_pago_compra(
 	
 	fk_moneda 				INTEGER NOT NULL,
 	fk_compra				INTEGER,
-	fk_tipo_pago			INTEGER,	
+	fk_tipo_pago			INTEGER,
 	
 	
 	CONSTRAINT pk_pago_compra PRIMARY KEY (fk_compra,fk_tipo_pago,mp_documento),

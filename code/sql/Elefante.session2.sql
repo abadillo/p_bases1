@@ -141,22 +141,34 @@ SELECT sele.ti_nombre,
 
 
 -- 5 mejores
-SELECT SUM(O.or_cantidad * O.or_monto_unidad) egreso_en_tienda,
- to_char (O.or_fecha::DATE, 'YYYY-MM-DD') Fecha_de_egresos, 
-  SUM(C.ca_monto_total) ingreo_de_tienda,
-  (SELECT to_char (co_fecha_hora::DATE, 'YYYY-MM-DD') Fecha_de_ingresos
-  FROM compra 
-  WHERE C.ca_id = fk_carrito 
-  AND co_fecha_hora::DATE='2020-12-06'
-  ),
-  T.ti_nombre
-  FROM carrito C, orden_reposicion O, tienda T
-  WHERE O.fk_tienda=T.ti_codigo
-  AND C.fk_tienda=T.ti_codigo
-  AND T.ti_codigo= 3
-  AND O.or_fecha::DATE='2020-12-06'
- GROUP BY O.or_fecha
-
+SELECT sele.ti_nombre,
+                    sele.nom_cliente,
+                    sele.cant_compras,
+                    MAX(mon_compras)
+                FROM (SELECT ti.ti_nombre,
+                            (CASE
+                                WHEN cl.cl_tipo = 'NATURAL' THEN
+                                    cl.cl_p_nombre||' '||cl.cl_s_nombre||', '||cl.cl_p_apellido||' '||cl.cl_s_apellido
+                                WHEN cl.cl_tipo = 'JURIDICO' THEN
+                                    cl.cl_razon_social
+                            END) nom_cliente,
+                            COUNT(1) cant_compras,
+                            SUM(co.co_monto_cancelar) mon_compras
+                        FROM compra  co,
+                            carrito ca,
+                            tienda  ti,
+                            cliente cl
+                        WHERE co.fk_carrito  = ca.ca_id
+                        AND ca.fk_tienda   = ti.ti_codigo
+                        AND cl.cl_id       = co.fk_cliente
+                        GROUP BY ti.ti_nombre, nom_cliente
+                        ORDER BY ti.ti_nombre
+                        ) sele, cliente c, tienda t
+                WHERE c.fk_tienda = t.ti_codigo
+                AND c.cl_id < 2
+                GROUP BY sele.ti_nombre, sele.nom_cliente, sele.cant_compras
+                ORDER BY sele.ti_nombre
+                
 --MESES mas productivos?
 SELECT DISTINCT(to_char(co_fecha_hora,'MM')) MES,
    SUM(co_monto_cancelar),

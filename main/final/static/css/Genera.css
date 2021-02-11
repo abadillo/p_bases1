@@ -41,7 +41,13 @@ h1{
     right: -60px;
     height: 40px;
 }
-
+#Fecha{
+    width: 150px;
+    height: 35px;
+}
+#Tienda{
+    height: 35px;
+}
 
 #selecttipo{
     width: 250px;
@@ -68,10 +74,17 @@ h1{
     right: -60px;
     height: 40px;
 }
+#Fecha1{
+    width: 150px;
+    height: 35px;
+}
+#Fecha2{
+    width: 150px;
+    height: 35px;
+}
 #FRECUENTES{
     position: relative;
-    top:450px;
+    top:90px;
     right: -80px;
     height: 40px;
-
 }

@@ -112,7 +112,7 @@ class DB_generic(DB):
             columnas = self.cursor.description
                     
             data = self.querydictdecimal(resp,columnas)
-            print(data)
+            #print(data)
             return data 
 
         except Exception:

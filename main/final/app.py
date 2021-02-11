@@ -103,9 +103,9 @@ def control_entrada():
 def ver_productos():
         
     search = request.form['search']
-
+    
     query = """SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m 
-                WHERE p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo AND LOWER(p.pr_nombre) LIKE '%{0}%'""".format(search)
+                WHERE p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo AND LOWER(p.pr_nombre) LIKE '%{0}%'""".format(search.lower())
 
     resp = DB_generic().select(query)
     
@@ -117,6 +117,7 @@ def pdf(obj):
     filename = obj+'.pdf'
     print(filename)
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename,as_attachment=False)
+
   
 @app.route('/excel/<obj>')                               
 def excel(obj):
@@ -132,7 +133,6 @@ def Generar(obj):
 
     if obj == 'Ingresos':  
 
-        print('aqui')
         db = Reporte()
 
         A = request.form['Fecha1']
@@ -160,10 +160,20 @@ def Generar(obj):
         return resp     
 
     if obj == 'Horario':
+       
+        db = Reporte()
 
-        
+        A = request.form['Tienda1'] 
+        B = request.form['Fecha1'] 
+        C = request.form['Fecha2'] 
 
-        return jsonify({'invalido': 'Campos Vacios'})    
+        if not (A or B or C):    
+            return jsonify({'invalido': 'Campos Vacios'})    
+
+        resp =  db.Horarios(A,B,C)
+
+        return resp
+      
     
     if obj == 'Frecuentes':
 
@@ -180,11 +190,35 @@ def Generar(obj):
         resp = db.Mes()
 
         return resp
+        
+    if obj == 'Producto':
+
+        db= Reporte()
+
+        resp = db.Producto()
+
+        return resp
+
+    if obj == 'Factura':
+
+        db= Reporte()
+
+        A = request.form['Factura']
+
+        if not A :    
+            return jsonify({'invalido': 'Campos Vacios'})  
+
+        resp = factura_cliente(A)
+
+        return resp        
+
 
     return jsonify({'invalido': 'Ruta no definida'})
 
 
 
+def factura_cliente(id_factura):
+    return Reporte().facturas(id_factura)
 
 #### Interfaces principales ####
 
@@ -2304,7 +2338,9 @@ def manejo_metodo_compra():
         if not(monto_metodos): monto_restante = monto_compra
         elif monto_compra > monto_metodos: monto_restante = monto_compra-monto_metodos
 
-        else: return redirect(url_for('main'))
+        else: 
+            return jsonify(factura_cliente(co_id))
+            
 
         return jsonify(monto_restante)
 

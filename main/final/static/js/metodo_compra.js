@@ -23,8 +23,12 @@ function monto_restante(){
         else if (resp['invalido'])
             alerta(resp['invalido']);
         
-        else
-            $('#restante').html('Restante: '+resp+' Bs.')
+        else{
+            if (resp == 1)
+                window.location.href =  '/pdf/Facturas';
+            else 
+                $('#restante').html('Restante: '+resp+' Bs.')
+        }
         
     }).fail(function(response){
         alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');

@@ -198,30 +198,29 @@ class DB_reporte(DB):
 
 
 
-    def HORARIO (self,tienda,fecha1,fecha2):
+    def horarios (self,tienda,fecha1,fecha2):
+
         try:                     
-            ti=tienda
-            fe1=fecha1
-            fe2=fecha2  
+            ti = tienda
+            fe1 = fecha1
+            fe2 = fecha2  
             
             qry = '''
-                    SELECT empl.em_cedula,
-       empl.em_p_nombre,
-       empl.em_s_nombre,
-       empl.em_p_apellido,
-       empl.em_s_apellido,
+                   SELECT empl.em_cedula,
+      empl.em_p_nombre || ' ' || empl.em_s_nombre || ', ' ||
+                    empl.em_p_apellido || ' ' || empl.em_s_apellido N_empleado,
        cent.coen_entrada,
        cent.coen_salida,
       (CASE
-          WHEN (DATE_PART('dow',cent.coen_entrada) NOT EXISTS
-                  (SELECT (CASE
-                              WHEN hor.ho_dia = 'DOMINGO'   THEN '1'
-                              WHEN hor.ho_dia = 'LUNES'     THEN '2'
-                              WHEN hor.ho_dia = 'MARTES'    THEN '3'
-                              WHEN hor.ho_dia = 'MIERCOLES' THEN '4'
-                              WHEN hor.ho_dia = 'JUEVES'    THEN '5'
-                              WHEN hor.ho_dia = 'VIERNES'   THEN '6'
-                              WHEN hor.ho_dia = 'SABADO'    THEN '7'
+          WHEN (DATE_PART('dow',cent.coen_entrada) NOT IN
+                  (SELECT (CASE 
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN 0
+                              WHEN hor.ho_dia = 'LUNES'     THEN 1
+                              WHEN hor.ho_dia = 'MARTES'    THEN 2
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN 3
+                              WHEN hor.ho_dia = 'JUEVES'    THEN 4
+                              WHEN hor.ho_dia = 'VIERNES'   THEN 5
+                              WHEN hor.ho_dia = 'SABADO'    THEN 6
                            END
                           ) ho_dia_num
                      FROM horario_empleado hemp,
@@ -230,15 +229,15 @@ class DB_reporte(DB):
                       AND hor.ho_codigo  = hemp.fk_horario
                   )
                ) THEN 'N'
-          WHEN (DATE_PART('dow',cent.coen_salida) IN
+          WHEN (DATE_PART('dow',cent.coen_salida) NOT IN
                   (SELECT (CASE
-                              WHEN hor.ho_dia = 'DOMINGO'   THEN '1'
-                              WHEN hor.ho_dia = 'LUNES'     THEN '2'
-                              WHEN hor.ho_dia = 'MARTES'    THEN '3'
-                              WHEN hor.ho_dia = 'MIERCOLES' THEN '4'
-                              WHEN hor.ho_dia = 'JUEVES'    THEN '5'
-                              WHEN hor.ho_dia = 'VIERNES'   THEN '6'
-                              WHEN hor.ho_dia = 'SABADO'    THEN '7'
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN 0
+                              WHEN hor.ho_dia = 'LUNES'     THEN 1
+                              WHEN hor.ho_dia = 'MARTES'    THEN 2
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN 3
+                              WHEN hor.ho_dia = 'JUEVES'    THEN 4
+                              WHEN hor.ho_dia = 'VIERNES'   THEN 5
+                              WHEN hor.ho_dia = 'SABADO'    THEN 6
                            END
                           ) ho_dia_num
                      FROM horario_empleado hemp,
@@ -248,48 +247,97 @@ class DB_reporte(DB):
                   )
                ) THEN 'N'
           WHEN (EXTRACT(HOUR FROM cent.coen_entrada) > 
-		          (SELECT hor2.hora_ent
+		          (SELECT EXTRACT (HOUR FROM hor2.ho_hora_entrada)
                      FROM horario_empleado hemp2,
                           horario hor2
                     WHERE hemp2.fk_empleado = empl.em_codigo
                       AND hor2.ho_codigo  = hemp2.fk_horario
 					  AND hor2.ho_dia = (CASE
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '1' THEN 'DOMINGO'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '2' THEN 'LUNES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '3' THEN 'MARTES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '4' THEN 'MIERCOLES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '5' THEN 'JUEVES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '6' THEN 'VIERNES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '7' THEN 'SABADO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 0 THEN 'DOMINGO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 1 THEN 'LUNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 2 THEN 'MARTES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 3 THEN 'MIERCOLES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 4 THEN 'JUEVES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 5 THEN 'VIERNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 6 THEN 'SABADO'
                                          END)
                   )
                ) THEN 'N'
           WHEN (EXTRACT(HOUR FROM cent.coen_salida) < 
-		          (SELECT hor2.hora_sal
-                     FROM horario_emp hemp2,
+		          (SELECT EXTRACT (HOUR FROM hor2.ho_hora_entrada)
+                     FROM horario_empleado hemp2,
                           horario hor2
                     WHERE hemp2.fk_empleado = empl.em_codigo
                       AND hor2.ho_codigo  = hemp2.fk_horario
 					  AND hor2.ho_dia = (CASE
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '1' THEN 'DOMINGO'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '2' THEN 'LUNES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '3' THEN 'MARTES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '4' THEN 'MIERCOLES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '5' THEN 'JUEVES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '6' THEN 'VIERNES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '7' THEN 'SABADO'
-                                         END)
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 0 THEN 'DOMINGO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 1 THEN 'LUNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 2 THEN 'MARTES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 3 THEN 'MIERCOLES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 4 THEN 'JUEVES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 5 THEN 'VIERNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 6 THEN 'SABADO'
+                                         END) 
                   )
                ) THEN 'N'
           ELSE 'S'
-       END
-      ) ind_cumple
- FROM empleado empl,
-      control_entrada cent
-WHERE empl.ti_codigo = 1
-  AND cent.em_codigo = empl.em_codigo
-  AND DATE_TRUNC('day',cent.coen_entrada) >= '2020-12-01'
-  AND DATE_TRUNC('day',cent.coen_entrada) <= '2020-12-02'; '''.format(ti,fe1,fe2)
+                END
+                ) ind_cumple,empl.fk_tienda
+            FROM empleado empl,
+                control_entrada cent
+            WHERE empl.fk_tienda = {0}
+            AND cent.fk_empleado = empl.em_codigo
+            AND DATE_TRUNC('day',cent.coen_entrada) >= '{1}'
+            AND DATE_TRUNC('day',cent.coen_entrada) <= '{1}';'''.format(ti,fe1,fe2) 
+            
+
+           
+
+            self.cursor.execute(qry)      
+
+            
+            resp = self.cursor.fetchall()
+            
+            columnas = self.cursor.description           
+
+            data = self.querydictdecimal(resp,columnas)            
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == datetime.date:
+                        entidad[atributo] = str(entidad[atributo])
+
+            return data       
+
+        except Exception:
+            print('ERROR DE EXCEPTION1')
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})            
+
+    def productos (self):
+
+        try:
+                     
+            
+            
+            qry = '''SELECT to_char(c.co_fecha_hora,'MM') MESRP,p.pr_nombre,(cp.ca_unidades*cp.ca_costo) Costo, Max_pro.cantidad,COUNT(1) cant
+                                        FROM carrito_producto cp, producto p,compra c,                                         
+                                        (SELECT  sel.MES, MAX(sel.cant) cantidad
+                                         FROM (
+                                        SELECT to_char(c.co_fecha_hora,'MM') MES,fk_producto,p.pr_nombre,COUNT(1) cant
+                                                            FROM carrito_producto cp, producto p,compra c
+                                                            WHERE p.pr_id = cp.fk_producto
+                                                            AND c.fk_carrito=cp.fk_carrito                                                              
+                                                            GROUP BY to_char(c.co_fecha_hora,'MM'),fk_producto,p.pr_nombre
+                                                            ORDER BY to_char(c.co_fecha_hora,'MM')
+                                            ) sel 
+                                        GROUP BY sel.MES
+                                        ORDER BY sel.MES) Max_pro                                         
+                            WHERE p.pr_id = cp.fk_producto
+                            AND c.fk_carrito=cp.fk_carrito
+                            AND Max_pro.MES = to_char(c.co_fecha_hora,'MM')                                    
+                            GROUP BY to_char(c.co_fecha_hora,'MM'),p.pr_nombre,(cp.ca_unidades*cp.ca_costo),Max_pro.cantidad 
+                            HAVING COUNT(1) = Max_pro.cantidad                                       
+                            ORDER BY to_char(c.co_fecha_hora,'MM')    '''
 
             self.cursor.execute(qry)           
 
@@ -308,6 +356,45 @@ WHERE empl.ti_codigo = 1
 
         except Exception:
             print('ERROR DE EXCEPTION1')
-            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'})            
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'}) 
 
+    def facturas (self,factu):
 
+        try:
+                     
+            fa=factu
+            
+            qry = '''SELECT TO_CHAR(co_fecha_hora::DATE, 'YYYY-MM-DD') Fecha,
+                    TO_CHAR(co_fecha_hora::TIME, 'HH12:MI AM') Hora,
+                    co_id Factura, 
+                    co_monto_cancelar Monto_total,
+                    P.pr_nombre Nombre_producto,
+                    (CP.ca_unidades*CP.ca_costo) Costo_producto
+                FROM COMPRA C, carrito CA, carrito_producto CP, producto P
+                WHERE C.co_id = {0}
+                AND CA.ca_id = C.fk_carrito
+                AND Cp.fk_carrito = CA.ca_id
+                AND P.pr_id = CP.fk_producto
+                ORDER BY P.pr_nombre;   '''.format(fa)
+
+            self.cursor.execute(qry)           
+
+            resp = self.cursor.fetchall()
+
+            columnas = self.cursor.description           
+
+            data = self.querydictdecimal(resp,columnas)            
+
+            for entidad in data:
+                for atributo in entidad:
+                    if type(entidad[atributo]) == datetime.date:
+                        entidad[atributo] = str(entidad[atributo])
+
+            return data   
+
+        except Exception:
+            print('ERROR DE EXCEPTION1')
+            return ({'error':'Error: Hubo un problema con el servidor o el cliente no existe'}) 
+
+    
+    

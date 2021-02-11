@@ -60,8 +60,8 @@ class Reporte():
 
 
 
-#if (__name__ == '__main__'):
- #   Reporte().ingreso('2020-12-01','2020-12-02')   
+if (__name__ == '__main__'):
+    Reporte().ingreso('2020-12-01','2020-12-02')   
    
     
    

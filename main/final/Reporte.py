@@ -12,37 +12,18 @@ class Reporte():
         
         db = DB_reporte()
         Datos = db.report(fecha,tienda) 
-        print(Datos)    
+        
 
         path = os.getcwd() + r'\reportes\descargas\Asistencia.xlsx'      
         pandas.DataFrame(Datos).to_excel( path ) 
 
-        return 'BIEN O BUENO'
-
-    def horario(self,fecha,tienda,empleado):
-        
-        db = DB_reporte()
-        Datos = db.report(fecha,tienda)     
-
-        path = os.getcwd() + r'\reportes\temp\datos_horario.csv'      
-        pandas.DataFrame(Datos).to_csv( path ,index=False) 
-
-
-        jrxml_filename = './reportes/jrxml/Horario.jrxml'  # input jrxml filename
-        output_filename = './reportes/descargas/Horario.pdf'    # output pdf filename
-        
-        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_horario.csv'}
-
-        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
-        pdf_page.generate_report()
-
-        return 'BIEN O BUENO'
+        return 'BIEN O BUENO'   
 
     def ingreso(self,fecha1,fecha2):
 
         db=DB_reporte()
         Datos = db.ingreso(fecha1,fecha2)
-        print(Datos)
+        
 
         path = os.getcwd() + r'\reportes\temp\datos_ingresos.csv'      
         pandas.DataFrame(Datos).to_csv( path ,index = False) 
@@ -63,7 +44,7 @@ class Reporte():
 
         db=DB_reporte()
         Datos = db.frecuentes()
-        print(Datos)
+        
 
         path = os.getcwd() + r'\reportes\temp\datos_Frecuentes.csv'      
         pandas.DataFrame(Datos).to_csv( path ,index = False) 
@@ -84,7 +65,7 @@ class Reporte():
 
         db=DB_reporte()
         Datos = db.Mes()
-        print(Datos)
+        
 
         path = os.getcwd() + r'\reportes\temp\datos_Mes.csv'      
         pandas.DataFrame(Datos).to_csv( path ,index = False) 
@@ -99,12 +80,74 @@ class Reporte():
         pdf_page.generate_report()
         rutapdf = os.getcwd() + r'\reportes\descargas\Mes.pdf'  
 
-        return 'BIEN O BUENO'    
+        return 'BIEN O BUENO' 
+
+    def Productos(self):
+
+        db = DB_reporte()
+        Datos = db.productos()
+        
+
+        path = os.getcwd() + r'\reportes\temp\datos_productos.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
 
 
+        jrxml_filename = './reportes/jrxml/Producto.jrxml'  # input jrxml filename
+        output_filename = './reportes/descargas/Producto.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_productos.csv'}
 
-if (__name__ == '__main__'):
-    Reporte().Mes()   
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
+        rutapdf = os.getcwd() + r'\reportes\descargas\Producto.pdf'  
+
+        return 'BIEN O BUENO'  
+
+    def horarios(self,tienda,fecha1,fecha2):
+
+        db = DB_reporte()
+        Datos = db.horarios(tienda,fecha1,fecha2)
+        
+        
+        path = os.getcwd() + r'\reportes\temp\datos_horarios.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
+
+
+        jrxml_filename = './reportes/jrxml/Horarios.jrxml'  # input jrxml filename
+        output_filename = './reportes/descargas/Horarios.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_Horarios.csv'}
+
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
+        rutapdf = os.getcwd() + r'\reportes\descargas\Horarios.pdf'  
+
+        return 'BIEN O BUENO'      
+
+    def facturas(self,factu):
+
+        db = DB_reporte()
+        Datos = db.facturas(factu)
+        
+        
+        path = os.getcwd() + r'\reportes\temp\datos_facturas.csv'      
+        pandas.DataFrame(Datos).to_csv( path ,index = False) 
+
+
+        jrxml_filename = './reportes/jrxml/Facturas.jrxml'  # input jrxml filename
+        output_filename = './reportes/descargas/Facturas.pdf'    # output pdf filename
+        
+        data_config = {'adapter': 'csv', 'filename': './reportes/temp/datos_facturas.csv'}
+
+        pdf_page = BasicReport(jrxml_filename=jrxml_filename, output_filename=output_filename, data_config=data_config)
+        pdf_page.generate_report()
+        rutapdf = os.getcwd() + r'\reportes\descargas\Facturas.pdf'  
+
+        return 'BIEN O BUENO'             
+
+
+#if (__name__ == '__main__'):
+#    Reporte().facturas(4)   
 
     {'ti_nombre': 'UCABmart - Barrancas', 'nom_cliente': 'FABIANO LEONARDO, JONES GODINEZ', 'cant_compras': 3, 'max': 238500000},
    

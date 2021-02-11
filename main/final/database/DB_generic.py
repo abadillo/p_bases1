@@ -110,9 +110,9 @@ class DB_generic(DB):
         
             resp = self.cursor.fetchall()
             columnas = self.cursor.description
-            
+                    
             data = self.querydictdecimal(resp,columnas)
-
+            print(data)
             return data 
 
         except Exception:

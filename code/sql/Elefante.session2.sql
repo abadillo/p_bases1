@@ -186,6 +186,94 @@ SELECT p.pr_nombre,COUNT(p.pr_nombre),p.pr_precio,(to_char(co.co_fecha_hora,'MM'
     GROUP BY p.pr_nombre,p.pr_precio,to_char(co.co_fecha_hora,'MM')
     ORDER BY COUNT(p.pr_nombre) ASC;
 
+SELECT fk_producto,COUNT(1) 
+FROM carrito_producto 
+GROUP BY fk_producto 
+
+
+
+SELECT c.co_fecha_hora, 
+    fk_producto,    
+    p.pr_nombre,      
+    COUNT(1) 
+  FROM carrito_producto cp, producto p, compra c 
+  where p.pr_id = cp.fk_producto
+  AND c.fk_carrito=cp.fk_carrito  
+  --AND cp.fk_carrito = 10
+ GROUP BY c.co_fecha_hora,
+    fk_producto, p.pr_nombre 
+ HAVING COUNT(1) = (SELECT MAX(sel.cant)
+                      FROM (SELECT c.co_fecha_hora,fk_producto,p.pr_nombre,COUNT(1) cant
+                              FROM carrito_producto cp, producto p,compra c
+                               where p.pr_id = cp.fk_producto
+                               AND c.fk_carrito=cp.fk_carrito
+                             GROUP BY c.co_fecha_hora,fk_producto,p.pr_nombre) sel
+                    );
+
+
+SELECT to_char(c.co_fecha_hora,'MM') MESRP,p.pr_nombre,(cp.ca_unidades*cp.ca_costo), Max_pro.cantidad,COUNT(1) cant
+                                        FROM carrito_producto cp, producto p,compra c,                                         
+                                        (SELECT  sel.MES, MAX(sel.cant) cantidad
+                                         FROM (
+                                        SELECT to_char(c.co_fecha_hora,'MM') MES,fk_producto,p.pr_nombre,COUNT(1) cant
+                                                            FROM carrito_producto cp, producto p,compra c
+                                                            WHERE p.pr_id = cp.fk_producto
+                                                            AND c.fk_carrito=cp.fk_carrito                                                              
+                                                            GROUP BY to_char(c.co_fecha_hora,'MM'),fk_producto,p.pr_nombre
+                                                            ORDER BY to_char(c.co_fecha_hora,'MM')
+                                            ) sel 
+                                        GROUP BY sel.MES
+                                        ORDER BY sel.MES) Max_pro                                         
+                            WHERE p.pr_id = cp.fk_producto
+                            AND c.fk_carrito=cp.fk_carrito
+                            AND Max_pro.MES = to_char(c.co_fecha_hora,'MM')                                    
+                            GROUP BY to_char(c.co_fecha_hora,'MM'),p.pr_nombre,(cp.ca_unidades*cp.ca_costo),Max_pro.cantidad 
+                            HAVING COUNT(1) = Max_pro.cantidad                                       
+                            ORDER BY to_char(c.co_fecha_hora,'MM')
+
+
+
+SELECT * 
+    FROM 
+    (SELECT  sel.MES,MAX(sel.cant)
+    FROM (
+            SELECT to_char(c.co_fecha_hora,'MM') MES,fk_producto,p.pr_nombre,COUNT(1) cant
+                                        FROM carrito_producto cp, producto p,compra c
+                                        where p.pr_id = cp.fk_producto
+                                        AND c.fk_carrito=cp.fk_carrito
+                                       -- AND to_char(c.co_fecha_hora,'MM') = '10'
+                                        GROUP BY to_char(c.co_fecha_hora,'MM'),fk_producto,p.pr_nombre
+                                        ORDER BY to_char(c.co_fecha_hora,'MM')
+    ) sel 
+    GROUP BY sel.MES
+    ORDER BY sel.MES) Max_pro
+
+RESULTADOS DE LA TABLA    
+09	33	
+10	22	
+11	5	
+12	59
+
+
+
+SELECT DISTINCT(co_fecha_hora)FROM compra
+
+
+SELECT fk_producto,
+ p.pr_precio,
+ p.pr_nombre,
+ COUNT(1)
+FROM carrito_producto cp,producto p
+WHERE cp.fk_producto = p.pr_id
+GROUP BY fk_producto, p.pr_precio, p.pr_nombre, p.pr_precio
+ORDER BY COUNT(1) DESC
+
+
+
+
+
+
+SELECT * FROM producto
 
 --HORARIO
 SELECT empl.em_cedula,
@@ -196,15 +284,15 @@ SELECT empl.em_cedula,
        cent.coen_entrada,
        cent.coen_salida,
       (CASE
-          WHEN (DATE_PART('dow',cent.coen_entrada) NOT EXISTS
-                  (SELECT (CASE
-                              WHEN hor.ho_dia = 'DOMINGO'   THEN '1'
-                              WHEN hor.ho_dia = 'LUNES'     THEN '2'
-                              WHEN hor.ho_dia = 'MARTES'    THEN '3'
-                              WHEN hor.ho_dia = 'MIERCOLES' THEN '4'
-                              WHEN hor.ho_dia = 'JUEVES'    THEN '5'
-                              WHEN hor.ho_dia = 'VIERNES'   THEN '6'
-                              WHEN hor.ho_dia = 'SABADO'    THEN '7'
+          WHEN (DATE_PART('dow',cent.coen_entrada) NOT IN
+                  (SELECT (CASE 
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN 0
+                              WHEN hor.ho_dia = 'LUNES'     THEN 1
+                              WHEN hor.ho_dia = 'MARTES'    THEN 2
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN 3
+                              WHEN hor.ho_dia = 'JUEVES'    THEN 4
+                              WHEN hor.ho_dia = 'VIERNES'   THEN 5
+                              WHEN hor.ho_dia = 'SABADO'    THEN 6
                            END
                           ) ho_dia_num
                      FROM horario_empleado hemp,
@@ -213,15 +301,15 @@ SELECT empl.em_cedula,
                       AND hor.ho_codigo  = hemp.fk_horario
                   )
                ) THEN 'N'
-          WHEN (DATE_PART('dow',cent.coen_salida) IN
+          WHEN (DATE_PART('dow',cent.coen_salida) NOT IN
                   (SELECT (CASE
-                              WHEN hor.ho_dia = 'DOMINGO'   THEN '1'
-                              WHEN hor.ho_dia = 'LUNES'     THEN '2'
-                              WHEN hor.ho_dia = 'MARTES'    THEN '3'
-                              WHEN hor.ho_dia = 'MIERCOLES' THEN '4'
-                              WHEN hor.ho_dia = 'JUEVES'    THEN '5'
-                              WHEN hor.ho_dia = 'VIERNES'   THEN '6'
-                              WHEN hor.ho_dia = 'SABADO'    THEN '7'
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN 0
+                              WHEN hor.ho_dia = 'LUNES'     THEN 1
+                              WHEN hor.ho_dia = 'MARTES'    THEN 2
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN 3
+                              WHEN hor.ho_dia = 'JUEVES'    THEN 4
+                              WHEN hor.ho_dia = 'VIERNES'   THEN 5
+                              WHEN hor.ho_dia = 'SABADO'    THEN 6
                            END
                           ) ho_dia_num
                      FROM horario_empleado hemp,
@@ -231,37 +319,37 @@ SELECT empl.em_cedula,
                   )
                ) THEN 'N'
           WHEN (EXTRACT(HOUR FROM cent.coen_entrada) > 
-		          (SELECT hor2.hora_ent
+		          (SELECT EXTRACT (HOUR FROM hor2.ho_hora_entrada)
                      FROM horario_empleado hemp2,
                           horario hor2
                     WHERE hemp2.fk_empleado = empl.em_codigo
                       AND hor2.ho_codigo  = hemp2.fk_horario
 					  AND hor2.ho_dia = (CASE
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '1' THEN 'DOMINGO'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '2' THEN 'LUNES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '3' THEN 'MARTES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '4' THEN 'MIERCOLES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '5' THEN 'JUEVES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '6' THEN 'VIERNES'
-                                            WHEN DATE_PART('dow',cent.coen_entrada) = '7' THEN 'SABADO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 0 THEN 'DOMINGO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 1 THEN 'LUNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 2 THEN 'MARTES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 3 THEN 'MIERCOLES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 4 THEN 'JUEVES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 5 THEN 'VIERNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 6 THEN 'SABADO'
                                          END)
                   )
                ) THEN 'N'
           WHEN (EXTRACT(HOUR FROM cent.coen_salida) < 
-		          (SELECT hor2.hora_sal
-                     FROM horario_emp hemp2,
+		          (SELECT EXTRACT (HOUR FROM hor2.ho_hora_entrada)
+                     FROM horario_empleado hemp2,
                           horario hor2
                     WHERE hemp2.fk_empleado = empl.em_codigo
                       AND hor2.ho_codigo  = hemp2.fk_horario
 					  AND hor2.ho_dia = (CASE
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '1' THEN 'DOMINGO'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '2' THEN 'LUNES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '3' THEN 'MARTES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '4' THEN 'MIERCOLES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '5' THEN 'JUEVES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '6' THEN 'VIERNES'
-                                            WHEN DATE_PART('dow',cent.coen_salida) = '7' THEN 'SABADO'
-                                         END)
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 0 THEN 'DOMINGO'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 1 THEN 'LUNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 2 THEN 'MARTES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 3 THEN 'MIERCOLES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 4 THEN 'JUEVES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 5 THEN 'VIERNES'
+                                            WHEN DATE_PART('dow',cent.coen_entrada) = 6 THEN 'SABADO'
+                                         END) 
                   )
                ) THEN 'N'
           ELSE 'S'
@@ -269,16 +357,113 @@ SELECT empl.em_cedula,
       ) ind_cumple
  FROM empleado empl,
       control_entrada cent
-WHERE empl.ti_codigo = 1
-  AND cent.em_codigo = empl.em_codigo
-  AND DATE_TRUNC('day',cent.coen_entrada) >= '2020-12-01'
-  AND DATE_TRUNC('day',cent.coen_entrada) <= '2020-12-02';
+WHERE empl.fk_tienda = 1
+  AND cent.fk_empleado = empl.em_codigo
+  AND DATE_TRUNC('day',cent.coen_entrada) >= '2020-12-05'
+  AND DATE_TRUNC('day',cent.coen_entrada) <= '2020-12-20';
 
 "tienda parametro" es el código de la tienda que se recibe como parámetro desde el sistema.
 "fec_desde_parametro" es la fecha "sin formato de hora" de inicio de rango que se recibe como parámetro desde el sistema.
 "fec_hasta_parametro" es la fecha "sin formato de hora" de final de rango que se recibe como parámetro desde el sistema.
 
+-- FACTURA
 
+SELECT DISTINCT(to_char (CO_FECHA_HORA::DATE, 'YYYY-MM-DD')) Fecha,
+ to_char(co_FECHA_HORA::TIME, 'HH12:MI AM') Hora,
+ co_id Factura, 
+ co_monto_cancelar Monto_total,
+ P.pr_nombre Nombre_producto,
+ (CP.ca_unidades*CP.ca_costo) Costo_producto
+ FROM COMPRA C, carrito CA, carrito_producto CP, producto P
+ WHERE C.fk_carrito= CA.ca_id
+ AND Cp.fk_carrito = CA.ca_id
+ AND CP.fk_producto= P.pr_id
+ --AND to_char (CO_FECHA_HORA::DATE, 'YYYY-MM-DD') IN( '2020-12-09','2020-12-30')
+ GROUP BY Fecha,co_id,P.pr_nombre,Costo_producto,Ca.ca_id
+ ORDER BY Factura
+
+SELECT TO_CHAR(co_fecha_hora::DATE, 'YYYY-MM-DD') Fecha,
+       TO_CHAR(co_fecha_hora::TIME, 'HH12:MI AM') Hora,
+       co_id Factura, 
+       co_monto_cancelar Monto_total,
+       P.pr_nombre Nombre_producto,
+       (CP.ca_unidades*CP.ca_costo) Costo_producto
+  FROM COMPRA C, carrito CA, carrito_producto CP, producto P
+ WHERE C.co_id = 4
+   AND CA.ca_id = C.fk_carrito
+   AND Cp.fk_carrito = CA.ca_id
+   AND P.pr_id = CP.fk_producto
+ ORDER BY P.pr_nombre;
+
+
+
+-- PRUEBA HORARIO 
+
+
+SELECT (EXTRACT(HOUR FROM coen_salida)) FROM control_entrada
+(SELECT (CASE 
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN '1'
+                              WHEN hor.ho_dia = 'LUNES'     THEN '2'
+                              WHEN hor.ho_dia = 'MARTES'    THEN '3'
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN '4'
+                              WHEN hor.ho_dia = 'JUEVES'    THEN '5'
+                              WHEN hor.ho_dia = 'VIERNES'   THEN '6'
+                              WHEN hor.ho_dia = 'SABADO'    THEN '7'
+                           END
+                          ) ho_dia_num
+                     FROM horario_empleado hemp,
+                          horario hor
+                    WHERE hemp.fk_empleado = 1 -- empl.em_codigo
+                      AND hor.ho_codigo  = 1-- hemp.fk_horario
+                  )
+
+SELECT * FROM horario
+
+SELECT * FROM horario_empleado 
+
+SELECT (DATE_PART('dow',coen_entrada)) FROM control_entrada
+
+select (CASE
+             WHEN DATE_PART('dow',coen_entrada) not IN ('1','2','3','4','5','6') THEN 'VALIDO'
+             ELSE 'INVALIDO'
+         END) DIA
+  from control_entrada;
+
+SELECT (CASE        
+          WHEN DATE_PART('dow',coen_entrada) NOT IN
+                  (SELECT (CASE 
+                              WHEN hor.ho_dia = 'DOMINGO'   THEN 1
+                              WHEN hor.ho_dia = 'LUNES'     THEN 2
+                              WHEN hor.ho_dia = 'MARTES'    THEN 3
+                              WHEN hor.ho_dia = 'MIERCOLES' THEN 4
+                              WHEN hor.ho_dia = 'JUEVES'    THEN 5
+                              WHEN hor.ho_dia = 'VIERNES'   THEN 6
+                              WHEN hor.ho_dia = 'SABADO'    THEN 7
+                           END
+                          ) ho_dia_num
+                     FROM horario_empleado hemp,
+                          horario hor
+                    WHERE hemp.fk_empleado = 1 --empl.em_codigo
+                      AND hor.ho_codigo  = hemp.fk_horario
+                  ) 
+                  THEN 'N'
+                  ELSE 'S'
+        END) CUMPLIO FROM control_entrada
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- FACTURA
 
 --WHERE coen_entrada:: DATE= '2020-12-01'
 --DATE_FORMAT(ts_creacion,'%H:%i:%s')

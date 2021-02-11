@@ -31,7 +31,7 @@ em	ro	ro_nombre
 
 
 INSERT INTO privilegio (pv_descripcion) VALUES ('Modificar Perfil');
-INSERT INTO privilegio (pv_descripcion) VALUES ('Llenar Carrito');
+INSERT INTO privilegio (pv_descripcion) VALUES ('Mostrar Carrito');
 INSERT INTO privilegio (pv_descripcion) VALUES ('Generar Presupuesto');
 INSERT INTO privilegio (pv_descripcion) VALUES ('Generar Compra Web');
 INSERT INTO privilegio (pv_descripcion) VALUES ('Asignacion De Descuentos');

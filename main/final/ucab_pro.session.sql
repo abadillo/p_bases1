@@ -16,6 +16,28 @@ SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM contro
 
 SELECT p.*, r.ru_nombre, m.ma_nombre FROM producto p, rubro r, marca m WHERE p.pr_nombre LIKE '%caucho%' AND p.fk_rubro = r.ru_codigo AND p.fk_marca = m.ma_codigo 
 
+
+SELECT fk_carrito FROM compra WHERE fk_cliente = 2
+
+SELECT * FROM carrito WHERE fk_cliente = 2 
+AND ca_id not in (SELECT fk_carrito FROM compra WHERE fk_cliente = 1
+) 
+
+SELECT ca_id FROM carrito WHERE fk_cliente = 23       AND ca_id not in (          SELECT fk_carrito FROM compra           WHERE fk_cliente = 23)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SELECT * FROM PRODUCTO WHERE PR_NOMBRE LIKE '%caucho%'
 
 

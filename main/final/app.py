@@ -149,6 +149,50 @@ def inicio_sesion():
         return jsonify({'invalido': 'Contraseña Invalida'})        
 
 
+@app.route('/añadir_carrito_web/<pr_id>', methods= ['POST'])
+def añadir_carrito_web(pr_id):
+      
+    if (session['fk_cliente']): fk_cliente = int(session['fk_cliente'])
+    else: return ""
+    
+    id_carrito = buscar_carrito(fk_cliente)
+
+    if not(id_carrito): 
+        id_carrito = crear_carrito(fk_cliente,None)
+
+    print(id_carrito)
+
+    resp = añadir_carrito(id_carrito,pr_id)
+    print(resp)
+
+    return redirect(url_for('main'))
+
+
+@app.route('/carrito_web', methods=['GET','POST'])    
+def carrito_web():
+
+    if request.method == 'GET':
+        return render_template("carrito_web.html")
+
+    if request.method == 'POST':
+                    
+        if (session['fk_cliente']): fk_cliente = int(session['fk_cliente'])
+        else: return ""
+        
+        id_carrito = buscar_carrito(fk_cliente)
+
+        if not(id_carrito): 
+            id_carrito = crear_carrito(fk_cliente,None)
+
+        print(id_carrito)
+        print('id_carrito')
+
+
+        return jsonify(id_carrito)
+
+
+
+
 @app.route('/compra_fisica', methods=['GET','PUT'])    
 def compra_fisica():
 
@@ -276,7 +320,7 @@ def mostrar(obj):
 @app.route('/manejo_tienda',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_tienda():
     
-    if request.method == 'GET':                 #listo
+    if request.method == 'GET':                 
         id = request.args['codigo']
         
         db = DB_tienda()
@@ -284,7 +328,7 @@ def manejo_tienda():
 
         return jsonify(data)   
 
-    if request.method == 'POST':                    #listo
+    if request.method == 'POST':                    
 
         db = DB_lugar()   
 
@@ -307,7 +351,7 @@ def manejo_tienda():
         resp = db.add(data)
         return resp
 
-    if request.method == 'PUT':                    #listo
+    if request.method == 'PUT':                    
 
        id = int(request.form['id_user'])
 
@@ -339,7 +383,7 @@ def manejo_tienda():
 
        return jsonify(resp)    
 
-    if request.method == 'DELETE':                  #listo
+    if request.method == 'DELETE':                  
 
         id = int(request.form['codigos'])
 
@@ -353,7 +397,7 @@ def manejo_tienda():
 @app.route('/manejo_natural', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_natural():
 
-    if request.method == 'GET':         #listo
+    if request.method == 'GET':         
      
         item = request.args['item']
         datos_cl = DB_cliente().get(item)
@@ -371,7 +415,7 @@ def manejo_natural():
         
         return jsonify(datos_cl)
 
-    if request.method == 'POST':            #listo
+    if request.method == 'POST':            
         
         #datos cliente
 
@@ -475,7 +519,7 @@ def manejo_natural():
 
         return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
 
-    if request.method == 'PUT':              #listo
+    if request.method == 'PUT':              
         
         id = int(request.form['id_user'])
 
@@ -582,7 +626,7 @@ def manejo_natural():
         
         return jsonify(resp)
       
-    if request.method == 'DELETE':          #listo
+    if request.method == 'DELETE':          
 
         id = int(request.get_data())
 
@@ -595,7 +639,7 @@ def manejo_natural():
 @app.route('/manejo_juridico', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_juridico():
 
-    if request.method == 'GET':         #listo
+    if request.method == 'GET':         
      
         item = request.args['item']
         datos_cl = DB_cliente().get(item)
@@ -613,7 +657,7 @@ def manejo_juridico():
         
         return jsonify(datos_cl)
 
-    if request.method == 'POST':            #listo
+    if request.method == 'POST':            
         
         #datos cliente
 
@@ -787,7 +831,7 @@ def manejo_juridico():
 
         return jsonify({'mensaje': 'Cliente Creado Satisfactoriamente' }) 
    
-    if request.method == 'PUT':              #listo
+    if request.method == 'PUT':              
         
         id = int(request.form['id_user'])
 
@@ -939,7 +983,7 @@ def manejo_juridico():
         
         return jsonify(resp)
       
-    if request.method == 'DELETE':      #listo
+    if request.method == 'DELETE':      
 
         id = int(request.get_data())
 
@@ -953,7 +997,7 @@ def manejo_juridico():
 @app.route('/manejo_empleado', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_empleado():
 
-    if request.method == 'GET':         #listo
+    if request.method == 'GET':         
         
         id = request.args['id']
         
@@ -971,7 +1015,7 @@ def manejo_empleado():
 
         return jsonify(data)
 
-    if request.method == 'POST':        #listo
+    if request.method == 'POST':        
         
         #datos empleado
 
@@ -1040,7 +1084,7 @@ def manejo_empleado():
 
         return jsonify({'mensaje': 'Empleado Creado Satisfactoriamente' }) 
 
-    if request.method == 'PUT':              #listo
+    if request.method == 'PUT':              
         
         id = int(request.form['id_user'])
 
@@ -1123,7 +1167,7 @@ def manejo_empleado():
 @app.route('/manejo_proveedor', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_proveedor():
    
-    if request.method == 'GET':             #listo  
+    if request.method == 'GET':               
         id = request.args['id']
 
         db = DB_proveedor()
@@ -1404,11 +1448,64 @@ def manejo_proveedor():
 
         return resp
 
-          
+#metodos compartidos entre compra web y fisica
+
+def buscar_carrito(fk_cliente):
+                
+    query = """            
+        SELECT ca_id FROM carrito WHERE fk_cliente = {0} 
+        AND ca_id not in (
+            SELECT fk_carrito FROM compra 
+            WHERE fk_cliente = {0})""".format(fk_cliente)
+
+    id_carrito = DB_generic().select(query)
+
+    if (id_carrito): return id_carrito[0]['ca_id']
+    else: return None
+
+def crear_carrito (fk_cliente,fk_tienda):
+
+    query = "SELECT fk_tienda FROM cliente WHERE cl_id = {0}".format(fk_cliente)
+
+    if not (fk_tienda): tienda = DB_generic().select(query)[0]['fk_tienda']
+    else: tienda = fk_tienda
+
+    data = {
+        'fk_cliente'        : fk_cliente,
+        'fk_tienda'         : tienda,
+        'ca_monto_total'    : 0
+    }
+
+    id_carrito = DB_generic().add_return('carrito',data,'ca_id')
+
+    return id_carrito
+
+def añadir_carrito(ca_id,pr_id):
+        
+    producto = DB_producto().get(pr_id)
+
+    data = {
+        'ca_unidades' : 1,
+        'ca_costo'    : producto['pr_precio'],
+        'fk_carrito'  : ca_id,
+        'fk_producto' : pr_id
+    }
+
+    resp = DB_generic().add('carrito_producto',data)
+
+    data.update(producto)
+
+    print(data)
+
+    if ('error' in resp): 
+        return jsonify({'invalido':'invalido: producto ya en carrito'}) 
+
+    return jsonify(data) 
+        
 @app.route('/manejo_carrito', methods= ['GET', 'POST','PUT','DELETE'])
 def manejo_carrito():
    
-    if request.method == 'GET':             #listo  
+    if request.method == 'GET':               
         id = request.args['id']
 
         data = DB_carrito().get(id) 
@@ -1418,50 +1515,20 @@ def manejo_carrito():
     if request.method == 'POST':
 
         tienda = DB_empleado().get(session['fk_empleado'])['fk_tienda']
+        fk_cliente = int(request.form['id_cliente'])
 
-        data = {
-            'fk_cliente'        : int(request.form['id_cliente']),
-            'fk_tienda'         : tienda,
-            'ca_monto_total'    : 0
-        }
-
-        id_carrito = DB_carrito().add(data)
+        id_carrito = crear_carrito(fk_cliente,tienda)
 
         return jsonify(id_carrito)
-
 
     if request.method == 'PUT':
 
         pr_id = int(request.form['codigo'])
+        fk_carrito = int(request.form['carrito'])
 
-        producto = DB_producto().get(pr_id)
-
-        if ('invalido' or 'error') in producto: return producto
-
-        print(producto)
-
-        unidades = request.form['cant']
-
-        data = {
-            'ca_unidades' : int(request.form['cant']),
-            'ca_costo'    : producto['pr_precio'],
-            'fk_carrito'  : int(request.form['carrito']),
-            'fk_producto' : pr_id
-        }
-
-        resp = DB_generic().add('carrito_producto',data)
-
-        print(resp)
-    
-        if ('error' in resp): 
-            return jsonify({'invalido':'invalido: producto ya en carrito'}) 
-
-        data.update(producto)
-
-        print(data)
-
-        return data
-
+        resp = añadir_carrito(fk_carrito,pr_id)
+       
+        return resp
 
     if request.method == 'DELETE':
 
@@ -1474,8 +1541,6 @@ def manejo_carrito():
 
 
         return resp
-
-          
 
 @app.route('/manejo_moneda',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_moneda():
@@ -1945,9 +2010,6 @@ def manejo_privilegio():
         resp = db.delete('privilegio',data)
        
         return resp
-
-
-
 
 @app.route('/manejo_producto',methods=['GET', 'POST','PUT','DELETE'])
 def manejo_producto():

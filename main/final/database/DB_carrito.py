@@ -28,8 +28,6 @@ class DB_carrito(DB):
 
             '''
 
-            
-
             query = 'SELECT * FROM carrito_producto cp, producto p WHERE p.pr_id = cp.fk_producto AND cp.fk_carrito = {0}'.format(id)
 
             print(self.cursor.mogrify(query))  

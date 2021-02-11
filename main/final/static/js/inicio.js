@@ -15,7 +15,7 @@ function itemlist(items) {
         $("ul").append(`
         
             <li>    
-                <a href="./ver_producto/`+items[i].pr_id+`">
+                <form action="/añadir_carrito_web/`+items[i].pr_id+`" method="POST">
                     <div id="inner" class="row">
                         <div class="col-4">
                             <img type="image" id="imagen" src="../static/media/brokenpng.jpg">
@@ -23,18 +23,19 @@ function itemlist(items) {
                         <div class="col-8">
                             <h3>`+items[i].pr_nombre+`</h4> 
                             <h5>`+items[i].ma_nombre+`</h5>
+                            <h6>`+items[i].ru_nombre+`</h6> 
                             <br>
                             <div class="row">
-                                <div class="col">
-                                    <h5>`+items[i].ru_nombre+`</h4> 
+                                <div class="col mr-auto">
+                                    <h4>`+items[i].pr_precio+` Bs.</h4>
                                 </div>
-                                <div class="col">
-                                    <h4>`+items[i].pr_precio+` Bs.</h5>
+                                <div class="col-auto">
+                                    <button id="Registrar" class="btn btn-sm btn-primary" type ="submit">Añadir al Carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>    
+                </form> 
             </li>  
         
         `);
@@ -107,7 +108,7 @@ $(document).ready(function() {
         type: 'POST',
         url: '/ver_productos',
         data:{
-            'search': 'mortadela' ,
+            'search': 'a' ,
         }
             
     }).done(function(resp){
@@ -180,7 +181,7 @@ $(function(){
                 window.location.href =  '/cliente/'+fk_cliente;	
                 break;
             case '2':
-                window.location.href =  '/ver_carrito';	
+                window.location.href =  '/carrito_web';	
                 break;
             case '3':
                 window.location.href =  '/Generar Presupuesto';	

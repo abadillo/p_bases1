@@ -8,7 +8,7 @@ body {
 #logo{
     width: 300px;
     position: relative;
-    top: -20px;
+    top:20px
 
 }
 
@@ -26,4 +26,22 @@ body {
     background-color: rgb(247, 247, 247);
     border-radius: 2px 2px 2px 2px;
     border: 2px rgb(41, 41, 41) groove;
+}
+.buscador{
+    width: 400px;
+    position: relative;
+    top:25px;
+    right: -30px;
+
+}
+#selectpriv{
+    position:relative;
+    top:25px;
+    width: 190px;
+
+}
+#PANEL{
+    background-color: rgb(172, 171, 171);
+    height: 90px;
+   
 }

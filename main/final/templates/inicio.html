@@ -17,24 +17,41 @@
 
 <body>
 
-    <div class="text-center">
-        <a href="../templates/UCABMART.html"><img  type="imagen" id="logo" src="../static/media/UCABMART6.png" > </a>
-    </div>
+   
 
-    <button id="iniciar_sesion" class="btn mr-2 rounded" , type="button">algo</button>
-    <button id="cerrar_sesion" class="btn mr-2 rounded" , type="button">algo</button>
-    
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+    <div class="container" id="PANEL">
+        <div class="row">
+          <div class="col">  
+
+                <a href="../templates/UCABMART.html"><img  type="imagen" id="logo" src="../static/media/UCABMART6.png" > </a> 
+
+          </div>
+
+          <div class="col-6">
+
+            <div class="input-group buscador">
+              <input type="text" class="form-control" placeholder="BUSCAR" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">BUSCAR</button>
+            </div>
+
+          </div>
+
+          </div>
+
+          <div class="col">
+
+          <select id="selectpriv" name="selectpriv" class="custom-select browser-default">
+              <option value="" selected disabled>MENU</option>
+          </select>
+
+          </div>
         </div>
-    </div>
+       
+  
 
 
-    <select id="selectpriv" name="selectpriv" class="custom-select browser-default">
-        <option value="" selected disabled>MENU</option>
-    </select>  
+   
 
 
     <div id="itempanel">     

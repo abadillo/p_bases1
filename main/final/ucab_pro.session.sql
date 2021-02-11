@@ -10,7 +10,10 @@ SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = '1'
 
 SELECT * FROM cliente WHERE cl_id = 1 OR cl_cedula = 1 OR cl_rif = 1
 
-INSERT INTO control_entrada (coen_entrada,fk_empleado) VALUES (CURRENT_TIMESTAMP,4) WHERE fk_empleado = 4
+INSERT INTO contro
+SELECT MAX(co_despacho_id)+1 FROM compra
+
+l_entrada (coen_entrada,fk_empleado) VALUES (CURRENT_TIMESTAMP,4) WHERE fk_empleado = 4
 
 SELECT to_char(coen_entrada,'DD/MM/YYYY HH12:MI:SS AM') coen_entrada FROM control_entrada wHERE coen_salida is NULL AND fk_empleado = 4
 
@@ -25,6 +28,14 @@ AND ca_id not in (SELECT fk_carrito FROM compra WHERE fk_cliente = 1
 
 SELECT ca_id FROM carrito WHERE fk_cliente = 23       AND ca_id not in (          SELECT fk_carrito FROM compra           WHERE fk_cliente = 23)
 
+
+
+UPDATE carrito SET ca_monto_total = (
+
+	SELECT SUM(ca_unidades*ca_costo) 
+	FROM carrito_producto WHERE fk_carrito = {0}
+
+) WHERE ca_id = {0}
 
 
 

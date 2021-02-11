@@ -9,7 +9,7 @@ function alerta(mensaje){
 };
 
 
-
+var id_carrito = null;
 
 $(document).ready(function() {
     
@@ -27,9 +27,11 @@ $(document).ready(function() {
         else if (resp['invalido'])
             alerta(resp['invalido']);
         
-        else
+        else{
+            id_carrito = resp;
             mostrar_carrito(resp)
-          
+        }
+
     }).fail(function(response){
         alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
     });
@@ -43,7 +45,27 @@ $(function(){
 
     
     $("#boton_pagar").click(function(){
-        console.log("bueno");
+        
+        $.ajax({
+                
+            url:   '/carrito_web',                 
+            type: 'PUT',
+            data:  {'id_carrito' : id_carrito,}           
+            
+        }).done(function(resp){
+            
+            if(resp['error'])
+                alerta(resp['error']);
+            
+            else if (resp['invalido'])
+                alerta(resp['invalido']);
+            
+            else
+                window.location.href = 'compra/'+resp;
+              
+        }).fail(function(response){
+            alerta('No se pudo acceder al servidor. Intente de nuevo mas tarde');
+        });
     });  
 
         
